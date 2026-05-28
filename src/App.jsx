@@ -8,6 +8,10 @@ import viliaLamp01 from './assets/products/vilia-camera-lamp-01.jpg'
 import viliaLamp02 from './assets/products/vilia-camera-lamp-02.jpg'
 import viliaLamp03 from './assets/products/vilia-camera-lamp-03.jpg'
 import viliaLamp05 from './assets/products/vilia-camera-lamp-05.jpg'
+import homeHeroBlackPhone from './assets/home/home-hero-black-phone.jpg'
+import homeWhitePhone from './assets/home/home-white-phone.jpg'
+import homeClockLamp from './assets/home/home-clock-lamp.jpg'
+import homeBluePhone from './assets/home/home-blue-phone.jpg'
 import './App.css'
 
 const instagramUrl = 'https://www.instagram.com/our.vintage.lights/'
@@ -56,7 +60,7 @@ const content = {
         ['Уникални бройки', 'Всяка лампа е единствена, с форма и история.'],
         ['Upcycling дизайн', 'Старото става функционално, красиво и различно.'],
       ],
-      imageStripTitle: 'Винтидж телефон, превърнат в топла светлина.',
+      imageStripTitle: 'Ръчно изработени винтидж лампи с характер.',
       ctaTitle: 'Разгледай колекцията',
       ctaText:
         'Открий своята уникална лампа и добави характер към пространството си.',
@@ -104,12 +108,10 @@ const content = {
       price: 'Цена при запитване',
       cta: 'Пиши за цена и доставка',
       details: 'Виж детайли',
-      instagramPost: 'Виж в Instagram',
       gallery: 'Допълнителни снимки',
-      detailsTitle: 'Детайли',
       dmHint: 'Пиши ни на лично в Instagram и изпрати името на продукта.',
     },
-    footer: 'E&K Vintara Studio - handmade vintage lights',
+    footer: 'ръчно изработени винтидж лампи',
   },
   en: {
     languageLabel: 'Language',
@@ -133,7 +135,7 @@ const content = {
         ['Unique pieces', 'Each lamp is one of a kind, with its own shape and story.'],
         ['Upcycled design', 'The old becomes functional, beautiful, and different.'],
       ],
-      imageStripTitle: 'A vintage telephone transformed into warm light.',
+      imageStripTitle: 'Handmade vintage lamps with character.',
       ctaTitle: 'Explore the collection',
       ctaText: 'Find your unique lamp and add character to your space.',
       cta: 'View available lamps',
@@ -180,20 +182,16 @@ const content = {
       price: 'Price on request',
       cta: 'Ask about price and delivery',
       details: 'View details',
-      instagramPost: 'View on Instagram',
       gallery: 'Additional photos',
-      detailsTitle: 'Details',
       dmHint: 'Message us on Instagram and send the product name.',
     },
-    footer: 'E&K Vintara Studio - handmade vintage lights',
+    footer: 'handmade vintage lights',
   },
 }
 
 const phoneLamp = {
   slug: 'retro-telephone-lamp',
   routes: productRoutes['retro-telephone-lamp'],
-  instagramPostUrl:
-    'https://www.instagram.com/p/DYxCBQbDdQY/?igsh=MWt0ejJvbzFlYnFyag==',
   titleBg: 'Винтидж телефон лампа',
   titleEn: 'Vintage Telephone Lamp',
   summaryBg:
@@ -231,31 +229,11 @@ const phoneLamp = {
     'Warm cozy light',
     'One of a kind',
   ],
-  specsBg: [
-    ['Статус', 'Продава се'],
-    ['Категория', 'Телефон лампа'],
-    ['Модел', 'Винтидж ротационен телефон'],
-    ['Период', 'Източна Европа, 70-те и 80-те години'],
-    ['Светлина', 'Топла Edison LED крушка'],
-    ['Изработка', 'Ръчна изработка'],
-    ['Уникалност', 'Единствена по рода си'],
-  ],
-  specsEn: [
-    ['Status', 'Available'],
-    ['Category', 'Telephone lamp'],
-    ['Model', 'Vintage rotary telephone'],
-    ['Period', 'Eastern Europe, 1970s and 1980s'],
-    ['Light', 'Warm Edison LED bulb'],
-    ['Craft', 'Handmade'],
-    ['Uniqueness', 'One of a kind'],
-  ],
 }
 
 const viliaLamp = {
   slug: 'vilia-camera-lamp',
   routes: productRoutes['vilia-camera-lamp'],
-  instagramPostUrl:
-    'https://www.instagram.com/p/DYhmDa7DT2n/?igsh=MTh5eHd5dHpsNWxpOQ==',
   titleBg: 'Vilia фотоапарат лампа',
   titleEn: 'Vilia Camera Lamp',
   summaryBg:
@@ -284,26 +262,6 @@ const viliaLamp = {
     'Vilia vintage camera',
     'Warm Edison bulb',
     'One of a kind',
-  ],
-  specsBg: [
-    ['Статус', 'Продава се'],
-    ['Категория', 'Фотоапарат лампа'],
-    ['Модел', 'Vilia vintage camera'],
-    ['Произход/период', 'СССР, 70-те и 80-те години'],
-    ['Обектив', 'Triplet 69-3'],
-    ['Светлина', 'Топла Edison LED крушка'],
-    ['Изработка', 'Ръчна изработка'],
-    ['Уникалност', 'Единствена по рода си'],
-  ],
-  specsEn: [
-    ['Status', 'Available'],
-    ['Category', 'Camera lamp'],
-    ['Model', 'Vilia vintage camera'],
-    ['Origin/period', 'USSR, 1970s and 1980s'],
-    ['Lens', 'Triplet 69-3'],
-    ['Light', 'Warm Edison LED bulb'],
-    ['Craft', 'Handmade'],
-    ['Uniqueness', 'One of a kind'],
   ],
 }
 
@@ -573,7 +531,7 @@ function HomePage({ copy, language, navigateTo }) {
           </div>
         </div>
         <figure className="hero-image-card">
-          <img src={phoneLamp01} alt={copy.home.imageStripTitle} />
+          <img src={homeHeroBlackPhone} alt={copy.home.imageStripTitle} />
           <figcaption>{copy.home.imageStripTitle}</figcaption>
         </figure>
       </div>
@@ -588,7 +546,7 @@ function HomePage({ copy, language, navigateTo }) {
       </div>
 
       <div className="image-strip" aria-label={copy.home.imageStripTitle}>
-        {[phoneLamp02, phoneLamp03, phoneLamp04].map((image, index) => (
+        {[homeWhitePhone, homeClockLamp, homeBluePhone].map((image, index) => (
           <img
             key={image}
             src={image}
@@ -725,7 +683,6 @@ function ProductPage({ copy, language, navigateTo, product }) {
   const description =
     language === 'bg' ? product.descriptionBg : product.descriptionEn
   const features = language === 'bg' ? product.featuresBg : product.featuresEn
-  const specs = language === 'bg' ? product.specsBg : product.specsEn
 
   return (
     <section className="page product-detail-page">
@@ -763,41 +720,20 @@ function ProductPage({ copy, language, navigateTo, product }) {
               <li key={feature}>{feature}</li>
             ))}
           </ul>
-          <section className="spec-panel" aria-labelledby="product-specs">
-            <h2 id="product-specs">{copy.product.detailsTitle}</h2>
-            <dl>
-              {specs.map(([label, value]) => (
-                <div key={label}>
-                  <dt>{label}</dt>
-                  <dd>{value}</dd>
-                </div>
-              ))}
-            </dl>
-          </section>
           <div className="description-stack">
             {description.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
           <p className="dm-hint">{copy.product.dmHint}</p>
-          <div className="product-cta-row">
-            <a
-              className="button primary"
-              href={instagramUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {copy.product.cta}
-            </a>
-            <a
-              className="button secondary"
-              href={product.instagramPostUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {copy.product.instagramPost}
-            </a>
-          </div>
+          <a
+            className="button primary"
+            href={instagramUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {copy.product.cta}
+          </a>
         </div>
       </div>
     </section>
@@ -855,7 +791,7 @@ function SiteFooter({ copy, language, navigateTo, page }) {
     <footer className="site-footer">
       <div className="footer-brand">
         <strong>E&K Vintara Studio</strong>
-        <span>{copy.footer}</span>
+        <span>- {copy.footer}</span>
       </div>
 
       <nav className="footer-nav" aria-label="Footer navigation">
