@@ -1,135 +1,341 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import logoImage from './assets/vintara-logo.jpg'
+import phoneLamp01 from './assets/products/retro-telephone-lamp-01.jpg'
+import phoneLamp02 from './assets/products/retro-telephone-lamp-02.jpg'
+import phoneLamp03 from './assets/products/retro-telephone-lamp-03.jpg'
+import phoneLamp04 from './assets/products/retro-telephone-lamp-04.jpg'
 import './App.css'
 
 const instagramUrl = 'https://www.instagram.com/our.vintage.lights/'
+const emailAddress = 'vintarastudio@yahoo.com'
+const validPages = ['home', 'available', 'sold', 'about', 'contacts']
 
 const content = {
   bg: {
     languageLabel: 'Език',
-    nav: ['Начало', 'Колекция', 'Студио', 'Контакт'],
-    heroKicker: 'Ръчно изработено ретро осветление',
-    heroTitle: 'Винтидж предмети, превърнати в светлина с характер.',
-    heroText:
-      'E&K Vintara Studio създава уникални лампи от стари камери, телефони и намерени обекти. Всяка вещ запазва своята история и получава ново място у дома.',
-    heroPrimary: 'Разгледай колекцията',
-    heroSecondary: 'Пиши ни в Instagram',
-    stats: [
-      ['5', 'примерни продукта'],
-      ['1/1', 'уникални бройки'],
-      ['DM', 'поръчка в Instagram'],
-    ],
-    collectionKicker: 'Колекция',
-    collectionTitle: 'Малки ретро сцени за бюро, студио и уютни вечери.',
-    price: 'Цена при запитване',
-    productCta: 'Попитай за продукта',
-    aboutKicker: 'Студио',
-    aboutTitle: 'Спасени предмети, нова светлина.',
-    aboutText:
-      'Търсим обекти с форма, патина и настроение, след което ги превръщаме в функционални лампи с модерен електрически живот. Резултатът е декор, който не изглежда като масово производство.',
-    aboutPoints: ['Винтидж основи', 'Ръчна изработка', 'Единствен характер'],
-    contactKicker: 'Instagram',
-    contactTitle: 'Хареса си лампа? Пиши ни директно.',
-    contactText:
-      'Наличностите и цените се уточняват лично, защото всяка лампа е различна. Изпрати ни DM с продукта, който ти е интересен.',
-    contactCta: 'Отвори Instagram',
+    nav: {
+      home: 'Начало',
+      available: 'Налични лампи',
+      sold: 'Продадени лампи',
+      about: 'За нас',
+      contacts: 'Контакти',
+    },
+    home: {
+      kicker: 'Ръчна изработка и upcycling дизайн',
+      title: 'Осветление с история',
+      intro:
+        'Ръчно изработени винтидж лампи от стари телефони, фотоапарати, радиа и настолни часовници.',
+      story:
+        'Всяка лампа е уникат - реставрирана, преобразена и създадена с внимание към детайла. Даваме нов живот на забравени предмети и ги превръщаме в артистично осветление за домове, студиа, офиси и специални пространства.',
+      moreTitle: 'Повече от лампа',
+      moreText:
+        'Това не е просто осветление. Това е история, спомен и характер. Съчетавайки индустриален стил, ретро естетика и ръчна изработка, нашите лампи създават атмосфера, която не може да бъде произведена серийно.',
+      createTitle: 'Какво създаваме',
+      createList: [
+        'Лампи от винтидж телефони',
+        'Лампи от стари фотоапарати',
+        'Ретро радио лампи',
+        'Арт лампи от настолни часовници',
+        'Custom проекти по поръчка',
+      ],
+      craftTitle: 'Ръчна изработка и устойчив дизайн',
+      craftText:
+        'Всеки модел се изработва на ръка от автентични винтидж предмети. Вярваме в устойчивия дизайн и красотата на upcycling културата - да превърнем старото в нещо функционално и красиво.',
+      audienceTitle: 'За хора с вкус към различното',
+      audienceText: 'Нашите лампи са създадени за хора, които ценят:',
+      audienceList: [
+        'оригиналния дизайн',
+        'ретро атмосферата',
+        'ръчната изработка',
+        'уникалните интериорни акценти',
+      ],
+      ctaTitle: 'Разгледай колекцията',
+      ctaText:
+        'Открий своята уникална лампа и добави характер към пространството си.',
+      cta: 'Към наличните лампи',
+    },
+    available: {
+      kicker: 'Налични лампи',
+      title: 'Готови уникати, които търсят своето място.',
+      text:
+        'Всеки продукт е единствен по рода си. За цена, доставка и допълнителни кадри ни пиши директно в Instagram.',
+      empty: 'Нови налични лампи ще бъдат добавяни тук.',
+    },
+    sold: {
+      kicker: 'Продадени лампи',
+      title: 'Минали проекти, които вече имат нов дом.',
+      text:
+        'Ако харесаш продаден модел, можем да обсъдим сходна идея според наличните винтидж предмети.',
+      badge: 'Продадено',
+      cta: 'Попитай за подобна лампа',
+    },
+    about: {
+      kicker: 'За нас',
+      title: 'E&K Vintara Studio дава втори живот на предмети с душа.',
+      text:
+        'Създаваме лампи от автентични винтидж телефони, фотоапарати, радиа и часовници. Подбираме всеки предмет по форма, патина и история, след което го превръщаме в функционален интериорен акцент.',
+      points: [
+        'Ръчна изработка',
+        'Устойчив upcycling подход',
+        'Единствен характер',
+        'Ретро естетика с модерна функция',
+      ],
+    },
+    contacts: {
+      kicker: 'Контакти',
+      title: 'Свържи се с нас за цена, доставка или custom идея.',
+      text:
+        'Най-бързият начин е Instagram DM. Можеш също да ни пишеш по имейл с името на лампата, която те интересува.',
+      instagram: 'Instagram',
+      email: 'Имейл',
+      instagramCta: 'Отвори Instagram',
+      emailCta: 'Изпрати имейл',
+    },
+    product: {
+      back: 'Назад към наличните лампи',
+      available: 'Продава се',
+      price: 'Цена при запитване',
+      cta: 'Пиши за цена и доставка',
+      gallery: 'Допълнителни снимки',
+      dmHint: 'Пиши ни на лично в Instagram и изпрати името на продукта.',
+    },
     footer: 'E&K Vintara Studio - handmade vintage lights',
   },
   en: {
     languageLabel: 'Language',
-    nav: ['Home', 'Collection', 'Studio', 'Contact'],
-    heroKicker: 'Handmade retro lighting',
-    heroTitle: 'Vintage objects turned into light with character.',
-    heroText:
-      'E&K Vintara Studio creates one-of-a-kind lamps from old cameras, telephones, and found objects. Each piece keeps its story and finds a new place at home.',
-    heroPrimary: 'View collection',
-    heroSecondary: 'Message on Instagram',
-    stats: [
-      ['5', 'sample products'],
-      ['1/1', 'unique pieces'],
-      ['DM', 'order on Instagram'],
-    ],
-    collectionKicker: 'Collection',
-    collectionTitle: 'Small retro scenes for desks, studios, and cozy evenings.',
-    price: 'Price on request',
-    productCta: 'Ask about this piece',
-    aboutKicker: 'Studio',
-    aboutTitle: 'Rescued objects, newly lit.',
-    aboutText:
-      'We look for objects with shape, patina, and mood, then turn them into functional lamps with modern electrical life. The result is decor that does not feel mass produced.',
-    aboutPoints: ['Vintage bases', 'Handmade finish', 'One-of-one character'],
-    contactKicker: 'Instagram',
-    contactTitle: 'Found a lamp you like? Message us directly.',
-    contactText:
-      'Availability and prices are confirmed personally because each lamp is different. Send us a DM with the piece you are interested in.',
-    contactCta: 'Open Instagram',
+    nav: {
+      home: 'Home',
+      available: 'Available Lamps',
+      sold: 'Sold Lamps',
+      about: 'About us',
+      contacts: 'Contacts',
+    },
+    home: {
+      kicker: 'Handmade upcycled lighting',
+      title: 'Lighting with a story',
+      intro:
+        'Handmade vintage lamps created from old telephones, cameras, radios, and desk clocks.',
+      story:
+        'Every lamp is one of a kind - restored, transformed, and made with attention to detail. We give forgotten objects a new life and turn them into artistic lighting for homes, studios, offices, and special spaces.',
+      moreTitle: 'More than a lamp',
+      moreText:
+        'This is not just lighting. It is a story, a memory, and a character. By combining industrial style, retro aesthetics, and handcraft, our lamps create an atmosphere that cannot be mass produced.',
+      createTitle: 'What we create',
+      createList: [
+        'Lamps from vintage telephones',
+        'Lamps from old cameras',
+        'Retro radio lamps',
+        'Art lamps from desk clocks',
+        'Custom projects by request',
+      ],
+      craftTitle: 'Handmade and sustainable design',
+      craftText:
+        'Each model is handmade from authentic vintage objects. We believe in sustainable design and the beauty of upcycling culture - turning the old into something functional and beautiful.',
+      audienceTitle: 'For people with a taste for the different',
+      audienceText: 'Our lamps are made for people who value:',
+      audienceList: [
+        'original design',
+        'retro atmosphere',
+        'handmade craft',
+        'unique interior accents',
+      ],
+      ctaTitle: 'Explore the collection',
+      ctaText: 'Find your unique lamp and add character to your space.',
+      cta: 'View available lamps',
+    },
+    available: {
+      kicker: 'Available Lamps',
+      title: 'Ready one-of-one pieces looking for their place.',
+      text:
+        'Each product is unique. For price, delivery, and extra details, message us directly on Instagram.',
+      empty: 'New available lamps will be added here.',
+    },
+    sold: {
+      kicker: 'Sold Lamps',
+      title: 'Past projects that already found a new home.',
+      text:
+        'If you like a sold piece, we can discuss a similar idea based on the vintage objects we currently have.',
+      badge: 'Sold',
+      cta: 'Ask for a similar lamp',
+    },
+    about: {
+      kicker: 'About us',
+      title: 'E&K Vintara Studio gives a second life to objects with soul.',
+      text:
+        'We create lamps from authentic vintage telephones, cameras, radios, and clocks. Each object is chosen for its shape, patina, and story, then transformed into a functional interior accent.',
+      points: [
+        'Handmade craft',
+        'Sustainable upcycling',
+        'One-of-one character',
+        'Retro aesthetics with modern function',
+      ],
+    },
+    contacts: {
+      kicker: 'Contacts',
+      title: 'Contact us for price, delivery, or a custom idea.',
+      text:
+        'The fastest way is Instagram DM. You can also email us with the name of the lamp you are interested in.',
+      instagram: 'Instagram',
+      email: 'Email',
+      instagramCta: 'Open Instagram',
+      emailCta: 'Send email',
+    },
+    product: {
+      back: 'Back to available lamps',
+      available: 'Available',
+      price: 'Price on request',
+      cta: 'Ask about price and delivery',
+      gallery: 'Additional photos',
+      dmHint: 'Message us on Instagram and send the product name.',
+    },
     footer: 'E&K Vintara Studio - handmade vintage lights',
   },
 }
 
-const products = [
+const phoneLamp = {
+  slug: 'retro-telephone-lamp',
+  status: 'available',
+  titleBg: 'Винтидж телефон лампа',
+  titleEn: 'Vintage Telephone Lamp',
+  summaryBg:
+    'Винтидж телефон, получил нов живот като уникална лампа с топла Edison LED крушка.',
+  summaryEn:
+    'A vintage telephone brought back to life as a unique lamp with a warm Edison LED bulb.',
+  images: [phoneLamp01, phoneLamp02, phoneLamp03, phoneLamp04],
+  descriptionBg: [
+    '✨ПРОДАВА СЕ☎️✨ Винтидж телефон, получил нов живот, в отлично състояние.',
+    'Ръчно превърнат в уникална лампа с топла Edison LED крушка - перфектен акцент за уютен дом, офис, студио или ретро кът.',
+    'Всеки детайл е запазен, за да носи духа на миналото, но с модерна функция и атмосфера. 📞➡️💡',
+    'Този модел ротационни телефони е характерен за Източна Европа от 70-те и 80-те години - здрав, тежък и създаден да издържи десетилетия.',
+    'Навремето такива телефони са били символ на стил и престиж в дома, а днес се превръщат в истински винтидж декор.',
+    'Перфектен подарък за любители на ретро техника, индустриален дизайн и нестандартен интериор.',
+    '📩 Пиши на лично за цена и доставка.',
+  ],
+  descriptionEn: [
+    '✨FOR SALE☎️✨ A vintage telephone brought back to life, in excellent condition.',
+    'Handmade into a unique lamp with a warm Edison LED bulb - a perfect accent for a cozy home, office, studio, or retro corner.',
+    'Every detail has been preserved to carry the spirit of the past, now with modern function and atmosphere. 📞➡️💡',
+    'This style of rotary telephone was common in Eastern Europe during the 1970s and 1980s - solid, heavy, and built to last for decades.',
+    'At the time, phones like this were a symbol of style and prestige in the home. Today, they become true vintage decor.',
+    'A perfect gift for lovers of retro technology, industrial design, and unusual interiors.',
+    '📩 Message us for price and delivery.',
+  ],
+  featuresBg: [
+    'Ръчна изработка',
+    'Работеща лампа',
+    'Топла уютна светлина',
+    'Единствен по рода си',
+  ],
+  featuresEn: [
+    'Handmade',
+    'Working lamp',
+    'Warm cozy light',
+    'One of a kind',
+  ],
+}
+
+const availableProducts = [
+  phoneLamp,
   {
-    name: 'Vintage Camera Lamp',
-    labelBg: 'Камера 1976',
-    descriptionBg:
+    slug: 'vintage-camera-lamp',
+    status: 'available',
+    titleBg: 'Винтидж камера лампа',
+    titleEn: 'Vintage Camera Lamp',
+    summaryBg:
       'Ръчно направена лампа от Voigtlander/Rollei камера с модерен абажур.',
-    descriptionEn:
-      'Handmade lamp created from a 1976 Voigtlander/Rollei camera with a modern shade.',
-    accent: 'camera',
+    summaryEn:
+      'Handmade lamp created from a Voigtlander/Rollei camera with a modern shade.',
   },
   {
-    name: 'Retro Telephone Lamp',
-    labelBg: 'Телефон',
-    descriptionBg:
-      'Функционална декоративна лампа от автентичен винтидж телефон.',
-    descriptionEn:
-      'Functional decorative lamp made from an authentic vintage telephone.',
-    accent: 'phone',
-  },
-  {
-    name: 'Mini Tripod Camera Lamp',
-    labelBg: 'Мини статив',
-    descriptionBg:
+    slug: 'mini-tripod-camera-lamp',
+    status: 'available',
+    titleBg: 'Мини статив камера лампа',
+    titleEn: 'Mini Tripod Camera Lamp',
+    summaryBg:
       'Винтидж камера върху мини статив с минималистичен абажур за уютен интериор.',
-    descriptionEn:
+    summaryEn:
       'Vintage camera mounted on a mini tripod with a minimalist shade for cozy interiors.',
-    accent: 'tripod',
   },
   {
-    name: 'Retro Phone Decor Light',
-    labelBg: 'Акцент',
-    descriptionBg:
-      'Ръчно изработена акцентна лампа, която смесва ретро естетика и модерна светлина.',
-    descriptionEn:
-      'Handmade accent lamp combining retro aesthetics with modern lighting.',
-    accent: 'glow',
-  },
-  {
-    name: 'Unique Vintage Table Lamp',
-    labelBg: 'Уникат',
-    descriptionBg:
+    slug: 'unique-vintage-table-lamp',
+    status: 'available',
+    titleBg: 'Уникална винтидж настолна лампа',
+    titleEn: 'Unique Vintage Table Lamp',
+    summaryBg:
       'Единствена по рода си upcycled лампа за дом, студио или специален кът.',
-    descriptionEn:
+    summaryEn:
       'One-of-a-kind upcycled lighting piece for home or studio decor.',
-    accent: 'table',
   },
 ]
 
+const soldProducts = [
+  {
+    slug: 'sold-retro-telephone-lamp',
+    titleBg: 'Ретро телефон лампа',
+    titleEn: 'Retro Telephone Lamp',
+    summaryBg:
+      'Продаден проект от автентичен винтидж телефон, превърнат във функционална декоративна лампа.',
+    summaryEn:
+      'Sold project made from an authentic vintage telephone transformed into a functional decorative lamp.',
+  },
+  {
+    slug: 'sold-retro-phone-decor-light',
+    titleBg: 'Ретро телефонна декор лампа',
+    titleEn: 'Retro Phone Decor Light',
+    summaryBg:
+      'Продаден акцентен модел, съчетаващ ретро естетика и модерна топла светлина.',
+    summaryEn:
+      'Sold accent piece combining retro aesthetics with modern warm lighting.',
+  },
+]
+
+function getInitialRoute() {
+  const hash = window.location.hash.replace(/^#/, '')
+  if (validPages.includes(hash) || hash === `lamp/${phoneLamp.slug}`) {
+    return hash
+  }
+
+  return 'home'
+}
+
 function App() {
   const [language, setLanguage] = useState('bg')
+  const [route, setRoute] = useState(getInitialRoute)
   const copy = content[language]
+
+  useEffect(() => {
+    const handleHashChange = () => setRoute(getInitialRoute())
+    window.addEventListener('hashchange', handleHashChange)
+
+    if (!window.location.hash) {
+      window.location.hash = 'home'
+    }
+
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [])
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [route])
+
+  const isProductPage = route === `lamp/${phoneLamp.slug}`
+  const activePage = isProductPage ? 'available' : route
 
   return (
     <div className="site-shell">
       <header className="site-header">
-        <a className="brand" href="#home" aria-label="E&K Vintara Studio">
-          <span className="brand-mark">E&K</span>
-          <span>Vintara Studio</span>
+        <a className="brand-logo" href="#home" aria-label="E&K Vintara Studio">
+          <img src={logoImage} alt="E&K Vintara Studio" />
         </a>
 
         <nav className="site-nav" aria-label="Main navigation">
-          {copy.nav.map((item, index) => (
-            <a key={item} href={['#home', '#collection', '#studio', '#contact'][index]}>
-              {item}
+          {validPages.map((page) => (
+            <a
+              className={activePage === page ? 'active' : ''}
+              key={page}
+              href={`#${page}`}
+            >
+              {copy.nav[page]}
             </a>
           ))}
         </nav>
@@ -148,116 +354,305 @@ function App() {
       </header>
 
       <main>
-        <section className="hero section" id="home">
-          <div className="hero-copy">
-            <p className="kicker">{copy.heroKicker}</p>
-            <h1>{copy.heroTitle}</h1>
-            <p className="hero-text">{copy.heroText}</p>
-            <div className="hero-actions">
-              <a className="button primary" href="#collection">
-                {copy.heroPrimary}
-              </a>
+        {route === 'home' && <HomePage copy={copy} />}
+        {route === 'available' && (
+          <AvailablePage copy={copy} language={language} />
+        )}
+        {route === 'sold' && <SoldPage copy={copy} language={language} />}
+        {route === 'about' && <AboutPage copy={copy} />}
+        {route === 'contacts' && <ContactsPage copy={copy} />}
+        {isProductPage && <ProductPage copy={copy} language={language} />}
+      </main>
+
+      <footer className="site-footer">{copy.footer}</footer>
+    </div>
+  )
+}
+
+function HomePage({ copy }) {
+  return (
+    <section className="page home-page">
+      <div className="hero-panel">
+        <p className="kicker">{copy.home.kicker}</p>
+        <h1>{copy.home.title}</h1>
+        <p className="hero-lead">{copy.home.intro}</p>
+        <p>{copy.home.story}</p>
+        <a className="button primary" href="#available">
+          {copy.home.cta}
+        </a>
+      </div>
+
+      <div className="info-grid">
+        <InfoBlock title={copy.home.moreTitle} text={copy.home.moreText} />
+        <InfoList title={copy.home.createTitle} items={copy.home.createList} />
+        <InfoBlock title={copy.home.craftTitle} text={copy.home.craftText} />
+        <InfoList
+          title={copy.home.audienceTitle}
+          text={copy.home.audienceText}
+          items={copy.home.audienceList}
+        />
+      </div>
+
+      <div className="cta-band">
+        <div>
+          <h2>{copy.home.ctaTitle}</h2>
+          <p>{copy.home.ctaText}</p>
+        </div>
+        <a className="button secondary" href="#available">
+          {copy.home.cta}
+        </a>
+      </div>
+    </section>
+  )
+}
+
+function AvailablePage({ copy, language }) {
+  return (
+    <section className="page">
+      <PageHeader
+        kicker={copy.available.kicker}
+        title={copy.available.title}
+        text={copy.available.text}
+      />
+      <div className="product-grid">
+        {availableProducts.map((product) => (
+          <ProductCard
+            key={product.slug}
+            product={product}
+            copy={copy}
+            language={language}
+          />
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function SoldPage({ copy, language }) {
+  return (
+    <section className="page">
+      <PageHeader
+        kicker={copy.sold.kicker}
+        title={copy.sold.title}
+        text={copy.sold.text}
+      />
+      <div className="product-grid">
+        {soldProducts.map((product) => (
+          <article className="product-card sold-card" key={product.slug}>
+            <ProductPlaceholder label={copy.sold.badge} />
+            <div className="product-body">
+              <span className="status-badge">{copy.sold.badge}</span>
+              <h3>{language === 'bg' ? product.titleBg : product.titleEn}</h3>
+              <p>
+                {language === 'bg' ? product.summaryBg : product.summaryEn}
+              </p>
               <a
                 className="button secondary"
                 href={instagramUrl}
                 target="_blank"
                 rel="noreferrer"
               >
-                {copy.heroSecondary}
+                {copy.sold.cta}
               </a>
             </div>
-          </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}
 
-          <div className="hero-showcase" aria-label="Vintage lamp illustration">
-            <div className="lamp-card">
-              <span className="lamp-shade"></span>
-              <span className="lamp-neck"></span>
-              <span className="lamp-camera"></span>
-              <span className="lamp-lens"></span>
-              <span className="lamp-glow"></span>
-            </div>
-          </div>
+function AboutPage({ copy }) {
+  return (
+    <section className="page split-page">
+      <div>
+        <p className="kicker">{copy.about.kicker}</p>
+        <h1>{copy.about.title}</h1>
+      </div>
+      <div className="text-panel">
+        <p>{copy.about.text}</p>
+        <ul className="pill-list">
+          {copy.about.points.map((point) => (
+            <li key={point}>{point}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
 
-          <div className="stats-grid" aria-label="Studio highlights">
-            {copy.stats.map(([value, label]) => (
-              <div className="stat" key={label}>
-                <strong>{value}</strong>
-                <span>{label}</span>
-              </div>
+function ContactsPage({ copy }) {
+  return (
+    <section className="page contacts-page">
+      <PageHeader
+        kicker={copy.contacts.kicker}
+        title={copy.contacts.title}
+        text={copy.contacts.text}
+      />
+      <div className="contact-grid">
+        <ContactCard
+          label={copy.contacts.instagram}
+          value="@our.vintage.lights"
+          href={instagramUrl}
+          cta={copy.contacts.instagramCta}
+        />
+        <ContactCard
+          label={copy.contacts.email}
+          value={emailAddress}
+          href={`mailto:${emailAddress}`}
+          cta={copy.contacts.emailCta}
+        />
+      </div>
+    </section>
+  )
+}
+
+function ProductPage({ copy, language }) {
+  const title = language === 'bg' ? phoneLamp.titleBg : phoneLamp.titleEn
+  const summary = language === 'bg' ? phoneLamp.summaryBg : phoneLamp.summaryEn
+  const description =
+    language === 'bg' ? phoneLamp.descriptionBg : phoneLamp.descriptionEn
+  const features = language === 'bg' ? phoneLamp.featuresBg : phoneLamp.featuresEn
+
+  return (
+    <section className="page product-detail-page">
+      <a className="back-link" href="#available">
+        {copy.product.back}
+      </a>
+      <div className="product-detail">
+        <div className="product-gallery">
+          <img className="main-product-image" src={phoneLamp.images[0]} alt={title} />
+          <h2>{copy.product.gallery}</h2>
+          <div className="gallery-grid">
+            {phoneLamp.images.slice(1).map((image, index) => (
+              <img
+                key={image}
+                src={image}
+                alt={`${title} ${index + 2}`}
+              />
             ))}
           </div>
-        </section>
-
-        <section className="section collection-section" id="collection">
-          <div className="section-heading">
-            <p className="kicker">{copy.collectionKicker}</p>
-            <h2>{copy.collectionTitle}</h2>
-          </div>
-
-          <div className="product-grid">
-            {products.map((product) => (
-              <article className="product-card" key={product.name}>
-                <div className={`product-visual ${product.accent}`}>
-                  <span>{language === 'bg' ? product.labelBg : product.name}</span>
-                </div>
-                <div className="product-body">
-                  <div>
-                    <h3>{product.name}</h3>
-                    <p>
-                      {language === 'bg'
-                        ? product.descriptionBg
-                        : product.descriptionEn}
-                    </p>
-                  </div>
-                  <div className="product-footer">
-                    <span>{copy.price}</span>
-                    <a
-                      className="button product-button"
-                      href={instagramUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {copy.productCta}
-                    </a>
-                  </div>
-                </div>
-              </article>
+        </div>
+        <div className="product-detail-copy">
+          <span className="status-badge available">{copy.product.available}</span>
+          <h1>{title}</h1>
+          <p className="hero-lead">{summary}</p>
+          <div className="price-line">{copy.product.price}</div>
+          <ul className="check-list">
+            {features.map((feature) => (
+              <li key={feature}>{feature}</li>
+            ))}
+          </ul>
+          <div className="description-stack">
+            {description.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-        </section>
-
-        <section className="section about-section" id="studio">
-          <div>
-            <p className="kicker">{copy.aboutKicker}</p>
-            <h2>{copy.aboutTitle}</h2>
-          </div>
-          <div className="about-copy">
-            <p>{copy.aboutText}</p>
-            <ul>
-              {copy.aboutPoints.map((point) => (
-                <li key={point}>{point}</li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section className="section contact-section" id="contact">
-          <p className="kicker">{copy.contactKicker}</p>
-          <h2>{copy.contactTitle}</h2>
-          <p>{copy.contactText}</p>
+          <p className="dm-hint">{copy.product.dmHint}</p>
           <a
             className="button primary"
             href={instagramUrl}
             target="_blank"
             rel="noreferrer"
           >
-            {copy.contactCta}
+            {copy.product.cta}
           </a>
-        </section>
-      </main>
+        </div>
+      </div>
+    </section>
+  )
+}
 
-      <footer className="site-footer">{copy.footer}</footer>
+function ProductCard({ product, copy, language }) {
+  const title = language === 'bg' ? product.titleBg : product.titleEn
+  const summary = language === 'bg' ? product.summaryBg : product.summaryEn
+  const isRealProduct = product.slug === phoneLamp.slug
+
+  return (
+    <article className="product-card">
+      {isRealProduct ? (
+        <a className="product-image-link" href={`#lamp/${product.slug}`}>
+          <img src={product.images[0]} alt={title} />
+        </a>
+      ) : (
+        <ProductPlaceholder label={title} />
+      )}
+      <div className="product-body">
+        <span className="status-badge available">{copy.product.available}</span>
+        <h3>{title}</h3>
+        <p>{summary}</p>
+        <div className="product-actions">
+          <span>{copy.product.price}</span>
+          {isRealProduct ? (
+            <a className="button secondary" href={`#lamp/${product.slug}`}>
+              {language === 'bg' ? 'Виж детайли' : 'View details'}
+            </a>
+          ) : (
+            <a
+              className="button secondary"
+              href={instagramUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {copy.product.cta}
+            </a>
+          )}
+        </div>
+      </div>
+    </article>
+  )
+}
+
+function ProductPlaceholder({ label }) {
+  return (
+    <div className="product-placeholder">
+      <span>{label}</span>
     </div>
+  )
+}
+
+function PageHeader({ kicker, title, text }) {
+  return (
+    <div className="page-header">
+      <p className="kicker">{kicker}</p>
+      <h1>{title}</h1>
+      <p>{text}</p>
+    </div>
+  )
+}
+
+function InfoBlock({ title, text }) {
+  return (
+    <article className="info-card">
+      <h2>{title}</h2>
+      <p>{text}</p>
+    </article>
+  )
+}
+
+function InfoList({ title, text, items }) {
+  return (
+    <article className="info-card">
+      <h2>{title}</h2>
+      {text && <p>{text}</p>}
+      <ul>
+        {items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    </article>
+  )
+}
+
+function ContactCard({ label, value, href, cta }) {
+  return (
+    <article className="contact-card">
+      <span>{label}</span>
+      <strong>{value}</strong>
+      <a className="button secondary" href={href} target="_blank" rel="noreferrer">
+        {cta}
+      </a>
+    </article>
   )
 }
 
