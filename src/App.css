@@ -78,6 +78,91 @@
   font-weight: 800;
 }
 
+.menu-toggle,
+.mobile-menu {
+  display: none;
+}
+
+.menu-toggle {
+  width: 46px;
+  height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 10px 24px rgba(56, 44, 36, 0.1);
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 19px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.mobile-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  left: 0;
+  gap: 18px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(18px);
+}
+
+.mobile-nav {
+  display: grid;
+  gap: 6px;
+}
+
+.mobile-nav a {
+  padding: 13px 14px;
+  border-radius: 14px;
+  color: var(--muted);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.mobile-nav a:hover,
+.mobile-nav a.active {
+  background: rgba(154, 80, 54, 0.1);
+  color: var(--ink);
+}
+
+.mobile-language-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.91rem;
+  font-weight: 900;
+}
+
+.mobile-language-select select {
+  min-width: 78px;
+  padding: 8px 30px 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(250, 247, 240, 0.9);
+  color: var(--ink);
+  font: inherit;
+}
+
 .page {
   width: min(100% - 32px, 1180px);
   margin: 0 auto;
@@ -540,19 +625,25 @@
 
 @media (max-width: 900px) {
   .site-header {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
   }
 
   .site-nav {
-    grid-column: 1 / -1;
-    order: 3;
-    justify-content: flex-start;
-    overflow-x: auto;
-    padding-bottom: 4px;
+    display: none;
   }
 
   .language-select {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: inline-grid;
     justify-self: end;
+  }
+
+  .mobile-menu.open {
+    display: grid;
   }
 
   .info-grid,

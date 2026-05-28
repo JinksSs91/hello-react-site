@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import logoImage from './assets/vintara-logo.jpg'
 import phoneLamp01 from './assets/products/retro-telephone-lamp-01.jpg'
 import phoneLamp02 from './assets/products/retro-telephone-lamp-02.jpg'
@@ -285,6 +285,8 @@ function App() {
   const initialRoute = getRouteFromPath(window.location.pathname)
   const [language, setLanguage] = useState(initialRoute.language)
   const [page, setPage] = useState(initialRoute.page)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const headerRef = useRef(null)
   const copy = content[language]
 
   useEffect(() => {
@@ -302,11 +304,23 @@ function App() {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [page, language])
 
+  useEffect(() => {
+    function handlePointerDown(event) {
+      if (!headerRef.current?.contains(event.target)) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('pointerdown', handlePointerDown)
+    return () => document.removeEventListener('pointerdown', handlePointerDown)
+  }, [])
+
   function navigateTo(href) {
     window.history.pushState({}, '', href)
     const nextRoute = getRouteFromPath(window.location.pathname)
     setLanguage(nextRoute.language)
     setPage(nextRoute.page)
+    setIsMenuOpen(false)
   }
 
   function handleLanguageChange(event) {
@@ -315,7 +329,7 @@ function App() {
 
   return (
     <div className="site-shell">
-      <header className="site-header">
+      <header className="site-header" ref={headerRef}>
         <a
           className="brand-logo"
           href={pages.home[language]}
@@ -355,6 +369,56 @@ function App() {
             <option value="en">EN</option>
           </select>
         </label>
+
+        <button
+          className="menu-toggle"
+          type="button"
+          aria-label={
+            isMenuOpen
+              ? language === 'bg' ? 'Затвори меню' : 'Close menu'
+              : language === 'bg' ? 'Отвори меню' : 'Open menu'
+          }
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
+          onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div
+          className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}
+          id="mobile-menu"
+        >
+          <nav className="mobile-nav" aria-label="Mobile navigation">
+            {['home', 'available', 'sold', 'about', 'contacts'].map((navPage) => (
+              <a
+                className={page === navPage || (page === 'product' && navPage === 'available') ? 'active' : ''}
+                key={navPage}
+                href={pages[navPage][language]}
+                onClick={(event) => {
+                  event.preventDefault()
+                  navigateTo(pages[navPage][language])
+                }}
+              >
+                {copy.nav[navPage]}
+              </a>
+            ))}
+          </nav>
+
+          <label className="mobile-language-select">
+            <span>{copy.languageLabel}</span>
+            <select
+              value={language}
+              onChange={handleLanguageChange}
+              aria-label={copy.languageLabel}
+            >
+              <option value="bg">BG</option>
+              <option value="en">EN</option>
+            </select>
+          </label>
+        </div>
       </header>
 
       <main>
