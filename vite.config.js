@@ -5,6 +5,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 const siteUrl = 'https://ourvintagelights.com'
+const browserTitle = 'E&K Vintara Studio'
 const emailAddress = 'vintarastudio@yahoo.com'
 const instagramUrl = 'https://www.instagram.com/our.vintage.lights/'
 const viberPhone = '+359899161880'
@@ -106,8 +107,8 @@ function getProductSchema({
 }
 
 const phoneProductSchema = getProductSchema({
-  name: 'Vintage Telephone Lamp',
-  alternateName: 'Винтидж телефон лампа',
+  name: '1970s Rotary Telephone Lamp',
+  alternateName: 'Телефон с шайба от 70-те години на 20 век',
   image: phoneImageUrls,
   description:
     'Handmade retro telephone lamp with a warm Edison LED bulb, created from an authentic vintage rotary phone.',
@@ -116,8 +117,8 @@ const phoneProductSchema = getProductSchema({
 })
 
 const viliaProductSchema = getProductSchema({
-  name: 'Vilia Camera Lamp',
-  alternateName: 'Vilia фотоапарат лампа',
+  name: 'Vilia Camera from 1980',
+  alternateName: 'Фотоапарат Вилия от 1980г.',
   image: viliaImageUrls,
   description:
     'Handmade vintage Vilia camera lamp with a warm Edison bulb, created from a Soviet camera classic from the 1970s and 1980s.',
@@ -126,8 +127,8 @@ const viliaProductSchema = getProductSchema({
 })
 
 const redTa900ProductSchema = getProductSchema({
-  name: 'Red TA-900 Telephone Lamp',
-  alternateName: 'Червена TA-900 телефон лампа',
+  name: 'Brand New Red Rotary Telephone from 1991',
+  alternateName: 'Чисто нов червен телефон с шайба от 1991г',
   image: redTa900ImageUrls,
   description:
     'Handmade red TA-900 telephone lamp created from an original 1991 INCOMS retro telephone preserved in its original box.',
@@ -180,7 +181,7 @@ const seoPages = [
     key: 'productTelephone',
     lang: 'bg',
     path: localizedRoutes.productTelephone.bg,
-    title: 'Винтидж телефон лампа | Лампа от стар телефон',
+    title: 'Телефон с шайба от 70-те години на 20 век | Лампа от стар телефон',
     description:
       'Продава се винтидж телефон лампа с топла Edison LED крушка. Ръчно изработена уникална ретро лампа от ротационен телефон.',
     schemas: [phoneProductSchema],
@@ -191,7 +192,7 @@ const seoPages = [
     key: 'productVilia',
     lang: 'bg',
     path: localizedRoutes.productVilia.bg,
-    title: 'Vilia фотоапарат лампа | Ръчно изработена винтидж лампа',
+    title: 'Фотоапарат Вилия от 1980г. | Ръчно изработена винтидж лампа',
     description:
       'Продава се ръчно изработена Vilia фотоапарат лампа с топла Edison крушка. Уникална upcycling лампа от vintage фотоапарат от СССР.',
     schemas: [viliaProductSchema],
@@ -202,7 +203,7 @@ const seoPages = [
     key: 'productRedTa900',
     lang: 'bg',
     path: localizedRoutes.productRedTa900.bg,
-    title: 'Червена TA-900 телефон лампа | Ръчно изработена ретро лампа',
+    title: 'Чисто нов червен телефон с шайба от 1991г | Ръчно изработена ретро лампа',
     description:
       'Продава се червена TA-900 телефон лампа от оригинален ретро телефон, произведен през 1991 г. в Белоградчик. Ръчна изработка и топла светлина.',
     schemas: [redTa900ProductSchema],
@@ -253,7 +254,7 @@ const seoPages = [
     key: 'productTelephone',
     lang: 'en',
     path: localizedRoutes.productTelephone.en,
-    title: 'Vintage Telephone Lamp | Handmade retro phone lamp',
+    title: '1970s Rotary Telephone Lamp | Handmade retro phone lamp',
     description:
       'Available handmade vintage telephone lamp with warm Edison LED bulb, created from an authentic rotary phone.',
     schemas: [phoneProductSchema],
@@ -264,7 +265,7 @@ const seoPages = [
     key: 'productVilia',
     lang: 'en',
     path: localizedRoutes.productVilia.en,
-    title: 'Vilia Camera Lamp | Handmade vintage camera lamp',
+    title: 'Vilia Camera from 1980 | Handmade vintage camera lamp',
     description:
       'Available handmade Vilia camera lamp with a warm Edison bulb, created from a Soviet vintage camera classic.',
     schemas: [viliaProductSchema],
@@ -275,7 +276,7 @@ const seoPages = [
     key: 'productRedTa900',
     lang: 'en',
     path: localizedRoutes.productRedTa900.en,
-    title: 'Red TA-900 Telephone Lamp | Handmade retro phone lamp',
+    title: 'Brand New Red Rotary Telephone from 1991 | Handmade retro phone lamp',
     description:
       'Available handmade red TA-900 telephone lamp made from an original 1991 INCOMS retro telephone preserved in its original box.',
     schemas: [redTa900ProductSchema],
@@ -315,7 +316,7 @@ function injectSeo(html, page) {
   const canonical = `${siteUrl}${page.path}`
   const schemas = [organizationSchema, websiteSchema, ...(page.schemas || [])]
   const seoTags = [
-    `<title>${escapeHtml(page.title)}</title>`,
+    `<title>${escapeHtml(browserTitle)}</title>`,
     `<meta name="description" content="${escapeHtml(page.description)}" />`,
     `<link rel="canonical" href="${canonical}" />`,
     getAlternateLinks(page),

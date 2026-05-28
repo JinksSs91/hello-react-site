@@ -55,16 +55,16 @@ const content = {
       contacts: 'Контакти',
     },
     home: {
-      kicker: 'Ръчна изработка и upcycling дизайн',
+      kicker: 'Ръчна изработка с внимание към всеки детайл',
       title: 'Осветление с история',
       intro:
         'Ръчно изработени винтидж лампи от стари телефони, фотоапарати, радиа и настолни часовници.',
       story:
-        'Даваме нов живот на забравени предмети и ги превръщаме в артистично осветление за домове, студиа, офиси и специални пространства.',
+        'Даваме нов живот на забравени предмети и ги превръщаме в артистично осветление за домове, студиа, офиси и арт пространства.',
       contactCta: 'Свържи се с нас',
       highlights: [
         ['Ръчна изработка', 'Всеки детайл се обработва и сглобява внимателно.'],
-        ['Уникални бройки', 'Всяка лампа е единствена, с форма и история.'],
+        ['Единствени по рода си лампи', 'Всяка лампа е с уникален дизайн'],
         ['Upcycling дизайн', 'Старото става функционално, красиво и различно.'],
       ],
       imageStripTitle: 'Ръчно изработени винтидж лампи с характер.',
@@ -75,9 +75,9 @@ const content = {
     },
     available: {
       kicker: 'Налични лампи',
-      title: 'Готови уникати, които търсят своето място.',
+      title: 'Готови лампи, които търсят своя нов дом.',
       text:
-        'Всеки продукт е единствен по рода си. За цена, доставка и допълнителни кадри ни пиши директно в Instagram.',
+        'Всеки продукт е единствен по рода си. За цена, доставка и допълнителни кадри ни пиши или ни се обади',
     },
     sold: {
       kicker: 'Продадени лампи',
@@ -101,9 +101,9 @@ const content = {
     },
     contacts: {
       kicker: 'Контакти',
-      title: 'Свържи се с нас за цена, доставка или custom идея.',
+      title: 'Свържи се с нас за цена, доставка или изработка на лампа по твой дизайн.',
       text:
-        'Най-бързият начин е Instagram DM. Можеш също да ни пишеш по имейл или да се свържеш с нас във Viber.',
+        'Най-бързият начин е чрез съобщение в Instagram. Можеш също да ни изпратиш имейл, да се свържеш с нас във Viber или да ни се обадиш на посочения телефонен номер.',
       instagram: 'Instagram',
       email: 'Имейл',
       viber: 'Viber',
@@ -132,16 +132,16 @@ const content = {
       contacts: 'Contacts',
     },
     home: {
-      kicker: 'Handmade upcycled lighting',
+      kicker: 'Handmade with attention to every detail',
       title: 'Lighting with a story',
       intro:
         'Handmade vintage lamps created from old telephones, cameras, radios, and desk clocks.',
       story:
-        'We give forgotten objects a new life and turn them into artistic lighting for homes, studios, offices, and special spaces.',
+        'We give forgotten objects a new life and turn them into artistic lighting for homes, studios, offices, and art spaces.',
       contactCta: 'Contact us',
       highlights: [
         ['Handmade craft', 'Every detail is carefully restored and assembled.'],
-        ['Unique pieces', 'Each lamp is one of a kind, with its own shape and story.'],
+        ['One-of-a-kind lamps', 'Every lamp has a unique design.'],
         ['Upcycled design', 'The old becomes functional, beautiful, and different.'],
       ],
       imageStripTitle: 'Handmade vintage lamps with character.',
@@ -151,9 +151,9 @@ const content = {
     },
     available: {
       kicker: 'Available Lamps',
-      title: 'Ready one-of-one pieces looking for their place.',
+      title: 'Ready lamps looking for their new home.',
       text:
-        'Each product is unique. For price, delivery, and extra details, message us directly on Instagram.',
+        'Each product is one of a kind. For price, delivery, and extra photos, message us or call us.',
     },
     sold: {
       kicker: 'Sold Lamps',
@@ -177,9 +177,9 @@ const content = {
     },
     contacts: {
       kicker: 'Contacts',
-      title: 'Contact us for price, delivery, or a custom idea.',
+      title: 'Contact us for price, delivery, or a lamp made to your own design.',
       text:
-        'The fastest way is Instagram DM. You can also email us or contact us on Viber.',
+        'The fastest way is by message on Instagram. You can also email us, contact us on Viber, or call the listed phone number.',
       instagram: 'Instagram',
       email: 'Email',
       viber: 'Viber',
@@ -203,8 +203,8 @@ const content = {
 const phoneLamp = {
   slug: 'retro-telephone-lamp',
   routes: productRoutes['retro-telephone-lamp'],
-  titleBg: 'Винтидж телефон лампа',
-  titleEn: 'Vintage Telephone Lamp',
+  titleBg: 'Телефон с шайба от 70-те години на 20 век',
+  titleEn: '1970s Rotary Telephone Lamp',
   summaryBg:
     'Винтидж телефон, получил нов живот като уникална лампа с топла Edison LED крушка.',
   summaryEn:
@@ -245,8 +245,8 @@ const phoneLamp = {
 const viliaLamp = {
   slug: 'vilia-camera-lamp',
   routes: productRoutes['vilia-camera-lamp'],
-  titleBg: 'Vilia фотоапарат лампа',
-  titleEn: 'Vilia Camera Lamp',
+  titleBg: 'Фотоапарат Вилия от 1980г.',
+  titleEn: 'Vilia Camera from 1980',
   summaryBg:
     'Ръчно изработена лампа от vintage фотоапарат Vilia с топла Edison крушка.',
   summaryEn:
@@ -279,8 +279,8 @@ const viliaLamp = {
 const redTa900Lamp = {
   slug: 'red-ta-900-telephone-lamp',
   routes: productRoutes['red-ta-900-telephone-lamp'],
-  titleBg: 'Червена TA-900 телефон лампа',
-  titleEn: 'Red TA-900 Telephone Lamp',
+  titleBg: 'Чисто нов червен телефон с шайба от 1991г',
+  titleEn: 'Brand New Red Rotary Telephone from 1991',
   summaryBg:
     'Оригинален ретро телефон TA-900 от 1991 г., ръчно преобразен в уникална лампа.',
   summaryEn:
