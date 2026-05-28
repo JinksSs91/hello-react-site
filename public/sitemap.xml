@@ -30,4 +30,44 @@
     <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/lamps/retro-telephone-lamp" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/lamps/retro-telephone-lamp" />
   </url>
+  <url>
+    <loc>https://ourvintagelights.com/lamps/vilia-camera-lamp</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/lamps/vilia-camera-lamp" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/lamps/vilia-camera-lamp" />
+  </url>
+  <url>
+    <loc>https://ourvintagelights.com/en</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en" />
+  </url>
+  <url>
+    <loc>https://ourvintagelights.com/en/available-lamps</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/available-lamps" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/available-lamps" />
+  </url>
+  <url>
+    <loc>https://ourvintagelights.com/en/sold-lamps</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/sold-lamps" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/sold-lamps" />
+  </url>
+  <url>
+    <loc>https://ourvintagelights.com/en/about-us</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/about-us" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/about-us" />
+  </url>
+  <url>
+    <loc>https://ourvintagelights.com/en/contacts</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/contacts" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/contacts" />
+  </url>
+  <url>
+    <loc>https://ourvintagelights.com/en/lamps/retro-telephone-lamp</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/lamps/retro-telephone-lamp" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/lamps/retro-telephone-lamp" />
+  </url>
+  <url>
+    <loc>https://ourvintagelights.com/en/lamps/vilia-camera-lamp</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/lamps/vilia-camera-lamp" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/lamps/vilia-camera-lamp" />
+  </url>
 </urlset>

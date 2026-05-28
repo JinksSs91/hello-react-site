@@ -15,17 +15,28 @@ const localizedRoutes = {
   sold: { bg: '/sold-lamps', en: '/en/sold-lamps' },
   about: { bg: '/about-us', en: '/en/about-us' },
   contacts: { bg: '/contacts', en: '/en/contacts' },
-  product: {
+  productTelephone: {
     bg: '/lamps/retro-telephone-lamp',
     en: '/en/lamps/retro-telephone-lamp',
   },
+  productVilia: {
+    bg: '/lamps/vilia-camera-lamp',
+    en: '/en/lamps/vilia-camera-lamp',
+  },
 }
 
-const imageUrls = [
+const phoneImageUrls = [
   `${siteUrl}/images/retro-telephone-lamp-01.jpg`,
   `${siteUrl}/images/retro-telephone-lamp-02.jpg`,
   `${siteUrl}/images/retro-telephone-lamp-03.jpg`,
   `${siteUrl}/images/retro-telephone-lamp-04.jpg`,
+]
+
+const viliaImageUrls = [
+  `${siteUrl}/images/vilia-camera-lamp-01.jpg`,
+  `${siteUrl}/images/vilia-camera-lamp-02.jpg`,
+  `${siteUrl}/images/vilia-camera-lamp-03.jpg`,
+  `${siteUrl}/images/vilia-camera-lamp-05.jpg`,
 ]
 
 const organizationSchema = {
@@ -46,34 +57,62 @@ const websiteSchema = {
   inLanguage: ['bg-BG', 'en'],
 }
 
-const productSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Product',
+function getProductSchema({
+  name,
+  alternateName,
+  image,
+  description,
+  url,
+  category,
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name,
+    alternateName,
+    brand: {
+      '@type': 'Brand',
+      name: 'E&K Vintara Studio',
+    },
+    image,
+    description,
+    category,
+    offers: {
+      '@type': 'Offer',
+      url: `${siteUrl}${url}`,
+      availability: 'https://schema.org/InStock',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        priceCurrency: 'BGN',
+        description: 'Price on request',
+      },
+      seller: {
+        '@type': 'Organization',
+        name: 'E&K Vintara Studio',
+      },
+    },
+  }
+}
+
+const phoneProductSchema = getProductSchema({
   name: 'Vintage Telephone Lamp',
   alternateName: 'Винтидж телефон лампа',
-  brand: {
-    '@type': 'Brand',
-    name: 'E&K Vintara Studio',
-  },
-  image: imageUrls,
+  image: phoneImageUrls,
   description:
     'Handmade retro telephone lamp with a warm Edison LED bulb, created from an authentic vintage rotary phone.',
   category: 'Handmade vintage lighting',
-  offers: {
-    '@type': 'Offer',
-    url: `${siteUrl}${localizedRoutes.product.bg}`,
-    availability: 'https://schema.org/InStock',
-    priceSpecification: {
-      '@type': 'PriceSpecification',
-      priceCurrency: 'BGN',
-      description: 'Price on request',
-    },
-    seller: {
-      '@type': 'Organization',
-      name: 'E&K Vintara Studio',
-    },
-  },
-}
+  url: localizedRoutes.productTelephone.bg,
+})
+
+const viliaProductSchema = getProductSchema({
+  name: 'Vilia Camera Lamp',
+  alternateName: 'Vilia фотоапарат лампа',
+  image: viliaImageUrls,
+  description:
+    'Handmade vintage Vilia camera lamp with a warm Edison bulb, created from a Soviet camera classic from the 1970s and 1980s.',
+  category: 'Handmade vintage camera lamp',
+  url: localizedRoutes.productVilia.bg,
+})
 
 const seoPages = [
   {
@@ -117,13 +156,26 @@ const seoPages = [
       'Свържете се с E&K Vintara Studio за цена, доставка или custom ръчно изработена винтидж лампа.',
   },
   {
-    key: 'product',
+    key: 'productTelephone',
     lang: 'bg',
-    path: localizedRoutes.product.bg,
+    path: localizedRoutes.productTelephone.bg,
     title: 'Винтидж телефон лампа | Лампа от стар телефон',
     description:
       'Продава се винтидж телефон лампа с топла Edison LED крушка. Ръчно изработена уникална ретро лампа от ротационен телефон.',
-    schemas: [productSchema],
+    schemas: [phoneProductSchema],
+    image: 'retro-telephone-lamp-01.jpg',
+    isProduct: true,
+  },
+  {
+    key: 'productVilia',
+    lang: 'bg',
+    path: localizedRoutes.productVilia.bg,
+    title: 'Vilia фотоапарат лампа | Ръчно изработена винтидж лампа',
+    description:
+      'Продава се ръчно изработена Vilia фотоапарат лампа с топла Edison крушка. Уникална upcycling лампа от vintage фотоапарат от СССР.',
+    schemas: [viliaProductSchema],
+    image: 'vilia-camera-lamp-01.jpg',
+    isProduct: true,
   },
   {
     key: 'home',
@@ -166,13 +218,26 @@ const seoPages = [
       'Contact E&K Vintara Studio for prices, delivery, or a custom handmade vintage lamp project.',
   },
   {
-    key: 'product',
+    key: 'productTelephone',
     lang: 'en',
-    path: localizedRoutes.product.en,
+    path: localizedRoutes.productTelephone.en,
     title: 'Vintage Telephone Lamp | Handmade retro phone lamp',
     description:
       'Available handmade vintage telephone lamp with warm Edison LED bulb, created from an authentic rotary phone.',
-    schemas: [productSchema],
+    schemas: [phoneProductSchema],
+    image: 'retro-telephone-lamp-01.jpg',
+    isProduct: true,
+  },
+  {
+    key: 'productVilia',
+    lang: 'en',
+    path: localizedRoutes.productVilia.en,
+    title: 'Vilia Camera Lamp | Handmade vintage camera lamp',
+    description:
+      'Available handmade Vilia camera lamp with a warm Edison bulb, created from a Soviet vintage camera classic.',
+    schemas: [viliaProductSchema],
+    image: 'vilia-camera-lamp-01.jpg',
+    isProduct: true,
   },
 ]
 
@@ -211,12 +276,12 @@ function injectSeo(html, page) {
     `<meta name="description" content="${escapeHtml(page.description)}" />`,
     `<link rel="canonical" href="${canonical}" />`,
     getAlternateLinks(page),
-    `<meta property="og:type" content="${page.key === 'product' ? 'product' : 'website'}" />`,
+    `<meta property="og:type" content="${page.isProduct ? 'product' : 'website'}" />`,
     `<meta property="og:site_name" content="E&amp;K Vintara Studio" />`,
     `<meta property="og:title" content="${escapeHtml(page.title)}" />`,
     `<meta property="og:description" content="${escapeHtml(page.description)}" />`,
     `<meta property="og:url" content="${canonical}" />`,
-    `<meta property="og:image" content="${siteUrl}/images/${page.key === 'product' ? 'retro-telephone-lamp-01.jpg' : 'vintara-logo.jpg'}" />`,
+    `<meta property="og:image" content="${siteUrl}/images/${page.image || 'vintara-logo.jpg'}" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     getJsonLd(schemas),
   ].join('\n    ')

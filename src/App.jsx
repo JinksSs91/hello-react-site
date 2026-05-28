@@ -4,10 +4,15 @@ import phoneLamp01 from './assets/products/retro-telephone-lamp-01.jpg'
 import phoneLamp02 from './assets/products/retro-telephone-lamp-02.jpg'
 import phoneLamp03 from './assets/products/retro-telephone-lamp-03.jpg'
 import phoneLamp04 from './assets/products/retro-telephone-lamp-04.jpg'
+import viliaLamp01 from './assets/products/vilia-camera-lamp-01.jpg'
+import viliaLamp02 from './assets/products/vilia-camera-lamp-02.jpg'
+import viliaLamp03 from './assets/products/vilia-camera-lamp-03.jpg'
+import viliaLamp05 from './assets/products/vilia-camera-lamp-05.jpg'
 import './App.css'
 
 const instagramUrl = 'https://www.instagram.com/our.vintage.lights/'
 const emailAddress = 'vintarastudio@yahoo.com'
+const navigationPages = ['home', 'available', 'sold', 'about', 'contacts']
 
 const pages = {
   home: { bg: '/', en: '/en' },
@@ -15,9 +20,16 @@ const pages = {
   sold: { bg: '/sold-lamps', en: '/en/sold-lamps' },
   about: { bg: '/about-us', en: '/en/about-us' },
   contacts: { bg: '/contacts', en: '/en/contacts' },
-  product: {
+}
+
+const productRoutes = {
+  'retro-telephone-lamp': {
     bg: '/lamps/retro-telephone-lamp',
     en: '/en/lamps/retro-telephone-lamp',
+  },
+  'vilia-camera-lamp': {
+    bg: '/lamps/vilia-camera-lamp',
+    en: '/en/lamps/vilia-camera-lamp',
   },
 }
 
@@ -91,7 +103,10 @@ const content = {
       available: 'Продава се',
       price: 'Цена при запитване',
       cta: 'Пиши за цена и доставка',
+      details: 'Виж детайли',
+      instagramPost: 'Виж в Instagram',
       gallery: 'Допълнителни снимки',
+      detailsTitle: 'Детайли',
       dmHint: 'Пиши ни на лично в Instagram и изпрати името на продукта.',
     },
     footer: 'E&K Vintara Studio - handmade vintage lights',
@@ -164,7 +179,10 @@ const content = {
       available: 'Available',
       price: 'Price on request',
       cta: 'Ask about price and delivery',
+      details: 'View details',
+      instagramPost: 'View on Instagram',
       gallery: 'Additional photos',
+      detailsTitle: 'Details',
       dmHint: 'Message us on Instagram and send the product name.',
     },
     footer: 'E&K Vintara Studio - handmade vintage lights',
@@ -173,6 +191,9 @@ const content = {
 
 const phoneLamp = {
   slug: 'retro-telephone-lamp',
+  routes: productRoutes['retro-telephone-lamp'],
+  instagramPostUrl:
+    'https://www.instagram.com/p/DYxCBQbDdQY/?igsh=MWt0ejJvbzFlYnFyag==',
   titleBg: 'Винтидж телефон лампа',
   titleEn: 'Vintage Telephone Lamp',
   summaryBg:
@@ -210,38 +231,86 @@ const phoneLamp = {
     'Warm cozy light',
     'One of a kind',
   ],
+  specsBg: [
+    ['Статус', 'Продава се'],
+    ['Категория', 'Телефон лампа'],
+    ['Модел', 'Винтидж ротационен телефон'],
+    ['Период', 'Източна Европа, 70-те и 80-те години'],
+    ['Светлина', 'Топла Edison LED крушка'],
+    ['Изработка', 'Ръчна изработка'],
+    ['Уникалност', 'Единствена по рода си'],
+  ],
+  specsEn: [
+    ['Status', 'Available'],
+    ['Category', 'Telephone lamp'],
+    ['Model', 'Vintage rotary telephone'],
+    ['Period', 'Eastern Europe, 1970s and 1980s'],
+    ['Light', 'Warm Edison LED bulb'],
+    ['Craft', 'Handmade'],
+    ['Uniqueness', 'One of a kind'],
+  ],
 }
 
-const availableProducts = [
-  phoneLamp,
-  {
-    slug: 'vintage-camera-lamp',
-    titleBg: 'Винтидж камера лампа',
-    titleEn: 'Vintage Camera Lamp',
-    summaryBg:
-      'Ръчно направена лампа от Voigtlander/Rollei камера с модерен абажур.',
-    summaryEn:
-      'Handmade lamp created from a Voigtlander/Rollei camera with a modern shade.',
-  },
-  {
-    slug: 'mini-tripod-camera-lamp',
-    titleBg: 'Мини статив камера лампа',
-    titleEn: 'Mini Tripod Camera Lamp',
-    summaryBg:
-      'Винтидж камера върху мини статив с минималистичен абажур за уютен интериор.',
-    summaryEn:
-      'Vintage camera mounted on a mini tripod with a minimalist shade for cozy interiors.',
-  },
-  {
-    slug: 'unique-vintage-table-lamp',
-    titleBg: 'Уникална винтидж настолна лампа',
-    titleEn: 'Unique Vintage Table Lamp',
-    summaryBg:
-      'Единствена по рода си upcycled лампа за дом, студио или специален кът.',
-    summaryEn:
-      'One-of-a-kind upcycled lighting piece for home or studio decor.',
-  },
-]
+const viliaLamp = {
+  slug: 'vilia-camera-lamp',
+  routes: productRoutes['vilia-camera-lamp'],
+  instagramPostUrl:
+    'https://www.instagram.com/p/DYhmDa7DT2n/?igsh=MTh5eHd5dHpsNWxpOQ==',
+  titleBg: 'Vilia фотоапарат лампа',
+  titleEn: 'Vilia Camera Lamp',
+  summaryBg:
+    'Ръчно изработена лампа от vintage фотоапарат Vilia с топла Edison крушка.',
+  summaryEn:
+    'Handmade lamp created from a vintage Vilia camera with a warm Edison bulb.',
+  images: [viliaLamp01, viliaLamp02, viliaLamp03, viliaLamp05],
+  descriptionBg: [
+    '✨ПРОДАВА СЕ✨📸✨ Ръчно изработена лампа от vintage фотоапарат Vilia - истинска класика от СССР, произвеждана през 70-те и 80-те години.',
+    'Със своя емблематичен Triplet 69-3 обектив и автентичен ретро дизайн, този апарат получава нов живот като cozy decor лампа с топла Edison крушка.',
+    'Перфектен акцент за vintage интериор, студио или подарък за любител на аналоговата фотография.',
+  ],
+  descriptionEn: [
+    '✨FOR SALE✨📸✨ A handmade lamp created from a vintage Vilia camera - a true Soviet classic produced during the 1970s and 1980s.',
+    'With its iconic Triplet 69-3 lens and authentic retro design, this camera gets a new life as a cozy decor lamp with a warm Edison bulb.',
+    'A perfect accent for a vintage interior, studio, or a gift for someone who loves analog photography.',
+  ],
+  featuresBg: [
+    'Ръчна изработка',
+    'Vilia vintage фотоапарат',
+    'Топла Edison крушка',
+    'Единствена по рода си',
+  ],
+  featuresEn: [
+    'Handmade',
+    'Vilia vintage camera',
+    'Warm Edison bulb',
+    'One of a kind',
+  ],
+  specsBg: [
+    ['Статус', 'Продава се'],
+    ['Категория', 'Фотоапарат лампа'],
+    ['Модел', 'Vilia vintage camera'],
+    ['Произход/период', 'СССР, 70-те и 80-те години'],
+    ['Обектив', 'Triplet 69-3'],
+    ['Светлина', 'Топла Edison LED крушка'],
+    ['Изработка', 'Ръчна изработка'],
+    ['Уникалност', 'Единствена по рода си'],
+  ],
+  specsEn: [
+    ['Status', 'Available'],
+    ['Category', 'Camera lamp'],
+    ['Model', 'Vilia vintage camera'],
+    ['Origin/period', 'USSR, 1970s and 1980s'],
+    ['Lens', 'Triplet 69-3'],
+    ['Light', 'Warm Edison LED bulb'],
+    ['Craft', 'Handmade'],
+    ['Uniqueness', 'One of a kind'],
+  ],
+}
+
+const availableProducts = [phoneLamp, viliaLamp]
+const productBySlug = Object.fromEntries(
+  availableProducts.map((product) => [product.slug, product]),
+)
 
 const soldProducts = [
   {
@@ -271,6 +340,18 @@ function getRouteFromPath(pathname) {
     : 'bg'
   const pathWithoutLanguage =
     language === 'en' ? normalizedPath.replace(/^\/en/, '') || '/' : normalizedPath
+  const productEntry = Object.entries(productRoutes).find(
+    ([, urls]) => urls.bg === pathWithoutLanguage || urls.en === normalizedPath,
+  )
+
+  if (productEntry) {
+    return {
+      language,
+      page: 'product',
+      productSlug: productEntry[0],
+    }
+  }
+
   const routeEntry = Object.entries(pages).find(
     ([, urls]) => urls.bg === pathWithoutLanguage || urls.en === normalizedPath,
   )
@@ -278,6 +359,7 @@ function getRouteFromPath(pathname) {
   return {
     language,
     page: routeEntry?.[0] || 'home',
+    productSlug: null,
   }
 }
 
@@ -285,15 +367,18 @@ function App() {
   const initialRoute = getRouteFromPath(window.location.pathname)
   const [language, setLanguage] = useState(initialRoute.language)
   const [page, setPage] = useState(initialRoute.page)
+  const [productSlug, setProductSlug] = useState(initialRoute.productSlug)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const headerRef = useRef(null)
   const copy = content[language]
+  const activeProduct = productSlug ? productBySlug[productSlug] : null
 
   useEffect(() => {
     const handleRouteChange = () => {
       const nextRoute = getRouteFromPath(window.location.pathname)
       setLanguage(nextRoute.language)
       setPage(nextRoute.page)
+      setProductSlug(nextRoute.productSlug)
     }
 
     window.addEventListener('popstate', handleRouteChange)
@@ -320,10 +405,16 @@ function App() {
     const nextRoute = getRouteFromPath(window.location.pathname)
     setLanguage(nextRoute.language)
     setPage(nextRoute.page)
+    setProductSlug(nextRoute.productSlug)
     setIsMenuOpen(false)
   }
 
   function handleLanguageChange(event) {
+    if (page === 'product' && activeProduct) {
+      navigateTo(activeProduct.routes[event.target.value])
+      return
+    }
+
     navigateTo(pages[page][event.target.value])
   }
 
@@ -343,7 +434,7 @@ function App() {
         </a>
 
         <nav className="site-nav" aria-label="Main navigation">
-          {['home', 'available', 'sold', 'about', 'contacts'].map((navPage) => (
+          {navigationPages.map((navPage) => (
             <a
               className={page === navPage || (page === 'product' && navPage === 'available') ? 'active' : ''}
               key={navPage}
@@ -392,7 +483,7 @@ function App() {
           id="mobile-menu"
         >
           <nav className="mobile-nav" aria-label="Mobile navigation">
-            {['home', 'available', 'sold', 'about', 'contacts'].map((navPage) => (
+            {navigationPages.map((navPage) => (
               <a
                 className={page === navPage || (page === 'product' && navPage === 'available') ? 'active' : ''}
                 key={navPage}
@@ -429,12 +520,22 @@ function App() {
         {page === 'sold' && <SoldPage copy={copy} language={language} />}
         {page === 'about' && <AboutPage copy={copy} />}
         {page === 'contacts' && <ContactsPage copy={copy} />}
-        {page === 'product' && (
-          <ProductPage copy={copy} language={language} navigateTo={navigateTo} />
+        {page === 'product' && activeProduct && (
+          <ProductPage
+            copy={copy}
+            language={language}
+            navigateTo={navigateTo}
+            product={activeProduct}
+          />
         )}
       </main>
 
-      <footer className="site-footer">{copy.footer}</footer>
+      <SiteFooter
+        copy={copy}
+        language={language}
+        navigateTo={navigateTo}
+        page={page}
+      />
     </div>
   )
 }
@@ -618,12 +719,13 @@ function ContactsPage({ copy }) {
   )
 }
 
-function ProductPage({ copy, language, navigateTo }) {
-  const title = language === 'bg' ? phoneLamp.titleBg : phoneLamp.titleEn
-  const summary = language === 'bg' ? phoneLamp.summaryBg : phoneLamp.summaryEn
+function ProductPage({ copy, language, navigateTo, product }) {
+  const title = language === 'bg' ? product.titleBg : product.titleEn
+  const summary = language === 'bg' ? product.summaryBg : product.summaryEn
   const description =
-    language === 'bg' ? phoneLamp.descriptionBg : phoneLamp.descriptionEn
-  const features = language === 'bg' ? phoneLamp.featuresBg : phoneLamp.featuresEn
+    language === 'bg' ? product.descriptionBg : product.descriptionEn
+  const features = language === 'bg' ? product.featuresBg : product.featuresEn
+  const specs = language === 'bg' ? product.specsBg : product.specsEn
 
   return (
     <section className="page product-detail-page">
@@ -639,10 +741,10 @@ function ProductPage({ copy, language, navigateTo }) {
       </a>
       <div className="product-detail">
         <div className="product-gallery">
-          <img className="main-product-image" src={phoneLamp.images[0]} alt={title} />
+          <img className="main-product-image" src={product.images[0]} alt={title} />
           <h2>{copy.product.gallery}</h2>
           <div className="gallery-grid">
-            {phoneLamp.images.slice(1).map((image, index) => (
+            {product.images.slice(1).map((image, index) => (
               <img
                 key={image}
                 src={image}
@@ -661,20 +763,41 @@ function ProductPage({ copy, language, navigateTo }) {
               <li key={feature}>{feature}</li>
             ))}
           </ul>
+          <section className="spec-panel" aria-labelledby="product-specs">
+            <h2 id="product-specs">{copy.product.detailsTitle}</h2>
+            <dl>
+              {specs.map(([label, value]) => (
+                <div key={label}>
+                  <dt>{label}</dt>
+                  <dd>{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
           <div className="description-stack">
             {description.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
           <p className="dm-hint">{copy.product.dmHint}</p>
-          <a
-            className="button primary"
-            href={instagramUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {copy.product.cta}
-          </a>
+          <div className="product-cta-row">
+            <a
+              className="button primary"
+              href={instagramUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {copy.product.cta}
+            </a>
+            <a
+              className="button secondary"
+              href={product.instagramPostUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {copy.product.instagramPost}
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -684,51 +807,35 @@ function ProductPage({ copy, language, navigateTo }) {
 function ProductCard({ product, copy, language, navigateTo }) {
   const title = language === 'bg' ? product.titleBg : product.titleEn
   const summary = language === 'bg' ? product.summaryBg : product.summaryEn
-  const isRealProduct = product.slug === phoneLamp.slug
 
   return (
     <article className="product-card">
-      {isRealProduct ? (
-        <a
-          className="product-image-link"
-          href={pages.product[language]}
-          onClick={(event) => {
-            event.preventDefault()
-            navigateTo(pages.product[language])
-          }}
-        >
-          <img src={product.images[0]} alt={title} />
-        </a>
-      ) : (
-        <ProductPlaceholder label={title} />
-      )}
+      <a
+        className="product-image-link"
+        href={product.routes[language]}
+        onClick={(event) => {
+          event.preventDefault()
+          navigateTo(product.routes[language])
+        }}
+      >
+        <img src={product.images[0]} alt={title} />
+      </a>
       <div className="product-body">
         <span className="status-badge available">{copy.product.available}</span>
         <h3>{title}</h3>
         <p>{summary}</p>
         <div className="product-actions">
           <span>{copy.product.price}</span>
-          {isRealProduct ? (
-            <a
-              className="button secondary"
-              href={pages.product[language]}
-              onClick={(event) => {
-                event.preventDefault()
-                navigateTo(pages.product[language])
-              }}
-            >
-              {language === 'bg' ? 'Виж детайли' : 'View details'}
-            </a>
-          ) : (
-            <a
-              className="button secondary"
-              href={instagramUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {copy.product.cta}
-            </a>
-          )}
+          <a
+            className="button secondary"
+            href={product.routes[language]}
+            onClick={(event) => {
+              event.preventDefault()
+              navigateTo(product.routes[language])
+            }}
+          >
+            {copy.product.details}
+          </a>
         </div>
       </div>
     </article>
@@ -740,6 +847,66 @@ function ProductPlaceholder({ label }) {
     <div className="product-placeholder">
       <span>{label}</span>
     </div>
+  )
+}
+
+function SiteFooter({ copy, language, navigateTo, page }) {
+  return (
+    <footer className="site-footer">
+      <div className="footer-brand">
+        <strong>E&K Vintara Studio</strong>
+        <span>{copy.footer}</span>
+      </div>
+
+      <nav className="footer-nav" aria-label="Footer navigation">
+        {navigationPages.map((navPage) => (
+          <a
+            className={page === navPage || (page === 'product' && navPage === 'available') ? 'active' : ''}
+            key={navPage}
+            href={pages[navPage][language]}
+            onClick={(event) => {
+              event.preventDefault()
+              navigateTo(pages[navPage][language])
+            }}
+          >
+            {copy.nav[navPage]}
+          </a>
+        ))}
+      </nav>
+
+      <div className="footer-socials" aria-label="Social links">
+        <a
+          href={instagramUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Instagram"
+        >
+          <InstagramIcon />
+        </a>
+        <a href={`mailto:${emailAddress}`} aria-label={copy.contacts.email}>
+          <EmailIcon />
+        </a>
+      </div>
+    </footer>
+  )
+}
+
+function InstagramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="4" y="4" width="16" height="16" rx="5" />
+      <circle cx="12" cy="12" r="3.5" />
+      <circle cx="17" cy="7" r="1" />
+    </svg>
+  )
+}
+
+function EmailIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3.5" y="5.5" width="17" height="13" rx="2.5" />
+      <path d="M5 8l7 5 7-5" />
+    </svg>
   )
 }
 
