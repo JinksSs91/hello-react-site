@@ -37,33 +37,18 @@ const content = {
       intro:
         'Ръчно изработени винтидж лампи от стари телефони, фотоапарати, радиа и настолни часовници.',
       story:
-        'Всяка лампа е уникат - реставрирана, преобразена и създадена с внимание към детайла. Даваме нов живот на забравени предмети и ги превръщаме в артистично осветление за домове, студиа, офиси и специални пространства.',
-      moreTitle: 'Повече от лампа',
-      moreText:
-        'Това не е просто осветление. Това е история, спомен и характер. Съчетавайки индустриален стил, ретро естетика и ръчна изработка, нашите лампи създават атмосфера, която не може да бъде произведена серийно.',
-      createTitle: 'Какво създаваме',
-      createList: [
-        'Лампи от винтидж телефони',
-        'Лампи от стари фотоапарати',
-        'Ретро радио лампи',
-        'Арт лампи от настолни часовници',
-        'Custom проекти по поръчка',
+        'Даваме нов живот на забравени предмети и ги превръщаме в артистично осветление за домове, студиа, офиси и специални пространства.',
+      contactCta: 'Свържи се с нас',
+      highlights: [
+        ['Ръчна изработка', 'Всеки детайл се обработва и сглобява внимателно.'],
+        ['Уникални бройки', 'Всяка лампа е единствена, с форма и история.'],
+        ['Upcycling дизайн', 'Старото става функционално, красиво и различно.'],
       ],
-      craftTitle: 'Ръчна изработка и устойчив дизайн',
-      craftText:
-        'Всеки модел се изработва на ръка от автентични винтидж предмети. Вярваме в устойчивия дизайн и красотата на upcycling културата - да превърнем старото в нещо функционално и красиво.',
-      audienceTitle: 'За хора с вкус към различното',
-      audienceText: 'Нашите лампи са създадени за хора, които ценят:',
-      audienceList: [
-        'оригиналния дизайн',
-        'ретро атмосферата',
-        'ръчната изработка',
-        'уникалните интериорни акценти',
-      ],
+      imageStripTitle: 'Винтидж телефон, превърнат в топла светлина.',
       ctaTitle: 'Разгледай колекцията',
       ctaText:
         'Открий своята уникална лампа и добави характер към пространството си.',
-      cta: 'Към наличните лампи',
+      cta: 'Разгледай наличните лампи',
     },
     available: {
       kicker: 'Налични лампи',
@@ -126,29 +111,14 @@ const content = {
       intro:
         'Handmade vintage lamps created from old telephones, cameras, radios, and desk clocks.',
       story:
-        'Every lamp is one of a kind - restored, transformed, and made with attention to detail. We give forgotten objects a new life and turn them into artistic lighting for homes, studios, offices, and special spaces.',
-      moreTitle: 'More than a lamp',
-      moreText:
-        'This is not just lighting. It is a story, a memory, and a character. By combining industrial style, retro aesthetics, and handcraft, our lamps create an atmosphere that cannot be mass produced.',
-      createTitle: 'What we create',
-      createList: [
-        'Lamps from vintage telephones',
-        'Lamps from old cameras',
-        'Retro radio lamps',
-        'Art lamps from desk clocks',
-        'Custom projects by request',
+        'We give forgotten objects a new life and turn them into artistic lighting for homes, studios, offices, and special spaces.',
+      contactCta: 'Contact us',
+      highlights: [
+        ['Handmade craft', 'Every detail is carefully restored and assembled.'],
+        ['Unique pieces', 'Each lamp is one of a kind, with its own shape and story.'],
+        ['Upcycled design', 'The old becomes functional, beautiful, and different.'],
       ],
-      craftTitle: 'Handmade and sustainable design',
-      craftText:
-        'Each model is handmade from authentic vintage objects. We believe in sustainable design and the beauty of upcycling culture - turning the old into something functional and beautiful.',
-      audienceTitle: 'For people with a taste for the different',
-      audienceText: 'Our lamps are made for people who value:',
-      audienceList: [
-        'original design',
-        'retro atmosphere',
-        'handmade craft',
-        'unique interior accents',
-      ],
+      imageStripTitle: 'A vintage telephone transformed into warm light.',
       ctaTitle: 'Explore the collection',
       ctaText: 'Find your unique lamp and add character to your space.',
       cta: 'View available lamps',
@@ -409,31 +379,57 @@ function HomePage({ copy, language, navigateTo }) {
   return (
     <section className="page home-page">
       <div className="hero-panel">
-        <p className="kicker">{copy.home.kicker}</p>
-        <h1>{copy.home.title}</h1>
-        <p className="hero-lead">{copy.home.intro}</p>
-        <p>{copy.home.story}</p>
-        <a
-          className="button primary"
-          href={pages.available[language]}
-          onClick={(event) => {
-            event.preventDefault()
-            navigateTo(pages.available[language])
-          }}
-        >
-          {copy.home.cta}
-        </a>
+        <div className="hero-copy">
+          <p className="kicker">{copy.home.kicker}</p>
+          <h1>{copy.home.title}</h1>
+          <p className="hero-lead">{copy.home.intro}</p>
+          <p>{copy.home.story}</p>
+          <div className="hero-actions">
+            <a
+              className="button primary"
+              href={pages.available[language]}
+              onClick={(event) => {
+                event.preventDefault()
+                navigateTo(pages.available[language])
+              }}
+            >
+              {copy.home.cta}
+            </a>
+            <a
+              className="button secondary"
+              href={pages.contacts[language]}
+              onClick={(event) => {
+                event.preventDefault()
+                navigateTo(pages.contacts[language])
+              }}
+            >
+              {copy.home.contactCta}
+            </a>
+          </div>
+        </div>
+        <figure className="hero-image-card">
+          <img src={phoneLamp01} alt={copy.home.imageStripTitle} />
+          <figcaption>{copy.home.imageStripTitle}</figcaption>
+        </figure>
       </div>
 
-      <div className="info-grid">
-        <InfoBlock title={copy.home.moreTitle} text={copy.home.moreText} />
-        <InfoList title={copy.home.createTitle} items={copy.home.createList} />
-        <InfoBlock title={copy.home.craftTitle} text={copy.home.craftText} />
-        <InfoList
-          title={copy.home.audienceTitle}
-          text={copy.home.audienceText}
-          items={copy.home.audienceList}
-        />
+      <div className="highlight-grid">
+        {copy.home.highlights.map(([title, text]) => (
+          <article className="highlight-card" key={title}>
+            <h2>{title}</h2>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="image-strip" aria-label={copy.home.imageStripTitle}>
+        {[phoneLamp02, phoneLamp03, phoneLamp04].map((image, index) => (
+          <img
+            key={image}
+            src={image}
+            alt={`${copy.home.imageStripTitle} ${index + 1}`}
+          />
+        ))}
       </div>
 
       <div className="cta-band">
@@ -690,29 +686,6 @@ function PageHeader({ kicker, title, text }) {
       <h1>{title}</h1>
       <p>{text}</p>
     </div>
-  )
-}
-
-function InfoBlock({ title, text }) {
-  return (
-    <article className="info-card">
-      <h2>{title}</h2>
-      <p>{text}</p>
-    </article>
-  )
-}
-
-function InfoList({ title, text, items }) {
-  return (
-    <article className="info-card">
-      <h2>{title}</h2>
-      {text && <p>{text}</p>}
-      <ul>
-        {items.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
-    </article>
   )
 }
 
