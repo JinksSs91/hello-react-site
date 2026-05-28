@@ -7,6 +7,7 @@ import react from '@vitejs/plugin-react'
 const siteUrl = 'https://ourvintagelights.com'
 const emailAddress = 'vintarastudio@yahoo.com'
 const instagramUrl = 'https://www.instagram.com/our.vintage.lights/'
+const viberPhone = '+359899161880'
 const rootDir = path.dirname(fileURLToPath(import.meta.url))
 
 const localizedRoutes = {
@@ -22,6 +23,10 @@ const localizedRoutes = {
   productVilia: {
     bg: '/lamps/vilia-camera-lamp',
     en: '/en/lamps/vilia-camera-lamp',
+  },
+  productRedTa900: {
+    bg: '/lamps/red-ta-900-telephone-lamp',
+    en: '/en/lamps/red-ta-900-telephone-lamp',
   },
 }
 
@@ -39,6 +44,11 @@ const viliaImageUrls = [
   `${siteUrl}/images/vilia-camera-lamp-05.jpg`,
 ]
 
+const redTa900ImageUrls = [
+  `${siteUrl}/images/red-ta-900-telephone-lamp-01.jpg`,
+  `${siteUrl}/images/red-ta-900-telephone-lamp-02.jpg`,
+]
+
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -46,6 +56,7 @@ const organizationSchema = {
   url: siteUrl,
   logo: `${siteUrl}/images/vintara-logo.jpg`,
   email: emailAddress,
+  telephone: viberPhone,
   sameAs: [instagramUrl],
 }
 
@@ -114,6 +125,16 @@ const viliaProductSchema = getProductSchema({
   url: localizedRoutes.productVilia.bg,
 })
 
+const redTa900ProductSchema = getProductSchema({
+  name: 'Red TA-900 Telephone Lamp',
+  alternateName: 'Червена TA-900 телефон лампа',
+  image: redTa900ImageUrls,
+  description:
+    'Handmade red TA-900 telephone lamp created from an original 1991 INCOMS retro telephone preserved in its original box.',
+  category: 'Handmade vintage telephone lamp',
+  url: localizedRoutes.productRedTa900.bg,
+})
+
 const seoPages = [
   {
     key: 'home',
@@ -178,6 +199,17 @@ const seoPages = [
     isProduct: true,
   },
   {
+    key: 'productRedTa900',
+    lang: 'bg',
+    path: localizedRoutes.productRedTa900.bg,
+    title: 'Червена TA-900 телефон лампа | Ръчно изработена ретро лампа',
+    description:
+      'Продава се червена TA-900 телефон лампа от оригинален ретро телефон, произведен през 1991 г. в Белоградчик. Ръчна изработка и топла светлина.',
+    schemas: [redTa900ProductSchema],
+    image: 'red-ta-900-telephone-lamp-01.jpg',
+    isProduct: true,
+  },
+  {
     key: 'home',
     lang: 'en',
     path: localizedRoutes.home.en,
@@ -237,6 +269,17 @@ const seoPages = [
       'Available handmade Vilia camera lamp with a warm Edison bulb, created from a Soviet vintage camera classic.',
     schemas: [viliaProductSchema],
     image: 'vilia-camera-lamp-01.jpg',
+    isProduct: true,
+  },
+  {
+    key: 'productRedTa900',
+    lang: 'en',
+    path: localizedRoutes.productRedTa900.en,
+    title: 'Red TA-900 Telephone Lamp | Handmade retro phone lamp',
+    description:
+      'Available handmade red TA-900 telephone lamp made from an original 1991 INCOMS retro telephone preserved in its original box.',
+    schemas: [redTa900ProductSchema],
+    image: 'red-ta-900-telephone-lamp-01.jpg',
     isProduct: true,
   },
 ]

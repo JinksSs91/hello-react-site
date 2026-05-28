@@ -8,6 +8,8 @@ import viliaLamp01 from './assets/products/vilia-camera-lamp-01.jpg'
 import viliaLamp02 from './assets/products/vilia-camera-lamp-02.jpg'
 import viliaLamp03 from './assets/products/vilia-camera-lamp-03.jpg'
 import viliaLamp05 from './assets/products/vilia-camera-lamp-05.jpg'
+import redTa900Lamp01 from './assets/products/red-ta-900-telephone-lamp-01.jpg'
+import redTa900Lamp02 from './assets/products/red-ta-900-telephone-lamp-02.jpg'
 import homeHeroBlackPhone from './assets/home/home-hero-black-phone.jpg'
 import homeWhitePhone from './assets/home/home-white-phone.jpg'
 import homeClockLamp from './assets/home/home-clock-lamp.jpg'
@@ -16,6 +18,7 @@ import './App.css'
 
 const instagramUrl = 'https://www.instagram.com/our.vintage.lights/'
 const emailAddress = 'vintarastudio@yahoo.com'
+const viberPhone = '+359899161880'
 const navigationPages = ['home', 'available', 'sold', 'about', 'contacts']
 
 const pages = {
@@ -34,6 +37,10 @@ const productRoutes = {
   'vilia-camera-lamp': {
     bg: '/lamps/vilia-camera-lamp',
     en: '/en/lamps/vilia-camera-lamp',
+  },
+  'red-ta-900-telephone-lamp': {
+    bg: '/lamps/red-ta-900-telephone-lamp',
+    en: '/en/lamps/red-ta-900-telephone-lamp',
   },
 }
 
@@ -96,11 +103,13 @@ const content = {
       kicker: 'Контакти',
       title: 'Свържи се с нас за цена, доставка или custom идея.',
       text:
-        'Най-бързият начин е Instagram DM. Можеш също да ни пишеш по имейл с името на лампата, която те интересува.',
+        'Най-бързият начин е Instagram DM. Можеш също да ни пишеш по имейл или да се свържеш с нас във Viber.',
       instagram: 'Instagram',
       email: 'Имейл',
+      viber: 'Viber',
       instagramCta: 'Отвори Instagram',
       emailCta: 'Изпрати имейл',
+      viberCta: 'Обади се',
     },
     product: {
       back: 'Назад към наличните лампи',
@@ -170,11 +179,13 @@ const content = {
       kicker: 'Contacts',
       title: 'Contact us for price, delivery, or a custom idea.',
       text:
-        'The fastest way is Instagram DM. You can also email us with the name of the lamp you are interested in.',
+        'The fastest way is Instagram DM. You can also email us or contact us on Viber.',
       instagram: 'Instagram',
       email: 'Email',
+      viber: 'Viber',
       instagramCta: 'Open Instagram',
       emailCta: 'Send email',
+      viberCta: 'Call',
     },
     product: {
       back: 'Back to available lamps',
@@ -265,7 +276,49 @@ const viliaLamp = {
   ],
 }
 
-const availableProducts = [phoneLamp, viliaLamp]
+const redTa900Lamp = {
+  slug: 'red-ta-900-telephone-lamp',
+  routes: productRoutes['red-ta-900-telephone-lamp'],
+  titleBg: 'Червена TA-900 телефон лампа',
+  titleEn: 'Red TA-900 Telephone Lamp',
+  summaryBg:
+    'Оригинален ретро телефон TA-900 от 1991 г., ръчно преобразен в уникална лампа.',
+  summaryEn:
+    'An original TA-900 retro telephone from 1991, handmade into a unique lamp.',
+  images: [redTa900Lamp01, redTa900Lamp02],
+  descriptionBg: [
+    '✨ПРОДАВА СЕ ✨💡📞 Когато миналото срещне модерния уют...',
+    'Представям ти една наистина специална лампа - създадена от оригинален ретро телефон ТА-900, произведен през 1991 г. в Белоградчик (ИНКОМС).',
+    'Най-интересното? Телефонът е чисто нов - никога не е използван, запазен десетилетия в оригиналния си кашон, с оригинален етикет, ръководство за експлоатация, автентични печати и маркировки.',
+    'Преобразен ръчно в лампа, той запазва душата на миналото, но носи топлина и стил в съвременния дом.',
+    'Подходяща за хол, спалня или офис, подарък с характер, стилни продуктови снимки или декор.',
+    'Това не е просто лампа - това е история, която свети.',
+    '📩 Пиши ми за детайли и цена.',
+  ],
+  descriptionEn: [
+    '✨FOR SALE ✨💡📞 When the past meets modern comfort...',
+    'A truly special lamp created from an original TA-900 retro telephone, produced in 1991 in Belogradchik by INCOMS.',
+    'The most interesting part? The telephone is brand new - never used, preserved for decades in its original box, with the original label, user manual, authentic stamps, and markings.',
+    'Handmade into a lamp, it keeps the soul of the past while bringing warmth and style into a modern home.',
+    'Suitable for a living room, bedroom, office, a gift with character, product photography, or decor.',
+    'This is not just a lamp - it is a story that glows.',
+    '📩 Message me for details and price.',
+  ],
+  featuresBg: [
+    'ТА-900 от 1991 г.',
+    'Чисто нов телефон',
+    'Ръчна изработка',
+    'Топла уютна светлина',
+  ],
+  featuresEn: [
+    'TA-900 from 1991',
+    'Brand new telephone',
+    'Handmade',
+    'Warm cozy light',
+  ],
+}
+
+const availableProducts = [phoneLamp, viliaLamp, redTa900Lamp]
 const productBySlug = Object.fromEntries(
   availableProducts.map((product) => [product.slug, product]),
 )
@@ -672,6 +725,12 @@ function ContactsPage({ copy }) {
           href={`mailto:${emailAddress}`}
           cta={copy.contacts.emailCta}
         />
+        <ContactCard
+          label={copy.contacts.viber}
+          value={viberPhone}
+          href={`tel:${viberPhone}`}
+          cta={copy.contacts.viberCta}
+        />
       </div>
     </section>
   )
@@ -822,6 +881,9 @@ function SiteFooter({ copy, language, navigateTo, page }) {
         <a href={`mailto:${emailAddress}`} aria-label={copy.contacts.email}>
           <EmailIcon />
         </a>
+        <a href={`tel:${viberPhone}`} aria-label={copy.contacts.viber}>
+          <PhoneIcon />
+        </a>
       </div>
     </footer>
   )
@@ -842,6 +904,14 @@ function EmailIcon() {
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <rect x="3.5" y="5.5" width="17" height="13" rx="2.5" />
       <path d="M5 8l7 5 7-5" />
+    </svg>
+  )
+}
+
+function PhoneIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8.2 5.2l1.4 3.2-1.7 1.2c1 2.1 2.4 3.5 4.5 4.5l1.2-1.7 3.2 1.4-.4 3.5c-.1.8-.8 1.4-1.6 1.4C9.5 18.7 5.3 14.5 5.3 9.2c0-.8.6-1.5 1.4-1.6l1.5-.4z" />
     </svg>
   )
 }
