@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://ourvintagelights.com/</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en" />
+  </url>
+  <url>
+    <loc>https://ourvintagelights.com/available-lamps</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/available-lamps" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/available-lamps" />
+  </url>
+  <url>
+    <loc>https://ourvintagelights.com/sold-lamps</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/sold-lamps" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/sold-lamps" />
+  </url>
+  <url>
+    <loc>https://ourvintagelights.com/about-us</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/about-us" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/about-us" />
+  </url>
+  <url>
+    <loc>https://ourvintagelights.com/contacts</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/contacts" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/contacts" />
+  </url>
+  <url>
+    <loc>https://ourvintagelights.com/lamps/retro-telephone-lamp</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/lamps/retro-telephone-lamp" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/lamps/retro-telephone-lamp" />
+  </url>
+</urlset>

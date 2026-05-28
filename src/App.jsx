@@ -8,7 +8,18 @@ import './App.css'
 
 const instagramUrl = 'https://www.instagram.com/our.vintage.lights/'
 const emailAddress = 'vintarastudio@yahoo.com'
-const validPages = ['home', 'available', 'sold', 'about', 'contacts']
+
+const pages = {
+  home: { bg: '/', en: '/en' },
+  available: { bg: '/available-lamps', en: '/en/available-lamps' },
+  sold: { bg: '/sold-lamps', en: '/en/sold-lamps' },
+  about: { bg: '/about-us', en: '/en/about-us' },
+  contacts: { bg: '/contacts', en: '/en/contacts' },
+  product: {
+    bg: '/lamps/retro-telephone-lamp',
+    en: '/en/lamps/retro-telephone-lamp',
+  },
+}
 
 const content = {
   bg: {
@@ -59,7 +70,6 @@ const content = {
       title: 'Готови уникати, които търсят своето място.',
       text:
         'Всеки продукт е единствен по рода си. За цена, доставка и допълнителни кадри ни пиши директно в Instagram.',
-      empty: 'Нови налични лампи ще бъдат добавяни тук.',
     },
     sold: {
       kicker: 'Продадени лампи',
@@ -148,7 +158,6 @@ const content = {
       title: 'Ready one-of-one pieces looking for their place.',
       text:
         'Each product is unique. For price, delivery, and extra details, message us directly on Instagram.',
-      empty: 'New available lamps will be added here.',
     },
     sold: {
       kicker: 'Sold Lamps',
@@ -194,7 +203,6 @@ const content = {
 
 const phoneLamp = {
   slug: 'retro-telephone-lamp',
-  status: 'available',
   titleBg: 'Винтидж телефон лампа',
   titleEn: 'Vintage Telephone Lamp',
   summaryBg:
@@ -238,7 +246,6 @@ const availableProducts = [
   phoneLamp,
   {
     slug: 'vintage-camera-lamp',
-    status: 'available',
     titleBg: 'Винтидж камера лампа',
     titleEn: 'Vintage Camera Lamp',
     summaryBg:
@@ -248,7 +255,6 @@ const availableProducts = [
   },
   {
     slug: 'mini-tripod-camera-lamp',
-    status: 'available',
     titleBg: 'Мини статив камера лампа',
     titleEn: 'Mini Tripod Camera Lamp',
     summaryBg:
@@ -258,7 +264,6 @@ const availableProducts = [
   },
   {
     slug: 'unique-vintage-table-lamp',
-    status: 'available',
     titleBg: 'Уникална винтидж настолна лампа',
     titleEn: 'Unique Vintage Table Lamp',
     summaryBg:
@@ -289,53 +294,82 @@ const soldProducts = [
   },
 ]
 
-function getInitialRoute() {
-  const hash = window.location.hash.replace(/^#/, '')
-  if (validPages.includes(hash) || hash === `lamp/${phoneLamp.slug}`) {
-    return hash
-  }
+function getRouteFromPath(pathname) {
+  const normalizedPath = pathname.replace(/\/+$/, '') || '/'
+  const language = normalizedPath === '/en' || normalizedPath.startsWith('/en/')
+    ? 'en'
+    : 'bg'
+  const pathWithoutLanguage =
+    language === 'en' ? normalizedPath.replace(/^\/en/, '') || '/' : normalizedPath
+  const routeEntry = Object.entries(pages).find(
+    ([, urls]) => urls.bg === pathWithoutLanguage || urls.en === normalizedPath,
+  )
 
-  return 'home'
+  return {
+    language,
+    page: routeEntry?.[0] || 'home',
+  }
 }
 
 function App() {
-  const [language, setLanguage] = useState('bg')
-  const [route, setRoute] = useState(getInitialRoute)
+  const initialRoute = getRouteFromPath(window.location.pathname)
+  const [language, setLanguage] = useState(initialRoute.language)
+  const [page, setPage] = useState(initialRoute.page)
   const copy = content[language]
 
   useEffect(() => {
-    const handleHashChange = () => setRoute(getInitialRoute())
-    window.addEventListener('hashchange', handleHashChange)
-
-    if (!window.location.hash) {
-      window.location.hash = 'home'
+    const handleRouteChange = () => {
+      const nextRoute = getRouteFromPath(window.location.pathname)
+      setLanguage(nextRoute.language)
+      setPage(nextRoute.page)
     }
 
-    return () => window.removeEventListener('hashchange', handleHashChange)
+    window.addEventListener('popstate', handleRouteChange)
+    return () => window.removeEventListener('popstate', handleRouteChange)
   }, [])
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-  }, [route])
+  }, [page, language])
 
-  const isProductPage = route === `lamp/${phoneLamp.slug}`
-  const activePage = isProductPage ? 'available' : route
+  function navigateTo(href) {
+    window.history.pushState({}, '', href)
+    const nextRoute = getRouteFromPath(window.location.pathname)
+    setLanguage(nextRoute.language)
+    setPage(nextRoute.page)
+  }
+
+  function handleLanguageChange(event) {
+    navigateTo(pages[page][event.target.value])
+  }
 
   return (
     <div className="site-shell">
       <header className="site-header">
-        <a className="brand-logo" href="#home" aria-label="E&K Vintara Studio">
+        <a
+          className="brand-logo"
+          href={pages.home[language]}
+          aria-label="E&K Vintara Studio"
+          onClick={(event) => {
+            event.preventDefault()
+            navigateTo(pages.home[language])
+          }}
+        >
           <img src={logoImage} alt="E&K Vintara Studio" />
         </a>
 
         <nav className="site-nav" aria-label="Main navigation">
-          {validPages.map((page) => (
+          {['home', 'available', 'sold', 'about', 'contacts'].map((navPage) => (
             <a
-              className={activePage === page ? 'active' : ''}
-              key={page}
-              href={`#${page}`}
+              className={page === navPage || (page === 'product' && navPage === 'available') ? 'active' : ''}
+              key={navPage}
+              href={pages[navPage][language]}
+              onClick={(event) => {
+                event.preventDefault()
+                navigateTo(pages[navPage][language])
+              }}
             >
-              {copy.nav[page]}
+              {copy.nav[navPage]}
             </a>
           ))}
         </nav>
@@ -344,7 +378,7 @@ function App() {
           <span>{copy.languageLabel}</span>
           <select
             value={language}
-            onChange={(event) => setLanguage(event.target.value)}
+            onChange={handleLanguageChange}
             aria-label={copy.languageLabel}
           >
             <option value="bg">BG</option>
@@ -354,14 +388,16 @@ function App() {
       </header>
 
       <main>
-        {route === 'home' && <HomePage copy={copy} />}
-        {route === 'available' && (
-          <AvailablePage copy={copy} language={language} />
+        {page === 'home' && <HomePage copy={copy} language={language} navigateTo={navigateTo} />}
+        {page === 'available' && (
+          <AvailablePage copy={copy} language={language} navigateTo={navigateTo} />
         )}
-        {route === 'sold' && <SoldPage copy={copy} language={language} />}
-        {route === 'about' && <AboutPage copy={copy} />}
-        {route === 'contacts' && <ContactsPage copy={copy} />}
-        {isProductPage && <ProductPage copy={copy} language={language} />}
+        {page === 'sold' && <SoldPage copy={copy} language={language} />}
+        {page === 'about' && <AboutPage copy={copy} />}
+        {page === 'contacts' && <ContactsPage copy={copy} />}
+        {page === 'product' && (
+          <ProductPage copy={copy} language={language} navigateTo={navigateTo} />
+        )}
       </main>
 
       <footer className="site-footer">{copy.footer}</footer>
@@ -369,7 +405,7 @@ function App() {
   )
 }
 
-function HomePage({ copy }) {
+function HomePage({ copy, language, navigateTo }) {
   return (
     <section className="page home-page">
       <div className="hero-panel">
@@ -377,7 +413,14 @@ function HomePage({ copy }) {
         <h1>{copy.home.title}</h1>
         <p className="hero-lead">{copy.home.intro}</p>
         <p>{copy.home.story}</p>
-        <a className="button primary" href="#available">
+        <a
+          className="button primary"
+          href={pages.available[language]}
+          onClick={(event) => {
+            event.preventDefault()
+            navigateTo(pages.available[language])
+          }}
+        >
           {copy.home.cta}
         </a>
       </div>
@@ -398,7 +441,14 @@ function HomePage({ copy }) {
           <h2>{copy.home.ctaTitle}</h2>
           <p>{copy.home.ctaText}</p>
         </div>
-        <a className="button secondary" href="#available">
+        <a
+          className="button secondary"
+          href={pages.available[language]}
+          onClick={(event) => {
+            event.preventDefault()
+            navigateTo(pages.available[language])
+          }}
+        >
           {copy.home.cta}
         </a>
       </div>
@@ -406,7 +456,7 @@ function HomePage({ copy }) {
   )
 }
 
-function AvailablePage({ copy, language }) {
+function AvailablePage({ copy, language, navigateTo }) {
   return (
     <section className="page">
       <PageHeader
@@ -421,6 +471,7 @@ function AvailablePage({ copy, language }) {
             product={product}
             copy={copy}
             language={language}
+            navigateTo={navigateTo}
           />
         ))}
       </div>
@@ -507,7 +558,7 @@ function ContactsPage({ copy }) {
   )
 }
 
-function ProductPage({ copy, language }) {
+function ProductPage({ copy, language, navigateTo }) {
   const title = language === 'bg' ? phoneLamp.titleBg : phoneLamp.titleEn
   const summary = language === 'bg' ? phoneLamp.summaryBg : phoneLamp.summaryEn
   const description =
@@ -516,7 +567,14 @@ function ProductPage({ copy, language }) {
 
   return (
     <section className="page product-detail-page">
-      <a className="back-link" href="#available">
+      <a
+        className="back-link"
+        href={pages.available[language]}
+        onClick={(event) => {
+          event.preventDefault()
+          navigateTo(pages.available[language])
+        }}
+      >
         {copy.product.back}
       </a>
       <div className="product-detail">
@@ -563,7 +621,7 @@ function ProductPage({ copy, language }) {
   )
 }
 
-function ProductCard({ product, copy, language }) {
+function ProductCard({ product, copy, language, navigateTo }) {
   const title = language === 'bg' ? product.titleBg : product.titleEn
   const summary = language === 'bg' ? product.summaryBg : product.summaryEn
   const isRealProduct = product.slug === phoneLamp.slug
@@ -571,7 +629,14 @@ function ProductCard({ product, copy, language }) {
   return (
     <article className="product-card">
       {isRealProduct ? (
-        <a className="product-image-link" href={`#lamp/${product.slug}`}>
+        <a
+          className="product-image-link"
+          href={pages.product[language]}
+          onClick={(event) => {
+            event.preventDefault()
+            navigateTo(pages.product[language])
+          }}
+        >
           <img src={product.images[0]} alt={title} />
         </a>
       ) : (
@@ -584,7 +649,14 @@ function ProductCard({ product, copy, language }) {
         <div className="product-actions">
           <span>{copy.product.price}</span>
           {isRealProduct ? (
-            <a className="button secondary" href={`#lamp/${product.slug}`}>
+            <a
+              className="button secondary"
+              href={pages.product[language]}
+              onClick={(event) => {
+                event.preventDefault()
+                navigateTo(pages.product[language])
+              }}
+            >
               {language === 'bg' ? 'Виж детайли' : 'View details'}
             </a>
           ) : (
