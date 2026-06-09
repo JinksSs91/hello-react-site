@@ -32,6 +32,10 @@ const localizedRoutes = {
     bg: '/lamps/red-ta-900-telephone-lamp',
     en: '/en/lamps/red-ta-900-telephone-lamp',
   },
+  soldProductPinkTelephone: {
+    bg: '/sold-lamps/pink-rotary-telephone-lamp',
+    en: '/en/sold-lamps/pink-rotary-telephone-lamp',
+  },
 }
 
 const phoneImageUrls = [
@@ -51,6 +55,12 @@ const viliaImageUrls = [
 const redTa900ImageUrls = [
   `${siteUrl}/images/red-ta-900-telephone-lamp-01.jpg`,
   `${siteUrl}/images/red-ta-900-telephone-lamp-02.jpg`,
+]
+
+const pinkTelephoneImageUrls = [
+  `${siteUrl}/images/pink-rotary-telephone-lamp-01.jpg`,
+  `${siteUrl}/images/pink-rotary-telephone-lamp-02.jpg`,
+  `${siteUrl}/images/pink-rotary-telephone-lamp-03.jpg`,
 ]
 
 const organizationSchema = {
@@ -79,7 +89,26 @@ function getProductSchema({
   description,
   url,
   category,
+  availability = 'InStock',
 }) {
+  const offers = {
+    '@type': 'Offer',
+    url: `${siteUrl}${url}`,
+    availability: `https://schema.org/${availability}`,
+    seller: {
+      '@type': 'Organization',
+      name: 'E&K Vintara Studio',
+    },
+  }
+
+  if (availability === 'InStock') {
+    offers.priceSpecification = {
+      '@type': 'PriceSpecification',
+      priceCurrency: 'BGN',
+      description: 'Price on request',
+    }
+  }
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -92,20 +121,7 @@ function getProductSchema({
     image,
     description,
     category,
-    offers: {
-      '@type': 'Offer',
-      url: `${siteUrl}${url}`,
-      availability: 'https://schema.org/InStock',
-      priceSpecification: {
-        '@type': 'PriceSpecification',
-        priceCurrency: 'BGN',
-        description: 'Price on request',
-      },
-      seller: {
-        '@type': 'Organization',
-        name: 'E&K Vintara Studio',
-      },
-    },
+    offers,
   }
 }
 
@@ -137,6 +153,17 @@ const redTa900ProductSchema = getProductSchema({
     'Handmade red TA-900 telephone lamp created from an original 1991 INCOMS retro telephone preserved in its original box.',
   category: 'Handmade vintage telephone lamp',
   url: localizedRoutes.productRedTa900.bg,
+})
+
+const pinkTelephoneProductSchema = getProductSchema({
+  name: 'Pink Rotary Telephone Lamp',
+  alternateName: 'Розов телефон с шайба',
+  image: pinkTelephoneImageUrls,
+  description:
+    'Sold handmade pink rotary telephone lamp with warm light and a one-of-a-kind retro design.',
+  category: 'Handmade vintage telephone lamp',
+  url: localizedRoutes.soldProductPinkTelephone.bg,
+  availability: 'SoldOut',
 })
 
 const seoPages = [
@@ -238,6 +265,17 @@ const seoPages = [
     isProduct: true,
   },
   {
+    key: 'soldProductPinkTelephone',
+    lang: 'bg',
+    path: localizedRoutes.soldProductPinkTelephone.bg,
+    title: 'Розов телефон с шайба | Продадена ръчно изработена ретро лампа',
+    description:
+      'Продадена ръчно изработена розова телефонна лампа с топла светлина и уникален дизайн за ретро интериори.',
+    schemas: [pinkTelephoneProductSchema],
+    image: 'pink-rotary-telephone-lamp-01.jpg',
+    isProduct: true,
+  },
+  {
     key: 'home',
     lang: 'en',
     path: localizedRoutes.home.en,
@@ -332,6 +370,17 @@ const seoPages = [
       'Available handmade red TA-900 telephone lamp made from an original 1991 INCOMS retro telephone preserved in its original box.',
     schemas: [redTa900ProductSchema],
     image: 'red-ta-900-telephone-lamp-01.jpg',
+    isProduct: true,
+  },
+  {
+    key: 'soldProductPinkTelephone',
+    lang: 'en',
+    path: localizedRoutes.soldProductPinkTelephone.en,
+    title: 'Pink Rotary Telephone Lamp | Sold handmade retro lamp',
+    description:
+      'Sold handmade pink rotary telephone lamp with warm light and a unique design for retro interiors.',
+    schemas: [pinkTelephoneProductSchema],
+    image: 'pink-rotary-telephone-lamp-01.jpg',
     isProduct: true,
   },
 ]

@@ -10,6 +10,9 @@ import viliaLamp03 from './assets/products/vilia-camera-lamp-03.jpg'
 import viliaLamp05 from './assets/products/vilia-camera-lamp-05.jpg'
 import redTa900Lamp01 from './assets/products/red-ta-900-telephone-lamp-01.jpg'
 import redTa900Lamp02 from './assets/products/red-ta-900-telephone-lamp-02.jpg'
+import pinkTelephoneLamp01 from './assets/products/pink-rotary-telephone-lamp-01.jpg'
+import pinkTelephoneLamp02 from './assets/products/pink-rotary-telephone-lamp-02.jpg'
+import pinkTelephoneLamp03 from './assets/products/pink-rotary-telephone-lamp-03.jpg'
 import homeHeroBlackPhone from './assets/home/home-hero-black-phone-clean.jpg'
 import homeWhitePhone from './assets/home/home-white-phone.jpg'
 import homeClockLamp from './assets/home/home-clock-lamp.jpg'
@@ -63,6 +66,10 @@ const productRoutes = {
     bg: '/lamps/red-ta-900-telephone-lamp',
     en: '/en/lamps/red-ta-900-telephone-lamp',
   },
+  'pink-rotary-telephone-lamp': {
+    bg: '/sold-lamps/pink-rotary-telephone-lamp',
+    en: '/en/sold-lamps/pink-rotary-telephone-lamp',
+  },
 }
 
 const content = {
@@ -111,6 +118,7 @@ const content = {
         'Ако харесаш продаден модел, можем да обсъдим сходна идея според наличните винтидж предмети.',
       badge: 'Продадено',
       cta: 'Попитай за подобна лампа',
+      details: 'Виж проекта',
     },
     categories: {
       label: 'Филтрирай по категория',
@@ -224,6 +232,11 @@ const content = {
       nextImage: 'Следваща снимка',
       imageCount: 'Снимка',
       imageCountOf: 'от',
+      sold: 'Продадено',
+      soldBack: 'Назад към продадените лампи',
+      soldCta: 'Попитай за подобна лампа',
+      soldHint:
+        'Харесва ти този модел? Пиши ни в Instagram, за да обсъдим подобна лампа.',
     },
     footer: 'ръчно изработени винтидж лампи',
   },
@@ -271,6 +284,7 @@ const content = {
         'If you like a sold piece, we can discuss a similar idea based on the vintage objects we currently have.',
       badge: 'Sold',
       cta: 'Ask for a similar lamp',
+      details: 'View project',
     },
     categories: {
       label: 'Filter by category',
@@ -385,6 +399,11 @@ const content = {
       nextImage: 'Next image',
       imageCount: 'Image',
       imageCountOf: 'of',
+      sold: 'Sold',
+      soldBack: 'Back to sold lamps',
+      soldCta: 'Ask for a similar lamp',
+      soldHint:
+        'Like this piece? Message us on Instagram to discuss a similar lamp.',
     },
     footer: 'handmade vintage lights',
   },
@@ -512,11 +531,45 @@ const redTa900Lamp = {
 }
 
 const availableProducts = [phoneLamp, viliaLamp, redTa900Lamp]
-const productBySlug = Object.fromEntries(
-  availableProducts.map((product) => [product.slug, product]),
-)
+
+const pinkTelephoneLamp = {
+  slug: 'pink-rotary-telephone-lamp',
+  routes: productRoutes['pink-rotary-telephone-lamp'],
+  category: 'retro-telephones',
+  status: 'sold',
+  titleBg: 'Розов телефон с шайба',
+  titleEn: 'Pink Rotary Telephone Lamp',
+  summaryBg:
+    'Ръчно изработена розова телефонна лампа с топла светлина и единствен по рода си дизайн.',
+  summaryEn:
+    'A handmade pink telephone lamp with warm light and a one-of-a-kind design.',
+  images: [pinkTelephoneLamp01, pinkTelephoneLamp02, pinkTelephoneLamp03],
+  descriptionBg: [
+    '✨ Ретро настроение с модерен чар ✨💡',
+    'Тази ръчно изработена лампа от винтидж телефон превръща всеки ъгъл в уютно и стилно място.',
+    'Перфектна за спалня, офис или подарък за човек с вкус към нестандартния декор. 💖',
+  ],
+  descriptionEn: [
+    '✨ Retro mood with modern charm ✨💡',
+    'This handmade lamp created from a vintage telephone turns any corner into a cozy and stylish space.',
+    'Perfect for a bedroom, office, or as a gift for someone who appreciates unconventional decor. 💖',
+  ],
+  featuresBg: [
+    'Ръчно изработена',
+    'Работеща лампа с топла светлина',
+    'Единствен по рода си дизайн',
+    'Идеална за ретро интериори',
+  ],
+  featuresEn: [
+    'Handmade',
+    'Working lamp with warm light',
+    'One-of-a-kind design',
+    'Perfect for retro interiors',
+  ],
+}
 
 const soldProducts = [
+  pinkTelephoneLamp,
   {
     slug: 'sold-retro-telephone-lamp',
     category: 'retro-telephones',
@@ -538,6 +591,13 @@ const soldProducts = [
       'Sold accent piece combining retro aesthetics with modern warm lighting.',
   },
 ]
+
+const productBySlug = Object.fromEntries(
+  [...availableProducts, pinkTelephoneLamp].map((product) => [
+    product.slug,
+    product,
+  ]),
+)
 
 function getRouteFromPath(pathname) {
   const normalizedPath = pathname.replace(/\/+$/, '') || '/'
@@ -639,6 +699,18 @@ function App() {
     navigateTo(`${destination}${categoryQuery}`)
   }
 
+  function isNavigationPageActive(navPage) {
+    if (page === navPage) {
+      return true
+    }
+
+    if (page !== 'product') {
+      return false
+    }
+
+    return navPage === (activeProduct?.status === 'sold' ? 'sold' : 'available')
+  }
+
   return (
     <div className="site-shell">
       <header className="site-header" ref={headerRef}>
@@ -657,7 +729,7 @@ function App() {
         <nav className="site-nav" aria-label="Main navigation">
           {navigationPages.map((navPage) => (
             <a
-              className={page === navPage || (page === 'product' && navPage === 'available') ? 'active' : ''}
+              className={isNavigationPageActive(navPage) ? 'active' : ''}
               key={navPage}
               href={pages[navPage][language]}
               onClick={(event) => {
@@ -706,7 +778,7 @@ function App() {
           <nav className="mobile-nav" aria-label="Mobile navigation">
             {navigationPages.map((navPage) => (
               <a
-                className={page === navPage || (page === 'product' && navPage === 'available') ? 'active' : ''}
+                className={isNavigationPageActive(navPage) ? 'active' : ''}
                 key={navPage}
                 href={pages[navPage][language]}
                 onClick={(event) => {
@@ -771,6 +843,7 @@ function App() {
         language={language}
         navigateTo={navigateTo}
         page={page}
+        productStatus={activeProduct?.status}
       />
     </div>
   )
@@ -915,26 +988,36 @@ function SoldPage({ category, copy, language, navigateTo }) {
       />
       {visibleProducts.length > 0 ? (
         <div className="product-grid">
-          {visibleProducts.map((product) => (
-            <article className="product-card sold-card" key={product.slug}>
-              <ProductPlaceholder label={copy.sold.badge} />
-              <div className="product-body">
-                <span className="status-badge">{copy.sold.badge}</span>
-                <h3>{language === 'bg' ? product.titleBg : product.titleEn}</h3>
-                <p>
-                  {language === 'bg' ? product.summaryBg : product.summaryEn}
-                </p>
-                <a
-                  className="button secondary"
-                  href={instagramUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {copy.sold.cta}
-                </a>
-              </div>
-            </article>
-          ))}
+          {visibleProducts.map((product) =>
+            product.images ? (
+              <SoldProductCard
+                copy={copy}
+                key={product.slug}
+                language={language}
+                navigateTo={navigateTo}
+                product={product}
+              />
+            ) : (
+              <article className="product-card sold-card" key={product.slug}>
+                <ProductPlaceholder label={copy.sold.badge} />
+                <div className="product-body">
+                  <span className="status-badge">{copy.sold.badge}</span>
+                  <h3>{language === 'bg' ? product.titleBg : product.titleEn}</h3>
+                  <p>
+                    {language === 'bg' ? product.summaryBg : product.summaryEn}
+                  </p>
+                  <a
+                    className="button secondary"
+                    href={instagramUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {copy.sold.cta}
+                  </a>
+                </div>
+              </article>
+            ),
+          )}
         </div>
       ) : (
         <EmptyCategory text={copy.categories.empty} />
@@ -1138,18 +1221,20 @@ function ProductPage({ copy, language, navigateTo, product }) {
   const description =
     language === 'bg' ? product.descriptionBg : product.descriptionEn
   const features = language === 'bg' ? product.featuresBg : product.featuresEn
+  const isSold = product.status === 'sold'
+  const backHref = isSold ? pages.sold[language] : pages.available[language]
 
   return (
     <section className="page product-detail-page">
       <a
         className="back-link"
-        href={pages.available[language]}
+        href={backHref}
         onClick={(event) => {
           event.preventDefault()
-          navigateTo(pages.available[language])
+          navigateTo(backHref)
         }}
       >
-        {copy.product.back}
+        {isSold ? copy.product.soldBack : copy.product.back}
       </a>
       <div className="product-detail">
         <ProductGallery
@@ -1158,10 +1243,12 @@ function ProductPage({ copy, language, navigateTo, product }) {
           copy={copy.product}
         />
         <div className="product-detail-copy">
-          <span className="status-badge available">{copy.product.available}</span>
+          <span className={`status-badge ${isSold ? '' : 'available'}`}>
+            {isSold ? copy.product.sold : copy.product.available}
+          </span>
           <h1>{title}</h1>
           <p className="hero-lead">{summary}</p>
-          <div className="price-line">{copy.product.price}</div>
+          {!isSold && <div className="price-line">{copy.product.price}</div>}
           <ul className="check-list">
             {features.map((feature) => (
               <li key={feature}>{feature}</li>
@@ -1172,14 +1259,16 @@ function ProductPage({ copy, language, navigateTo, product }) {
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-          <p className="dm-hint">{copy.product.dmHint}</p>
+          <p className="dm-hint">
+            {isSold ? copy.product.soldHint : copy.product.dmHint}
+          </p>
           <a
             className="button primary"
             href={instagramUrl}
             target="_blank"
             rel="noreferrer"
           >
-            {copy.product.cta}
+            {isSold ? copy.product.soldCta : copy.product.cta}
           </a>
         </div>
       </div>
@@ -1350,6 +1439,41 @@ function ProductCard({ product, copy, language, navigateTo }) {
   )
 }
 
+function SoldProductCard({ product, copy, language, navigateTo }) {
+  const title = language === 'bg' ? product.titleBg : product.titleEn
+  const summary = language === 'bg' ? product.summaryBg : product.summaryEn
+
+  return (
+    <article className="product-card sold-card">
+      <a
+        className="product-image-link"
+        href={product.routes[language]}
+        onClick={(event) => {
+          event.preventDefault()
+          navigateTo(product.routes[language])
+        }}
+      >
+        <img src={product.images[0]} alt={title} />
+      </a>
+      <div className="product-body">
+        <span className="status-badge">{copy.sold.badge}</span>
+        <h3>{title}</h3>
+        <p>{summary}</p>
+        <a
+          className="button secondary"
+          href={product.routes[language]}
+          onClick={(event) => {
+            event.preventDefault()
+            navigateTo(product.routes[language])
+          }}
+        >
+          {copy.sold.details}
+        </a>
+      </div>
+    </article>
+  )
+}
+
 function ProductPlaceholder({ label }) {
   return (
     <div className="product-placeholder">
@@ -1358,7 +1482,13 @@ function ProductPlaceholder({ label }) {
   )
 }
 
-function SiteFooter({ copy, language, navigateTo, page }) {
+function SiteFooter({
+  copy,
+  language,
+  navigateTo,
+  page,
+  productStatus,
+}) {
   return (
     <footer className="site-footer">
       <div className="footer-brand">
@@ -1369,7 +1499,13 @@ function SiteFooter({ copy, language, navigateTo, page }) {
       <nav className="footer-nav" aria-label="Footer navigation">
         {navigationPages.map((navPage) => (
           <a
-            className={page === navPage || (page === 'product' && navPage === 'available') ? 'active' : ''}
+            className={
+              page === navPage ||
+              (page === 'product' &&
+                navPage === (productStatus === 'sold' ? 'sold' : 'available'))
+                ? 'active'
+                : ''
+            }
             key={navPage}
             href={pages[navPage][language]}
             onClick={(event) => {
