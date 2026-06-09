@@ -16,6 +16,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/sold-lamps" />
   </url>
   <url>
+    <loc>https://ourvintagelights.com/customer-reviews</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/customer-reviews" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/customer-reviews" />
+  </url>
+  <url>
     <loc>https://ourvintagelights.com/about-us</loc>
     <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/about-us" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/about-us" />
@@ -54,6 +59,11 @@
     <loc>https://ourvintagelights.com/en/sold-lamps</loc>
     <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/sold-lamps" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/sold-lamps" />
+  </url>
+  <url>
+    <loc>https://ourvintagelights.com/en/customer-reviews</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/customer-reviews" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/customer-reviews" />
   </url>
   <url>
     <loc>https://ourvintagelights.com/en/about-us</loc>

@@ -10,7 +10,7 @@ import viliaLamp03 from './assets/products/vilia-camera-lamp-03.jpg'
 import viliaLamp05 from './assets/products/vilia-camera-lamp-05.jpg'
 import redTa900Lamp01 from './assets/products/red-ta-900-telephone-lamp-01.jpg'
 import redTa900Lamp02 from './assets/products/red-ta-900-telephone-lamp-02.jpg'
-import homeHeroBlackPhone from './assets/home/home-hero-black-phone.jpg'
+import homeHeroBlackPhone from './assets/home/home-hero-black-phone-clean.jpg'
 import homeWhitePhone from './assets/home/home-white-phone.jpg'
 import homeClockLamp from './assets/home/home-clock-lamp.jpg'
 import homeBluePhone from './assets/home/home-blue-phone.jpg'
@@ -19,12 +19,20 @@ import './App.css'
 const instagramUrl = 'https://www.instagram.com/our.vintage.lights/'
 const emailAddress = 'vintarastudio@yahoo.com'
 const viberPhone = '+359899161880'
-const navigationPages = ['home', 'available', 'sold', 'about', 'contacts']
+const navigationPages = [
+  'home',
+  'available',
+  'sold',
+  'reviews',
+  'about',
+  'contacts',
+]
 
 const pages = {
   home: { bg: '/', en: '/en' },
   available: { bg: '/available-lamps', en: '/en/available-lamps' },
   sold: { bg: '/sold-lamps', en: '/en/sold-lamps' },
+  reviews: { bg: '/customer-reviews', en: '/en/customer-reviews' },
   about: { bg: '/about-us', en: '/en/about-us' },
   contacts: { bg: '/contacts', en: '/en/contacts' },
 }
@@ -51,10 +59,12 @@ const content = {
       home: 'Начало',
       available: 'Налични лампи',
       sold: 'Продадени лампи',
+      reviews: 'Отзиви от клиенти',
       about: 'За нас',
       contacts: 'Контакти',
     },
     home: {
+      slogan: 'Втори живот за забравената техника',
       kicker: 'Ръчна изработка с внимание към всеки детайл',
       title: 'Осветление с история',
       intro:
@@ -86,6 +96,30 @@ const content = {
         'Ако харесаш продаден модел, можем да обсъдим сходна идея според наличните винтидж предмети.',
       badge: 'Продадено',
       cta: 'Попитай за подобна лампа',
+    },
+    reviews: {
+      kicker: 'Отзиви от клиенти',
+      title: 'Историите продължават в домовете на нашите клиенти.',
+      text:
+        'Тук ще споделяме снимки, Instagram stories и автентична обратна връзка от хората, избрали лампа на E&K Vintara Studio.',
+      upcoming: 'Очаквайте скоро',
+      cards: [
+        [
+          'Instagram stories',
+          'Споделени моменти с лампите в техния нов дом.',
+          'story',
+        ],
+        [
+          'Писмени отзиви',
+          'Реални впечатления за изработката, светлината и доставката.',
+          'message',
+        ],
+        [
+          'Снимки от клиенти',
+          'Автентични кадри на завършените лампи в различни интериори.',
+          'photo',
+        ],
+      ],
     },
     about: {
       kicker: 'За нас',
@@ -119,6 +153,12 @@ const content = {
       details: 'Виж детайли',
       gallery: 'Допълнителни снимки',
       dmHint: 'Пиши ни на лично в Instagram и изпрати името на продукта.',
+      openImage: 'Отвори снимка',
+      closeGallery: 'Затвори галерията',
+      previousImage: 'Предишна снимка',
+      nextImage: 'Следваща снимка',
+      imageCount: 'Снимка',
+      imageCountOf: 'от',
     },
     footer: 'ръчно изработени винтидж лампи',
   },
@@ -128,10 +168,12 @@ const content = {
       home: 'Home',
       available: 'Available Lamps',
       sold: 'Sold Lamps',
+      reviews: 'Customer Reviews',
       about: 'About us',
       contacts: 'Contacts',
     },
     home: {
+      slogan: 'A second life for forgotten technology',
       kicker: 'Handmade with attention to every detail',
       title: 'Lighting with a story',
       intro:
@@ -162,6 +204,30 @@ const content = {
         'If you like a sold piece, we can discuss a similar idea based on the vintage objects we currently have.',
       badge: 'Sold',
       cta: 'Ask for a similar lamp',
+    },
+    reviews: {
+      kicker: 'Customer Reviews',
+      title: 'The stories continue in our customers’ homes.',
+      text:
+        'Here we will share photos, Instagram stories, and authentic feedback from people who chose an E&K Vintara Studio lamp.',
+      upcoming: 'Coming soon',
+      cards: [
+        [
+          'Instagram stories',
+          'Shared moments featuring the lamps in their new homes.',
+          'story',
+        ],
+        [
+          'Written reviews',
+          'Real impressions of the craftsmanship, light, and delivery.',
+          'message',
+        ],
+        [
+          'Customer photos',
+          'Authentic images of finished lamps in different interiors.',
+          'photo',
+        ],
+      ],
     },
     about: {
       kicker: 'About us',
@@ -195,6 +261,12 @@ const content = {
       details: 'View details',
       gallery: 'Additional photos',
       dmHint: 'Message us on Instagram and send the product name.',
+      openImage: 'Open image',
+      closeGallery: 'Close gallery',
+      previousImage: 'Previous image',
+      nextImage: 'Next image',
+      imageCount: 'Image',
+      imageCountOf: 'of',
     },
     footer: 'handmade vintage lights',
   },
@@ -529,6 +601,7 @@ function App() {
           <AvailablePage copy={copy} language={language} navigateTo={navigateTo} />
         )}
         {page === 'sold' && <SoldPage copy={copy} language={language} />}
+        {page === 'reviews' && <ReviewsPage copy={copy} />}
         {page === 'about' && <AboutPage copy={copy} />}
         {page === 'contacts' && <ContactsPage copy={copy} />}
         {page === 'product' && activeProduct && (
@@ -554,6 +627,8 @@ function App() {
 function HomePage({ copy, language, navigateTo }) {
   return (
     <section className="page home-page">
+      <p className="home-slogan">{copy.home.slogan}</p>
+
       <div className="hero-panel">
         <div className="hero-copy">
           <p className="kicker">{copy.home.kicker}</p>
@@ -585,7 +660,6 @@ function HomePage({ copy, language, navigateTo }) {
         </div>
         <figure className="hero-image-card">
           <img src={homeHeroBlackPhone} alt={copy.home.imageStripTitle} />
-          <figcaption>{copy.home.imageStripTitle}</figcaption>
         </figure>
       </div>
 
@@ -685,15 +759,45 @@ function SoldPage({ copy, language }) {
   )
 }
 
+function ReviewsPage({ copy }) {
+  return (
+    <section className="page reviews-page">
+      <PageHeader
+        kicker={copy.reviews.kicker}
+        title={copy.reviews.title}
+        text={copy.reviews.text}
+      />
+      <div className="reviews-grid">
+        {copy.reviews.cards.map(([title, text, type]) => (
+          <article className="review-card" key={title}>
+            <div className={`review-preview ${type}`} aria-hidden="true">
+              <span className="review-preview-mark">
+                {type === 'story' ? 'STORY' : type === 'message' ? 'DM' : 'PHOTO'}
+              </span>
+              <span className="review-preview-line"></span>
+              <span className="review-preview-line short"></span>
+            </div>
+            <div className="review-copy">
+              <span className="status-badge">{copy.reviews.upcoming}</span>
+              <h2>{title}</h2>
+              <p>{text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function AboutPage({ copy }) {
   return (
-    <section className="page split-page">
-      <div>
-        <p className="kicker">{copy.about.kicker}</p>
-        <h1>{copy.about.title}</h1>
-      </div>
+    <section className="page about-page">
+      <PageHeader
+        kicker={copy.about.kicker}
+        title={copy.about.title}
+        text={copy.about.text}
+      />
       <div className="text-panel">
-        <p>{copy.about.text}</p>
         <ul className="pill-list">
           {copy.about.points.map((point) => (
             <li key={point}>{point}</li>
@@ -756,19 +860,11 @@ function ProductPage({ copy, language, navigateTo, product }) {
         {copy.product.back}
       </a>
       <div className="product-detail">
-        <div className="product-gallery">
-          <img className="main-product-image" src={product.images[0]} alt={title} />
-          <h2>{copy.product.gallery}</h2>
-          <div className="gallery-grid">
-            {product.images.slice(1).map((image, index) => (
-              <img
-                key={image}
-                src={image}
-                alt={`${title} ${index + 2}`}
-              />
-            ))}
-          </div>
-        </div>
+        <ProductGallery
+          images={product.images}
+          title={title}
+          copy={copy.product}
+        />
         <div className="product-detail-copy">
           <span className="status-badge available">{copy.product.available}</span>
           <h1>{title}</h1>
@@ -796,6 +892,131 @@ function ProductPage({ copy, language, navigateTo, product }) {
         </div>
       </div>
     </section>
+  )
+}
+
+function ProductGallery({ images, title, copy }) {
+  const [activeImageIndex, setActiveImageIndex] = useState(null)
+  const isOpen = activeImageIndex !== null
+
+  useEffect(() => {
+    if (!isOpen) {
+      return undefined
+    }
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    function handleKeyDown(event) {
+      if (event.key === 'Escape') {
+        setActiveImageIndex(null)
+      }
+
+      if (event.key === 'ArrowLeft') {
+        setActiveImageIndex((current) =>
+          current === 0 ? images.length - 1 : current - 1,
+        )
+      }
+
+      if (event.key === 'ArrowRight') {
+        setActiveImageIndex((current) => (current + 1) % images.length)
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [images.length, isOpen])
+
+  function showPreviousImage() {
+    setActiveImageIndex((current) =>
+      current === 0 ? images.length - 1 : current - 1,
+    )
+  }
+
+  function showNextImage() {
+    setActiveImageIndex((current) => (current + 1) % images.length)
+  }
+
+  return (
+    <>
+      <div className="product-gallery">
+        <button
+          className="gallery-image-button main"
+          type="button"
+          onClick={() => setActiveImageIndex(0)}
+          aria-label={`${copy.openImage}: ${title} 1`}
+        >
+          <img className="main-product-image" src={images[0]} alt={title} />
+        </button>
+        <h2>{copy.gallery}</h2>
+        <div className="gallery-grid">
+          {images.slice(1).map((image, index) => (
+            <button
+              className="gallery-image-button"
+              type="button"
+              key={image}
+              onClick={() => setActiveImageIndex(index + 1)}
+              aria-label={`${copy.openImage}: ${title} ${index + 2}`}
+            >
+              <img src={image} alt={`${title} ${index + 2}`} />
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {isOpen && (
+        <div
+          className="lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${copy.gallery}: ${title}`}
+          onClick={(event) => {
+            if (event.target === event.currentTarget) {
+              setActiveImageIndex(null)
+            }
+          }}
+        >
+          <button
+            className="lightbox-control close"
+            type="button"
+            onClick={() => setActiveImageIndex(null)}
+            aria-label={copy.closeGallery}
+          >
+            ×
+          </button>
+          <button
+            className="lightbox-control previous"
+            type="button"
+            onClick={showPreviousImage}
+            aria-label={copy.previousImage}
+          >
+            ‹
+          </button>
+          <figure className="lightbox-figure">
+            <img
+              src={images[activeImageIndex]}
+              alt={`${title} ${activeImageIndex + 1}`}
+            />
+            <figcaption>
+              {copy.imageCount} {activeImageIndex + 1} {copy.imageCountOf}{' '}
+              {images.length}
+            </figcaption>
+          </figure>
+          <button
+            className="lightbox-control next"
+            type="button"
+            onClick={showNextImage}
+            aria-label={copy.nextImage}
+          >
+            ›
+          </button>
+        </div>
+      )}
+    </>
   )
 }
 

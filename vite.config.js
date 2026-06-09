@@ -15,6 +15,7 @@ const localizedRoutes = {
   home: { bg: '/', en: '/en' },
   available: { bg: '/available-lamps', en: '/en/available-lamps' },
   sold: { bg: '/sold-lamps', en: '/en/sold-lamps' },
+  reviews: { bg: '/customer-reviews', en: '/en/customer-reviews' },
   about: { bg: '/about-us', en: '/en/about-us' },
   contacts: { bg: '/contacts', en: '/en/contacts' },
   productTelephone: {
@@ -162,6 +163,14 @@ const seoPages = [
       'Архив от продадени ретро лампи и upcycling проекти. Вдъхновение за custom винтидж осветление по идея.',
   },
   {
+    key: 'reviews',
+    lang: 'bg',
+    path: localizedRoutes.reviews.bg,
+    title: 'Отзиви от клиенти | E&K Vintara Studio',
+    description:
+      'Снимки, Instagram stories и автентична обратна връзка от клиенти на E&K Vintara Studio и техните ръчно изработени винтидж лампи.',
+  },
+  {
     key: 'about',
     lang: 'bg',
     path: localizedRoutes.about.bg,
@@ -233,6 +242,14 @@ const seoPages = [
     title: 'Sold retro lamps | E&K Vintara Studio',
     description:
       'Explore sold retro lamp projects and upcycled lighting ideas from E&K Vintara Studio.',
+  },
+  {
+    key: 'reviews',
+    lang: 'en',
+    path: localizedRoutes.reviews.en,
+    title: 'Customer Reviews | E&K Vintara Studio',
+    description:
+      'Customer photos, Instagram stories, and authentic feedback about handmade vintage lamps by E&K Vintara Studio.',
   },
   {
     key: 'about',
