@@ -140,12 +140,26 @@ const content = {
       kicker: 'Медиите за нас',
       title: 'Историите зад лампите, разказани в медиите.',
       text:
-        'Тук ще публикуваме статии, интервюта и медийни материали за E&K Vintara Studio.',
-      upcoming: 'Очаквайте скоро',
+        'Статии и медийни публикации за E&K Vintara Studio, хората зад проекта и втория живот на забравената техника.',
+      cta: 'Прочети статията',
       cards: [
-        ['Статии', 'Публикации за нашата работа, идеи и upcycling подход.'],
-        ['Интервюта', 'Разговори за процеса, вдъхновението и предметите с история.'],
-        ['Медийни участия', 'Видео, радио и онлайн материали с линк към оригиналната публикация.'],
+        {
+          publication: 'RegNews',
+          date: '4 май 2026 г.',
+          title:
+            'Ретрото може не само да е модерно, но и да блести – доказват го Ели и Калоян',
+          summary:
+            'Историята на Ели и Калоян, идеята да спасят старите предмети от забравата и превръщането им в лампи с характер.',
+          url: 'https://www.regnews.net/news/17778929987450/retroto-mozhe-ne-samo-da-e-moderno-no-i-da-blesti-dokazvat-go-eli-i-kaloyan-',
+        },
+        {
+          publication: 'България Днес',
+          date: '20 май 2026 г.',
+          title: 'Годеници правят лампи от стари телефони',
+          summary:
+            'Публикация за началото на творческия проект и новия живот на стари телефони, радиа, фотоапарати и настолни часовници.',
+          url: 'https://www.bgdnes.bg/bulgaria/article/22879771',
+        },
       ],
     },
     reviews: {
@@ -286,12 +300,27 @@ const content = {
       kicker: 'In the Media',
       title: 'The stories behind the lamps, shared by the media.',
       text:
-        'Here we will publish articles, interviews, and media features about E&K Vintara Studio.',
-      upcoming: 'Coming soon',
+        'Articles and media coverage about E&K Vintara Studio, the people behind the project, and the second life of forgotten technology.',
+      cta: 'Read article',
+      languageNote: 'Article in Bulgarian',
       cards: [
-        ['Articles', 'Features about our work, ideas, and upcycling approach.'],
-        ['Interviews', 'Conversations about our process, inspiration, and objects with history.'],
-        ['Media features', 'Video, radio, and online coverage linked to the original publication.'],
+        {
+          publication: 'RegNews',
+          date: 'May 4, 2026',
+          title:
+            'Ретрото може не само да е модерно, но и да блести – доказват го Ели и Калоян',
+          summary:
+            'The story of Eli and Kaloyan, their idea to save old objects from being forgotten, and their transformation into lamps with character.',
+          url: 'https://www.regnews.net/news/17778929987450/retroto-mozhe-ne-samo-da-e-moderno-no-i-da-blesti-dokazvat-go-eli-i-kaloyan-',
+        },
+        {
+          publication: 'България Днес',
+          date: 'May 20, 2026',
+          title: 'Годеници правят лампи от стари телефони',
+          summary:
+            'A feature about the beginning of the creative project and the new life given to old telephones, radios, cameras, and desk clocks.',
+          url: 'https://www.bgdnes.bg/bulgaria/article/22879771',
+        },
       ],
     },
     reviews: {
@@ -959,7 +988,40 @@ function MarketsPage({ copy }) {
 }
 
 function MediaPage({ copy }) {
-  return <EditorialPlaceholderPage content={copy.media} type="media" />
+  return (
+    <section className="page editorial-page media-page">
+      <PageHeader
+        kicker={copy.media.kicker}
+        title={copy.media.title}
+        text={copy.media.text}
+      />
+      <div className="media-article-grid">
+        {copy.media.cards.map((article) => (
+          <article className="media-article-card" key={article.url}>
+            <div className="media-article-masthead">
+              <span>{article.publication}</span>
+              <time>{article.date}</time>
+            </div>
+            <div className="media-article-copy">
+              {copy.media.languageNote && (
+                <span className="status-badge">{copy.media.languageNote}</span>
+              )}
+              <h2>{article.title}</h2>
+              <p>{article.summary}</p>
+              <a
+                className="button secondary"
+                href={article.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {copy.media.cta}
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
 }
 
 function EditorialPlaceholderPage({ content, type }) {
