@@ -9,7 +9,8 @@
   z-index: 20;
   display: grid;
   grid-template-columns: minmax(150px, 1fr) auto minmax(150px, 1fr);
-  gap: 24px;
+  grid-template-rows: auto auto;
+  gap: 8px 24px;
   align-items: center;
   width: 100%;
   padding: 14px clamp(24px, 3vw, 40px);
@@ -24,6 +25,8 @@
   height: 58px;
   overflow: hidden;
   border-radius: 50%;
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .brand-logo img {
@@ -34,6 +37,9 @@
 
 .site-nav {
   display: flex;
+  grid-column: 1 / -1;
+  grid-row: 2;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 4px;
 }
@@ -62,6 +68,8 @@
   align-items: center;
   justify-self: end;
   gap: 8px;
+  grid-column: 3;
+  grid-row: 1;
 }
 
 .language-select select {
@@ -413,6 +421,56 @@
   margin-bottom: 32px;
 }
 
+.category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: -6px 0 32px;
+}
+
+.category-filters a {
+  padding: 10px 15px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 253, 247, 0.7);
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 850;
+  text-decoration: none;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.category-filters a:hover,
+.category-filters a.active {
+  border-color: rgba(154, 80, 54, 0.34);
+  background: var(--espresso);
+  color: var(--paper);
+  transform: translateY(-1px);
+}
+
+.empty-category {
+  display: grid;
+  min-height: 220px;
+  place-items: center;
+  padding: 36px;
+  border: 1px dashed rgba(154, 80, 54, 0.32);
+  border-radius: 30px;
+  background: rgba(255, 253, 247, 0.56);
+  color: var(--muted);
+  text-align: center;
+}
+
+.empty-category p {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 750;
+}
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -427,6 +485,69 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
+}
+
+.editorial-page {
+  min-height: calc(100vh - 200px);
+}
+
+.editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.editorial-card {
+  display: grid;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background: rgba(255, 253, 247, 0.78);
+  box-shadow: var(--shadow-soft);
+}
+
+.editorial-preview {
+  display: grid;
+  min-height: 260px;
+  place-items: end start;
+  padding: 26px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.12), transparent 48%),
+    linear-gradient(145deg, #39332d, #93624c 58%, #d7b18c);
+}
+
+.editorial-preview.media {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.2), transparent 52%),
+    linear-gradient(145deg, #27332f, #6e7767 58%, #c9aa82);
+}
+
+.editorial-preview span {
+  color: rgba(255, 253, 247, 0.92);
+  font-size: 3.5rem;
+  font-weight: 900;
+}
+
+.editorial-copy {
+  display: grid;
+  gap: 14px;
+  padding: 26px;
+}
+
+.editorial-copy h2,
+.editorial-copy p {
+  margin: 0;
+}
+
+.editorial-copy h2 {
+  font-size: 1.45rem;
+  line-height: 1.15;
+}
+
+.editorial-copy p {
+  color: var(--muted);
+  line-height: 1.7;
 }
 
 .review-card {
@@ -649,6 +770,13 @@
   overflow-wrap: anywhere;
   color: var(--ink);
   font-size: clamp(1.3rem, 3vw, 2rem);
+}
+
+.contact-card .email-value {
+  font-size: clamp(0.92rem, 1.55vw, 1.45rem);
+  letter-spacing: 0;
+  overflow-wrap: normal;
+  white-space: nowrap;
 }
 
 .back-link {
@@ -950,8 +1078,14 @@
 @media (max-width: 1120px) {
   .site-header {
     grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto;
     gap: 16px;
     padding-inline: 20px;
+  }
+
+  .brand-logo {
+    grid-column: 1;
+    grid-row: 1;
   }
 
   .site-nav {
@@ -964,6 +1098,8 @@
 
   .menu-toggle {
     display: inline-grid;
+    grid-column: 3;
+    grid-row: 1;
     justify-self: end;
   }
 
@@ -981,6 +1117,7 @@
   .info-grid,
   .highlight-grid,
   .reviews-grid,
+  .editorial-grid,
   .split-page,
   .contact-grid,
   .cta-band,
@@ -998,6 +1135,10 @@
 
   .footer-nav {
     flex-wrap: wrap;
+  }
+
+  .category-filters {
+    justify-content: flex-start;
   }
 
   .hero-panel {
@@ -1088,6 +1229,16 @@
   .product-grid,
   .gallery-grid {
     grid-template-columns: 1fr;
+  }
+
+  .category-filters {
+    gap: 8px;
+    margin-bottom: 26px;
+  }
+
+  .category-filters a {
+    padding: 9px 12px;
+    font-size: 0.84rem;
   }
 
   .product-image-link,

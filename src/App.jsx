@@ -23,15 +23,28 @@ const navigationPages = [
   'home',
   'available',
   'sold',
+  'markets',
+  'media',
   'reviews',
   'about',
   'contacts',
+]
+
+const productCategories = [
+  'all',
+  'retro-telephones',
+  'radios',
+  'cameras',
+  'desk-clocks',
+  'other',
 ]
 
 const pages = {
   home: { bg: '/', en: '/en' },
   available: { bg: '/available-lamps', en: '/en/available-lamps' },
   sold: { bg: '/sold-lamps', en: '/en/sold-lamps' },
+  markets: { bg: '/art-markets', en: '/en/art-markets' },
+  media: { bg: '/media-about-us', en: '/en/media-about-us' },
   reviews: { bg: '/customer-reviews', en: '/en/customer-reviews' },
   about: { bg: '/about-us', en: '/en/about-us' },
   contacts: { bg: '/contacts', en: '/en/contacts' },
@@ -59,6 +72,8 @@ const content = {
       home: 'Начало',
       available: 'Налични лампи',
       sold: 'Продадени лампи',
+      markets: 'Участия в базари',
+      media: 'Медиите за нас',
       reviews: 'Отзиви от клиенти',
       about: 'За нас',
       contacts: 'Контакти',
@@ -96,6 +111,42 @@ const content = {
         'Ако харесаш продаден модел, можем да обсъдим сходна идея според наличните винтидж предмети.',
       badge: 'Продадено',
       cta: 'Попитай за подобна лампа',
+    },
+    categories: {
+      label: 'Филтрирай по категория',
+      empty: 'В тази категория все още няма добавени лампи.',
+      items: {
+        all: 'Всички',
+        'retro-telephones': 'Ретро телефони',
+        radios: 'Радиа',
+        cameras: 'Фотоапарати',
+        'desk-clocks': 'Настолни часовници',
+        other: 'Други',
+      },
+    },
+    markets: {
+      kicker: 'Участия в базари',
+      title: 'Срещи на живо с хора, които ценят различното.',
+      text:
+        'Тук ще споделяме снимки, видеа и моменти от арт базари, изложения и творчески събития, в които участваме.',
+      upcoming: 'Очаквайте скоро',
+      cards: [
+        ['Снимки от базари', 'Кадри от щанда, атмосферата и представените лампи.'],
+        ['Видео моменти', 'Кратки видеа от събитията и срещите с посетители.'],
+        ['Предстоящи участия', 'Информация къде и кога ще можете да ни откриете на живо.'],
+      ],
+    },
+    media: {
+      kicker: 'Медиите за нас',
+      title: 'Историите зад лампите, разказани в медиите.',
+      text:
+        'Тук ще публикуваме статии, интервюта и медийни материали за E&K Vintara Studio.',
+      upcoming: 'Очаквайте скоро',
+      cards: [
+        ['Статии', 'Публикации за нашата работа, идеи и upcycling подход.'],
+        ['Интервюта', 'Разговори за процеса, вдъхновението и предметите с история.'],
+        ['Медийни участия', 'Видео, радио и онлайн материали с линк към оригиналната публикация.'],
+      ],
     },
     reviews: {
       kicker: 'Отзиви от клиенти',
@@ -168,6 +219,8 @@ const content = {
       home: 'Home',
       available: 'Available Lamps',
       sold: 'Sold Lamps',
+      markets: 'Art Markets',
+      media: 'In the Media',
       reviews: 'Customer Reviews',
       about: 'About us',
       contacts: 'Contacts',
@@ -204,6 +257,42 @@ const content = {
         'If you like a sold piece, we can discuss a similar idea based on the vintage objects we currently have.',
       badge: 'Sold',
       cta: 'Ask for a similar lamp',
+    },
+    categories: {
+      label: 'Filter by category',
+      empty: 'There are no lamps in this category yet.',
+      items: {
+        all: 'All',
+        'retro-telephones': 'Retro Telephones',
+        radios: 'Radios',
+        cameras: 'Cameras',
+        'desk-clocks': 'Desk Clocks',
+        other: 'Other',
+      },
+    },
+    markets: {
+      kicker: 'Art Markets',
+      title: 'Meeting people who appreciate something different.',
+      text:
+        'Here we will share photos, videos, and moments from art markets, exhibitions, and creative events we take part in.',
+      upcoming: 'Coming soon',
+      cards: [
+        ['Market photos', 'Images of our stand, the atmosphere, and the lamps on display.'],
+        ['Video moments', 'Short videos from events and our meetings with visitors.'],
+        ['Upcoming events', 'Information about where and when you can meet us in person.'],
+      ],
+    },
+    media: {
+      kicker: 'In the Media',
+      title: 'The stories behind the lamps, shared by the media.',
+      text:
+        'Here we will publish articles, interviews, and media features about E&K Vintara Studio.',
+      upcoming: 'Coming soon',
+      cards: [
+        ['Articles', 'Features about our work, ideas, and upcycling approach.'],
+        ['Interviews', 'Conversations about our process, inspiration, and objects with history.'],
+        ['Media features', 'Video, radio, and online coverage linked to the original publication.'],
+      ],
     },
     reviews: {
       kicker: 'Customer Reviews',
@@ -275,6 +364,7 @@ const content = {
 const phoneLamp = {
   slug: 'retro-telephone-lamp',
   routes: productRoutes['retro-telephone-lamp'],
+  category: 'retro-telephones',
   titleBg: 'Телефон с шайба от 70-те години на 20 век',
   titleEn: '1970s Rotary Telephone Lamp',
   summaryBg:
@@ -317,6 +407,7 @@ const phoneLamp = {
 const viliaLamp = {
   slug: 'vilia-camera-lamp',
   routes: productRoutes['vilia-camera-lamp'],
+  category: 'cameras',
   titleBg: 'Фотоапарат Вилия от 1980г.',
   titleEn: 'Vilia Camera from 1980',
   summaryBg:
@@ -351,6 +442,7 @@ const viliaLamp = {
 const redTa900Lamp = {
   slug: 'red-ta-900-telephone-lamp',
   routes: productRoutes['red-ta-900-telephone-lamp'],
+  category: 'retro-telephones',
   titleBg: 'Чисто нов червен телефон с шайба от 1991г',
   titleEn: 'Brand New Red Rotary Telephone from 1991',
   summaryBg:
@@ -398,6 +490,7 @@ const productBySlug = Object.fromEntries(
 const soldProducts = [
   {
     slug: 'sold-retro-telephone-lamp',
+    category: 'retro-telephones',
     titleBg: 'Ретро телефон лампа',
     titleEn: 'Retro Telephone Lamp',
     summaryBg:
@@ -407,6 +500,7 @@ const soldProducts = [
   },
   {
     slug: 'sold-retro-phone-decor-light',
+    category: 'retro-telephones',
     titleBg: 'Ретро телефонна декор лампа',
     titleEn: 'Retro Phone Decor Light',
     summaryBg:
@@ -443,6 +537,13 @@ function getRouteFromPath(pathname) {
     language,
     page: routeEntry?.[0] || 'home',
     productSlug: null,
+    category:
+      ['available', 'sold'].includes(routeEntry?.[0]) &&
+      productCategories.includes(
+        new URLSearchParams(window.location.search).get('category'),
+      )
+        ? new URLSearchParams(window.location.search).get('category')
+        : 'all',
   }
 }
 
@@ -451,6 +552,7 @@ function App() {
   const [language, setLanguage] = useState(initialRoute.language)
   const [page, setPage] = useState(initialRoute.page)
   const [productSlug, setProductSlug] = useState(initialRoute.productSlug)
+  const [category, setCategory] = useState(initialRoute.category || 'all')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const headerRef = useRef(null)
   const copy = content[language]
@@ -462,6 +564,7 @@ function App() {
       setLanguage(nextRoute.language)
       setPage(nextRoute.page)
       setProductSlug(nextRoute.productSlug)
+      setCategory(nextRoute.category || 'all')
     }
 
     window.addEventListener('popstate', handleRouteChange)
@@ -489,6 +592,7 @@ function App() {
     setLanguage(nextRoute.language)
     setPage(nextRoute.page)
     setProductSlug(nextRoute.productSlug)
+    setCategory(nextRoute.category || 'all')
     setIsMenuOpen(false)
   }
 
@@ -498,7 +602,12 @@ function App() {
       return
     }
 
-    navigateTo(pages[page][event.target.value])
+    const destination = pages[page][event.target.value]
+    const categoryQuery =
+      ['available', 'sold'].includes(page) && category !== 'all'
+        ? `?category=${category}`
+        : ''
+    navigateTo(`${destination}${categoryQuery}`)
   }
 
   return (
@@ -598,9 +707,23 @@ function App() {
       <main>
         {page === 'home' && <HomePage copy={copy} language={language} navigateTo={navigateTo} />}
         {page === 'available' && (
-          <AvailablePage copy={copy} language={language} navigateTo={navigateTo} />
+          <AvailablePage
+            category={category}
+            copy={copy}
+            language={language}
+            navigateTo={navigateTo}
+          />
         )}
-        {page === 'sold' && <SoldPage copy={copy} language={language} />}
+        {page === 'sold' && (
+          <SoldPage
+            category={category}
+            copy={copy}
+            language={language}
+            navigateTo={navigateTo}
+          />
+        )}
+        {page === 'markets' && <MarketsPage copy={copy} />}
+        {page === 'media' && <MediaPage copy={copy} />}
         {page === 'reviews' && <ReviewsPage copy={copy} />}
         {page === 'about' && <AboutPage copy={copy} />}
         {page === 'contacts' && <ContactsPage copy={copy} />}
@@ -702,7 +825,12 @@ function HomePage({ copy, language, navigateTo }) {
   )
 }
 
-function AvailablePage({ copy, language, navigateTo }) {
+function AvailablePage({ category, copy, language, navigateTo }) {
+  const visibleProducts =
+    category === 'all'
+      ? availableProducts
+      : availableProducts.filter((product) => product.category === category)
+
   return (
     <section className="page">
       <PageHeader
@@ -710,22 +838,38 @@ function AvailablePage({ copy, language, navigateTo }) {
         title={copy.available.title}
         text={copy.available.text}
       />
-      <div className="product-grid">
-        {availableProducts.map((product) => (
-          <ProductCard
-            key={product.slug}
-            product={product}
-            copy={copy}
-            language={language}
-            navigateTo={navigateTo}
-          />
-        ))}
-      </div>
+      <CategoryFilters
+        activeCategory={category}
+        copy={copy.categories}
+        language={language}
+        navigateTo={navigateTo}
+        page="available"
+      />
+      {visibleProducts.length > 0 ? (
+        <div className="product-grid">
+          {visibleProducts.map((product) => (
+            <ProductCard
+              key={product.slug}
+              product={product}
+              copy={copy}
+              language={language}
+              navigateTo={navigateTo}
+            />
+          ))}
+        </div>
+      ) : (
+        <EmptyCategory text={copy.categories.empty} />
+      )}
     </section>
   )
 }
 
-function SoldPage({ copy, language }) {
+function SoldPage({ category, copy, language, navigateTo }) {
+  const visibleProducts =
+    category === 'all'
+      ? soldProducts
+      : soldProducts.filter((product) => product.category === category)
+
   return (
     <section className="page">
       <PageHeader
@@ -733,24 +877,109 @@ function SoldPage({ copy, language }) {
         title={copy.sold.title}
         text={copy.sold.text}
       />
-      <div className="product-grid">
-        {soldProducts.map((product) => (
-          <article className="product-card sold-card" key={product.slug}>
-            <ProductPlaceholder label={copy.sold.badge} />
-            <div className="product-body">
-              <span className="status-badge">{copy.sold.badge}</span>
-              <h3>{language === 'bg' ? product.titleBg : product.titleEn}</h3>
-              <p>
-                {language === 'bg' ? product.summaryBg : product.summaryEn}
-              </p>
-              <a
-                className="button secondary"
-                href={instagramUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {copy.sold.cta}
-              </a>
+      <CategoryFilters
+        activeCategory={category}
+        copy={copy.categories}
+        language={language}
+        navigateTo={navigateTo}
+        page="sold"
+      />
+      {visibleProducts.length > 0 ? (
+        <div className="product-grid">
+          {visibleProducts.map((product) => (
+            <article className="product-card sold-card" key={product.slug}>
+              <ProductPlaceholder label={copy.sold.badge} />
+              <div className="product-body">
+                <span className="status-badge">{copy.sold.badge}</span>
+                <h3>{language === 'bg' ? product.titleBg : product.titleEn}</h3>
+                <p>
+                  {language === 'bg' ? product.summaryBg : product.summaryEn}
+                </p>
+                <a
+                  className="button secondary"
+                  href={instagramUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {copy.sold.cta}
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <EmptyCategory text={copy.categories.empty} />
+      )}
+    </section>
+  )
+}
+
+function CategoryFilters({
+  activeCategory,
+  copy,
+  language,
+  navigateTo,
+  page,
+}) {
+  return (
+    <nav className="category-filters" aria-label={copy.label}>
+      {productCategories.map((category) => {
+        const query = category === 'all' ? '' : `?category=${category}`
+        const href = `${pages[page][language]}${query}`
+
+        return (
+          <a
+            className={activeCategory === category ? 'active' : ''}
+            href={href}
+            key={category}
+            aria-current={activeCategory === category ? 'page' : undefined}
+            onClick={(event) => {
+              event.preventDefault()
+              navigateTo(href)
+            }}
+          >
+            {copy.items[category]}
+          </a>
+        )
+      })}
+    </nav>
+  )
+}
+
+function EmptyCategory({ text }) {
+  return (
+    <div className="empty-category" role="status">
+      <p>{text}</p>
+    </div>
+  )
+}
+
+function MarketsPage({ copy }) {
+  return <EditorialPlaceholderPage content={copy.markets} type="markets" />
+}
+
+function MediaPage({ copy }) {
+  return <EditorialPlaceholderPage content={copy.media} type="media" />
+}
+
+function EditorialPlaceholderPage({ content, type }) {
+  return (
+    <section className={`page editorial-page ${type}-page`}>
+      <PageHeader
+        kicker={content.kicker}
+        title={content.title}
+        text={content.text}
+      />
+      <div className="editorial-grid">
+        {content.cards.map(([title, text], index) => (
+          <article className="editorial-card" key={title}>
+            <div className={`editorial-preview ${type}`} aria-hidden="true">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+            </div>
+            <div className="editorial-copy">
+              <span className="status-badge">{content.upcoming}</span>
+              <h2>{title}</h2>
+              <p>{text}</p>
             </div>
           </article>
         ))}
@@ -828,6 +1057,7 @@ function ContactsPage({ copy }) {
           value={emailAddress}
           href={`mailto:${emailAddress}`}
           cta={copy.contacts.emailCta}
+          valueClassName="email-value"
         />
         <ContactCard
           label={copy.contacts.viber}
@@ -1147,11 +1377,11 @@ function PageHeader({ kicker, title, text }) {
   )
 }
 
-function ContactCard({ label, value, href, cta }) {
+function ContactCard({ label, value, href, cta, valueClassName = '' }) {
   return (
     <article className="contact-card">
       <span>{label}</span>
-      <strong>{value}</strong>
+      <strong className={valueClassName}>{value}</strong>
       <a className="button secondary" href={href} target="_blank" rel="noreferrer">
         {cta}
       </a>

@@ -15,6 +15,8 @@ const localizedRoutes = {
   home: { bg: '/', en: '/en' },
   available: { bg: '/available-lamps', en: '/en/available-lamps' },
   sold: { bg: '/sold-lamps', en: '/en/sold-lamps' },
+  markets: { bg: '/art-markets', en: '/en/art-markets' },
+  media: { bg: '/media-about-us', en: '/en/media-about-us' },
   reviews: { bg: '/customer-reviews', en: '/en/customer-reviews' },
   about: { bg: '/about-us', en: '/en/about-us' },
   contacts: { bg: '/contacts', en: '/en/contacts' },
@@ -163,6 +165,22 @@ const seoPages = [
       'Архив от продадени ретро лампи и upcycling проекти. Вдъхновение за custom винтидж осветление по идея.',
   },
   {
+    key: 'markets',
+    lang: 'bg',
+    path: localizedRoutes.markets.bg,
+    title: 'Участия в арт базари | E&K Vintara Studio',
+    description:
+      'Снимки, видеа и информация за участията на E&K Vintara Studio в арт базари, изложения и творчески събития.',
+  },
+  {
+    key: 'media',
+    lang: 'bg',
+    path: localizedRoutes.media.bg,
+    title: 'Медиите за нас | E&K Vintara Studio',
+    description:
+      'Статии, интервюта и медийни публикации за E&K Vintara Studio и ръчно изработените винтидж лампи.',
+  },
+  {
     key: 'reviews',
     lang: 'bg',
     path: localizedRoutes.reviews.bg,
@@ -242,6 +260,22 @@ const seoPages = [
     title: 'Sold retro lamps | E&K Vintara Studio',
     description:
       'Explore sold retro lamp projects and upcycled lighting ideas from E&K Vintara Studio.',
+  },
+  {
+    key: 'markets',
+    lang: 'en',
+    path: localizedRoutes.markets.en,
+    title: 'Art Market Events | E&K Vintara Studio',
+    description:
+      'Photos, videos, and information about E&K Vintara Studio at art markets, exhibitions, and creative events.',
+  },
+  {
+    key: 'media',
+    lang: 'en',
+    path: localizedRoutes.media.en,
+    title: 'In the Media | E&K Vintara Studio',
+    description:
+      'Articles, interviews, and media features about E&K Vintara Studio and its handmade vintage lamps.',
   },
   {
     key: 'reviews',

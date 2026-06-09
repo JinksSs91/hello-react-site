@@ -16,6 +16,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/sold-lamps" />
   </url>
   <url>
+    <loc>https://ourvintagelights.com/art-markets</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/art-markets" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/art-markets" />
+  </url>
+  <url>
+    <loc>https://ourvintagelights.com/media-about-us</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/media-about-us" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/media-about-us" />
+  </url>
+  <url>
     <loc>https://ourvintagelights.com/customer-reviews</loc>
     <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/customer-reviews" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/customer-reviews" />
@@ -59,6 +69,16 @@
     <loc>https://ourvintagelights.com/en/sold-lamps</loc>
     <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/sold-lamps" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/sold-lamps" />
+  </url>
+  <url>
+    <loc>https://ourvintagelights.com/en/art-markets</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/art-markets" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/art-markets" />
+  </url>
+  <url>
+    <loc>https://ourvintagelights.com/en/media-about-us</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/media-about-us" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/media-about-us" />
   </url>
   <url>
     <loc>https://ourvintagelights.com/en/customer-reviews</loc>
