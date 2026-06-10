@@ -126,6 +126,14 @@ const content = {
       contactCta: 'Свържи се с нас',
       counters: [
         {
+          value: 30,
+          prefix: 'Над',
+          suffix: '',
+          label:
+            'Доволни клиенти от стартирането на проекта ни в началото на март 2026',
+          wide: true,
+        },
+        {
           value: 27,
           suffix: '+',
           label: 'Спасени от изхвърляне в боклука ретро телефони',
@@ -147,7 +155,7 @@ const content = {
         },
         {
           value: 12,
-          suffix: '',
+          suffix: '+',
           label: 'Налични лампи от спасените антики',
         },
         {
@@ -155,11 +163,6 @@ const content = {
           suffix: '+',
           label: 'Предмети, чакащи реда си да бъдат превърнати в лампи',
         },
-      ],
-      highlights: [
-        ['Ръчна изработка', 'Всеки детайл се обработва и сглобява внимателно.'],
-        ['Единствени по рода си лампи', 'Всяка лампа е с уникален дизайн'],
-        ['Upcycling дизайн', 'Старото става функционално, красиво и различно.'],
       ],
       imageStripTitle: 'Ръчно изработени винтидж лампи с характер.',
       ctaTitle: 'Разгледай колекцията',
@@ -293,10 +296,10 @@ const content = {
       kicker: 'Контакти',
       title: 'Свържи се с нас за цена, доставка или изработка на лампа по твой дизайн.',
       text:
-        'Най-бързият начин е чрез съобщение в Instagram. Можеш също да ни изпратиш имейл, да се свържеш с нас във Viber или да ни се обадиш на посочения телефонен номер.',
+        'Най-бързият начин е чрез съобщение в Instagram. Можеш също да ни изпратиш имейл или да се свържеш с нас по телефон, Viber, Telegram или WhatsApp.',
       instagram: 'Instagram',
       email: 'Имейл',
-      viber: 'Viber',
+      viber: 'Телефон (Viber/Telegram/WhatsApp)',
       instagramCta: 'Отвори Instagram',
       emailCta: 'Изпрати имейл',
       viberCta: 'Обади се',
@@ -346,6 +349,13 @@ const content = {
       contactCta: 'Contact us',
       counters: [
         {
+          value: 30,
+          prefix: 'Over',
+          suffix: '',
+          label: 'Happy customers since our project launched in early March 2026',
+          wide: true,
+        },
+        {
           value: 27,
           suffix: '+',
           label: 'Retro telephones saved from being thrown away',
@@ -367,7 +377,7 @@ const content = {
         },
         {
           value: 12,
-          suffix: '',
+          suffix: '+',
           label: 'Available lamps created from rescued antiques',
         },
         {
@@ -375,11 +385,6 @@ const content = {
           suffix: '+',
           label: 'Objects waiting to be transformed into lamps',
         },
-      ],
-      highlights: [
-        ['Handmade craft', 'Every detail is carefully restored and assembled.'],
-        ['One-of-a-kind lamps', 'Every lamp has a unique design.'],
-        ['Upcycled design', 'The old becomes functional, beautiful, and different.'],
       ],
       imageStripTitle: 'Handmade vintage lamps with character.',
       ctaTitle: 'Explore the collection',
@@ -513,10 +518,10 @@ const content = {
       kicker: 'Contacts',
       title: 'Contact us for price, delivery, or a lamp made to your own design.',
       text:
-        'The fastest way is by message on Instagram. You can also email us, contact us on Viber, or call the listed phone number.',
+        'The fastest way is by message on Instagram. You can also email us or contact us by phone, Viber, Telegram, or WhatsApp.',
       instagram: 'Instagram',
       email: 'Email',
-      viber: 'Viber',
+      viber: 'Phone (Viber/Telegram/WhatsApp)',
       instagramCta: 'Open Instagram',
       emailCta: 'Send email',
       viberCta: 'Call',
@@ -1071,8 +1076,8 @@ function HomePage({ copy, language, navigateTo }) {
         <div className="hero-copy">
           <p className="kicker">{copy.home.kicker}</p>
           <h1>{copy.home.title}</h1>
-          <p className="hero-lead">{copy.home.intro}</p>
-          <p>{copy.home.story}</p>
+          <p className="hero-text">{copy.home.intro}</p>
+          <p className="hero-text">{copy.home.story}</p>
           <div className="hero-actions">
             <a
               className="button primary"
@@ -1102,15 +1107,6 @@ function HomePage({ copy, language, navigateTo }) {
       </div>
 
       <HomeCounters counters={copy.home.counters} />
-
-      <div className="highlight-grid">
-        {copy.home.highlights.map(([title, text]) => (
-          <article className="highlight-card" key={title}>
-            <h2>{title}</h2>
-            <p>{text}</p>
-          </article>
-        ))}
-      </div>
 
       <div className="image-strip" aria-label={copy.home.imageStripTitle}>
         {[homeWhitePhone, homeClockLamp, homeBluePhone].map((image, index) => (
@@ -1242,12 +1238,15 @@ function HomeCounter({ counter, isActive, reduceMotion, delay }) {
 
   return (
     <article
-      className="home-counter-card"
-      aria-label={`${counter.value}${counter.suffix} ${counter.label}`}
+      className={`home-counter-card${counter.wide ? ' wide' : ''}`}
+      aria-label={`${counter.prefix ? `${counter.prefix} ` : ''}${counter.value}${counter.suffix} ${counter.label}`}
     >
       <strong className="home-counter-value" aria-hidden="true">
+        {counter.prefix && (
+          <span className="home-counter-prefix">{counter.prefix}</span>
+        )}
         {reduceMotion ? counter.value : displayValue}
-        <span>{counter.suffix}</span>
+        <span className="home-counter-suffix">{counter.suffix}</span>
       </strong>
       <p>{counter.label}</p>
     </article>

@@ -282,6 +282,19 @@
   box-shadow: var(--shadow-soft);
 }
 
+.home-counter-card.wide {
+  grid-column: 1 / -1;
+  min-height: 160px;
+  grid-template-columns: minmax(230px, auto) minmax(0, 1fr);
+  align-items: center;
+  align-content: center;
+}
+
+.home-counter-card.wide p {
+  max-width: 680px;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+}
+
 .home-counter-card::before {
   position: absolute;
   top: 0;
@@ -301,9 +314,18 @@
   line-height: 0.9;
 }
 
-.home-counter-value span {
+.home-counter-suffix {
   color: var(--terracotta);
   font-size: 0.58em;
+}
+
+.home-counter-prefix {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--terracotta);
+  font-size: 0.28em;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .home-counter-card p {
@@ -327,6 +349,7 @@
 }
 
 .hero-lead,
+.hero-text,
 .page-header > p,
 .hero-panel > p,
 .info-card p,
@@ -345,6 +368,15 @@
   margin: 0;
   color: var(--ink);
   font-size: clamp(1.18rem, 2vw, 1.55rem);
+}
+
+.hero-text {
+  max-width: 820px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.7;
+  text-align: left;
 }
 
 .hero-panel > p:not(.kicker),
@@ -1036,28 +1068,44 @@
 
 .contact-card {
   display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: center;
   gap: 14px;
   padding: 30px;
+  text-align: center;
 }
 
 .contact-card span {
+  justify-self: stretch;
   color: var(--terracotta);
   font-weight: 900;
   letter-spacing: 0.08em;
+  line-height: 1.35;
+  text-align: center;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .contact-card strong {
+  align-self: center;
+  justify-self: stretch;
   overflow-wrap: anywhere;
   color: var(--ink);
-  font-size: clamp(1.3rem, 3vw, 2rem);
+  font-size: clamp(1.05rem, 1.75vw, 1.55rem);
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: center;
 }
 
 .contact-card .email-value {
-  font-size: clamp(0.92rem, 1.55vw, 1.45rem);
   letter-spacing: 0;
   overflow-wrap: normal;
   white-space: nowrap;
+}
+
+.contact-card .button {
+  align-self: end;
+  justify-self: center;
 }
 
 .back-link {
@@ -1560,6 +1608,11 @@
     grid-template-columns: 1fr;
   }
 
+  .home-counter-card.wide {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
   .home-counter-card {
     min-height: 0;
     padding: 24px;
@@ -1607,6 +1660,10 @@
 
   .button {
     width: 100%;
+  }
+
+  .contact-card .button {
+    justify-self: stretch;
   }
 
   .lightbox {
