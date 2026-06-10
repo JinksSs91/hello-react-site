@@ -17,6 +17,8 @@ import russianTelephoneLamp01 from './assets/products/russian-rotary-telephone-l
 import russianTelephoneLamp02 from './assets/products/russian-rotary-telephone-lamp-02.jpg'
 import russianTelephoneLamp03 from './assets/products/russian-rotary-telephone-lamp-03.jpg'
 import russianTelephoneLamp04 from './assets/products/russian-rotary-telephone-lamp-04.jpg'
+import bgDnesLogo from './assets/media/bgdnes.png'
+import regNewsLogo from './assets/media/regnews.png'
 import homeHeroBlackPhone from './assets/home/home-hero-black-phone-clean.jpg'
 import homeWhitePhone from './assets/home/home-white-phone.jpg'
 import homeClockLamp from './assets/home/home-clock-lamp.jpg'
@@ -200,6 +202,7 @@ const content = {
       cards: [
         {
           publication: 'RegNews',
+          image: regNewsLogo,
           date: '4 май 2026 г.',
           title:
             'Ретрото може не само да е модерно, но и да блести – доказват го Ели и Калоян',
@@ -209,6 +212,7 @@ const content = {
         },
         {
           publication: 'България Днес',
+          image: bgDnesLogo,
           date: '20 май 2026 г.',
           title: 'Годеници правят лампи от стари телефони',
           summary:
@@ -386,6 +390,7 @@ const content = {
       cards: [
         {
           publication: 'RegNews',
+          image: regNewsLogo,
           date: 'May 4, 2026',
           title:
             'Ретрото може не само да е модерно, но и да блести – доказват го Ели и Калоян',
@@ -395,6 +400,7 @@ const content = {
         },
         {
           publication: 'България Днес',
+          image: bgDnesLogo,
           date: 'May 20, 2026',
           title: 'Годеници правят лампи от стари телефони',
           summary:
@@ -677,30 +683,7 @@ const russianTelephoneLamp = {
   ],
 }
 
-const soldProducts = [
-  russianTelephoneLamp,
-  pinkTelephoneLamp,
-  {
-    slug: 'sold-retro-telephone-lamp',
-    category: 'retro-telephones',
-    titleBg: 'Ретро телефон лампа',
-    titleEn: 'Retro Telephone Lamp',
-    summaryBg:
-      'Продаден проект от автентичен винтидж телефон, превърнат във функционална декоративна лампа.',
-    summaryEn:
-      'Sold project made from an authentic vintage telephone transformed into a functional decorative lamp.',
-  },
-  {
-    slug: 'sold-retro-phone-decor-light',
-    category: 'retro-telephones',
-    titleBg: 'Ретро телефонна декор лампа',
-    titleEn: 'Retro Phone Decor Light',
-    summaryBg:
-      'Продаден акцентен модел, съчетаващ ретро естетика и модерна топла светлина.',
-    summaryEn:
-      'Sold accent piece combining retro aesthetics with modern warm lighting.',
-  },
-]
+const soldProducts = [russianTelephoneLamp, pinkTelephoneLamp]
 
 const productBySlug = Object.fromEntries(
   [...availableProducts, russianTelephoneLamp, pinkTelephoneLamp].map(
@@ -1154,36 +1137,15 @@ function SoldPage({ category, copy, language, navigateTo }) {
       />
       {visibleProducts.length > 0 ? (
         <div className="product-grid">
-          {visibleProducts.map((product) =>
-            product.images ? (
-              <SoldProductCard
-                copy={copy}
-                key={product.slug}
-                language={language}
-                navigateTo={navigateTo}
-                product={product}
-              />
-            ) : (
-              <article className="product-card sold-card" key={product.slug}>
-                <ProductPlaceholder label={copy.sold.badge} />
-                <div className="product-body">
-                  <span className="status-badge">{copy.sold.badge}</span>
-                  <h3>{language === 'bg' ? product.titleBg : product.titleEn}</h3>
-                  <p>
-                    {language === 'bg' ? product.summaryBg : product.summaryEn}
-                  </p>
-                  <a
-                    className="button secondary"
-                    href={instagramUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {copy.sold.cta}
-                  </a>
-                </div>
-              </article>
-            ),
-          )}
+          {visibleProducts.map((product) => (
+            <SoldProductCard
+              copy={copy}
+              key={product.slug}
+              language={language}
+              navigateTo={navigateTo}
+              product={product}
+            />
+          ))}
         </div>
       ) : (
         <EmptyCategory text={copy.categories.empty} />
@@ -1394,8 +1356,8 @@ function MediaPage({ copy }) {
       <div className="media-article-grid">
         {copy.media.cards.map((article) => (
           <article className="media-article-card" key={article.url}>
-            <div className="media-article-masthead">
-              <span>{article.publication}</span>
+            <div className="media-article-cover">
+              <img src={article.image} alt={`${article.publication} logo`} />
               <time>{article.date}</time>
             </div>
             <div className="media-article-copy">
@@ -1789,14 +1751,6 @@ function SoldProductCard({ product, copy, language, navigateTo }) {
         </a>
       </div>
     </article>
-  )
-}
-
-function ProductPlaceholder({ label }) {
-  return (
-    <div className="product-placeholder">
-      <span>{label}</span>
-    </div>
   )
 }
 

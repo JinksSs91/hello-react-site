@@ -700,28 +700,32 @@
   box-shadow: var(--shadow-soft);
 }
 
-.media-article-masthead {
-  display: flex;
+.media-article-cover {
+  position: relative;
+  display: grid;
   min-height: 170px;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 28px;
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.18), transparent 52%),
-    linear-gradient(145deg, #27332f, #6e7767 58%, #c9aa82);
-  color: var(--paper);
+  place-items: center;
+  padding: 34px;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
 }
 
-.media-article-masthead span {
-  font-size: clamp(1.75rem, 4vw, 3.1rem);
-  font-weight: 900;
-  line-height: 1;
-  overflow-wrap: anywhere;
+.media-article-cover img {
+  display: block;
+  width: min(100%, 360px);
+  max-height: 110px;
+  object-fit: contain;
 }
 
-.media-article-masthead time {
-  flex: 0 0 auto;
+.media-article-cover time {
+  position: absolute;
+  right: 18px;
+  bottom: 14px;
+  padding: 6px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 253, 247, 0.94);
+  color: var(--ink);
   font-size: 0.84rem;
   font-weight: 850;
 }
@@ -847,8 +851,7 @@
   overflow: hidden;
 }
 
-.product-image-link,
-.product-placeholder {
+.product-image-link {
   display: block;
   aspect-ratio: 3 / 4;
   overflow: hidden;
@@ -863,28 +866,6 @@
   display: block;
   background: rgba(255, 253, 247, 0.78);
   object-fit: contain;
-}
-
-.product-placeholder {
-  display: grid;
-  place-items: end start;
-  padding: 24px;
-}
-
-.product-placeholder span {
-  max-width: 14rem;
-  padding: 9px 12px;
-  border-radius: 999px;
-  background: rgba(255, 253, 247, 0.82);
-  color: var(--ink);
-  font-size: 0.82rem;
-  font-weight: 900;
-}
-
-.sold-card .product-placeholder {
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.32), transparent 45%),
-    linear-gradient(135deg, #2e211b, #775849 55%, #d3b79e);
 }
 
 .product-body {
@@ -1426,10 +1407,9 @@
     justify-content: flex-start;
   }
 
-  .media-article-masthead {
+  .media-article-cover {
     min-height: 140px;
-    align-items: flex-start;
-    flex-direction: column;
+    padding: 28px;
   }
 
   .hero-panel {
@@ -1533,13 +1513,11 @@
   }
 
   .product-image-link,
-  .product-image-link img,
-  .product-placeholder {
+  .product-image-link img {
     min-height: 0;
   }
 
-  .product-image-link,
-  .product-placeholder {
+  .product-image-link {
     max-height: 620px;
   }
 
