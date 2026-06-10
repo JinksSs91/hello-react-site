@@ -66,6 +66,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/sold-lamps/pink-rotary-telephone-lamp" />
   </url>
   <url>
+    <loc>https://ourvintagelights.com/sold-lamps/russian-rotary-telephone-lamp</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/sold-lamps/russian-rotary-telephone-lamp" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/sold-lamps/russian-rotary-telephone-lamp" />
+  </url>
+  <url>
     <loc>https://ourvintagelights.com/en</loc>
     <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en" />
@@ -129,5 +134,10 @@
     <loc>https://ourvintagelights.com/en/sold-lamps/pink-rotary-telephone-lamp</loc>
     <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/sold-lamps/pink-rotary-telephone-lamp" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/sold-lamps/pink-rotary-telephone-lamp" />
+  </url>
+  <url>
+    <loc>https://ourvintagelights.com/en/sold-lamps/russian-rotary-telephone-lamp</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/sold-lamps/russian-rotary-telephone-lamp" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/sold-lamps/russian-rotary-telephone-lamp" />
   </url>
 </urlset>

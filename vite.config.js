@@ -40,6 +40,10 @@ const localizedRoutes = {
     bg: '/sold-lamps/pink-rotary-telephone-lamp',
     en: '/en/sold-lamps/pink-rotary-telephone-lamp',
   },
+  soldProductRussianTelephone: {
+    bg: '/sold-lamps/russian-rotary-telephone-lamp',
+    en: '/en/sold-lamps/russian-rotary-telephone-lamp',
+  },
 }
 
 const phoneImageUrls = [
@@ -65,6 +69,13 @@ const pinkTelephoneImageUrls = [
   `${siteUrl}/images/pink-rotary-telephone-lamp-01.jpg`,
   `${siteUrl}/images/pink-rotary-telephone-lamp-02.jpg`,
   `${siteUrl}/images/pink-rotary-telephone-lamp-03.jpg`,
+]
+
+const russianTelephoneImageUrls = [
+  `${siteUrl}/images/russian-rotary-telephone-lamp-01.jpg`,
+  `${siteUrl}/images/russian-rotary-telephone-lamp-02.jpg`,
+  `${siteUrl}/images/russian-rotary-telephone-lamp-03.jpg`,
+  `${siteUrl}/images/russian-rotary-telephone-lamp-04.jpg`,
 ]
 
 const reBazaarImageUrls = [
@@ -175,6 +186,17 @@ const pinkTelephoneProductSchema = getProductSchema({
     'Sold handmade pink rotary telephone lamp with warm light and a one-of-a-kind retro design.',
   category: 'Handmade vintage telephone lamp',
   url: localizedRoutes.soldProductPinkTelephone.bg,
+  availability: 'SoldOut',
+})
+
+const russianTelephoneProductSchema = getProductSchema({
+  name: 'Russian Rotary Telephone Lamp from the 1950s–1970s',
+  alternateName: 'Руски телефон-лампа от 50-те–70-те години',
+  image: russianTelephoneImageUrls,
+  description:
+    'Sold handmade vintage lamp created from an authentic Soviet rotary telephone dating from the 1950s–1970s.',
+  category: 'Handmade vintage telephone lamp',
+  url: localizedRoutes.soldProductRussianTelephone.bg,
   availability: 'SoldOut',
 })
 
@@ -318,6 +340,18 @@ const seoPages = [
     isProduct: true,
   },
   {
+    key: 'soldProductRussianTelephone',
+    lang: 'bg',
+    path: localizedRoutes.soldProductRussianTelephone.bg,
+    title:
+      'Руски телефон-лампа от 50-те–70-те години | Продадена винтидж лампа',
+    description:
+      'Продадена ръчно изработена винтидж лампа от автентичен съветски ротационен телефон със запазени оригинални детайли.',
+    schemas: [russianTelephoneProductSchema],
+    image: 'russian-rotary-telephone-lamp-01.jpg',
+    isProduct: true,
+  },
+  {
     key: 'home',
     lang: 'en',
     path: localizedRoutes.home.en,
@@ -433,6 +467,18 @@ const seoPages = [
       'Sold handmade pink rotary telephone lamp with warm light and a unique design for retro interiors.',
     schemas: [pinkTelephoneProductSchema],
     image: 'pink-rotary-telephone-lamp-01.jpg',
+    isProduct: true,
+  },
+  {
+    key: 'soldProductRussianTelephone',
+    lang: 'en',
+    path: localizedRoutes.soldProductRussianTelephone.en,
+    title:
+      'Russian Rotary Telephone Lamp from the 1950s–1970s | Sold vintage lamp',
+    description:
+      'Sold handmade vintage lamp created from an authentic Soviet rotary telephone with preserved original details.',
+    schemas: [russianTelephoneProductSchema],
+    image: 'russian-rotary-telephone-lamp-01.jpg',
     isProduct: true,
   },
 ]

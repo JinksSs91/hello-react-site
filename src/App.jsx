@@ -13,6 +13,10 @@ import redTa900Lamp02 from './assets/products/red-ta-900-telephone-lamp-02.jpg'
 import pinkTelephoneLamp01 from './assets/products/pink-rotary-telephone-lamp-01.jpg'
 import pinkTelephoneLamp02 from './assets/products/pink-rotary-telephone-lamp-02.jpg'
 import pinkTelephoneLamp03 from './assets/products/pink-rotary-telephone-lamp-03.jpg'
+import russianTelephoneLamp01 from './assets/products/russian-rotary-telephone-lamp-01.jpg'
+import russianTelephoneLamp02 from './assets/products/russian-rotary-telephone-lamp-02.jpg'
+import russianTelephoneLamp03 from './assets/products/russian-rotary-telephone-lamp-03.jpg'
+import russianTelephoneLamp04 from './assets/products/russian-rotary-telephone-lamp-04.jpg'
 import homeHeroBlackPhone from './assets/home/home-hero-black-phone-clean.jpg'
 import homeWhitePhone from './assets/home/home-white-phone.jpg'
 import homeClockLamp from './assets/home/home-clock-lamp.jpg'
@@ -89,6 +93,10 @@ const productRoutes = {
   'pink-rotary-telephone-lamp': {
     bg: '/sold-lamps/pink-rotary-telephone-lamp',
     en: '/en/sold-lamps/pink-rotary-telephone-lamp',
+  },
+  'russian-rotary-telephone-lamp': {
+    bg: '/sold-lamps/russian-rotary-telephone-lamp',
+    en: '/en/sold-lamps/russian-rotary-telephone-lamp',
   },
 }
 
@@ -626,7 +634,51 @@ const pinkTelephoneLamp = {
   ],
 }
 
+const russianTelephoneLamp = {
+  slug: 'russian-rotary-telephone-lamp',
+  routes: productRoutes['russian-rotary-telephone-lamp'],
+  category: 'retro-telephones',
+  status: 'sold',
+  titleBg: 'Руски телефон-лампа от 50-те–70-те години',
+  titleEn: 'Russian Rotary Telephone Lamp from the 1950s–1970s',
+  summaryBg:
+    'Ръчно изработена винтидж лампа от автентичен съветски ротационен телефон.',
+  summaryEn:
+    'A handmade vintage lamp created from an authentic Soviet rotary telephone.',
+  images: [
+    russianTelephoneLamp01,
+    russianTelephoneLamp02,
+    russianTelephoneLamp03,
+    russianTelephoneLamp04,
+  ],
+  descriptionBg: [
+    'Ръчно изработена винтидж лампа, създадена от истински руски ротационен телефон от 50-те–70-те години.',
+    'Запазени са автентичните детайли - класическата шайба за набиране, металните елементи и ретро излъчването, характерно за старите съветски телефони.',
+    'Днес този емблематичен дизайн оживява отново като уникална лампа и стилен акцент за уютен, винтидж или индустриален интериор.',
+    'Уникален ръчно изработен декор с история, характер и топла атмосфера.',
+  ],
+  descriptionEn: [
+    'A handmade vintage lamp created from an authentic Russian rotary telephone dating from the 1950s–1970s.',
+    'Its original details have been preserved, including the classic rotary dial, metal elements, and the distinctive retro character of old Soviet telephones.',
+    'Today, this iconic design comes to life again as a unique lamp and a stylish accent for cozy, vintage, or industrial interiors.',
+    'A one-of-a-kind handmade decor piece with history, character, and a warm atmosphere.',
+  ],
+  featuresBg: [
+    'Автентичен ротационен телефон',
+    'Ръчна изработка',
+    'Запазени оригинални детайли',
+    'Уникален ретро дизайн',
+  ],
+  featuresEn: [
+    'Authentic rotary telephone',
+    'Handmade',
+    'Preserved original details',
+    'Unique retro design',
+  ],
+}
+
 const soldProducts = [
+  russianTelephoneLamp,
   pinkTelephoneLamp,
   {
     slug: 'sold-retro-telephone-lamp',
@@ -651,10 +703,9 @@ const soldProducts = [
 ]
 
 const productBySlug = Object.fromEntries(
-  [...availableProducts, pinkTelephoneLamp].map((product) => [
-    product.slug,
-    product,
-  ]),
+  [...availableProducts, russianTelephoneLamp, pinkTelephoneLamp].map(
+    (product) => [product.slug, product],
+  ),
 )
 
 function getRouteFromPath(pathname) {
