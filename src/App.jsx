@@ -104,7 +104,6 @@ const productRoutes = {
 
 const content = {
   bg: {
-    languageLabel: 'Език',
     nav: {
       home: 'Начало',
       available: 'Налични лампи',
@@ -324,10 +323,9 @@ const content = {
       soldHint:
         'Харесва ти този модел? Пиши ни в Instagram, за да обсъдим подобна лампа.',
     },
-    footer: 'ръчно изработени винтидж лампи',
+    footer: '📍 гр. Пловдив',
   },
   en: {
-    languageLabel: 'Language',
     nav: {
       home: 'Home',
       available: 'Available Lamps',
@@ -546,7 +544,7 @@ const content = {
       soldHint:
         'Like this piece? Message us on Instagram to discuss a similar lamp.',
     },
-    footer: 'handmade vintage lights',
+    footer: '📍 Plovdiv, Bulgaria',
   },
 }
 
@@ -876,18 +874,18 @@ function App() {
     setIsMenuOpen(false)
   }
 
-  function handleLanguageChange(event) {
+  function handleLanguageChange(nextLanguage) {
     if (page === 'product' && activeProduct) {
-      navigateTo(activeProduct.routes[event.target.value])
+      navigateTo(activeProduct.routes[nextLanguage])
       return
     }
 
     if (page === 'marketGallery' && marketGallerySlug) {
-      navigateTo(marketGalleryRoutes[marketGallerySlug][event.target.value])
+      navigateTo(marketGalleryRoutes[marketGallerySlug][nextLanguage])
       return
     }
 
-    const destination = pages[page][event.target.value]
+    const destination = pages[page][nextLanguage]
     const categoryQuery =
       ['available', 'sold'].includes(page) && category !== 'all'
         ? `?category=${category}`
@@ -946,17 +944,11 @@ function App() {
           ))}
         </nav>
 
-        <label className="language-select">
-          <span>{copy.languageLabel}</span>
-          <select
-            value={language}
-            onChange={handleLanguageChange}
-            aria-label={copy.languageLabel}
-          >
-            <option value="bg">BG</option>
-            <option value="en">EN</option>
-          </select>
-        </label>
+        <LanguageSwitcher
+          className="language-switcher desktop-language-switcher"
+          language={language}
+          onChange={handleLanguageChange}
+        />
 
         <button
           className="menu-toggle"
@@ -995,17 +987,11 @@ function App() {
             ))}
           </nav>
 
-          <label className="mobile-language-select">
-            <span>{copy.languageLabel}</span>
-            <select
-              value={language}
-              onChange={handleLanguageChange}
-              aria-label={copy.languageLabel}
-            >
-              <option value="bg">BG</option>
-              <option value="en">EN</option>
-            </select>
-          </label>
+          <LanguageSwitcher
+            className="language-switcher mobile-language-switcher"
+            language={language}
+            onChange={handleLanguageChange}
+          />
         </div>
       </header>
 
@@ -1931,6 +1917,34 @@ function SoldProductCard({ product, copy, language, navigateTo }) {
   )
 }
 
+function LanguageSwitcher({ className, language, onChange }) {
+  const languages = [
+    { code: 'bg', flag: '🇧🇬', label: 'Български' },
+    { code: 'en', flag: '🇬🇧', label: 'English' },
+  ]
+
+  return (
+    <div
+      className={className}
+      aria-label={language === 'bg' ? 'Избор на език' : 'Language selection'}
+    >
+      {languages.map((item) => (
+        <button
+          className={language === item.code ? 'active' : ''}
+          key={item.code}
+          type="button"
+          title={item.label}
+          aria-label={item.label}
+          aria-pressed={language === item.code}
+          onClick={() => onChange(item.code)}
+        >
+          <span aria-hidden="true">{item.flag}</span>
+        </button>
+      ))}
+    </div>
+  )
+}
+
 function SiteFooter({
   copy,
   language,
@@ -1942,7 +1956,7 @@ function SiteFooter({
     <footer className="site-footer">
       <div className="footer-brand">
         <strong>E&K Vintara Studio</strong>
-        <span>- {copy.footer}</span>
+        <span>{copy.footer}</span>
       </div>
 
       <nav className="footer-nav" aria-label="Footer navigation">
