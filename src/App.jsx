@@ -124,6 +124,38 @@ const content = {
       story:
         'Даваме нов живот на забравени предмети и ги превръщаме в артистично осветление за домове, студиа, офиси и арт пространства.',
       contactCta: 'Свържи се с нас',
+      counters: [
+        {
+          value: 27,
+          suffix: '+',
+          label: 'Спасени от изхвърляне в боклука ретро телефони',
+        },
+        {
+          value: 21,
+          suffix: '+',
+          label: 'Спасени от изхвърляне в боклука ретро фотоапарати',
+        },
+        {
+          value: 3,
+          suffix: '+',
+          label: 'Спасени от изхвърляне в боклука ретро настолни часовници',
+        },
+        {
+          value: 5,
+          suffix: '+',
+          label: 'Спасени от изхвърляне в боклука ретро радиа и радиоточки',
+        },
+        {
+          value: 12,
+          suffix: '',
+          label: 'Налични лампи от спасените антики',
+        },
+        {
+          value: 15,
+          suffix: '+',
+          label: 'Предмети, чакащи реда си да бъдат превърнати в лампи',
+        },
+      ],
       highlights: [
         ['Ръчна изработка', 'Всеки детайл се обработва и сглобява внимателно.'],
         ['Единствени по рода си лампи', 'Всяка лампа е с уникален дизайн'],
@@ -312,6 +344,38 @@ const content = {
       story:
         'We give forgotten objects a new life and turn them into artistic lighting for homes, studios, offices, and art spaces.',
       contactCta: 'Contact us',
+      counters: [
+        {
+          value: 27,
+          suffix: '+',
+          label: 'Retro telephones saved from being thrown away',
+        },
+        {
+          value: 21,
+          suffix: '+',
+          label: 'Retro cameras saved from being thrown away',
+        },
+        {
+          value: 3,
+          suffix: '+',
+          label: 'Retro desk clocks saved from being thrown away',
+        },
+        {
+          value: 5,
+          suffix: '+',
+          label: 'Retro radios and wired radio sets saved from being thrown away',
+        },
+        {
+          value: 12,
+          suffix: '',
+          label: 'Available lamps created from rescued antiques',
+        },
+        {
+          value: 15,
+          suffix: '+',
+          label: 'Objects waiting to be transformed into lamps',
+        },
+      ],
       highlights: [
         ['Handmade craft', 'Every detail is carefully restored and assembled.'],
         ['One-of-a-kind lamps', 'Every lamp has a unique design.'],
@@ -1037,6 +1101,8 @@ function HomePage({ copy, language, navigateTo }) {
         </figure>
       </div>
 
+      <HomeCounters counters={copy.home.counters} />
+
       <div className="highlight-grid">
         {copy.home.highlights.map(([title, text]) => (
           <article className="highlight-card" key={title}>
@@ -1073,6 +1139,118 @@ function HomePage({ copy, language, navigateTo }) {
         </a>
       </div>
     </section>
+  )
+}
+
+function HomeCounters({ counters }) {
+  const sectionRef = useRef(null)
+  const [isActive, setIsActive] = useState(false)
+  const [reduceMotion, setReduceMotion] = useState(() =>
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  )
+
+  useEffect(() => {
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const updateMotionPreference = () => setReduceMotion(motionQuery.matches)
+
+    updateMotionPreference()
+    motionQuery.addEventListener('change', updateMotionPreference)
+
+    return () => {
+      motionQuery.removeEventListener('change', updateMotionPreference)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (reduceMotion) {
+      return undefined
+    }
+
+    const section = sectionRef.current
+
+    if (!section || !('IntersectionObserver' in window)) {
+      const animationFrame = requestAnimationFrame(() => setIsActive(true))
+      return () => cancelAnimationFrame(animationFrame)
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsActive(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.25 },
+    )
+
+    observer.observe(section)
+
+    return () => observer.disconnect()
+  }, [reduceMotion])
+
+  return (
+    <div className="home-counter-grid" ref={sectionRef}>
+      {counters.map((counter, index) => (
+        <HomeCounter
+          counter={counter}
+          isActive={isActive || reduceMotion}
+          key={counter.label}
+          reduceMotion={reduceMotion}
+          delay={index * 70}
+        />
+      ))}
+    </div>
+  )
+}
+
+function HomeCounter({ counter, isActive, reduceMotion, delay }) {
+  const [displayValue, setDisplayValue] = useState(0)
+
+  useEffect(() => {
+    if (!isActive) {
+      return undefined
+    }
+
+    if (reduceMotion) {
+      return undefined
+    }
+
+    let animationFrame
+    let startTime
+    const duration = 900
+
+    const animate = (timestamp) => {
+      if (!startTime) {
+        startTime = timestamp
+      }
+
+      const elapsed = Math.max(0, timestamp - startTime - delay)
+      const progress = Math.min(elapsed / duration, 1)
+      const easedProgress = 1 - Math.pow(1 - progress, 3)
+
+      setDisplayValue(Math.round(counter.value * easedProgress))
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate)
+      }
+    }
+
+    animationFrame = requestAnimationFrame(animate)
+
+    return () => cancelAnimationFrame(animationFrame)
+  }, [counter.value, delay, isActive, reduceMotion])
+
+  return (
+    <article
+      className="home-counter-card"
+      aria-label={`${counter.value}${counter.suffix} ${counter.label}`}
+    >
+      <strong className="home-counter-value" aria-hidden="true">
+        {reduceMotion ? counter.value : displayValue}
+        <span>{counter.suffix}</span>
+      </strong>
+      <p>{counter.label}</p>
+    </article>
   )
 }
 
