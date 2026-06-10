@@ -53,6 +53,26 @@ const pages = {
   contacts: { bg: '/contacts', en: '/en/contacts' },
 }
 
+const marketGalleryRoutes = {
+  're-bazaar-mall-galeria-burgas-2026': {
+    bg: '/art-markets/re-bazaar-mall-galeria-burgas-2026',
+    en: '/en/art-markets/re-bazaar-mall-galeria-burgas-2026',
+  },
+}
+
+const reBazaarImages = [
+  '/images/markets/re-bazaar-2026/re-bazaar-main.jpg',
+  '/images/markets/re-bazaar-2026/re-bazaar-01.jpg',
+  '/images/markets/re-bazaar-2026/re-bazaar-02.jpg',
+  '/images/markets/re-bazaar-2026/re-bazaar-03.jpg',
+  '/images/markets/re-bazaar-2026/re-bazaar-04.jpg',
+]
+
+const handmadeDesignMarketPoster =
+  '/images/markets/handmade-design-market-2026/handmade-design-market-poster.jpg'
+const handmadeDesignMarketUrl =
+  'https://www.instagram.com/p/DZTMBCqttSt/?igsh=dmt6MTJiN2dtbTZ4'
+
 const productRoutes = {
   'retro-telephone-lamp': {
     bg: '/lamps/retro-telephone-lamp',
@@ -136,13 +156,32 @@ const content = {
       kicker: 'Участия в базари',
       title: 'Срещи на живо с хора, които ценят различното.',
       text:
-        'Тук ще споделяме снимки, видеа и моменти от арт базари, изложения и творчески събития, в които участваме.',
-      upcoming: 'Очаквайте скоро',
-      cards: [
-        ['Снимки от базари', 'Кадри от щанда, атмосферата и представените лампи.'],
-        ['Видео моменти', 'Кратки видеа от събитията и срещите с посетители.'],
-        ['Предстоящи участия', 'Информация къде и кога ще можете да ни откриете на живо.'],
-      ],
+        'Тук ще споделяме снимки и моменти от арт базари, изложения и творчески събития, в които участваме.',
+      viewGallery: 'Разгледай снимките',
+      back: 'Назад към участията в базари',
+      filters: {
+        label: 'Филтрирай участията',
+        past: 'Отминали',
+        upcoming: 'Предстоящи',
+      },
+      gallery: {
+        title: 'Re-Bazaar (Mall Galeria Burgas) 25-26 Април 2026г.',
+        status: 'Отминал',
+        date: '25-26 април 2026 г.',
+        location: 'Mall Galeria Burgas',
+        text:
+          'Снимки от щанда на E&K Vintara Studio и срещите ни с посетителите на Re-Bazaar.',
+      },
+      upcomingEvent: {
+        title: 'Handmade Design Market',
+        status: 'Предстоящ',
+        date: '7-9 август 2026 г.',
+        location: 'Алеята пред Флора, Морска градина, гр. Бургас',
+        text:
+          'Над 40 български бранда в Морската градина. Ще ви очакват работилници, музика и забавления за цялото семейство. Вкусотии и напитки от местни брандове, както разбира се и нашият щанд с ръчно изработени лампи.',
+        admission: 'Вход свободен',
+        cta: 'Виж събитието в Instagram',
+      },
     },
     media: {
       kicker: 'Медиите за нас',
@@ -302,13 +341,32 @@ const content = {
       kicker: 'Art Markets',
       title: 'Meeting people who appreciate something different.',
       text:
-        'Here we will share photos, videos, and moments from art markets, exhibitions, and creative events we take part in.',
-      upcoming: 'Coming soon',
-      cards: [
-        ['Market photos', 'Images of our stand, the atmosphere, and the lamps on display.'],
-        ['Video moments', 'Short videos from events and our meetings with visitors.'],
-        ['Upcoming events', 'Information about where and when you can meet us in person.'],
-      ],
+        'Here we will share photos and moments from art markets, exhibitions, and creative events we take part in.',
+      viewGallery: 'View photos',
+      back: 'Back to art markets',
+      filters: {
+        label: 'Filter market events',
+        past: 'Past',
+        upcoming: 'Upcoming',
+      },
+      gallery: {
+        title: 'Re-Bazaar (Mall Galeria Burgas), April 25-26, 2026',
+        status: 'Past',
+        date: 'April 25-26, 2026',
+        location: 'Mall Galeria Burgas',
+        text:
+          'Photos of the E&K Vintara Studio stand and our meetings with visitors at Re-Bazaar.',
+      },
+      upcomingEvent: {
+        title: 'Handmade Design Market',
+        status: 'Upcoming',
+        date: 'August 7-9, 2026',
+        location: 'The walkway in front of Flora, Sea Garden, Burgas',
+        text:
+          'More than 40 Bulgarian brands will gather in the Sea Garden. Expect workshops, music, and entertainment for the whole family, local food and drinks, and of course our stand with handmade lamps.',
+        admission: 'Free admission',
+        cta: 'View event on Instagram',
+      },
     },
     media: {
       kicker: 'In the Media',
@@ -618,14 +676,34 @@ function getRouteFromPath(pathname) {
     }
   }
 
+  const marketGalleryEntry = Object.entries(marketGalleryRoutes).find(
+    ([, urls]) => urls.bg === pathWithoutLanguage || urls.en === normalizedPath,
+  )
+
+  if (marketGalleryEntry) {
+    return {
+      language,
+      page: 'marketGallery',
+      marketGallerySlug: marketGalleryEntry[0],
+      productSlug: null,
+    }
+  }
+
   const routeEntry = Object.entries(pages).find(
     ([, urls]) => urls.bg === pathWithoutLanguage || urls.en === normalizedPath,
   )
+  const marketStatus = new URLSearchParams(window.location.search).get('status')
 
   return {
     language,
     page: routeEntry?.[0] || 'home',
     productSlug: null,
+    marketGallerySlug: null,
+    marketStatus:
+      routeEntry?.[0] === 'markets' &&
+      ['past', 'upcoming'].includes(marketStatus)
+        ? marketStatus
+        : 'all',
     category:
       ['available', 'sold'].includes(routeEntry?.[0]) &&
       productCategories.includes(
@@ -641,7 +719,13 @@ function App() {
   const [language, setLanguage] = useState(initialRoute.language)
   const [page, setPage] = useState(initialRoute.page)
   const [productSlug, setProductSlug] = useState(initialRoute.productSlug)
+  const [marketGallerySlug, setMarketGallerySlug] = useState(
+    initialRoute.marketGallerySlug,
+  )
   const [category, setCategory] = useState(initialRoute.category || 'all')
+  const [marketStatus, setMarketStatus] = useState(
+    initialRoute.marketStatus || 'all',
+  )
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const headerRef = useRef(null)
   const copy = content[language]
@@ -653,7 +737,9 @@ function App() {
       setLanguage(nextRoute.language)
       setPage(nextRoute.page)
       setProductSlug(nextRoute.productSlug)
+      setMarketGallerySlug(nextRoute.marketGallerySlug)
       setCategory(nextRoute.category || 'all')
+      setMarketStatus(nextRoute.marketStatus || 'all')
     }
 
     window.addEventListener('popstate', handleRouteChange)
@@ -681,7 +767,9 @@ function App() {
     setLanguage(nextRoute.language)
     setPage(nextRoute.page)
     setProductSlug(nextRoute.productSlug)
+    setMarketGallerySlug(nextRoute.marketGallerySlug)
     setCategory(nextRoute.category || 'all')
+    setMarketStatus(nextRoute.marketStatus || 'all')
     setIsMenuOpen(false)
   }
 
@@ -691,17 +779,30 @@ function App() {
       return
     }
 
+    if (page === 'marketGallery' && marketGallerySlug) {
+      navigateTo(marketGalleryRoutes[marketGallerySlug][event.target.value])
+      return
+    }
+
     const destination = pages[page][event.target.value]
     const categoryQuery =
       ['available', 'sold'].includes(page) && category !== 'all'
         ? `?category=${category}`
         : ''
-    navigateTo(`${destination}${categoryQuery}`)
+    const marketStatusQuery =
+      page === 'markets' && marketStatus !== 'all'
+        ? `?status=${marketStatus}`
+        : ''
+    navigateTo(`${destination}${categoryQuery}${marketStatusQuery}`)
   }
 
   function isNavigationPageActive(navPage) {
     if (page === navPage) {
       return true
+    }
+
+    if (page === 'marketGallery') {
+      return navPage === 'markets'
     }
 
     if (page !== 'product') {
@@ -823,7 +924,21 @@ function App() {
             navigateTo={navigateTo}
           />
         )}
-        {page === 'markets' && <MarketsPage copy={copy} />}
+        {page === 'markets' && (
+          <MarketsPage
+            copy={copy}
+            language={language}
+            marketStatus={marketStatus}
+            navigateTo={navigateTo}
+          />
+        )}
+        {page === 'marketGallery' && (
+          <MarketGalleryPage
+            copy={copy}
+            language={language}
+            navigateTo={navigateTo}
+          />
+        )}
         {page === 'media' && <MediaPage copy={copy} />}
         {page === 'reviews' && <ReviewsPage copy={copy} />}
         {page === 'about' && <AboutPage copy={copy} />}
@@ -1066,8 +1181,155 @@ function EmptyCategory({ text }) {
   )
 }
 
-function MarketsPage({ copy }) {
-  return <EditorialPlaceholderPage content={copy.markets} type="markets" />
+function MarketsPage({ copy, language, marketStatus, navigateTo }) {
+  const galleryHref =
+    marketGalleryRoutes['re-bazaar-mall-galeria-burgas-2026'][language]
+  const showPast = marketStatus !== 'upcoming'
+  const showUpcoming = marketStatus !== 'past'
+
+  return (
+    <section className="page editorial-page markets-page">
+      <PageHeader
+        kicker={copy.markets.kicker}
+        title={copy.markets.title}
+        text={copy.markets.text}
+      />
+      <nav
+        className="market-filters"
+        aria-label={copy.markets.filters.label}
+      >
+        {['past', 'upcoming'].map((status) => {
+          const href = `${pages.markets[language]}?status=${status}`
+
+          return (
+            <a
+              className={marketStatus === status ? 'active' : ''}
+              href={href}
+              key={status}
+              aria-current={marketStatus === status ? 'page' : undefined}
+              onClick={(event) => {
+                event.preventDefault()
+                navigateTo(href)
+              }}
+            >
+              {copy.markets.filters[status]}
+            </a>
+          )
+        })}
+      </nav>
+      <div
+        className={`editorial-grid ${marketStatus !== 'all' ? 'single-event' : ''}`}
+      >
+        {showPast && (
+        <article className="editorial-card market-event-card">
+          <span className="event-status-badge past">
+            {copy.markets.gallery.status}
+          </span>
+          <a
+            className="market-event-cover"
+            href={galleryHref}
+            onClick={(event) => {
+              event.preventDefault()
+              navigateTo(galleryHref)
+            }}
+          >
+            <img
+              src={reBazaarImages[0]}
+              alt={copy.markets.gallery.title}
+            />
+          </a>
+          <div className="editorial-copy">
+            <div className="market-event-meta">
+              <span>{copy.markets.gallery.date}</span>
+              <span>{copy.markets.gallery.location}</span>
+            </div>
+            <h2>{copy.markets.gallery.title}</h2>
+            <p>{copy.markets.gallery.text}</p>
+            <a
+              className="button secondary"
+              href={galleryHref}
+              onClick={(event) => {
+                event.preventDefault()
+                navigateTo(galleryHref)
+              }}
+            >
+              {copy.markets.viewGallery}
+            </a>
+          </div>
+        </article>
+        )}
+
+        {showUpcoming && (
+        <article className="editorial-card market-event-card upcoming-event-card">
+          <span className="event-status-badge upcoming">
+            {copy.markets.upcomingEvent.status}
+          </span>
+          <div className="market-event-cover upcoming-event-cover">
+            <img
+              src={handmadeDesignMarketPoster}
+              alt={`${copy.markets.upcomingEvent.title} - ${copy.markets.upcomingEvent.date}`}
+            />
+          </div>
+          <div className="editorial-copy">
+            <div className="market-event-meta">
+              <span>{copy.markets.upcomingEvent.date}</span>
+              <span>{copy.markets.upcomingEvent.location}</span>
+            </div>
+            <h2>{copy.markets.upcomingEvent.title}</h2>
+            <p>{copy.markets.upcomingEvent.text}</p>
+            <strong className="event-admission">
+              {copy.markets.upcomingEvent.admission}
+            </strong>
+            <a
+              className="button secondary"
+              href={handmadeDesignMarketUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {copy.markets.upcomingEvent.cta}
+            </a>
+          </div>
+        </article>
+        )}
+      </div>
+    </section>
+  )
+}
+
+function MarketGalleryPage({ copy, language, navigateTo }) {
+  const backHref = pages.markets[language]
+
+  return (
+    <section className="page market-gallery-page">
+      <a
+        className="back-link"
+        href={backHref}
+        onClick={(event) => {
+          event.preventDefault()
+          navigateTo(backHref)
+        }}
+      >
+        {copy.markets.back}
+      </a>
+
+      <PageHeader
+        kicker={copy.markets.kicker}
+        title={copy.markets.gallery.title}
+        text={copy.markets.gallery.text}
+      />
+
+      <div className="market-gallery-meta" aria-label={copy.markets.gallery.title}>
+        <span>{copy.markets.gallery.date}</span>
+        <span>{copy.markets.gallery.location}</span>
+      </div>
+
+      <ProductGallery
+        images={reBazaarImages}
+        title={copy.markets.gallery.title}
+        copy={copy.product}
+      />
+    </section>
+  )
 }
 
 function MediaPage({ copy }) {
@@ -1099,32 +1361,6 @@ function MediaPage({ copy }) {
               >
                 {copy.media.cta}
               </a>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-  )
-}
-
-function EditorialPlaceholderPage({ content, type }) {
-  return (
-    <section className={`page editorial-page ${type}-page`}>
-      <PageHeader
-        kicker={content.kicker}
-        title={content.title}
-        text={content.text}
-      />
-      <div className="editorial-grid">
-        {content.cards.map(([title, text], index) => (
-          <article className="editorial-card" key={title}>
-            <div className={`editorial-preview ${type}`} aria-hidden="true">
-              <span>{String(index + 1).padStart(2, '0')}</span>
-            </div>
-            <div className="editorial-copy">
-              <span className="status-badge">{content.upcoming}</span>
-              <h2>{title}</h2>
-              <p>{text}</p>
             </div>
           </article>
         ))}
@@ -1501,6 +1737,7 @@ function SiteFooter({
           <a
             className={
               page === navPage ||
+              (page === 'marketGallery' && navPage === 'markets') ||
               (page === 'product' &&
                 navPage === (productStatus === 'sold' ? 'sold' : 'available'))
                 ? 'active'

@@ -16,6 +16,10 @@ const localizedRoutes = {
   available: { bg: '/available-lamps', en: '/en/available-lamps' },
   sold: { bg: '/sold-lamps', en: '/en/sold-lamps' },
   markets: { bg: '/art-markets', en: '/en/art-markets' },
+  marketGalleryReBazaar: {
+    bg: '/art-markets/re-bazaar-mall-galeria-burgas-2026',
+    en: '/en/art-markets/re-bazaar-mall-galeria-burgas-2026',
+  },
   media: { bg: '/media-about-us', en: '/en/media-about-us' },
   reviews: { bg: '/customer-reviews', en: '/en/customer-reviews' },
   about: { bg: '/about-us', en: '/en/about-us' },
@@ -61,6 +65,14 @@ const pinkTelephoneImageUrls = [
   `${siteUrl}/images/pink-rotary-telephone-lamp-01.jpg`,
   `${siteUrl}/images/pink-rotary-telephone-lamp-02.jpg`,
   `${siteUrl}/images/pink-rotary-telephone-lamp-03.jpg`,
+]
+
+const reBazaarImageUrls = [
+  `${siteUrl}/images/markets/re-bazaar-2026/re-bazaar-main.jpg`,
+  `${siteUrl}/images/markets/re-bazaar-2026/re-bazaar-01.jpg`,
+  `${siteUrl}/images/markets/re-bazaar-2026/re-bazaar-02.jpg`,
+  `${siteUrl}/images/markets/re-bazaar-2026/re-bazaar-03.jpg`,
+  `${siteUrl}/images/markets/re-bazaar-2026/re-bazaar-04.jpg`,
 ]
 
 const organizationSchema = {
@@ -166,6 +178,26 @@ const pinkTelephoneProductSchema = getProductSchema({
   availability: 'SoldOut',
 })
 
+const reBazaarEventSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: 'Re-Bazaar (Mall Galeria Burgas)',
+  startDate: '2026-04-25',
+  endDate: '2026-04-26',
+  eventStatus: 'https://schema.org/EventCompleted',
+  location: {
+    '@type': 'Place',
+    name: 'Mall Galeria Burgas',
+  },
+  image: reBazaarImageUrls,
+  organizer: {
+    '@type': 'Organization',
+    name: 'E&K Vintara Studio',
+    url: siteUrl,
+  },
+  url: `${siteUrl}${localizedRoutes.marketGalleryReBazaar.bg}`,
+}
+
 const seoPages = [
   {
     key: 'home',
@@ -198,6 +230,16 @@ const seoPages = [
     title: 'Участия в арт базари | E&K Vintara Studio',
     description:
       'Снимки, видеа и информация за участията на E&K Vintara Studio в арт базари, изложения и творчески събития.',
+  },
+  {
+    key: 'marketGalleryReBazaar',
+    lang: 'bg',
+    path: localizedRoutes.marketGalleryReBazaar.bg,
+    title: 'Re-Bazaar в Mall Galeria Burgas | E&K Vintara Studio',
+    description:
+      'Снимки от участието на E&K Vintara Studio в Re-Bazaar в Mall Galeria Burgas на 25 и 26 април 2026 г.',
+    schemas: [reBazaarEventSchema],
+    image: 'markets/re-bazaar-2026/re-bazaar-main.jpg',
   },
   {
     key: 'media',
@@ -306,6 +348,16 @@ const seoPages = [
     title: 'Art Market Events | E&K Vintara Studio',
     description:
       'Photos, videos, and information about E&K Vintara Studio at art markets, exhibitions, and creative events.',
+  },
+  {
+    key: 'marketGalleryReBazaar',
+    lang: 'en',
+    path: localizedRoutes.marketGalleryReBazaar.en,
+    title: 'Re-Bazaar at Mall Galeria Burgas | E&K Vintara Studio',
+    description:
+      'Photos from E&K Vintara Studio at Re-Bazaar in Mall Galeria Burgas on April 25 and 26, 2026.',
+    schemas: [reBazaarEventSchema],
+    image: 'markets/re-bazaar-2026/re-bazaar-main.jpg',
   },
   {
     key: 'media',
