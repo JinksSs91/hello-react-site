@@ -260,7 +260,7 @@ const content = {
     product: {
       back: 'Назад към наличните лампи',
       available: 'Продава се',
-      price: 'Цена при запитване',
+      price: 'Попитай за цена',
       cta: 'Пиши за цена и доставка',
       details: 'Виж детайли',
       gallery: 'Допълнителни снимки',
@@ -446,7 +446,7 @@ const content = {
     product: {
       back: 'Back to available lamps',
       available: 'Available',
-      price: 'Price on request',
+      price: 'Ask for price',
       cta: 'Ask about price and delivery',
       details: 'View details',
       gallery: 'Additional photos',
@@ -520,7 +520,7 @@ const viliaLamp = {
     'Ръчно изработена лампа от vintage фотоапарат Vilia с топла Edison крушка.',
   summaryEn:
     'Handmade lamp created from a vintage Vilia camera with a warm Edison bulb.',
-  images: [viliaLamp01, viliaLamp02, viliaLamp03, viliaLamp05],
+  images: [viliaLamp05, viliaLamp01, viliaLamp02, viliaLamp03],
   descriptionBg: [
     '✨ПРОДАВА СЕ✨📸✨ Ръчно изработена лампа от vintage фотоапарат Vilia - истинска класика от СССР, произвеждана през 70-те и 80-те години.',
     'Със своя емблематичен Triplet 69-3 обектив и автентичен ретро дизайн, този апарат получава нов живот като cozy decor лампа с топла Edison крушка.',
@@ -555,7 +555,7 @@ const redTa900Lamp = {
     'Оригинален ретро телефон TA-900 от 1991 г., ръчно преобразен в уникална лампа.',
   summaryEn:
     'An original TA-900 retro telephone from 1991, handmade into a unique lamp.',
-  images: [redTa900Lamp01, redTa900Lamp02],
+  images: [redTa900Lamp02, redTa900Lamp01],
   descriptionBg: [
     '✨ПРОДАВА СЕ ✨💡📞 Когато миналото срещне модерния уют...',
     'Представям ти една наистина специална лампа - създадена от оригинален ретро телефон ТА-900, произведен през 1991 г. в Белоградчик (ИНКОМС).',
@@ -1659,6 +1659,7 @@ function ProductCard({ product, copy, language, navigateTo }) {
         <p>{summary}</p>
         <div className="product-actions">
           <span>{copy.product.price}</span>
+          <ProductContactLinks copy={copy} />
           <a
             className="button secondary"
             href={product.routes[language]}
@@ -1672,6 +1673,36 @@ function ProductCard({ product, copy, language, navigateTo }) {
         </div>
       </div>
     </article>
+  )
+}
+
+function ProductContactLinks({ copy }) {
+  return (
+    <div className="product-contact-links" aria-label={copy.contacts.kicker}>
+      <a
+        href={instagramUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={copy.contacts.instagram}
+        title={copy.contacts.instagram}
+      >
+        <InstagramIcon />
+      </a>
+      <a
+        href={`mailto:${emailAddress}`}
+        aria-label={copy.contacts.email}
+        title={copy.contacts.email}
+      >
+        <EmailIcon />
+      </a>
+      <a
+        href={`tel:${viberPhone}`}
+        aria-label={copy.contacts.viber}
+        title={copy.contacts.viber}
+      >
+        <PhoneIcon />
+      </a>
+    </div>
   )
 }
 

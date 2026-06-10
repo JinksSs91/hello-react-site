@@ -50,15 +50,15 @@ const phoneImageUrls = [
 ]
 
 const viliaImageUrls = [
+  `${siteUrl}/images/vilia-camera-lamp-05.jpg`,
   `${siteUrl}/images/vilia-camera-lamp-01.jpg`,
   `${siteUrl}/images/vilia-camera-lamp-02.jpg`,
   `${siteUrl}/images/vilia-camera-lamp-03.jpg`,
-  `${siteUrl}/images/vilia-camera-lamp-05.jpg`,
 ]
 
 const redTa900ImageUrls = [
-  `${siteUrl}/images/red-ta-900-telephone-lamp-01.jpg`,
   `${siteUrl}/images/red-ta-900-telephone-lamp-02.jpg`,
+  `${siteUrl}/images/red-ta-900-telephone-lamp-01.jpg`,
 ]
 
 const pinkTelephoneImageUrls = [
@@ -292,7 +292,7 @@ const seoPages = [
     description:
       'Продава се ръчно изработена Vilia фотоапарат лампа с топла Edison крушка. Уникална upcycling лампа от vintage фотоапарат от СССР.',
     schemas: [viliaProductSchema],
-    image: 'vilia-camera-lamp-01.jpg',
+    image: 'vilia-camera-lamp-05.jpg',
     isProduct: true,
   },
   {
@@ -303,7 +303,7 @@ const seoPages = [
     description:
       'Продава се червена TA-900 телефон лампа от оригинален ретро телефон, произведен през 1991 г. в Белоградчик. Ръчна изработка и топла светлина.',
     schemas: [redTa900ProductSchema],
-    image: 'red-ta-900-telephone-lamp-01.jpg',
+    image: 'red-ta-900-telephone-lamp-02.jpg',
     isProduct: true,
   },
   {
@@ -410,7 +410,7 @@ const seoPages = [
     description:
       'Available handmade Vilia camera lamp with a warm Edison bulb, created from a Soviet vintage camera classic.',
     schemas: [viliaProductSchema],
-    image: 'vilia-camera-lamp-01.jpg',
+    image: 'vilia-camera-lamp-05.jpg',
     isProduct: true,
   },
   {
@@ -421,7 +421,7 @@ const seoPages = [
     description:
       'Available handmade red TA-900 telephone lamp made from an original 1991 INCOMS retro telephone preserved in its original box.',
     schemas: [redTa900ProductSchema],
-    image: 'red-ta-900-telephone-lamp-01.jpg',
+    image: 'red-ta-900-telephone-lamp-02.jpg',
     isProduct: true,
   },
   {

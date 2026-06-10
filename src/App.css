@@ -929,6 +929,46 @@
   margin-top: 6px;
 }
 
+.product-contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.product-contact-links a {
+  display: inline-grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.product-contact-links a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(56, 44, 36, 0.12);
+}
+
+.product-contact-links a:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 3px;
+}
+
+.product-contact-links svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
 .product-actions span,
 .price-line {
   color: var(--terracotta);
