@@ -17,6 +17,10 @@ import russianTelephoneLamp01 from './assets/products/russian-rotary-telephone-l
 import russianTelephoneLamp02 from './assets/products/russian-rotary-telephone-lamp-02.jpg'
 import russianTelephoneLamp03 from './assets/products/russian-rotary-telephone-lamp-03.jpg'
 import russianTelephoneLamp04 from './assets/products/russian-rotary-telephone-lamp-04.jpg'
+import mayakClockLamp01 from './assets/products/mayak-desk-clock-lamp-01.jpg'
+import mayakClockLamp02 from './assets/products/mayak-desk-clock-lamp-02.jpg'
+import mayakClockLamp03 from './assets/products/mayak-desk-clock-lamp-03.jpg'
+import mayakClockLamp04 from './assets/products/mayak-desk-clock-lamp-04.jpg'
 import bgDnesLogo from './assets/media/bgdnes.png'
 import regNewsLogo from './assets/media/regnews.png'
 import homeHeroBlackPhone from './assets/home/home-hero-black-phone-clean.jpg'
@@ -99,6 +103,10 @@ const productRoutes = {
   'russian-rotary-telephone-lamp': {
     bg: '/sold-lamps/russian-rotary-telephone-lamp',
     en: '/en/sold-lamps/russian-rotary-telephone-lamp',
+  },
+  'mayak-desk-clock-lamp': {
+    bg: '/sold-lamps/mayak-desk-clock-lamp',
+    en: '/en/sold-lamps/mayak-desk-clock-lamp',
   },
 }
 
@@ -750,12 +758,64 @@ const russianTelephoneLamp = {
   ],
 }
 
-const soldProducts = [russianTelephoneLamp, pinkTelephoneLamp]
+const mayakClockLamp = {
+  slug: 'mayak-desk-clock-lamp',
+  routes: productRoutes['mayak-desk-clock-lamp'],
+  category: 'desk-clocks',
+  status: 'sold',
+  titleBg: 'Настолен часовник „Маяк“ от СССР',
+  titleEn: 'Mayak Soviet Desk Clock Lamp',
+  summaryBg:
+    'Винтидж лампа с работещ часовник и термометър, създадена от автентичен съветски настолен часовник „Маяк“.',
+  summaryEn:
+    'A vintage lamp with a working clock and thermometer, created from an authentic Soviet Mayak desk clock.',
+  images: [
+    mayakClockLamp01,
+    mayakClockLamp02,
+    mayakClockLamp03,
+    mayakClockLamp04,
+  ],
+  descriptionBg: [
+    'Добавете топлина и характер към дома си с тази уникална ръчно изработена винтидж лампа, съчетаваща функционалност и ретро естетика.',
+    'Лампата е създадена с внимание към детайла от автентичен стар руски часовник „Маяк“, произведен в СССР. Часовникът работи напълно изправно и придава истински винтидж характер.',
+    'Тази лампа е не само източник на светлина, но и впечатляващ декоративен елемент, който създава уютна атмосфера в спалня, хол, офис или винтидж интериор.',
+    'Топлата светлина и ретро визията я превръщат в отличителен акцент за любителите на старинния стил и уникалните предмети.',
+  ],
+  descriptionEn: [
+    'Bring warmth and character into your home with this unique handmade vintage lamp, combining practical function with authentic retro aesthetics.',
+    'The lamp was carefully created from an original Russian Mayak clock made in the USSR. The clock remains fully functional and gives the piece its genuine vintage character.',
+    'More than a source of light, this lamp is a striking decorative piece that creates a cozy atmosphere in a bedroom, living room, office, or vintage interior.',
+    'Its warm glow and retro appearance make it a distinctive accent for anyone who appreciates antique style and one-of-a-kind objects.',
+  ],
+  featuresBg: [
+    'Ръчно изработена винтидж лампа',
+    'Оригинален работещ часовник „Маяк“ от СССР',
+    'Вграден работещ термометър',
+    'Топла светлина с винтидж Edison крушка',
+    'Дървен корпус с автентичен ретро дизайн',
+    'Уникален и единствен по рода си артикул',
+  ],
+  featuresEn: [
+    'Handmade vintage lamp',
+    'Original working Mayak clock made in the USSR',
+    'Built-in working thermometer',
+    'Warm light from a vintage Edison bulb',
+    'Wooden case with authentic retro design',
+    'Unique one-of-a-kind piece',
+  ],
+}
+
+const soldProducts = [
+  mayakClockLamp,
+  russianTelephoneLamp,
+  pinkTelephoneLamp,
+]
 
 const productBySlug = Object.fromEntries(
-  [...availableProducts, russianTelephoneLamp, pinkTelephoneLamp].map(
-    (product) => [product.slug, product],
-  ),
+  [...availableProducts, ...soldProducts].map((product) => [
+    product.slug,
+    product,
+  ]),
 )
 
 function getRouteFromPath(pathname) {

@@ -44,6 +44,10 @@ const localizedRoutes = {
     bg: '/sold-lamps/russian-rotary-telephone-lamp',
     en: '/en/sold-lamps/russian-rotary-telephone-lamp',
   },
+  soldProductMayakClock: {
+    bg: '/sold-lamps/mayak-desk-clock-lamp',
+    en: '/en/sold-lamps/mayak-desk-clock-lamp',
+  },
 }
 
 const phoneImageUrls = [
@@ -76,6 +80,13 @@ const russianTelephoneImageUrls = [
   `${siteUrl}/images/russian-rotary-telephone-lamp-02.jpg`,
   `${siteUrl}/images/russian-rotary-telephone-lamp-03.jpg`,
   `${siteUrl}/images/russian-rotary-telephone-lamp-04.jpg`,
+]
+
+const mayakClockImageUrls = [
+  `${siteUrl}/images/mayak-desk-clock-lamp-01.jpg`,
+  `${siteUrl}/images/mayak-desk-clock-lamp-02.jpg`,
+  `${siteUrl}/images/mayak-desk-clock-lamp-03.jpg`,
+  `${siteUrl}/images/mayak-desk-clock-lamp-04.jpg`,
 ]
 
 const reBazaarImageUrls = [
@@ -197,6 +208,17 @@ const russianTelephoneProductSchema = getProductSchema({
     'Sold handmade vintage lamp created from an authentic Soviet rotary telephone dating from the 1950s–1970s.',
   category: 'Handmade vintage telephone lamp',
   url: localizedRoutes.soldProductRussianTelephone.bg,
+  availability: 'SoldOut',
+})
+
+const mayakClockProductSchema = getProductSchema({
+  name: 'Mayak Soviet Desk Clock Lamp',
+  alternateName: 'Настолен часовник „Маяк“ от СССР',
+  image: mayakClockImageUrls,
+  description:
+    'Sold handmade vintage lamp created from an authentic Soviet Mayak desk clock with a working clock and thermometer.',
+  category: 'Handmade vintage desk clock lamp',
+  url: localizedRoutes.soldProductMayakClock.bg,
   availability: 'SoldOut',
 })
 
@@ -352,6 +374,18 @@ const seoPages = [
     isProduct: true,
   },
   {
+    key: 'soldProductMayakClock',
+    lang: 'bg',
+    path: localizedRoutes.soldProductMayakClock.bg,
+    title:
+      'Настолен часовник „Маяк“ от СССР | Продадена винтидж лампа',
+    description:
+      'Продадена ръчно изработена винтидж лампа от съветски настолен часовник „Маяк“ с работещ часовник, термометър и топла Edison светлина.',
+    schemas: [mayakClockProductSchema],
+    image: 'mayak-desk-clock-lamp-01.jpg',
+    isProduct: true,
+  },
+  {
     key: 'home',
     lang: 'en',
     path: localizedRoutes.home.en,
@@ -479,6 +513,17 @@ const seoPages = [
       'Sold handmade vintage lamp created from an authentic Soviet rotary telephone with preserved original details.',
     schemas: [russianTelephoneProductSchema],
     image: 'russian-rotary-telephone-lamp-01.jpg',
+    isProduct: true,
+  },
+  {
+    key: 'soldProductMayakClock',
+    lang: 'en',
+    path: localizedRoutes.soldProductMayakClock.en,
+    title: 'Mayak Soviet Desk Clock Lamp | Sold handmade vintage lamp',
+    description:
+      'Sold handmade vintage lamp created from an authentic Soviet Mayak desk clock with a working clock, thermometer, and warm Edison light.',
+    schemas: [mayakClockProductSchema],
+    image: 'mayak-desk-clock-lamp-01.jpg',
     isProduct: true,
   },
 ]
