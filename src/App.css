@@ -1103,6 +1103,24 @@
   padding: 32px;
 }
 
+.about-story {
+  gap: 20px;
+}
+
+.about-story p {
+  max-width: none;
+}
+
+.about-story strong {
+  color: var(--ink);
+}
+
+.about-story-closing {
+  padding-top: 4px;
+  color: var(--ink);
+  font-size: 1.18rem;
+}
+
 .contacts-page {
   min-height: calc(100vh - 160px);
 }

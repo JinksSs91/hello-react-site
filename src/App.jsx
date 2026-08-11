@@ -369,15 +369,18 @@ const content = {
     },
     about: {
       kicker: 'За нас',
-      title: 'E&K Vintara Studio дава втори живот на предмети с душа.',
-      text:
-        'Създаваме лампи от автентични винтидж телефони, фотоапарати, радиа и часовници. Подбираме всеки предмет по форма, патина и история, след което го превръщаме в функционален интериорен акцент.',
-      points: [
-        'Ръчна изработка',
-        'Устойчив upcycling подход',
-        'Единствен характер',
-        'Ретро естетика с модерна функция',
-      ],
+      title: 'Здравейте, ние сме Елена и Калоян.',
+      intro:
+        'Двойка от Пловдив, заедно от над пет години, и споделяме любовта към пътуванията, старите вещи и историите, които носят със себе си.',
+      origin:
+        'E&K Vintara Studio започна почти случайно. Докато разчиствахме стар таван, попаднахме на няколко забравени ретро телефона. Тъкмо щяхме да ги изхвърлим, когато си помислихме:',
+      question: 'а защо да не им дадем втори живот?',
+      transformation: 'И така ги превърнахме в лампи.',
+      learning:
+        'Учехме всичко в движение — кабели, пробиване, боядисване, реставрация, много експерименти и понякога започване отначало. От няколко стари телефона колекцията постепенно се разрасна с радиа, фотоапарати, часовници и други позабравени предмети, които откриваме по време на пътуванията си, по битпазари, при колекционери или при хора, които просто не искат да ги видят изхвърлени.',
+      today:
+        'Днес превръщаме тези малки частици от миналото в уникални лампи, създадени за съвременния дом.',
+      closing: 'Стари предмети. Нови истории. И малко повече светлина.',
     },
     contacts: {
       kicker: 'Контакти',
@@ -586,15 +589,18 @@ const content = {
     },
     about: {
       kicker: 'About us',
-      title: 'E&K Vintara Studio gives a second life to objects with soul.',
-      text:
-        'We create lamps from authentic vintage telephones, cameras, radios, and clocks. Each object is chosen for its shape, patina, and story, then transformed into a functional interior accent.',
-      points: [
-        'Handmade craft',
-        'Sustainable upcycling',
-        'One-of-one character',
-        'Retro aesthetics with modern function',
-      ],
+      title: 'Hello, we are Elena and Kaloyan.',
+      intro:
+        'We are a couple from Plovdiv, together for more than five years, and we share a love of travel, old objects, and the stories they carry.',
+      origin:
+        'E&K Vintara Studio began almost by accident. While clearing out an old attic, we came across several forgotten vintage telephones. We were just about to throw them away when we thought:',
+      question: 'why not give them a second life?',
+      transformation: 'And so we turned them into lamps.',
+      learning:
+        'We learned everything as we went — wiring, drilling, painting, restoration, plenty of experimenting, and sometimes starting over. From those few old telephones, the collection gradually grew to include radios, cameras, clocks, and other long-forgotten objects that we discover on our travels, at flea markets, through collectors, or from people who simply do not want to see them thrown away.',
+      today:
+        'Today, we transform these small pieces of the past into unique lamps created for the modern home.',
+      closing: 'Old objects. New stories. And a little more light.',
     },
     contacts: {
       kicker: 'Contacts',
@@ -2197,17 +2203,18 @@ function ReviewsPage({ copy }) {
 function AboutPage({ copy }) {
   return (
     <section className="page about-page">
-      <PageHeader
-        kicker={copy.about.kicker}
-        title={copy.about.title}
-        text={copy.about.text}
-      />
-      <div className="text-panel">
-        <ul className="pill-list">
-          {copy.about.points.map((point) => (
-            <li key={point}>{point}</li>
-          ))}
-        </ul>
+      <PageHeader kicker={copy.about.kicker} title={copy.about.title} />
+      <div className="text-panel about-story">
+        <p>{copy.about.intro}</p>
+        <p>
+          {copy.about.origin} <strong>{copy.about.question}</strong>
+        </p>
+        <p>{copy.about.transformation}</p>
+        <p>{copy.about.learning}</p>
+        <p>{copy.about.today}</p>
+        <p className="about-story-closing">
+          <strong>{copy.about.closing}</strong>
+        </p>
       </div>
     </section>
   )
@@ -2673,7 +2680,7 @@ function PageHeader({ kicker, title, text }) {
     <div className="page-header">
       <p className="kicker">{kicker}</p>
       <h1>{title}</h1>
-      <p>{text}</p>
+      {text && <p>{text}</p>}
     </div>
   )
 }
