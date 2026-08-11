@@ -226,7 +226,7 @@ const content = {
       },
       upcomingEvent: {
         title: 'Handmade Design Market',
-        status: 'Предстоящ',
+        status: 'Отминал',
         date: '7-9 август 2026 г.',
         location: 'Алеята пред Флора, Морска градина, гр. Бургас',
         text:
@@ -446,7 +446,7 @@ const content = {
       },
       upcomingEvent: {
         title: 'Handmade Design Market',
-        status: 'Upcoming',
+        status: 'Past',
         date: 'August 7-9, 2026',
         location: 'The walkway in front of Flora, Sea Garden, Burgas',
         text:
@@ -1421,7 +1421,6 @@ function MarketsPage({ copy, language, marketStatus, navigateTo }) {
   const galleryHref =
     marketGalleryRoutes['re-bazaar-mall-galeria-burgas-2026'][language]
   const showPast = marketStatus !== 'upcoming'
-  const showUpcoming = marketStatus !== 'past'
 
   return (
     <section className="page editorial-page markets-page">
@@ -1495,9 +1494,9 @@ function MarketsPage({ copy, language, marketStatus, navigateTo }) {
         </article>
         )}
 
-        {showUpcoming && (
+        {showPast && (
         <article className="editorial-card market-event-card upcoming-event-card">
-          <span className="event-status-badge upcoming">
+          <span className="event-status-badge past">
             {copy.markets.upcomingEvent.status}
           </span>
           <div className="market-event-cover upcoming-event-cover">
