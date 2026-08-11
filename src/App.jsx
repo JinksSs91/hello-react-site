@@ -78,6 +78,12 @@ const reBazaarImages = [
   '/images/markets/re-bazaar-2026/re-bazaar-04.jpg',
 ]
 
+const customerReviewImages = Array.from(
+  { length: 11 },
+  (_, index) =>
+    `/images/reviews/customer-review-${String(index + 1).padStart(2, '0')}.jpg`,
+)
+
 const handmadeDesignMarketPoster =
   '/images/markets/handmade-design-market-2026/handmade-design-market-poster.jpg'
 const handmadeDesignMarketUrl =
@@ -345,24 +351,20 @@ const content = {
       kicker: 'Отзиви от клиенти',
       title: 'Историите продължават в домовете на нашите клиенти.',
       text:
-        'Тук ще споделяме снимки, Instagram stories и автентична обратна връзка от хората, избрали лампа на E&K Vintara Studio.',
-      upcoming: 'Очаквайте скоро',
-      cards: [
-        [
-          'Instagram stories',
-          'Споделени моменти с лампите в техния нов дом.',
-          'story',
-        ],
-        [
-          'Писмени отзиви',
-          'Реални впечатления за изработката, светлината и доставката.',
-          'message',
-        ],
-        [
-          'Снимки от клиенти',
-          'Автентични кадри на завършените лампи в различни интериори.',
-          'photo',
-        ],
+        'Снимки, Instagram stories и автентична обратна връзка от хората, избрали лампа на E&K Vintara Studio.',
+      galleryTitle: 'Отзиви и снимки от клиенти',
+      imageAlts: [
+        'Клиентски отзив за получени лампи и успешна доставка',
+        'Червена телефонна лампа в интериора на клиент',
+        'Клиентски съобщения за получена с много любов лампа',
+        'Оранжева телефонна лампа в дома на клиент',
+        'Две фотоапаратни лампи, споделени от клиент',
+        'Оранжева телефонна лампа върху дървена мебел',
+        'Разопакована оранжева телефонна лампа',
+        'Лампа от фотоапарат Смена-2 в дома на клиент',
+        'Черна телефонна лампа в артистичен интериор',
+        'Червена телефонна лампа, споделена от клиент',
+        'Клиентски отзив за лампа, избрана като подарък',
       ],
     },
     about: {
@@ -566,24 +568,20 @@ const content = {
       kicker: 'Customer Reviews',
       title: 'The stories continue in our customers’ homes.',
       text:
-        'Here we will share photos, Instagram stories, and authentic feedback from people who chose an E&K Vintara Studio lamp.',
-      upcoming: 'Coming soon',
-      cards: [
-        [
-          'Instagram stories',
-          'Shared moments featuring the lamps in their new homes.',
-          'story',
-        ],
-        [
-          'Written reviews',
-          'Real impressions of the craftsmanship, light, and delivery.',
-          'message',
-        ],
-        [
-          'Customer photos',
-          'Authentic images of finished lamps in different interiors.',
-          'photo',
-        ],
+        'Photos, Instagram stories, and authentic feedback from people who chose an E&K Vintara Studio lamp.',
+      galleryTitle: 'Customer reviews and photos',
+      imageAlts: [
+        'Customer feedback about received lamps and successful delivery',
+        'Red telephone lamp in a customer interior',
+        'Customer messages about a lamp received with love',
+        'Orange telephone lamp in a customer home',
+        'Two camera lamps shared by a customer',
+        'Orange telephone lamp on wooden furniture',
+        'Unboxed orange telephone lamp',
+        'Smena-2 camera lamp in a customer home',
+        'Black telephone lamp in an artistic interior',
+        'Red telephone lamp shared by a customer',
+        'Customer feedback about a lamp chosen as a gift',
       ],
     },
     about: {
@@ -2185,24 +2183,13 @@ function ReviewsPage({ copy }) {
         title={copy.reviews.title}
         text={copy.reviews.text}
       />
-      <div className="reviews-grid">
-        {copy.reviews.cards.map(([title, text, type]) => (
-          <article className="review-card" key={title}>
-            <div className={`review-preview ${type}`} aria-hidden="true">
-              <span className="review-preview-mark">
-                {type === 'story' ? 'STORY' : type === 'message' ? 'DM' : 'PHOTO'}
-              </span>
-              <span className="review-preview-line"></span>
-              <span className="review-preview-line short"></span>
-            </div>
-            <div className="review-copy">
-              <span className="status-badge">{copy.reviews.upcoming}</span>
-              <h2>{title}</h2>
-              <p>{text}</p>
-            </div>
-          </article>
-        ))}
-      </div>
+      <ProductGallery
+        allImages
+        altTexts={copy.reviews.imageAlts}
+        images={customerReviewImages}
+        title={copy.reviews.galleryTitle}
+        copy={copy.product}
+      />
     </section>
   )
 }
@@ -2320,7 +2307,7 @@ function ProductPage({ copy, language, navigateTo, product }) {
   )
 }
 
-function ProductGallery({ images, title, copy }) {
+function ProductGallery({ images, title, copy, allImages = false, altTexts }) {
   const [activeImageIndex, setActiveImageIndex] = useState(null)
   const isOpen = activeImageIndex !== null
 
@@ -2366,30 +2353,47 @@ function ProductGallery({ images, title, copy }) {
     setActiveImageIndex((current) => (current + 1) % images.length)
   }
 
+  const galleryImages = allImages ? images : images.slice(1)
+  const galleryIndexOffset = allImages ? 0 : 1
+
   return (
     <>
-      <div className="product-gallery">
-        <button
-          className="gallery-image-button main"
-          type="button"
-          onClick={() => setActiveImageIndex(0)}
-          aria-label={`${copy.openImage}: ${title} 1`}
-        >
-          <img className="main-product-image" src={images[0]} alt={title} />
-        </button>
-        <h2>{copy.gallery}</h2>
-        <div className="gallery-grid">
-          {images.slice(1).map((image, index) => (
+      <div className={`product-gallery ${allImages ? 'all-images' : ''}`}>
+        {!allImages && (
+          <>
             <button
-              className="gallery-image-button"
+              className="gallery-image-button main"
               type="button"
-              key={image}
-              onClick={() => setActiveImageIndex(index + 1)}
-              aria-label={`${copy.openImage}: ${title} ${index + 2}`}
+              onClick={() => setActiveImageIndex(0)}
+              aria-label={`${copy.openImage}: ${altTexts?.[0] || title}`}
             >
-              <img src={image} alt={`${title} ${index + 2}`} />
+              <img
+                className="main-product-image"
+                src={images[0]}
+                alt={altTexts?.[0] || title}
+              />
             </button>
-          ))}
+            <h2>{copy.gallery}</h2>
+          </>
+        )}
+        <div className="gallery-grid">
+          {galleryImages.map((image, index) => {
+            const imageIndex = index + galleryIndexOffset
+            const imageAlt =
+              altTexts?.[imageIndex] || `${title} ${imageIndex + 1}`
+
+            return (
+              <button
+                className="gallery-image-button"
+                type="button"
+                key={image}
+                onClick={() => setActiveImageIndex(imageIndex)}
+                aria-label={`${copy.openImage}: ${imageAlt}`}
+              >
+                <img src={image} alt={imageAlt} />
+              </button>
+            )
+          })}
         </div>
       </div>
 
@@ -2424,7 +2428,10 @@ function ProductGallery({ images, title, copy }) {
           <figure className="lightbox-figure">
             <img
               src={images[activeImageIndex]}
-              alt={`${title} ${activeImageIndex + 1}`}
+              alt={
+                altTexts?.[activeImageIndex] ||
+                `${title} ${activeImageIndex + 1}`
+              }
             />
             <figcaption>
               {copy.imageCount} {activeImageIndex + 1} {copy.imageCountOf}{' '}
