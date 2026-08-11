@@ -36,6 +36,18 @@ const localizedRoutes = {
     bg: '/lamps/red-ta-900-telephone-lamp',
     en: '/en/lamps/red-ta-900-telephone-lamp',
   },
+  productCreamRotary: { bg: '/lamps/cream-rotary-telephone-lamp', en: '/en/lamps/cream-rotary-telephone-lamp' },
+  productRedTa900Box: { bg: '/lamps/red-ta-900-telephone-lamp-original-box', en: '/en/lamps/red-ta-900-telephone-lamp-original-box' },
+  productRedTa900Second: { bg: '/lamps/red-ta-900-telephone-lamp-second-edition', en: '/en/lamps/red-ta-900-telephone-lamp-second-edition' },
+  productQuartz5: { bg: '/lamps/quartz-5-camera-lamp', en: '/en/lamps/quartz-5-camera-lamp' },
+  productPorst: { bg: '/lamps/porst-compact-reflex-oc-lamp', en: '/en/lamps/porst-compact-reflex-oc-lamp' },
+  productZenit: { bg: '/lamps/zenit-camera-lamp', en: '/en/lamps/zenit-camera-lamp' },
+  productUnion: { bg: '/lamps/union-sewing-machine-lamp', en: '/en/lamps/union-sewing-machine-lamp' },
+  productOrangeTelephone: { bg: '/lamps/orange-telephone-lamp', en: '/en/lamps/orange-telephone-lamp' },
+  productYellowTelephone: { bg: '/lamps/yellow-telephone-lamp-1988', en: '/en/lamps/yellow-telephone-lamp-1988' },
+  productWhiteRadio: { bg: '/lamps/white-radio-point-lamp-1986', en: '/en/lamps/white-radio-point-lamp-1986' },
+  productBlueRadio: { bg: '/lamps/blue-radio-point-lamp', en: '/en/lamps/blue-radio-point-lamp' },
+  productBlackWhiteTelephone: { bg: '/lamps/black-white-telephone-lamp', en: '/en/lamps/black-white-telephone-lamp' },
   soldProductPinkTelephone: {
     bg: '/sold-lamps/pink-rotary-telephone-lamp',
     en: '/en/sold-lamps/pink-rotary-telephone-lamp',
@@ -241,6 +253,21 @@ const reBazaarEventSchema = {
   },
   url: `${siteUrl}${localizedRoutes.marketGalleryReBazaar.bg}`,
 }
+
+const instagramProductSeo = [
+  ['productCreamRotary', 'Кремав телефон с шайба от 70-те и 80-те години', 'Cream Rotary Telephone Lamp from the 1970s–1980s', 'products/retro-telephone-lamp-instagram-01.jpg', 'Handmade vintage telephone lamp'],
+  ['productRedTa900Box', 'Червен телефон ТА-900 от 1991 г. с оригинална кутия', 'Red TA-900 Telephone Lamp from 1991 with Original Box', 'products/red-ta-900-instagram-01.jpg', 'Handmade vintage telephone lamp'],
+  ['productRedTa900Second', 'Червен телефон ТА-900 — втора уникална изработка', 'Red TA-900 Telephone Lamp — Second Unique Piece', 'products/red-ta-900-instagram-03.jpg', 'Handmade vintage telephone lamp'],
+  ['productQuartz5', 'Ретро камера „Кварц 5“', 'Quartz 5 Vintage Movie Camera Lamp', 'products/quartz-5-camera-lamp-01.jpg', 'Handmade vintage camera lamp'],
+  ['productPorst', 'Фотоапарат Porst Compact Reflex OC', 'Porst Compact Reflex OC Camera Lamp', 'products/porst-compact-reflex-oc-lamp-01.jpg', 'Handmade vintage camera lamp'],
+  ['productZenit', 'Фотоапарат Zenit с ретро светкавица', 'Zenit Camera Lamp with Vintage Flash Base', 'products/zenit-camera-lamp-01.jpg', 'Handmade vintage camera lamp'],
+  ['productUnion', 'Шевна машина UNION', 'UNION Sewing Machine Lamp', 'products/union-sewing-machine-lamp-01.jpg', 'Handmade vintage lighting'],
+  ['productOrangeTelephone', 'Оранжев ретро телефон', 'Orange Retro Telephone Lamp', 'products/orange-telephone-lamp-01.jpg', 'Handmade vintage telephone lamp'],
+  ['productYellowTelephone', 'Жълт телефон от 1988 г.', 'Yellow 1988 Telephone Lamp', 'products/yellow-telephone-lamp-1988-01.jpg', 'Handmade vintage telephone lamp'],
+  ['productWhiteRadio', 'Бяла радиоточка от 1986 г.', 'White 1986 Wired Radio Lamp', 'products/white-radio-point-lamp-1986-01.jpg', 'Handmade vintage radio lamp'],
+  ['productBlueRadio', 'Синя винтидж радиоточка', 'Blue Vintage Wired Radio Lamp', 'products/blue-radio-point-lamp-01.jpg', 'Handmade vintage radio lamp'],
+  ['productBlackWhiteTelephone', 'Черно-бял ретро телефон', 'Black and White Retro Telephone Lamp', 'products/black-white-telephone-lamp-01.jpg', 'Handmade vintage telephone lamp'],
+]
 
 const seoPages = [
   {
@@ -527,6 +554,42 @@ const seoPages = [
     isProduct: true,
   },
 ]
+
+seoPages.push(
+  ...instagramProductSeo.flatMap(([key, titleBg, titleEn, image, category]) => {
+    const schema = getProductSchema({
+      name: titleEn,
+      alternateName: titleBg,
+      image: [`${siteUrl}/images/${image}`],
+      description: `${titleEn}, individually handmade from an authentic vintage object.`,
+      category,
+      url: localizedRoutes[key].bg,
+    })
+
+    return [
+      {
+        key,
+        lang: 'bg',
+        path: localizedRoutes[key].bg,
+        title: `${titleBg} | Ръчно изработена винтидж лампа`,
+        description: `${titleBg} — уникална ръчно изработена лампа от автентичен ретро предмет.`,
+        schemas: [schema],
+        image,
+        isProduct: true,
+      },
+      {
+        key,
+        lang: 'en',
+        path: localizedRoutes[key].en,
+        title: `${titleEn} | Handmade vintage lamp`,
+        description: `${titleEn} — a unique lamp individually handmade from an authentic vintage object.`,
+        schemas: [schema],
+        image,
+        isProduct: true,
+      },
+    ]
+  }),
+)
 
 function escapeHtml(value) {
   return value

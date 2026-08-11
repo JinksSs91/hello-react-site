@@ -96,6 +96,54 @@ const productRoutes = {
     bg: '/lamps/red-ta-900-telephone-lamp',
     en: '/en/lamps/red-ta-900-telephone-lamp',
   },
+  'cream-rotary-telephone-lamp': {
+    bg: '/lamps/cream-rotary-telephone-lamp',
+    en: '/en/lamps/cream-rotary-telephone-lamp',
+  },
+  'red-ta-900-telephone-lamp-original-box': {
+    bg: '/lamps/red-ta-900-telephone-lamp-original-box',
+    en: '/en/lamps/red-ta-900-telephone-lamp-original-box',
+  },
+  'red-ta-900-telephone-lamp-second-edition': {
+    bg: '/lamps/red-ta-900-telephone-lamp-second-edition',
+    en: '/en/lamps/red-ta-900-telephone-lamp-second-edition',
+  },
+  'quartz-5-camera-lamp': {
+    bg: '/lamps/quartz-5-camera-lamp',
+    en: '/en/lamps/quartz-5-camera-lamp',
+  },
+  'porst-compact-reflex-oc-lamp': {
+    bg: '/lamps/porst-compact-reflex-oc-lamp',
+    en: '/en/lamps/porst-compact-reflex-oc-lamp',
+  },
+  'zenit-camera-lamp': {
+    bg: '/lamps/zenit-camera-lamp',
+    en: '/en/lamps/zenit-camera-lamp',
+  },
+  'union-sewing-machine-lamp': {
+    bg: '/lamps/union-sewing-machine-lamp',
+    en: '/en/lamps/union-sewing-machine-lamp',
+  },
+  'orange-telephone-lamp': {
+    bg: '/lamps/orange-telephone-lamp',
+    en: '/en/lamps/orange-telephone-lamp',
+  },
+  'yellow-telephone-lamp-1988': {
+    bg: '/lamps/yellow-telephone-lamp-1988',
+    en: '/en/lamps/yellow-telephone-lamp-1988',
+  },
+  'white-radio-point-lamp-1986': {
+    bg: '/lamps/white-radio-point-lamp-1986',
+    en: '/en/lamps/white-radio-point-lamp-1986',
+  },
+  'blue-radio-point-lamp': {
+    bg: '/lamps/blue-radio-point-lamp',
+    en: '/en/lamps/blue-radio-point-lamp',
+  },
+  'black-white-telephone-lamp': {
+    bg: '/lamps/black-white-telephone-lamp',
+    en: '/en/lamps/black-white-telephone-lamp',
+  },
   'pink-rotary-telephone-lamp': {
     bg: '/sold-lamps/pink-rotary-telephone-lamp',
     en: '/en/sold-lamps/pink-rotary-telephone-lamp',
@@ -566,7 +614,12 @@ const phoneLamp = {
     'Винтидж телефон, получил нов живот като уникална лампа с топла Edison LED крушка.',
   summaryEn:
     'A vintage telephone brought back to life as a unique lamp with a warm Edison LED bulb.',
-  images: [phoneLamp01, phoneLamp02, phoneLamp03, phoneLamp04],
+  images: [
+    phoneLamp01,
+    phoneLamp02,
+    phoneLamp03,
+    phoneLamp04,
+  ],
   descriptionBg: [
     '✨ПРОДАВА СЕ☎️✨ Винтидж телефон, получил нов живот, в отлично състояние.',
     'Ръчно превърнат в уникална лампа с топла Edison LED крушка - перфектен акцент за уютен дом, офис, студио или ретро кът.',
@@ -644,7 +697,10 @@ const redTa900Lamp = {
     'Оригинален ретро телефон TA-900 от 1991 г., ръчно преобразен в уникална лампа.',
   summaryEn:
     'An original TA-900 retro telephone from 1991, handmade into a unique lamp.',
-  images: [redTa900Lamp02, redTa900Lamp01],
+  images: [
+    redTa900Lamp02,
+    redTa900Lamp01,
+  ],
   descriptionBg: [
     '✨ПРОДАВА СЕ ✨💡📞 Когато миналото срещне модерния уют...',
     'Представям ти една наистина специална лампа - създадена от оригинален ретро телефон ТА-900, произведен през 1991 г. в Белоградчик (ИНКОМС).',
@@ -677,7 +733,329 @@ const redTa900Lamp = {
   ],
 }
 
-const availableProducts = [phoneLamp, viliaLamp, redTa900Lamp]
+function createInstagramProduct({
+  slug,
+  category,
+  titleBg,
+  titleEn,
+  summaryBg,
+  summaryEn,
+  imagePrefix,
+  images,
+  descriptionBg,
+  descriptionEn,
+  featuresBg,
+  featuresEn,
+}) {
+  return {
+    slug,
+    routes: productRoutes[slug],
+    category,
+    titleBg,
+    titleEn,
+    summaryBg,
+    summaryEn,
+    images: images || [
+      `/images/products/${imagePrefix}-01.jpg`,
+      `/images/products/${imagePrefix}-02.jpg`,
+    ],
+    descriptionBg,
+    descriptionEn,
+    featuresBg,
+    featuresEn,
+  }
+}
+
+const creamRotaryTelephoneLamp = createInstagramProduct({
+  slug: 'cream-rotary-telephone-lamp',
+  category: 'retro-telephones',
+  titleBg: 'Кремав телефон с шайба от 70-те и 80-те години',
+  titleEn: 'Cream Rotary Telephone Lamp from the 1970s–1980s',
+  summaryBg: 'Отделна ръчна изработка от автентичен кремав телефон с шайба и топла Edison LED крушка.',
+  summaryEn: 'A separate handmade piece created from an authentic cream rotary telephone with a warm Edison LED bulb.',
+  images: [
+    '/images/products/retro-telephone-lamp-instagram-01.jpg',
+    '/images/products/retro-telephone-lamp-instagram-02.jpg',
+  ],
+  descriptionBg: [
+    'Винтидж телефон, получил нов живот, в отлично състояние.',
+    'Ръчно превърнат в уникална лампа с топла Edison LED крушка — перфектен акцент за уютен дом, офис, студио или ретро кът.',
+    'Всеки детайл е запазен, за да носи духа на миналото, но с модерна функция и атмосфера. Този модел ротационни телефони е характерен за Източна Европа от 70-те и 80-те години — здрав, тежък и създаден да издържи десетилетия.',
+    'Перфектен подарък за любители на ретро техника, индустриален дизайн и нестандартен интериор.',
+  ],
+  descriptionEn: [
+    'A vintage telephone in excellent condition, given a new life.',
+    'Handmade into a unique lamp with a warm Edison LED bulb — a perfect accent for a cozy home, office, studio, or retro corner.',
+    'Every detail has been preserved to carry the spirit of the past with a modern function and atmosphere. This rotary telephone style was typical of Eastern Europe in the 1970s and 1980s — solid, heavy, and built to last.',
+    'A perfect gift for lovers of retro technology, industrial design, and unusual interiors.',
+  ],
+  featuresBg: ['Отделна ръчна изработка', 'Автентичен телефон с шайба', 'Топла Edison LED крушка', 'Единствена по рода си'],
+  featuresEn: ['Separate handmade piece', 'Authentic rotary telephone', 'Warm Edison LED bulb', 'One of a kind'],
+})
+
+const redTa900OriginalBoxLamp = createInstagramProduct({
+  slug: 'red-ta-900-telephone-lamp-original-box',
+  category: 'retro-telephones',
+  titleBg: 'Червен телефон ТА-900 от 1991 г. с оригинална кутия',
+  titleEn: 'Red TA-900 Telephone Lamp from 1991 with Original Box',
+  summaryBg: 'Отделна лампа от чисто нов ТА-900, запазен с оригиналната си кутия и документи.',
+  summaryEn: 'A separate lamp made from a brand-new TA-900 preserved with its original box and documents.',
+  images: [
+    '/images/products/red-ta-900-instagram-01.jpg',
+    '/images/products/red-ta-900-instagram-02.jpg',
+  ],
+  descriptionBg: [
+    'Когато миналото срещне модерния уют — специална лампа от оригинален ретро телефон ТА-900, произведен през 1991 г. в Белоградчик от ИНКОМС.',
+    'Телефонът е чисто нов и никога не е използван. Запазен е десетилетия в оригиналния си кашон с етикет, ръководство за експлоатация, автентични печати и маркировки.',
+    'Преобразен ръчно в лампа, той запазва душата на миналото и носи топлина и стил в съвременния дом. Това не е просто лампа, а история, която свети.',
+  ],
+  descriptionEn: [
+    'Where the past meets modern comfort — a special lamp made from an original TA-900 retro telephone manufactured in 1991 in Belogradchik by INCOMS.',
+    'The telephone is brand new and was never used. It was preserved for decades in its original box with its label, user manual, authentic stamps, and markings.',
+    'Handmade into a lamp, it keeps the soul of the past while bringing warmth and style to a modern home. This is not just a lamp, but a story that glows.',
+  ],
+  featuresBg: ['Отделна ръчна изработка', 'ТА-900 от 1991 г.', 'Оригинална кутия и документи', 'Никога не е използван'],
+  featuresEn: ['Separate handmade piece', 'TA-900 from 1991', 'Original box and documents', 'Never used'],
+})
+
+const redTa900SecondEditionLamp = createInstagramProduct({
+  slug: 'red-ta-900-telephone-lamp-second-edition',
+  category: 'retro-telephones',
+  titleBg: 'Червен телефон ТА-900 — втора уникална изработка',
+  titleEn: 'Red TA-900 Telephone Lamp — Second Unique Piece',
+  summaryBg: 'Втора отделна ръчно изработена лампа от червен ретро телефон ТА-900.',
+  summaryEn: 'A second, separately handmade lamp created from a red TA-900 retro telephone.',
+  images: [
+    '/images/products/red-ta-900-instagram-03.jpg',
+    '/images/products/red-ta-900-instagram-04.jpg',
+  ],
+  descriptionBg: [
+    'Оригинален червен ретро телефон ТА-900, ръчно преобразен в уникална лампа с характер.',
+    'Автентичните детайли и силуетът на телефона са запазени, а топлата светлина му дава нов живот и създава уютна атмосфера.',
+    'Тази отделна изработка е подходяща за хол, спалня, офис, арт пространство или като подарък за любител на ретро техниката и нестандартния дизайн.',
+  ],
+  descriptionEn: [
+    'An original red TA-900 retro telephone, handmade into a unique lamp with character.',
+    'Its authentic details and telephone silhouette have been preserved, while the warm light gives it a new life and a cozy atmosphere.',
+    'This separate piece is ideal for a living room, bedroom, office, art space, or as a gift for someone who loves retro technology and unusual design.',
+  ],
+  featuresBg: ['Отделна ръчна изработка', 'Оригинален ТА-900', 'Топла светлина', 'Уникална бройка'],
+  featuresEn: ['Separate handmade piece', 'Original TA-900', 'Warm light', 'Unique piece'],
+})
+
+const quartz5CameraLamp = createInstagramProduct({
+  slug: 'quartz-5-camera-lamp',
+  category: 'cameras',
+  titleBg: 'Ретро камера „Кварц 5“',
+  titleEn: 'Quartz 5 Vintage Movie Camera Lamp',
+  summaryBg: 'Оригинална 8-милиметрова камера „Кварц 5“, реставрирана и превърната в дизайнерска лампа.',
+  summaryEn: 'An original Quartz 5 8 mm movie camera, restored and transformed into a designer lamp.',
+  imagePrefix: 'quartz-5-camera-lamp',
+  descriptionBg: [
+    'Уникална ръчно изработена дизайнерска лампа, създадена от оригинална ретро филмова камера „Кварц 5“. Автентичният корпус, обективът и характерните механични детайли са запазени и превърнати във функционален интериорен акцент.',
+    '„Кварц 5“ е съветска любителска 8-милиметрова филмова камера, създадена за домашни филми и кратки кинолюбителски продукции. Серията е характерна с масивния си метален корпус, механичен дизайн и отличителен винтидж вид.',
+    'Камерата е ръчно реставрирана и преобразувана в работеща лампа с винтидж крушка, като оригиналният ѝ облик е максимално запазен. Пълен комплект, готов за използване.',
+  ],
+  descriptionEn: [
+    'A unique handmade designer lamp created from an original Quartz 5 vintage movie camera. Its authentic body, lens, and distinctive mechanical details have been preserved and transformed into a functional interior accent.',
+    'The Quartz 5 is a Soviet amateur 8 mm movie camera made for home films and short productions. The series is known for its solid metal body, mechanical design, and distinctive vintage appearance.',
+    'The camera was restored by hand and converted into a working lamp with a vintage bulb while preserving as much of its original character as possible. Complete and ready to use.',
+  ],
+  featuresBg: ['Ръчна реставрация', 'Оригинална камера „Кварц 5“', 'Винтидж крушка', 'Готова за използване'],
+  featuresEn: ['Hand-restored', 'Original Quartz 5 camera', 'Vintage bulb', 'Ready to use'],
+})
+
+const porstCameraLamp = createInstagramProduct({
+  slug: 'porst-compact-reflex-oc-lamp',
+  category: 'cameras',
+  titleBg: 'Фотоапарат Porst Compact Reflex OC',
+  titleEn: 'Porst Compact Reflex OC Camera Lamp',
+  summaryBg: 'Реставриран японски 35 mm фотоапарат, превърнат в настолна лампа с гъвкаво метално рамо.',
+  summaryEn: 'A restored Japanese 35 mm camera transformed into a desk lamp with a flexible metal arm.',
+  imagePrefix: 'porst-compact-reflex-oc-lamp',
+  descriptionBg: [
+    'Ръчно изработена лампа от реставриран винтидж фотоапарат Porst Compact Reflex OC — японски 35 mm огледално-рефлексен апарат, произвеждан от Cosina и продаван в Европа под марката Porst.',
+    'Запазени са характерните винтидж детайли, надписи, метални елементи и оригиналният фотографски характер. Гъвкавото метално рамо завършва с ретро фасунга и топла LED Edison крушка.',
+    'Подходяща е за винтидж или индустриален интериор, кабинет, библиотека, домашен офис, кафе, ресторант, студио или като оригинален подарък за фотограф.',
+    'Това е декоративна лампа от реставриран фотоапарат, а не действащ фотоапарат. Всеки екземпляр има собствена история и характер.',
+  ],
+  descriptionEn: [
+    'A handmade lamp created from a restored Porst Compact Reflex OC vintage camera — a Japanese 35 mm SLR manufactured by Cosina and sold in Europe under the Porst brand.',
+    'Its original markings, metal elements, and photographic character have been preserved. A flexible metal arm ends in a retro socket with a warm LED Edison bulb.',
+    'Perfect for vintage and industrial interiors, a study, library, home office, café, restaurant, studio, or as an original gift for a photographer.',
+    'This is a decorative lamp made from a restored camera, not a functioning camera. Every piece has its own history and character.',
+  ],
+  featuresBg: ['Ръчна реставрация', 'Porst Compact Reflex OC', 'Гъвкаво метално рамо', 'Топла LED Edison крушка'],
+  featuresEn: ['Hand-restored', 'Porst Compact Reflex OC', 'Flexible metal arm', 'Warm LED Edison bulb'],
+})
+
+const zenitCameraLamp = createInstagramProduct({
+  slug: 'zenit-camera-lamp',
+  category: 'cameras',
+  titleBg: 'Фотоапарат Zenit с ретро светкавица',
+  titleEn: 'Zenit Camera Lamp with Vintage Flash Base',
+  summaryBg: 'Оригинален фотоапарат Zenit с поставка от ретро светкавица и топла Edison крушка.',
+  summaryEn: 'An original Zenit camera with a vintage flash base and a warm Edison bulb.',
+  imagePrefix: 'zenit-camera-lamp',
+  descriptionBg: [
+    'Ръчно изработена лампа от оригинален винтидж фотоапарат Zenit с поставка от ретро светкавица. Всеки детайл е внимателно запазен, за да съчетае носталгията по аналоговата фотография с топлината на модерното осветление.',
+    'Лампата използва LED Edison крушка с топла светлина и е подходяща за хол, спалня, офис или творческо студио.',
+    'Това не е просто лампа, а предмет с история и оригинален подарък за фотографи, колекционери и любители на ретро дизайна.',
+  ],
+  descriptionEn: [
+    'A handmade lamp built from an original vintage Zenit camera and a retro flash unit used as its base. Every detail has been carefully preserved, combining analog photography nostalgia with the warmth of modern lighting.',
+    'The lamp uses a warm LED Edison bulb and is suitable for a living room, bedroom, office, or creative studio.',
+    'More than a lamp, it is an object with a story and an original gift for photographers, collectors, and lovers of retro design.',
+  ],
+  featuresBg: ['Ръчна изработка', 'Оригинален Zenit', 'Поставка от ретро светкавица', 'LED Edison крушка'],
+  featuresEn: ['Handmade', 'Original Zenit camera', 'Vintage flash base', 'LED Edison bulb'],
+})
+
+const unionSewingMachineLamp = createInstagramProduct({
+  slug: 'union-sewing-machine-lamp',
+  category: 'other',
+  titleBg: 'Шевна машина UNION',
+  titleEn: 'UNION Sewing Machine Lamp',
+  summaryBg: 'Класическа шевна машина UNION, преобразена в уникална винтидж лампа с абажур.',
+  summaryEn: 'A classic UNION sewing machine transformed into a unique vintage lamp with a shade.',
+  imagePrefix: 'union-sewing-machine-lamp',
+  descriptionBg: [
+    'Ръчно изработена лампа от класическа ретро шевна машина UNION. Машината получава нов живот като уникален акцент, който съчетава носталгия, топлина и характер.',
+    'Шевните машини UNION са популярни през средата на XX век и са известни със своя здрав метален корпус, елегантни орнаменти и издръжлив механизъм. Навремето са били незаменим помощник във всеки дом, а днес се превръщат в истинско ретро бижу.',
+  ],
+  descriptionEn: [
+    'A handmade lamp created from a classic UNION vintage sewing machine. It receives a new life as a unique accent combining nostalgia, warmth, and character.',
+    'UNION sewing machines were popular in the middle of the twentieth century and are known for their sturdy metal bodies, elegant decoration, and durable mechanisms. Once an essential household tool, this one is now a true retro gem.',
+  ],
+  featuresBg: ['Ръчна изработка', 'Автентична машина UNION', 'Класически абажур', 'Единствена по рода си'],
+  featuresEn: ['Handmade', 'Authentic UNION machine', 'Classic lampshade', 'One of a kind'],
+})
+
+const orangeTelephoneLamp = createInstagramProduct({
+  slug: 'orange-telephone-lamp',
+  category: 'retro-telephones',
+  titleBg: 'Оранжев ретро телефон',
+  titleEn: 'Orange Retro Telephone Lamp',
+  summaryBg: 'Автентичен оранжев телефон, ръчно преобразен в лампа с топла светлина.',
+  summaryEn: 'An authentic orange telephone, handmade into a lamp with warm light.',
+  imagePrefix: 'orange-telephone-lamp',
+  descriptionBg: [
+    'Някога част от ежедневието, днес акцент в интериора. Тази лампа е ръчно изработена от автентичен оранжев ретро телефон, който получава нов живот и нова функция.',
+    'Всеки детайл е внимателно запазен и преобразен, за да съчетае носталгията от миналото с уюта на съвременния дом. Топлата светлина създава спокойна атмосфера, а уникалният дизайн привлича погледа и разказва история.',
+    'Подходяща за хора, които обичат различното, ценят ръчната изработка и искат да внесат характер в пространството си. Всеки екземпляр е единствен по рода си.',
+  ],
+  descriptionEn: [
+    'Once part of everyday life, now an interior accent. This lamp is handmade from an authentic orange retro telephone that has been given a new life and function.',
+    'Every detail has been carefully preserved and transformed, combining nostalgia with the comfort of a modern home. The warm light creates a calm atmosphere while the distinctive design tells its story.',
+    'Made for people who value unusual objects, craftsmanship, and character. Every piece is one of a kind.',
+  ],
+  featuresBg: ['Автентичен ретро телефон', 'Ръчна изработка', 'Топла светлина', 'Уникална бройка'],
+  featuresEn: ['Authentic retro telephone', 'Handmade', 'Warm light', 'Unique piece'],
+})
+
+const yellowTelephoneLamp = createInstagramProduct({
+  slug: 'yellow-telephone-lamp-1988',
+  category: 'retro-telephones',
+  titleBg: 'Жълт телефон от 1988 г.',
+  titleEn: 'Yellow 1988 Telephone Lamp',
+  summaryBg: 'Ярък жълт телефон от 1988 г., преобразен в артистична лампа с топла светлина.',
+  summaryEn: 'A bright yellow telephone from 1988 transformed into an artistic lamp with warm light.',
+  imagePrefix: 'yellow-telephone-lamp-1988',
+  descriptionBg: [
+    'Тази уникална лампа, създадена от ретро телефон, носи духа на 1988 година — време, когато нещата се правеха с характер и внимание към детайла.',
+    'Ръчно изработена, с топла светлина и уютно излъчване, тя не е просто осветление, а акцент, който разказва история. Подходяща е за нощно шкафче, хол или като артистичен елемент в модерен дом с винтидж душа.',
+    'Единствена по рода си лампа от истински ретро телефон, която създава уют и атмосфера.',
+  ],
+  descriptionEn: [
+    'Created from a retro telephone, this unique lamp carries the spirit of 1988 — a time when objects were made with character and attention to detail.',
+    'Handmade with warm light and a cozy presence, it is more than illumination: it is an accent with a story. Perfect for a bedside table, living room, or as an artistic element in a modern home with a vintage soul.',
+    'A one-of-a-kind lamp made from a genuine retro telephone, bringing warmth and atmosphere to the room.',
+  ],
+  featuresBg: ['Телефон от 1988 г.', 'Ръчна изработка', 'Топла светлина', 'Ярък винтидж дизайн'],
+  featuresEn: ['Telephone from 1988', 'Handmade', 'Warm light', 'Bright vintage design'],
+})
+
+const whiteRadioPointLamp = createInstagramProduct({
+  slug: 'white-radio-point-lamp-1986',
+  category: 'radios',
+  titleBg: 'Бяла радиоточка от 1986 г.',
+  titleEn: 'White 1986 Wired Radio Lamp',
+  summaryBg: 'Винтидж радиоточка от 1986 г. с оригинална кутия и документи, преобразена в лампа.',
+  summaryEn: 'A 1986 vintage wired radio with its original box and documents, transformed into a lamp.',
+  imagePrefix: 'white-radio-point-lamp-1986',
+  descriptionBg: [
+    'Винтидж радиоточка, уникално и ръчно преобразена в лампа. Запазена е с оригиналната си кутия, в която е стояла от 1986 г., сертификат за произход и гаранционна карта.',
+    'Оригиналният винтидж корпус е съчетан с топла уютна светлина. Подходяща е за нощно шкафче, хол, офис или като подарък за любител на ретро дизайна.',
+    'Уникално ръчно изработено изделие за ретро, скандинавски или бохо интериор.',
+  ],
+  descriptionEn: [
+    'A vintage wired radio uniquely transformed into a handmade lamp. It comes with its original box, where it had been stored since 1986, as well as its certificate of origin and warranty card.',
+    'The original vintage body is paired with warm, cozy light. It is suitable for a bedside table, living room, office, or as a gift for someone who appreciates retro design.',
+    'A unique handmade piece for retro, Scandinavian, or boho interiors.',
+  ],
+  featuresBg: ['Радиоточка от 1986 г.', 'Оригинална кутия и документи', 'Ръчна изработка', 'Топла светлина'],
+  featuresEn: ['Wired radio from 1986', 'Original box and documents', 'Handmade', 'Warm light'],
+})
+
+const blueRadioPointLamp = createInstagramProduct({
+  slug: 'blue-radio-point-lamp',
+  category: 'radios',
+  titleBg: 'Синя винтидж радиоточка',
+  titleEn: 'Blue Vintage Wired Radio Lamp',
+  summaryBg: 'Синя ретро радиоточка, ръчно трансформирана в уютна настолна лампа.',
+  summaryEn: 'A blue retro wired radio, handmade into a cozy desk lamp.',
+  imagePrefix: 'blue-radio-point-lamp',
+  descriptionBg: [
+    'Уникална синя винтидж радиоточка, трансформирана в стилна лампа, която добавя характер и топлина в дома.',
+    'Оригиналният винтидж дизайн е съчетан с топла и мека светлина. Подходяща е за нощно шкафче, офис, хол или като акцент в уютен кът за четене.',
+    'Ръчно изработена уникална бройка за ретро и модерни интериори — истински характер и история в едно.',
+  ],
+  descriptionEn: [
+    'A unique blue vintage wired radio transformed into a stylish lamp that adds warmth and character to the home.',
+    'Its original vintage design is paired with warm, soft light. Perfect for a bedside table, office, living room, or as an accent in a cozy reading corner.',
+    'A unique handmade piece for retro and modern interiors, combining genuine history and character.',
+  ],
+  featuresBg: ['Оригинален винтидж корпус', 'Ръчна изработка', 'Топла мека светлина', 'Уникална бройка'],
+  featuresEn: ['Original vintage body', 'Handmade', 'Warm soft light', 'Unique piece'],
+})
+
+const blackWhiteTelephoneLamp = createInstagramProduct({
+  slug: 'black-white-telephone-lamp',
+  category: 'retro-telephones',
+  titleBg: 'Черно-бял ретро телефон',
+  titleEn: 'Black and White Retro Telephone Lamp',
+  summaryBg: 'Черно-бял телефон в отлично състояние, реставриран и превърнат в артистична лампа.',
+  summaryEn: 'A black and white telephone in excellent condition, restored and transformed into an artistic lamp.',
+  imagePrefix: 'black-white-telephone-lamp',
+  descriptionBg: [
+    'Черно-бяла лампа-телефон в отлично състояние, без забележки и драскотини. Реставрирана и освежена от нас, тя чака своя нов собственик.',
+    'Готова е да внесе характер и светлина върху бюро, нощно шкафче или в арт кафене.',
+  ],
+  descriptionEn: [
+    'A black and white telephone lamp in excellent condition, free from marks and scratches. Restored and refreshed by us, it is ready for its new owner.',
+    'Ready to bring character and light to a desk, bedside table, or art café.',
+  ],
+  featuresBg: ['Отлично състояние', 'Ръчно реставрирана', 'Без драскотини', 'Уникален черно-бял дизайн'],
+  featuresEn: ['Excellent condition', 'Hand-restored', 'No scratches', 'Unique black and white design'],
+})
+
+const availableProducts = [
+  quartz5CameraLamp,
+  porstCameraLamp,
+  zenitCameraLamp,
+  phoneLamp,
+  creamRotaryTelephoneLamp,
+  orangeTelephoneLamp,
+  yellowTelephoneLamp,
+  blackWhiteTelephoneLamp,
+  redTa900Lamp,
+  redTa900OriginalBoxLamp,
+  redTa900SecondEditionLamp,
+  viliaLamp,
+  unionSewingMachineLamp,
+  whiteRadioPointLamp,
+  blueRadioPointLamp,
+]
 
 const pinkTelephoneLamp = {
   slug: 'pink-rotary-telephone-lamp',
