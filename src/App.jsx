@@ -826,8 +826,8 @@ const redTa900SecondEditionLamp = createInstagramProduct({
   summaryBg: 'Втора отделна ръчно изработена лампа от червен ретро телефон ТА-900.',
   summaryEn: 'A second, separately handmade lamp created from a red TA-900 retro telephone.',
   images: [
-    '/images/products/red-ta-900-instagram-03.jpg',
     '/images/products/red-ta-900-instagram-04.jpg',
+    '/images/products/red-ta-900-instagram-03.jpg',
   ],
   descriptionBg: [
     'Оригинален червен ретро телефон ТА-900, ръчно преобразен в уникална лампа с характер.',
@@ -939,6 +939,10 @@ const orangeTelephoneLamp = createInstagramProduct({
   summaryBg: 'Автентичен оранжев телефон, ръчно преобразен в лампа с топла светлина.',
   summaryEn: 'An authentic orange telephone, handmade into a lamp with warm light.',
   imagePrefix: 'orange-telephone-lamp',
+  images: [
+    '/images/products/orange-telephone-lamp-02.jpg',
+    '/images/products/orange-telephone-lamp-01.jpg',
+  ],
   descriptionBg: [
     'Някога част от ежедневието, днес акцент в интериора. Тази лампа е ръчно изработена от автентичен оранжев ретро телефон, който получава нов живот и нова функция.',
     'Всеки детайл е внимателно запазен и преобразен, за да съчетае носталгията от миналото с уюта на съвременния дом. Топлата светлина създава спокойна атмосфера, а уникалният дизайн привлича погледа и разказва история.',
@@ -1005,6 +1009,10 @@ const blueRadioPointLamp = createInstagramProduct({
   summaryBg: 'Синя ретро радиоточка, ръчно трансформирана в уютна настолна лампа.',
   summaryEn: 'A blue retro wired radio, handmade into a cozy desk lamp.',
   imagePrefix: 'blue-radio-point-lamp',
+  images: [
+    '/images/products/blue-radio-point-lamp-02.jpg',
+    '/images/products/blue-radio-point-lamp-01.jpg',
+  ],
   descriptionBg: [
     'Уникална синя винтидж радиоточка, трансформирана в стилна лампа, която добавя характер и топлина в дома.',
     'Оригиналният винтидж дизайн е съчетан с топла и мека светлина. Подходяща е за нощно шкафче, офис, хол или като акцент в уютен кът за четене.',
