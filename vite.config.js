@@ -11,6 +11,15 @@ const instagramUrl = 'https://www.instagram.com/our.vintage.lights/'
 const viberPhone = '+359899161880'
 const rootDir = path.dirname(fileURLToPath(import.meta.url))
 
+const soldInstagramProductSlugs = [
+  'smena-2-memory-lamp', 'black-rotary-telephone-lamp', 'zenit-tripod-lamp',
+  'smena-8m-camera-lamp', 'praktica-mtl5-camera-lamp', 'zenit-122-victory-camera-lamp',
+  'zenit-legend-camera-lamp', 'zorki-4-camera-lamp', 'yantar-desk-clock-lamp',
+  'telephone-switchboard-lamp', 'weathered-vintage-camera-lamp', 'smena-2-retro-camera-lamp',
+  'orange-telephone-1984-lamp', 'p-170-military-telephone-lamp', 'blue-telephone-lamp',
+  'pink-classic-telephone-lamp', 'pink-jewel-telephone-lamp', 'pink-jewel-first-edition-lamp',
+]
+
 const localizedRoutes = {
   home: { bg: '/', en: '/en' },
   available: { bg: '/available-lamps', en: '/en/available-lamps' },
@@ -60,6 +69,12 @@ const localizedRoutes = {
     bg: '/sold-lamps/mayak-desk-clock-lamp',
     en: '/en/sold-lamps/mayak-desk-clock-lamp',
   },
+  ...Object.fromEntries(
+    soldInstagramProductSlugs.map((slug) => [
+      `soldInstagram-${slug}`,
+      { bg: `/sold-lamps/${slug}`, en: `/en/sold-lamps/${slug}` },
+    ]),
+  ),
 }
 
 const phoneImageUrls = [
@@ -267,6 +282,27 @@ const instagramProductSeo = [
   ['productWhiteRadio', 'Бяла радиоточка от 1986 г.', 'White 1986 Wired Radio Lamp', 'products/white-radio-point-lamp-1986-01.jpg', 'Handmade vintage radio lamp'],
   ['productBlueRadio', 'Синя винтидж радиоточка', 'Blue Vintage Wired Radio Lamp', 'products/blue-radio-point-lamp-02.jpg', 'Handmade vintage radio lamp'],
   ['productBlackWhiteTelephone', 'Черно-бял ретро телефон', 'Black and White Retro Telephone Lamp', 'products/black-white-telephone-lamp-01.jpg', 'Handmade vintage telephone lamp'],
+]
+
+const soldInstagramProductSeo = [
+  ['smena-2-memory-lamp', 'Фотоапарат „Смена 2“ — лампа със спомени', 'Smena 2 Camera Memory Lamp', 'Handmade vintage camera lamp'],
+  ['black-rotary-telephone-lamp', 'Черен класически телефон-лампа', 'Classic Black Telephone Lamp', 'Handmade vintage telephone lamp'],
+  ['zenit-tripod-lamp', 'Фотоапарат Zenit с подвижен статив', 'Zenit Camera Lamp with Adjustable Tripod', 'Handmade vintage camera lamp'],
+  ['smena-8m-camera-lamp', 'Фотоапарат „Смена 8M“', 'Smena 8M Camera Lamp', 'Handmade vintage camera lamp'],
+  ['praktica-mtl5-camera-lamp', 'Фотоапарат Praktica MTL5', 'Praktica MTL5 Camera Lamp', 'Handmade vintage camera lamp'],
+  ['zenit-122-victory-camera-lamp', 'Юбилеен Zenit 122 „50 Победа“', 'Zenit 122 “50 Victory” Anniversary Camera Lamp', 'Handmade vintage camera lamp'],
+  ['zenit-legend-camera-lamp', 'Класически фотоапарат Zenit', 'Classic Zenit Camera Lamp', 'Handmade vintage camera lamp'],
+  ['zorki-4-camera-lamp', 'Фотоапарат „Зоркий 4“', 'Zorki 4 Camera Lamp', 'Handmade vintage camera lamp'],
+  ['yantar-desk-clock-lamp', 'Настолен часовник „Янтар“', 'Yantar Desk Clock Lamp', 'Handmade vintage desk clock lamp'],
+  ['telephone-switchboard-lamp', 'Телефонна централа от 70-те години', '1970s Telephone Switchboard Lamp', 'Handmade vintage telephone lamp'],
+  ['weathered-vintage-camera-lamp', 'Фотоапарат с автентична патина', 'Weathered Vintage Camera Lamp', 'Handmade vintage camera lamp'],
+  ['smena-2-retro-camera-lamp', 'Ретро фотоапарат „Смена-2“', 'Retro Smena-2 Camera Lamp', 'Handmade vintage camera lamp'],
+  ['orange-telephone-1984-lamp', 'Оранжев телефон от 1984 г.', 'Orange 1984 Telephone Lamp', 'Handmade vintage telephone lamp'],
+  ['p-170-military-telephone-lamp', 'Военен телефон П-170', 'P-170 Military Telephone Lamp', 'Handmade vintage telephone lamp'],
+  ['blue-telephone-lamp', 'Син винтидж телефон-лампа', 'Blue Vintage Telephone Lamp', 'Handmade vintage telephone lamp'],
+  ['pink-classic-telephone-lamp', 'Розов класически телефон-лампа', 'Classic Pink Telephone Lamp', 'Handmade vintage telephone lamp'],
+  ['pink-jewel-telephone-lamp', 'Розово телефонно бижу', 'Pink Telephone Jewel Lamp', 'Handmade vintage telephone lamp'],
+  ['pink-jewel-first-edition-lamp', 'Розова лампа-бижу — първа изработка', 'Pink Jewel Telephone Lamp — First Piece', 'Handmade vintage telephone lamp'],
 ]
 
 const seoPages = [
@@ -583,6 +619,45 @@ seoPages.push(
         path: localizedRoutes[key].en,
         title: `${titleEn} | Handmade vintage lamp`,
         description: `${titleEn} — a unique lamp individually handmade from an authentic vintage object.`,
+        schemas: [schema],
+        image,
+        isProduct: true,
+      },
+    ]
+  }),
+)
+
+seoPages.push(
+  ...soldInstagramProductSeo.flatMap(([slug, titleBg, titleEn, category]) => {
+    const key = `soldInstagram-${slug}`
+    const image = `products/${slug}-01.jpg`
+    const schema = getProductSchema({
+      name: titleEn,
+      alternateName: titleBg,
+      image: [`${siteUrl}/images/${image}`],
+      description: `${titleEn}, a sold one-of-a-kind handmade lamp created from an authentic vintage object.`,
+      category,
+      url: localizedRoutes[key].bg,
+      availability: 'SoldOut',
+    })
+
+    return [
+      {
+        key,
+        lang: 'bg',
+        path: localizedRoutes[key].bg,
+        title: `${titleBg} | Продадена винтидж лампа`,
+        description: `${titleBg} — продадена уникална ръчно изработена лампа от автентичен ретро предмет.`,
+        schemas: [schema],
+        image,
+        isProduct: true,
+      },
+      {
+        key,
+        lang: 'en',
+        path: localizedRoutes[key].en,
+        title: `${titleEn} | Sold handmade vintage lamp`,
+        description: `${titleEn} — a sold one-of-a-kind lamp handmade from an authentic vintage object.`,
         schemas: [schema],
         image,
         isProduct: true,

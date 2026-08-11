@@ -83,6 +83,27 @@ const handmadeDesignMarketPoster =
 const handmadeDesignMarketUrl =
   'https://www.instagram.com/p/DZTMBCqttSt/?igsh=dmt6MTJiN2dtbTZ4'
 
+const soldInstagramProductSlugs = [
+  'smena-2-memory-lamp',
+  'black-rotary-telephone-lamp',
+  'zenit-tripod-lamp',
+  'smena-8m-camera-lamp',
+  'praktica-mtl5-camera-lamp',
+  'zenit-122-victory-camera-lamp',
+  'zenit-legend-camera-lamp',
+  'zorki-4-camera-lamp',
+  'yantar-desk-clock-lamp',
+  'telephone-switchboard-lamp',
+  'weathered-vintage-camera-lamp',
+  'smena-2-retro-camera-lamp',
+  'orange-telephone-1984-lamp',
+  'p-170-military-telephone-lamp',
+  'blue-telephone-lamp',
+  'pink-classic-telephone-lamp',
+  'pink-jewel-telephone-lamp',
+  'pink-jewel-first-edition-lamp',
+]
+
 const productRoutes = {
   'retro-telephone-lamp': {
     bg: '/lamps/retro-telephone-lamp',
@@ -156,6 +177,15 @@ const productRoutes = {
     bg: '/sold-lamps/mayak-desk-clock-lamp',
     en: '/en/sold-lamps/mayak-desk-clock-lamp',
   },
+  ...Object.fromEntries(
+    soldInstagramProductSlugs.map((slug) => [
+      slug,
+      {
+        bg: `/sold-lamps/${slug}`,
+        en: `/en/sold-lamps/${slug}`,
+      },
+    ]),
+  ),
 }
 
 const content = {
@@ -746,6 +776,7 @@ function createInstagramProduct({
   descriptionEn,
   featuresBg,
   featuresEn,
+  status,
 }) {
   return {
     slug,
@@ -763,6 +794,7 @@ function createInstagramProduct({
     descriptionEn,
     featuresBg,
     featuresEn,
+    status,
   }
 }
 
@@ -1191,7 +1223,162 @@ const mayakClockLamp = {
   ],
 }
 
+const soldInstagramProducts = [
+  {
+    slug: 'smena-2-memory-lamp', category: 'cameras', imagePrefix: 'smena-2-memory-lamp',
+    titleBg: 'Фотоапарат „Смена 2“ — лампа със спомени', titleEn: 'Smena 2 Camera Memory Lamp',
+    summaryBg: 'Автентичен фотоапарат „Смена 2“, ръчно превърнат във винтидж лампа с топла светлина.',
+    summaryEn: 'An authentic Smena 2 camera handmade into a vintage lamp with warm light.',
+    descriptionBg: ['Уникална лампа, ръчно изработена от автентичен фотоапарат „Смена 2“ и превърната в стилен акцент за дома.', 'Топлата светлина и винтидж визията създават уют и характер. Подходяща е за любители на фотографията, ретро дизайна и подаръци с история.'],
+    descriptionEn: ['A unique lamp handmade from an authentic Smena 2 camera and transformed into a stylish home accent.', 'Its warm light and vintage appearance create comfort and character. A fitting piece for lovers of photography, retro design, and gifts with a story.'],
+  },
+  {
+    slug: 'black-rotary-telephone-lamp', category: 'retro-telephones', imagePrefix: 'black-rotary-telephone-lamp',
+    titleBg: 'Черен класически телефон-лампа', titleEn: 'Classic Black Telephone Lamp',
+    summaryBg: 'Класически черен телефон с декоративна Edison крушка и елегантно ретро излъчване.',
+    summaryEn: 'A classic black telephone with a decorative Edison bulb and an elegant retro presence.',
+    descriptionBg: ['Класическият черен телефон е ръчно преобразен в лампа, която съчетава винтидж излъчване с топла и уютна атмосфера.', 'Подходяща е за нощно шкафче, хол, офис, винтидж интериор или кафе. Единствената по рода си изработка добавя характер, стил и история.'],
+    descriptionEn: ['This classic black telephone was handmade into a lamp that combines vintage character with a warm, cozy atmosphere.', 'It suits a bedside table, living room, office, vintage interior, or café. The one-of-a-kind piece adds character, style, and history.'],
+  },
+  {
+    slug: 'zenit-tripod-lamp', category: 'cameras', imagePrefix: 'zenit-tripod-lamp',
+    titleBg: 'Фотоапарат Zenit с подвижен статив', titleEn: 'Zenit Camera Lamp with Adjustable Tripod',
+    summaryBg: 'Оригинален Zenit, превърнат в лампа със статив, който се монтира в две позиции.',
+    summaryEn: 'An original Zenit transformed into a lamp with a tripod that mounts in two positions.',
+    descriptionBg: ['Винтидж фотоапарат Zenit, ръчно превърнат в стилна настолна лампа, която съчетава история, дизайн и функционалност.', 'Автентичният вид е запазен, а LED Edison крушката дава топла светлина. Стативът може да бъде монтиран в две различни позиции за различна визия и стабилност.'],
+    descriptionEn: ['A vintage Zenit camera handmade into a stylish desk lamp combining history, design, and function.', 'Its authentic appearance is preserved and paired with a warm LED Edison bulb. The tripod can be mounted in two positions for a different look and stability.'],
+  },
+  {
+    slug: 'smena-8m-camera-lamp', category: 'cameras', imagePrefix: 'smena-8m-camera-lamp',
+    titleBg: 'Фотоапарат „Смена 8M“', titleEn: 'Smena 8M Camera Lamp',
+    summaryBg: 'Фотографската класика „Смена 8M“, преобразена в дизайнерска лампа с Edison крушка.',
+    summaryEn: 'The Smena 8M photography classic transformed into a designer lamp with an Edison bulb.',
+    descriptionBg: ['Втори живот за една фотографска класика. Емблематичният „Смена 8M“ е превърнат в дизайнерска лампа с винтидж чар.', 'Всеки детайл е запазен с внимание, а топлата LED Edison крушка създава мека светлина за нощно шкафче, хол, офис или творческо студио.'],
+    descriptionEn: ['A second life for a photography classic. The iconic Smena 8M was transformed into a designer lamp with vintage charm.', 'Every detail was carefully preserved, while the warm LED Edison bulb creates soft light for a bedside table, living room, office, or creative studio.'],
+  },
+  {
+    slug: 'praktica-mtl5-camera-lamp', category: 'cameras', imagePrefix: 'praktica-mtl5-camera-lamp',
+    titleBg: 'Фотоапарат Praktica MTL5', titleEn: 'Praktica MTL5 Camera Lamp',
+    summaryBg: 'Класически 35 mm фотоапарат от Източна Германия, превърнат в лампа с индустриален характер.',
+    summaryEn: 'A classic East German 35 mm camera transformed into a lamp with industrial character.',
+    descriptionBg: ['Praktica MTL5 е класически 35 mm SLR фотоапарат, произведен в Източна Германия през 80-те години, известен със здравата метална конструкция и ръчния контрол.', 'Емблематичният винтидж дизайн и M42 системата го превръщат в перфектна основа за ръчно изработена лампа с индустриална и ретро естетика.'],
+    descriptionEn: ['The Praktica MTL5 is a classic 35 mm SLR made in East Germany during the 1980s, known for its sturdy metal construction and manual controls.', 'Its iconic vintage design and M42 system make it a perfect foundation for a handmade lamp with industrial and retro character.'],
+  },
+  {
+    slug: 'zenit-122-victory-camera-lamp', category: 'cameras', imagePrefix: 'zenit-122-victory-camera-lamp',
+    titleBg: 'Юбилеен Zenit 122 „50 Победа“', titleEn: 'Zenit 122 “50 Victory” Anniversary Camera Lamp',
+    summaryBg: 'Юбилеен Zenit 122 от 90-те години, преобразен в лампа с топла Edison светлина.',
+    summaryEn: 'A special-edition 1990s Zenit 122 transformed into a lamp with warm Edison light.',
+    descriptionBg: ['Ръчно изработена лампа от автентичен Zenit 122 — емблематичен съветски 35 mm SLR модел от 90-те години със здрав корпус и механичен характер.', 'Специалният знак „50 Победа“ отбелязва 50 години от 1945 г. и прави модела особено интересен за колекционери. Топлата Edison крушка добавя уют, без да отнема от историята му.'],
+    descriptionEn: ['A handmade lamp created from an authentic Zenit 122, an iconic Soviet 35 mm SLR from the 1990s with a robust body and mechanical character.', 'Its “50 Victory” emblem commemorates fifty years since 1945 and makes it especially interesting to collectors. The warm Edison bulb adds comfort without diminishing its history.'],
+  },
+  {
+    slug: 'zenit-legend-camera-lamp', category: 'cameras', imagePrefix: 'zenit-legend-camera-lamp',
+    titleBg: 'Класически фотоапарат Zenit', titleEn: 'Classic Zenit Camera Lamp',
+    summaryBg: 'Автентичен Zenit с нов живот като лампа, съчетаваща винтидж стил и топла светлина.',
+    summaryEn: 'An authentic Zenit given a new life as a lamp combining vintage style and warm light.',
+    descriptionBg: ['Нов живот за една легенда — ръчно изработена лампа от автентичен ретро фотоапарат Zenit.', 'Винтидж стилът, топлата ambient светлина и запазените детайли я превръщат в характерен акцент за дом, студио или офис.'],
+    descriptionEn: ['A new life for a legend: a handmade lamp created from an authentic vintage Zenit camera.', 'Its vintage style, warm ambient light, and preserved details make it a distinctive accent for a home, studio, or office.'],
+  },
+  {
+    slug: 'zorki-4-camera-lamp', category: 'cameras', imagePrefix: 'zorki-4-camera-lamp',
+    titleBg: 'Фотоапарат „Зоркий 4“', titleEn: 'Zorki 4 Camera Lamp',
+    summaryBg: 'Автентичен „Зоркий 4“, превърнат в лампа с топла Edison крушка и история във всеки детайл.',
+    summaryEn: 'An authentic Zorki 4 transformed into a lamp with a warm Edison bulb and history in every detail.',
+    descriptionBg: ['Ръчно изработена лампа от автентичен фотоапарат „Зоркий 4“, превърнат в стилен акцент за дом, студио или арт пространство.', 'Топлата Edison светлина и запазеният винтидж характер я правят подходяща за любители на фотографията, ретро дизайна и нестандартния декор.'],
+    descriptionEn: ['A handmade lamp created from an authentic Zorki 4 camera and transformed into a stylish accent for a home, studio, or art space.', 'Its warm Edison light and preserved vintage character make it ideal for lovers of photography, retro design, and unconventional decor.'],
+  },
+  {
+    slug: 'yantar-desk-clock-lamp', category: 'desk-clocks', imagePrefix: 'yantar-desk-clock-lamp',
+    titleBg: 'Настолен часовник „Янтар“', titleEn: 'Yantar Desk Clock Lamp',
+    summaryBg: 'Съветски кварцов часовник „Янтар“ от 70-те/80-те години, превърнат в лампа.',
+    summaryEn: 'A Soviet Yantar quartz desk clock from the 1970s–1980s transformed into a lamp.',
+    descriptionBg: ['Съветски настолен часовник „Янтар“ с кварцов механизъм, ръчно превърнат в лампа — класика от 70-те и 80-те години.', 'Римските цифри, винтидж стилът и характерната цветова комбинация носят неподражаема атмосфера от миналото.'],
+    descriptionEn: ['A Soviet Yantar desk clock with a quartz movement, handmade into a lamp — a classic from the 1970s and 1980s.', 'Its Roman numerals, vintage style, and distinctive colors carry an unmistakable atmosphere from the past.'],
+  },
+  {
+    slug: 'telephone-switchboard-lamp', category: 'retro-telephones', imagePrefix: 'telephone-switchboard-lamp',
+    titleBg: 'Телефонна централа от 70-те години', titleEn: '1970s Telephone Switchboard Lamp',
+    summaryBg: 'Ретро телефонна централа, получила нов живот като ръчно изработена лампа.',
+    summaryEn: 'A retro telephone switchboard given a new life as a handmade lamp.',
+    descriptionBg: ['От централа за разговори до център на вниманието — тази телефонна централа от 70-те години е преобразена в ръчно изработена лампа.', 'Запазени са въртящият диск, бутоните и индустриалният чар. Някога е свързвала хора, а днес създава топла светлина, атмосфера и характер.'],
+    descriptionEn: ['From a conversation hub to the center of attention, this 1970s telephone switchboard was transformed into a handmade lamp.', 'Its rotary dial, buttons, and industrial charm were preserved. It once connected people; today it creates warm light, atmosphere, and character.'],
+  },
+  {
+    slug: 'weathered-vintage-camera-lamp', category: 'cameras', imagePrefix: 'weathered-vintage-camera-lamp',
+    titleBg: 'Фотоапарат с автентична патина', titleEn: 'Weathered Vintage Camera Lamp',
+    summaryBg: 'Ретро фотоапарат с видими следи от времето, превърнат в уникална лампа с душа.',
+    summaryEn: 'A retro camera with visible traces of time, transformed into a unique lamp with soul.',
+    descriptionBg: ['Ръчно изработена лампа от автентичен ретро фотоапарат, която не просто осветява, а разказва история.', 'Белезите от годините са запазени и видими — част от истинската винтидж естетика. Изработката съчетава уникален дизайн, топла атмосфера и характер.'],
+    descriptionEn: ['A handmade lamp created from an authentic retro camera that does more than provide light — it tells a story.', 'The marks left by time remain visible as part of its genuine vintage aesthetic. The piece combines unique design, warm atmosphere, and character.'],
+  },
+  {
+    slug: 'smena-2-retro-camera-lamp', category: 'cameras', imagePrefix: 'smena-2-retro-camera-lamp',
+    titleBg: 'Ретро фотоапарат „Смена-2“', titleEn: 'Retro Smena-2 Camera Lamp',
+    summaryBg: 'Втора отделна изработка от автентичен фотоапарат „Смена-2“ с уютна топла светлина.',
+    summaryEn: 'A second separate piece made from an authentic Smena-2 camera with cozy warm light.',
+    descriptionBg: ['Ретро лампа, създадена на ръка от автентичен фотоапарат „Смена-2“. Класическият аналогов апарат е превърнат в стилен дизайнерски акцент.', 'Топлата светлина и единственият по рода си дизайн са подходящи за нощно шкафче, офис или подарък за фотограф и винтидж ентусиаст.'],
+    descriptionEn: ['A retro lamp handmade from an authentic Smena-2 camera. The classic analog camera was transformed into a stylish designer accent.', 'Its warm light and one-of-a-kind design suit a bedside table, office, or a gift for a photographer and vintage enthusiast.'],
+  },
+  {
+    slug: 'orange-telephone-1984-lamp', category: 'retro-telephones', imagePrefix: 'orange-telephone-1984-lamp',
+    titleBg: 'Оранжев телефон от 1984 г.', titleEn: 'Orange 1984 Telephone Lamp',
+    summaryBg: 'Оригинален оранжев телефон от 1984 г., запазен без пребоядисване и превърнат в лампа.',
+    summaryEn: 'An original orange telephone from 1984, preserved without repainting and transformed into a lamp.',
+    descriptionBg: ['Уникална ръчно изработена лампа от оригинален ретро телефон от 1984 г., запазен в автентичния си цвят без пребоядисване или имитации.', 'Топлата светлина и единственият по рода си дизайн носят истински винтидж характер за дом, офис или подарък. Разговор от миналото, превърнат в уют.'],
+    descriptionEn: ['A unique handmade lamp created from an original 1984 retro telephone, preserved in its authentic color without repainting or imitation.', 'Its warm light and one-of-a-kind design bring genuine vintage character to a home, office, or gift. A conversation from the past transformed into comfort.'],
+  },
+  {
+    slug: 'p-170-military-telephone-lamp', category: 'retro-telephones', imagePrefix: 'p-170-military-telephone-lamp',
+    titleBg: 'Военен телефон П-170', titleEn: 'P-170 Military Telephone Lamp',
+    summaryBg: 'Рядък военен телефон П-170 от СССР с оригинален паспорт, превърнат в лампа.',
+    summaryEn: 'A rare Soviet P-170 military telephone with its original passport, transformed into a lamp.',
+    descriptionBg: ['Уникална лампа от оригинален военен телефон П-170 — рядък колекционерски модел от 70-те/80-те години на СССР.', 'Телефонът е в оригиналния си цвят без пребоядисване и е запазен с оригиналния паспорт. Истинско парче история, ръчно превърнато в дизайнерска лампа за винтидж или индустриален интериор.'],
+    descriptionEn: ['A unique lamp made from an original P-170 military telephone, a rare collectible Soviet model from the 1970s–1980s.', 'The telephone retains its original color without repainting and comes with its original passport. A genuine piece of history handmade into a designer lamp for vintage or industrial interiors.'],
+  },
+  {
+    slug: 'blue-telephone-lamp', category: 'retro-telephones', imagePrefix: 'blue-telephone-lamp',
+    titleBg: 'Син винтидж телефон-лампа', titleEn: 'Blue Vintage Telephone Lamp',
+    summaryBg: 'Син ретро телефон, преобразен в лампа с Edison крушка и спокойна топла светлина.',
+    summaryEn: 'A blue retro telephone transformed into a lamp with an Edison bulb and calm warm light.',
+    descriptionBg: ['Син винтидж телефон, преобразен в оригинално осветление, което комбинира носталгия и модерен уют.', 'Топлата Edison светлина и меките сенки създават спокойна атмосфера за вечерно четене, нощно шкафче, офис или акцент в хола.'],
+    descriptionEn: ['A blue vintage telephone transformed into original lighting that combines nostalgia with modern comfort.', 'The warm Edison light and soft shadows create a calm atmosphere for evening reading, a bedside table, office, or living-room accent.'],
+  },
+  {
+    slug: 'pink-classic-telephone-lamp', category: 'retro-telephones', imagePrefix: 'pink-classic-telephone-lamp', images: ['/images/products/pink-classic-telephone-lamp-01.jpg'],
+    titleBg: 'Розов класически телефон-лампа', titleEn: 'Classic Pink Telephone Lamp',
+    summaryBg: 'Розов ретро телефон с топла Edison крушка, превърнат във функционален дизайнерски акцент.',
+    summaryEn: 'A pink retro telephone with a warm Edison bulb transformed into a functional designer accent.',
+    descriptionBg: ['Класически ретро телефон получава нов живот като ръчно изработена лампа, която привлича вниманието и създава уют.', 'Розовият дизайн и топлата Edison светлина съчетават винтидж стил, модерна визия и функционалност за хол, спалня, офис или заведение.'],
+    descriptionEn: ['A classic retro telephone receives a new life as a handmade lamp that attracts attention and creates comfort.', 'Its pink design and warm Edison light combine vintage style, modern presence, and function for a living room, bedroom, office, or venue.'],
+  },
+  {
+    slug: 'pink-jewel-telephone-lamp', category: 'retro-telephones', imagePrefix: 'pink-jewel-telephone-lamp', images: ['/images/products/pink-jewel-telephone-lamp-01.jpg'],
+    titleBg: 'Розово телефонно бижу', titleEn: 'Pink Telephone Jewel Lamp',
+    summaryBg: 'Автентичен розов телефон, трансформиран в забележим дизайнерски акцент с топла светлина.',
+    summaryEn: 'An authentic pink telephone transformed into a striking designer accent with warm light.',
+    descriptionBg: ['Розово бижу, създадено от автентичен ретро телефон и трансформирано в дизайнерска лампа, която не остава незабелязана.', 'Винтидж визията, модерната функционалност и топлата Edison светлина създават уют в дом, кафе, студио или офис.'],
+    descriptionEn: ['A pink jewel created from an authentic retro telephone and transformed into a designer lamp that cannot go unnoticed.', 'Its vintage appearance, modern function, and warm Edison light create comfort in a home, café, studio, or office.'],
+  },
+  {
+    slug: 'pink-jewel-first-edition-lamp', category: 'retro-telephones', imagePrefix: 'pink-jewel-first-edition-lamp', images: ['/images/products/pink-jewel-first-edition-lamp-01.jpg'],
+    titleBg: 'Розова лампа-бижу — първа изработка', titleEn: 'Pink Jewel Telephone Lamp — First Piece',
+    summaryBg: 'Отделна розова телефонна лампа с характерен ретро силует и уютна светлина.',
+    summaryEn: 'A separate pink telephone lamp with a distinctive retro silhouette and cozy light.',
+    descriptionBg: ['Розова лампа-бижу, ръчно създадена от автентичен ретро телефон.', 'Отделната изработка запазва характерния силует на телефона и го превръща в декоративен акцент с топла и приветлива светлина.'],
+    descriptionEn: ['A pink jewel lamp handmade from an authentic retro telephone.', 'This separate piece preserves the telephone’s distinctive silhouette and transforms it into a decorative accent with warm, welcoming light.'],
+  },
+].map((product) =>
+  createInstagramProduct({
+    ...product,
+    status: 'sold',
+    featuresBg: ['Ръчна изработка', 'Автентичен винтидж предмет', 'Запазени оригинални детайли', 'Единствена по рода си'],
+    featuresEn: ['Handmade', 'Authentic vintage object', 'Preserved original details', 'One of a kind'],
+  }),
+)
+
 const soldProducts = [
+  ...soldInstagramProducts,
   mayakClockLamp,
   russianTelephoneLamp,
   pinkTelephoneLamp,
