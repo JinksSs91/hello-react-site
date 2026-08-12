@@ -2563,7 +2563,6 @@ function ProductCard({ product, copy, language, navigateTo }) {
         <h3>{title}</h3>
         <p>{summary}</p>
         <div className="product-actions">
-          <span>{formatPrice(product.priceEur, language)}</span>
           <ProductContactLinks copy={copy} />
           <a
             className="button secondary"
@@ -2575,6 +2574,9 @@ function ProductCard({ product, copy, language, navigateTo }) {
           >
             {copy.product.details}
           </a>
+          <span className="product-card-price">
+            {formatPrice(product.priceEur, language)}
+          </span>
         </div>
       </div>
     </article>

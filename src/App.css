@@ -981,6 +981,7 @@
 
 .product-card {
   display: grid;
+  grid-template-rows: auto 1fr;
   min-width: 0;
   overflow: hidden;
 }
@@ -1004,6 +1005,7 @@
 
 .product-body {
   display: grid;
+  grid-template-rows: auto auto auto 1fr;
   gap: 14px;
   min-width: 0;
   padding: 24px;
@@ -1040,8 +1042,9 @@
 
 .product-actions {
   display: grid;
+  align-content: end;
   gap: 12px;
-  margin-top: 6px;
+  margin-top: auto;
 }
 
 .product-contact-links {
@@ -1084,10 +1087,21 @@
   stroke-width: 1.8;
 }
 
-.product-actions span,
+.product-card-price,
 .price-line {
-  color: var(--terracotta);
+  color: #396f52;
   font-weight: 900;
+}
+
+.product-card-price {
+  justify-self: end;
+  font-size: clamp(1.35rem, 2vw, 1.65rem);
+  line-height: 1;
+}
+
+.price-line {
+  font-size: clamp(1.65rem, 3vw, 2.15rem);
+  line-height: 1.1;
 }
 
 .split-page {
