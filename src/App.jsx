@@ -2564,19 +2564,21 @@ function ProductCard({ product, copy, language, navigateTo }) {
         <p>{summary}</p>
         <div className="product-actions">
           <ProductContactLinks copy={copy} />
-          <a
-            className="button secondary"
-            href={product.routes[language]}
-            onClick={(event) => {
-              event.preventDefault()
-              navigateTo(product.routes[language])
-            }}
-          >
-            {copy.product.details}
-          </a>
-          <span className="product-card-price">
-            {formatPrice(product.priceEur, language)}
-          </span>
+          <div className="product-card-footer">
+            <a
+              className="button secondary"
+              href={product.routes[language]}
+              onClick={(event) => {
+                event.preventDefault()
+                navigateTo(product.routes[language])
+              }}
+            >
+              {copy.product.details}
+            </a>
+            <span className="product-card-price">
+              {formatPrice(product.priceEur, language)}
+            </span>
+          </div>
         </div>
       </div>
     </article>

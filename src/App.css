@@ -1050,7 +1050,19 @@
 .product-contact-links {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 9px;
+}
+
+.product-card-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+}
+
+.product-card-footer .button {
+  justify-self: start;
 }
 
 .product-contact-links a {
@@ -1100,6 +1112,8 @@
 }
 
 .price-line {
+  justify-self: center;
+  text-align: center;
   font-size: clamp(1.65rem, 3vw, 2.15rem);
   line-height: 1.1;
 }
