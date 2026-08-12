@@ -90,6 +90,7 @@ const handmadeDesignMarketUrl =
   'https://www.instagram.com/p/DZTMBCqttSt/?igsh=dmt6MTJiN2dtbTZ4'
 
 const soldInstagramProductSlugs = [
+  'yellow-ta72m-custom-lamp',
   'smena-2-memory-lamp',
   'black-rotary-telephone-lamp',
   'zenit-tripod-lamp',
@@ -170,6 +171,10 @@ const productRoutes = {
   'black-white-telephone-lamp': {
     bg: '/lamps/black-white-telephone-lamp',
     en: '/en/lamps/black-white-telephone-lamp',
+  },
+  'pink-1980s-telephone-lamp': {
+    bg: '/lamps/pink-1980s-telephone-lamp',
+    en: '/en/lamps/pink-1980s-telephone-lamp',
   },
   'pink-rotary-telephone-lamp': {
     bg: '/sold-lamps/pink-rotary-telephone-lamp',
@@ -1083,7 +1088,42 @@ const blackWhiteTelephoneLamp = createInstagramProduct({
   featuresEn: ['Excellent condition', 'Hand-restored', 'No scratches', 'Unique black and white design'],
 })
 
+const pink1980sTelephoneLamp = createInstagramProduct({
+  slug: 'pink-1980s-telephone-lamp',
+  category: 'retro-telephones',
+  titleBg: 'Розов ретро телефон от 80-те',
+  titleEn: 'Pink 1980s Rotary Telephone Lamp',
+  summaryBg:
+    'Оригинален яркорозов телефон от 80-те години с кутия, сертификат и гаранция, ръчно превърнат в лампа.',
+  summaryEn:
+    'An original bright-pink 1980s telephone with its box, certificate, and warranty, handmade into a lamp.',
+  imagePrefix: 'pink-1980s-telephone-lamp',
+  descriptionBg: [
+    'Уникален винтидж акцент за хора, които обичат предмети с история. Оригиналният розов телефон от 80-те години е ръчно превърнат в ефектна настолна лампа, като са запазени емблематичната шайба и характерният ретро дизайн.',
+    'Телефонът е с оригиналната си кутия, сертификат и гаранция от 80-те години. Яркият розов цвят и топлата светлина го превръщат в единствен по рода си декоративен предмет.',
+    'Подходяща е за нощно шкафче, бюро, ретро интериор или като нестандартен подарък. Лампата не просто осветява стаята — тя връща малко от чара на аналоговата епоха.',
+  ],
+  descriptionEn: [
+    'A unique vintage accent for people who love objects with a story. This original pink telephone from the 1980s was handmade into a striking desk lamp while preserving its iconic rotary dial and distinctive retro design.',
+    'The telephone comes with its original box, certificate, and warranty from the 1980s. Its bright pink color and warm light make it a truly one-of-a-kind decorative piece.',
+    'Perfect for a bedside table, desk, retro interior, or an unconventional gift. The lamp does more than illuminate a room — it brings back a little of the charm of the analog era.',
+  ],
+  featuresBg: [
+    'Оригинален телефон от 80-те',
+    'Оригинална кутия, сертификат и гаранция',
+    'Ръчна изработка',
+    'Ярък розов цвят',
+  ],
+  featuresEn: [
+    'Original 1980s telephone',
+    'Original box, certificate, and warranty',
+    'Handmade',
+    'Bright pink color',
+  ],
+})
+
 const availableProducts = [
+  pink1980sTelephoneLamp,
   quartz5CameraLamp,
   porstCameraLamp,
   zenitCameraLamp,
@@ -1228,6 +1268,24 @@ const mayakClockLamp = {
 }
 
 const soldInstagramProducts = [
+  {
+    slug: 'yellow-ta72m-custom-lamp', category: 'retro-telephones', imagePrefix: 'yellow-ta72m-custom-lamp',
+    titleBg: 'Жълт телефон TA-72M — изработка по поръчка', titleEn: 'Yellow TA-72M Custom Telephone Lamp',
+    summaryBg: 'Личен телефон TA-72M на клиент, ръчно преобразен в яркожълта декоративна лампа.',
+    summaryEn: 'A client’s own TA-72M telephone, handmade into a bright-yellow decorative lamp.',
+    descriptionBg: [
+      'Тази лампа е направена по поръчка от личния телефон на клиента — оригинален ретро ротационен TA-72M, получил нов живот като декоративна настолна лампа.',
+      'Запазени са характерният яркожълт корпус, механичната шайба и спираловидният кабел, а слушалката е превърната в стойка за крушката.',
+      'TA-72M е представител на класическите аналогови телефони от епохата на ротационното набиране — с масивен корпус и разпознаваем индустриален дизайн. Всеки детайл е обработен ръчно, така че оригиналният характер на телефона да остане видима част от новата му функция.',
+    ],
+    descriptionEn: [
+      'This custom lamp was created from the client’s own telephone — an original vintage TA-72M rotary phone given a new life as a decorative desk lamp.',
+      'Its distinctive bright-yellow body, mechanical rotary dial, and coiled cord were preserved, while the handset was transformed into the support for the bulb.',
+      'The TA-72M represents the classic analog telephones of the rotary-dial era, with a substantial body and recognizable industrial design. Every detail was finished by hand so the telephone’s original character remains a visible part of its new function.',
+    ],
+    featuresBg: ['Изработка по поръчка', 'Оригинален TA-72M', 'Запазен яркожълт корпус', 'Ръчна изработка'],
+    featuresEn: ['Custom-made piece', 'Original TA-72M', 'Preserved bright-yellow body', 'Handmade'],
+  },
   {
     slug: 'smena-2-memory-lamp', category: 'cameras', imagePrefix: 'smena-2-memory-lamp',
     titleBg: 'Фотоапарат „Смена 2“ — лампа със спомени', titleEn: 'Smena 2 Camera Memory Lamp',
