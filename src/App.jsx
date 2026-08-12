@@ -402,11 +402,10 @@ const content = {
     product: {
       back: 'Назад към наличните лампи',
       available: 'Продава се',
-      price: 'Попитай за цена',
-      cta: 'Пиши за цена и доставка',
+      cta: 'Поръчай чрез съобщение в Instagram',
       details: 'Виж детайли',
       gallery: 'Допълнителни снимки',
-      dmHint: 'Пиши ни на лично в Instagram и изпрати името на продукта.',
+      dmHint: 'Пиши ни в Instagram и изпрати името на продукта, който искаш да поръчаш.',
       openImage: 'Отвори снимка',
       closeGallery: 'Затвори галерията',
       previousImage: 'Предишна снимка',
@@ -622,11 +621,10 @@ const content = {
     product: {
       back: 'Back to available lamps',
       available: 'Available',
-      price: 'Ask for price',
-      cta: 'Ask about price and delivery',
+      cta: 'Order via Instagram message',
       details: 'View details',
       gallery: 'Additional photos',
-      dmHint: 'Message us on Instagram and send the product name.',
+      dmHint: 'Message us on Instagram with the name of the product you would like to order.',
       openImage: 'Open image',
       closeGallery: 'Close gallery',
       previousImage: 'Previous image',
@@ -1136,10 +1134,28 @@ const availableProducts = [
   redTa900OriginalBoxLamp,
   redTa900SecondEditionLamp,
   viliaLamp,
-  unionSewingMachineLamp,
   whiteRadioPointLamp,
   blueRadioPointLamp,
-]
+].map((product) => ({
+  ...product,
+  priceEur: {
+    'pink-1980s-telephone-lamp': 95,
+    'quartz-5-camera-lamp': 170,
+    'porst-compact-reflex-oc-lamp': 120,
+    'zenit-camera-lamp': 130,
+    'retro-telephone-lamp': 140,
+    'cream-rotary-telephone-lamp': 85,
+    'orange-telephone-lamp': 80,
+    'yellow-telephone-lamp-1988': 80,
+    'black-white-telephone-lamp': 110,
+    'red-ta-900-telephone-lamp': 120,
+    'red-ta-900-telephone-lamp-original-box': 120,
+    'red-ta-900-telephone-lamp-second-edition': 120,
+    'vilia-camera-lamp': 90,
+    'white-radio-point-lamp-1986': 60,
+    'blue-radio-point-lamp': 60,
+  }[product.slug],
+}))
 
 const pinkTelephoneLamp = {
   slug: 'pink-rotary-telephone-lamp',
@@ -1440,6 +1456,7 @@ const soldInstagramProducts = [
 )
 
 const soldProducts = [
+  { ...unionSewingMachineLamp, status: 'sold' },
   ...soldInstagramProducts,
   mayakClockLamp,
   russianTelephoneLamp,
@@ -2344,7 +2361,11 @@ function ProductPage({ copy, language, navigateTo, product }) {
           </span>
           <h1>{title}</h1>
           <p className="hero-lead">{summary}</p>
-          {!isSold && <div className="price-line">{copy.product.price}</div>}
+          {!isSold && (
+            <div className="price-line">
+              {formatPrice(product.priceEur, language)}
+            </div>
+          )}
           <ul className="check-list">
             {features.map((feature) => (
               <li key={feature}>{feature}</li>
@@ -2517,6 +2538,10 @@ function ProductGallery({ images, title, copy, allImages = false, altTexts }) {
   )
 }
 
+function formatPrice(priceEur, language) {
+  return language === 'bg' ? `${priceEur} €` : `€${priceEur}`
+}
+
 function ProductCard({ product, copy, language, navigateTo }) {
   const title = language === 'bg' ? product.titleBg : product.titleEn
   const summary = language === 'bg' ? product.summaryBg : product.summaryEn
@@ -2538,7 +2563,7 @@ function ProductCard({ product, copy, language, navigateTo }) {
         <h3>{title}</h3>
         <p>{summary}</p>
         <div className="product-actions">
-          <span>{copy.product.price}</span>
+          <span>{formatPrice(product.priceEur, language)}</span>
           <ProductContactLinks copy={copy} />
           <a
             className="button secondary"
