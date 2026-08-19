@@ -684,7 +684,8 @@
 .market-event-cover {
   display: block;
   overflow: hidden;
-  background: var(--espresso);
+  background: transparent;
+  line-height: 0;
 }
 
 .market-event-card {
@@ -748,6 +749,18 @@
   gap: 8px;
 }
 
+.market-event-card .editorial-copy {
+  text-align: center;
+}
+
+.market-event-card .market-event-meta {
+  justify-content: center;
+}
+
+.market-event-card .button {
+  justify-self: center;
+}
+
 .market-event-meta span,
 .market-gallery-meta span {
   max-width: 100%;
@@ -763,16 +776,6 @@
 
 .market-event-card .button {
   margin-top: 4px;
-}
-
-.event-admission {
-  width: fit-content;
-  padding: 9px 13px;
-  border-radius: 999px;
-  background: rgba(56, 175, 98, 0.13);
-  color: #216b3a;
-  font-size: 0.92rem;
-  font-weight: 900;
 }
 
 .editorial-preview {

@@ -334,9 +334,9 @@ const content = {
         status: 'Отминал',
         date: '7-9 август 2026 г.',
         location: 'Алеята пред Флора, Морска градина, гр. Бургас',
-        text:
-          'Над 40 български бранда в Морската градина. Ще ви очакват работилници, музика и забавления за цялото семейство. Вкусотии и напитки от местни брандове, както разбира се и нашият щанд с ръчно изработени лампи.',
-        admission: 'Вход свободен',
+        text: 'Снимки от щанда на E&K Vintara Studio и срещите ни с посетителите на Handmade Design Market.',
+        textPrefix:
+          'Снимки от щанда на E&K Vintara Studio и срещите ни с посетителите на',
         cta: 'Разгледай снимките',
       },
     },
@@ -552,9 +552,9 @@ const content = {
         status: 'Past',
         date: 'August 7-9, 2026',
         location: 'The walkway in front of Flora, Sea Garden, Burgas',
-        text:
-          'More than 40 Bulgarian brands will gather in the Sea Garden. Expect workshops, music, and entertainment for the whole family, local food and drinks, and of course our stand with handmade lamps.',
-        admission: 'Free admission',
+        text: 'Photos of the E&K Vintara Studio stand and our meetings with visitors at Handmade Design Market.',
+        textPrefix:
+          'Photos of the E&K Vintara Studio stand and our meetings with visitors at',
         cta: 'View photos',
       },
     },
@@ -2189,10 +2189,10 @@ function MarketsPage({ copy, language, marketStatus, navigateTo }) {
               <span>{copy.markets.upcomingEvent.location}</span>
             </div>
             <h2>{copy.markets.upcomingEvent.title}</h2>
-            <p>{copy.markets.upcomingEvent.text}</p>
-            <strong className="event-admission">
-              {copy.markets.upcomingEvent.admission}
-            </strong>
+            <p>
+              {copy.markets.upcomingEvent.textPrefix}{' '}
+              <strong>{copy.markets.upcomingEvent.title}</strong>.
+            </p>
             <a
               className="button secondary"
               href={handmadeGalleryHref}
