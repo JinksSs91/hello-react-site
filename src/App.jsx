@@ -881,8 +881,8 @@ const redTa900SecondEditionLamp = createInstagramProduct({
   summaryBg: 'Втора отделна ръчно изработена лампа от червен ретро телефон ТА-900.',
   summaryEn: 'A second, separately handmade lamp created from a red TA-900 retro telephone.',
   images: [
-    '/images/products/red-ta-900-instagram-04.jpg',
     '/images/products/red-ta-900-instagram-03.jpg',
+    '/images/products/red-ta-900-instagram-04.jpg',
   ],
   descriptionBg: [
     'Оригинален червен ретро телефон ТА-900, ръчно преобразен в уникална лампа с характер.',
@@ -995,8 +995,8 @@ const orangeTelephoneLamp = createInstagramProduct({
   summaryEn: 'An authentic orange telephone, handmade into a lamp with warm light.',
   imagePrefix: 'orange-telephone-lamp',
   images: [
-    '/images/products/orange-telephone-lamp-02.jpg',
     '/images/products/orange-telephone-lamp-01.jpg',
+    '/images/products/orange-telephone-lamp-02.jpg',
   ],
   descriptionBg: [
     'Някога част от ежедневието, днес акцент в интериора. Тази лампа е ръчно изработена от автентичен оранжев ретро телефон, който получава нов живот и нова функция.',
@@ -1065,8 +1065,8 @@ const blueRadioPointLamp = createInstagramProduct({
   summaryEn: 'A blue retro wired radio, handmade into a cozy desk lamp.',
   imagePrefix: 'blue-radio-point-lamp',
   images: [
-    '/images/products/blue-radio-point-lamp-02.jpg',
     '/images/products/blue-radio-point-lamp-01.jpg',
+    '/images/products/blue-radio-point-lamp-02.jpg',
   ],
   descriptionBg: [
     'Уникална синя винтидж радиоточка, трансформирана в стилна лампа, която добавя характер и топлина в дома.',
@@ -1090,6 +1090,11 @@ const blackWhiteTelephoneLamp = createInstagramProduct({
   summaryBg: 'Черно-бял телефон в отлично състояние, реставриран и превърнат в артистична лампа.',
   summaryEn: 'A black and white telephone in excellent condition, restored and transformed into an artistic lamp.',
   imagePrefix: 'black-white-telephone-lamp',
+  images: [
+    '/images/products/black-white-telephone-lamp-main.jpg',
+    '/images/products/black-white-telephone-lamp-01.jpg',
+    '/images/products/black-white-telephone-lamp-02.jpg',
+  ],
   descriptionBg: [
     'Черно-бяла лампа-телефон в отлично състояние, без забележки и драскотини. Реставрирана и освежена от нас, тя чака своя нов собственик.',
     'Готова е да внесе характер и светлина върху бюро, нощно шкафче или в арт кафене.',
