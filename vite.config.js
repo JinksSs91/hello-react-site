@@ -29,6 +29,10 @@ const localizedRoutes = {
     bg: '/art-markets/re-bazaar-mall-galeria-burgas-2026',
     en: '/en/art-markets/re-bazaar-mall-galeria-burgas-2026',
   },
+  marketGalleryHandmade: {
+    bg: '/art-markets/handmade-design-market-2026',
+    en: '/en/art-markets/handmade-design-market-2026',
+  },
   media: { bg: '/media-about-us', en: '/en/media-about-us' },
   reviews: { bg: '/customer-reviews', en: '/en/customer-reviews' },
   about: { bg: '/about-us', en: '/en/about-us' },
@@ -117,11 +121,19 @@ const mayakClockImageUrls = [
 ]
 
 const reBazaarImageUrls = [
+  `${siteUrl}/images/markets/re-bazaar-2026/re-bazaar-poster.png`,
   `${siteUrl}/images/markets/re-bazaar-2026/re-bazaar-main.jpg`,
   `${siteUrl}/images/markets/re-bazaar-2026/re-bazaar-01.jpg`,
   `${siteUrl}/images/markets/re-bazaar-2026/re-bazaar-02.jpg`,
   `${siteUrl}/images/markets/re-bazaar-2026/re-bazaar-03.jpg`,
   `${siteUrl}/images/markets/re-bazaar-2026/re-bazaar-04.jpg`,
+]
+
+const handmadeDesignMarketImageUrls = [
+  `${siteUrl}/images/markets/handmade-design-market-2026/handmade-design-market-poster.jpg`,
+  `${siteUrl}/images/markets/handmade-design-market-2026/handmade-design-market-01.png`,
+  `${siteUrl}/images/markets/handmade-design-market-2026/handmade-design-market-02.jpg`,
+  `${siteUrl}/images/markets/handmade-design-market-2026/handmade-design-market-03.jpg`,
 ]
 
 const organizationSchema = {
@@ -252,7 +264,7 @@ const mayakClockProductSchema = getProductSchema({
 const reBazaarEventSchema = {
   '@context': 'https://schema.org',
   '@type': 'Event',
-  name: 'Re-Bazaar (Mall Galeria Burgas)',
+  name: 'Re-Bazaar',
   startDate: '2026-04-25',
   endDate: '2026-04-26',
   eventStatus: 'https://schema.org/EventCompleted',
@@ -267,6 +279,26 @@ const reBazaarEventSchema = {
     url: siteUrl,
   },
   url: `${siteUrl}${localizedRoutes.marketGalleryReBazaar.bg}`,
+}
+
+const handmadeDesignMarketEventSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: 'Handmade Design Market',
+  startDate: '2026-08-07',
+  endDate: '2026-08-09',
+  eventStatus: 'https://schema.org/EventCompleted',
+  location: {
+    '@type': 'Place',
+    name: 'Алеята пред Флора, Морска градина, Бургас',
+  },
+  image: handmadeDesignMarketImageUrls,
+  organizer: {
+    '@type': 'Organization',
+    name: 'E&K Vintara Studio',
+    url: siteUrl,
+  },
+  url: `${siteUrl}${localizedRoutes.marketGalleryHandmade.bg}`,
 }
 
 const instagramProductSeo = [
@@ -346,7 +378,17 @@ const seoPages = [
     description:
       'Снимки от участието на E&K Vintara Studio в Re-Bazaar в Mall Galeria Burgas на 25 и 26 април 2026 г.',
     schemas: [reBazaarEventSchema],
-    image: 'markets/re-bazaar-2026/re-bazaar-main.jpg',
+    image: 'markets/re-bazaar-2026/re-bazaar-poster.png',
+  },
+  {
+    key: 'marketGalleryHandmade',
+    lang: 'bg',
+    path: localizedRoutes.marketGalleryHandmade.bg,
+    title: 'Handmade Design Market | E&K Vintara Studio',
+    description:
+      'Снимки от участието на E&K Vintara Studio в Handmade Design Market в Морската градина в Бургас от 7 до 9 август 2026 г.',
+    schemas: [handmadeDesignMarketEventSchema],
+    image: 'markets/handmade-design-market-2026/handmade-design-market-poster.jpg',
   },
   {
     key: 'media',
@@ -488,7 +530,17 @@ const seoPages = [
     description:
       'Photos from E&K Vintara Studio at Re-Bazaar in Mall Galeria Burgas on April 25 and 26, 2026.',
     schemas: [reBazaarEventSchema],
-    image: 'markets/re-bazaar-2026/re-bazaar-main.jpg',
+    image: 'markets/re-bazaar-2026/re-bazaar-poster.png',
+  },
+  {
+    key: 'marketGalleryHandmade',
+    lang: 'en',
+    path: localizedRoutes.marketGalleryHandmade.en,
+    title: 'Handmade Design Market | E&K Vintara Studio',
+    description:
+      'Photos from E&K Vintara Studio at Handmade Design Market in the Sea Garden in Burgas, August 7–9, 2026.',
+    schemas: [handmadeDesignMarketEventSchema],
+    image: 'markets/handmade-design-market-2026/handmade-design-market-poster.jpg',
   },
   {
     key: 'media',

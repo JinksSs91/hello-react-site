@@ -67,10 +67,17 @@ const marketGalleryRoutes = {
   're-bazaar-mall-galeria-burgas-2026': {
     bg: '/art-markets/re-bazaar-mall-galeria-burgas-2026',
     en: '/en/art-markets/re-bazaar-mall-galeria-burgas-2026',
+    contentKey: 'gallery',
+  },
+  'handmade-design-market-2026': {
+    bg: '/art-markets/handmade-design-market-2026',
+    en: '/en/art-markets/handmade-design-market-2026',
+    contentKey: 'upcomingEvent',
   },
 }
 
 const reBazaarImages = [
+  '/images/markets/re-bazaar-2026/re-bazaar-poster.png',
   '/images/markets/re-bazaar-2026/re-bazaar-main.jpg',
   '/images/markets/re-bazaar-2026/re-bazaar-01.jpg',
   '/images/markets/re-bazaar-2026/re-bazaar-02.jpg',
@@ -86,8 +93,17 @@ const customerReviewImages = Array.from(
 
 const handmadeDesignMarketPoster =
   '/images/markets/handmade-design-market-2026/handmade-design-market-poster.jpg'
-const handmadeDesignMarketUrl =
-  'https://www.instagram.com/p/DZTMBCqttSt/?igsh=dmt6MTJiN2dtbTZ4'
+const handmadeDesignMarketImages = [
+  handmadeDesignMarketPoster,
+  '/images/markets/handmade-design-market-2026/handmade-design-market-01.png',
+  '/images/markets/handmade-design-market-2026/handmade-design-market-02.jpg',
+  '/images/markets/handmade-design-market-2026/handmade-design-market-03.jpg',
+]
+
+const marketGalleryImages = {
+  're-bazaar-mall-galeria-burgas-2026': reBazaarImages,
+  'handmade-design-market-2026': handmadeDesignMarketImages,
+}
 
 const soldInstagramProductSlugs = [
   'yellow-ta72m-custom-lamp',
@@ -306,7 +322,7 @@ const content = {
         upcoming: 'Предстоящи',
       },
       gallery: {
-        title: 'Re-Bazaar (Mall Galeria Burgas) 25-26 Април 2026г.',
+        title: 'Re-Bazaar',
         status: 'Отминал',
         date: '25-26 април 2026 г.',
         location: 'Mall Galeria Burgas',
@@ -321,7 +337,7 @@ const content = {
         text:
           'Над 40 български бранда в Морската градина. Ще ви очакват работилници, музика и забавления за цялото семейство. Вкусотии и напитки от местни брандове, както разбира се и нашият щанд с ръчно изработени лампи.',
         admission: 'Вход свободен',
-        cta: 'Виж събитието в Instagram',
+        cta: 'Разгледай снимките',
       },
     },
     media: {
@@ -524,7 +540,7 @@ const content = {
         upcoming: 'Upcoming',
       },
       gallery: {
-        title: 'Re-Bazaar (Mall Galeria Burgas), April 25-26, 2026',
+        title: 'Re-Bazaar',
         status: 'Past',
         date: 'April 25-26, 2026',
         location: 'Mall Galeria Burgas',
@@ -539,7 +555,7 @@ const content = {
         text:
           'More than 40 Bulgarian brands will gather in the Sea Garden. Expect workshops, music, and entertainment for the whole family, local food and drinks, and of course our stand with handmade lamps.',
         admission: 'Free admission',
-        cta: 'View event on Instagram',
+        cta: 'View photos',
       },
     },
     media: {
@@ -1737,6 +1753,7 @@ function App() {
           <MarketGalleryPage
             copy={copy}
             language={language}
+            marketGallerySlug={marketGallerySlug}
             navigateTo={navigateTo}
           />
         )}
@@ -2070,8 +2087,10 @@ function EmptyCategory({ text }) {
 }
 
 function MarketsPage({ copy, language, marketStatus, navigateTo }) {
-  const galleryHref =
+  const reBazaarGalleryHref =
     marketGalleryRoutes['re-bazaar-mall-galeria-burgas-2026'][language]
+  const handmadeGalleryHref =
+    marketGalleryRoutes['handmade-design-market-2026'][language]
   const showPast = marketStatus !== 'upcoming'
 
   return (
@@ -2114,10 +2133,10 @@ function MarketsPage({ copy, language, marketStatus, navigateTo }) {
           </span>
           <a
             className="market-event-cover"
-            href={galleryHref}
+            href={reBazaarGalleryHref}
             onClick={(event) => {
               event.preventDefault()
-              navigateTo(galleryHref)
+              navigateTo(reBazaarGalleryHref)
             }}
           >
             <img
@@ -2134,10 +2153,10 @@ function MarketsPage({ copy, language, marketStatus, navigateTo }) {
             <p>{copy.markets.gallery.text}</p>
             <a
               className="button secondary"
-              href={galleryHref}
+              href={reBazaarGalleryHref}
               onClick={(event) => {
                 event.preventDefault()
-                navigateTo(galleryHref)
+                navigateTo(reBazaarGalleryHref)
               }}
             >
               {copy.markets.viewGallery}
@@ -2151,12 +2170,19 @@ function MarketsPage({ copy, language, marketStatus, navigateTo }) {
           <span className="event-status-badge past">
             {copy.markets.upcomingEvent.status}
           </span>
-          <div className="market-event-cover upcoming-event-cover">
+          <a
+            className="market-event-cover upcoming-event-cover"
+            href={handmadeGalleryHref}
+            onClick={(event) => {
+              event.preventDefault()
+              navigateTo(handmadeGalleryHref)
+            }}
+          >
             <img
               src={handmadeDesignMarketPoster}
               alt={`${copy.markets.upcomingEvent.title} - ${copy.markets.upcomingEvent.date}`}
             />
-          </div>
+          </a>
           <div className="editorial-copy">
             <div className="market-event-meta">
               <span>{copy.markets.upcomingEvent.date}</span>
@@ -2169,9 +2195,11 @@ function MarketsPage({ copy, language, marketStatus, navigateTo }) {
             </strong>
             <a
               className="button secondary"
-              href={handmadeDesignMarketUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={handmadeGalleryHref}
+              onClick={(event) => {
+                event.preventDefault()
+                navigateTo(handmadeGalleryHref)
+              }}
             >
               {copy.markets.upcomingEvent.cta}
             </a>
@@ -2183,8 +2211,11 @@ function MarketsPage({ copy, language, marketStatus, navigateTo }) {
   )
 }
 
-function MarketGalleryPage({ copy, language, navigateTo }) {
+function MarketGalleryPage({ copy, language, marketGallerySlug, navigateTo }) {
   const backHref = pages.markets[language]
+  const galleryRoute = marketGalleryRoutes[marketGallerySlug]
+  const galleryCopy = copy.markets[galleryRoute.contentKey]
+  const galleryImages = marketGalleryImages[marketGallerySlug]
 
   return (
     <section className="page market-gallery-page">
@@ -2201,18 +2232,18 @@ function MarketGalleryPage({ copy, language, navigateTo }) {
 
       <PageHeader
         kicker={copy.markets.kicker}
-        title={copy.markets.gallery.title}
-        text={copy.markets.gallery.text}
+        title={galleryCopy.title}
+        text={galleryCopy.text}
       />
 
-      <div className="market-gallery-meta" aria-label={copy.markets.gallery.title}>
-        <span>{copy.markets.gallery.date}</span>
-        <span>{copy.markets.gallery.location}</span>
+      <div className="market-gallery-meta" aria-label={galleryCopy.title}>
+        <span>{galleryCopy.date}</span>
+        <span>{galleryCopy.location}</span>
       </div>
 
       <ProductGallery
-        images={reBazaarImages}
-        title={copy.markets.gallery.title}
+        images={galleryImages}
+        title={galleryCopy.title}
         copy={copy.product}
       />
     </section>

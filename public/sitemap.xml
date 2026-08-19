@@ -26,6 +26,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/art-markets/re-bazaar-mall-galeria-burgas-2026" />
   </url>
   <url>
+    <loc>https://ourvintagelights.com/art-markets/handmade-design-market-2026</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/art-markets/handmade-design-market-2026" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/art-markets/handmade-design-market-2026" />
+  </url>
+  <url>
     <loc>https://ourvintagelights.com/media-about-us</loc>
     <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/media-about-us" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/media-about-us" />
@@ -99,6 +104,11 @@
     <loc>https://ourvintagelights.com/en/art-markets/re-bazaar-mall-galeria-burgas-2026</loc>
     <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/art-markets/re-bazaar-mall-galeria-burgas-2026" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/art-markets/re-bazaar-mall-galeria-burgas-2026" />
+  </url>
+  <url>
+    <loc>https://ourvintagelights.com/en/art-markets/handmade-design-market-2026</loc>
+    <xhtml:link rel="alternate" hreflang="bg-BG" href="https://ourvintagelights.com/art-markets/handmade-design-market-2026" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ourvintagelights.com/en/art-markets/handmade-design-market-2026" />
   </url>
   <url>
     <loc>https://ourvintagelights.com/en/media-about-us</loc>
