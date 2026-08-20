@@ -123,7 +123,6 @@ const soldInstagramProductSlugs = [
   'p-170-military-telephone-lamp',
   'blue-telephone-lamp',
   'pink-classic-telephone-lamp',
-  'pink-jewel-telephone-lamp',
   'pink-jewel-first-edition-lamp',
 ]
 
@@ -1450,14 +1449,6 @@ const soldInstagramProducts = [
     summaryEn: 'A pink retro telephone with a warm Edison bulb transformed into a functional designer accent.',
     descriptionBg: ['Класически ретро телефон получава нов живот като ръчно изработена лампа, която привлича вниманието и създава уют.', 'Розовият дизайн и топлата Edison светлина съчетават винтидж стил, модерна визия и функционалност за хол, спалня, офис или заведение.'],
     descriptionEn: ['A classic retro telephone receives a new life as a handmade lamp that attracts attention and creates comfort.', 'Its pink design and warm Edison light combine vintage style, modern presence, and function for a living room, bedroom, office, or venue.'],
-  },
-  {
-    slug: 'pink-jewel-telephone-lamp', category: 'retro-telephones', imagePrefix: 'pink-jewel-telephone-lamp', images: ['/images/products/pink-jewel-telephone-lamp-01.jpg'],
-    titleBg: 'Розово телефонно бижу', titleEn: 'Pink Telephone Jewel Lamp',
-    summaryBg: 'Автентичен розов телефон, трансформиран в забележим дизайнерски акцент с топла светлина.',
-    summaryEn: 'An authentic pink telephone transformed into a striking designer accent with warm light.',
-    descriptionBg: ['Розово бижу, създадено от автентичен ретро телефон и трансформирано в дизайнерска лампа, която не остава незабелязана.', 'Винтидж визията, модерната функционалност и топлата Edison светлина създават уют в дом, кафе, студио или офис.'],
-    descriptionEn: ['A pink jewel created from an authentic retro telephone and transformed into a designer lamp that cannot go unnoticed.', 'Its vintage appearance, modern function, and warm Edison light create comfort in a home, café, studio, or office.'],
   },
   {
     slug: 'pink-jewel-first-edition-lamp', category: 'retro-telephones', imagePrefix: 'pink-jewel-first-edition-lamp', images: ['/images/products/pink-jewel-first-edition-lamp-01.jpg'],

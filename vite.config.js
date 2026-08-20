@@ -17,7 +17,7 @@ const soldInstagramProductSlugs = [
   'zenit-legend-camera-lamp', 'zorki-4-camera-lamp', 'yantar-desk-clock-lamp',
   'telephone-switchboard-lamp', 'weathered-vintage-camera-lamp', 'smena-2-retro-camera-lamp',
   'orange-telephone-1984-lamp', 'p-170-military-telephone-lamp', 'blue-telephone-lamp',
-  'pink-classic-telephone-lamp', 'pink-jewel-telephone-lamp', 'pink-jewel-first-edition-lamp',
+  'pink-classic-telephone-lamp', 'pink-jewel-first-edition-lamp',
 ]
 
 const localizedRoutes = {
@@ -333,7 +333,6 @@ const soldInstagramProductSeo = [
   ['p-170-military-telephone-lamp', 'Военен телефон П-170', 'P-170 Military Telephone Lamp', 'Handmade vintage telephone lamp'],
   ['blue-telephone-lamp', 'Син винтидж телефон-лампа', 'Blue Vintage Telephone Lamp', 'Handmade vintage telephone lamp'],
   ['pink-classic-telephone-lamp', 'Розов класически телефон-лампа', 'Classic Pink Telephone Lamp', 'Handmade vintage telephone lamp'],
-  ['pink-jewel-telephone-lamp', 'Розово телефонно бижу', 'Pink Telephone Jewel Lamp', 'Handmade vintage telephone lamp'],
   ['pink-jewel-first-edition-lamp', 'Розова лампа-бижу — първа изработка', 'Pink Jewel Telephone Lamp — First Piece', 'Handmade vintage telephone lamp'],
 ]
 
