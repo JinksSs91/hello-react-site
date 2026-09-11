@@ -302,8 +302,8 @@ const handmadeDesignMarketEventSchema = {
 }
 
 const instagramProductSeo = [
-  ['productCreamRotary', 'Кремав телефон с шайба от 70-те и 80-те години', 'Cream Rotary Telephone Lamp from the 1970s–1980s', 'products/retro-telephone-lamp-instagram-01.jpg', 'Handmade vintage telephone lamp'],
-  ['productRedTa900Box', 'Червен телефон ТА-900 от 1991 г. с оригинална кутия', 'Red TA-900 Telephone Lamp from 1991 with Original Box', 'products/red-ta-900-instagram-01.jpg', 'Handmade vintage telephone lamp'],
+  ['productCreamRotary', 'Кремав телефон с шайба от 70-те и 80-те години', 'Cream Rotary Telephone Lamp from the 1970s–1980s', 'products/retro-telephone-lamp-instagram-01.jpg', 'Handmade vintage telephone lamp', true],
+  ['productRedTa900Box', 'Червен телефон ТА-900 от 1991 г. с оригинална кутия', 'Red TA-900 Telephone Lamp from 1991 with Original Box', 'products/red-ta-900-instagram-01.jpg', 'Handmade vintage telephone lamp', true],
   ['productRedTa900Second', 'Червен телефон ТА-900 — втора уникална изработка', 'Red TA-900 Telephone Lamp — Second Unique Piece', 'products/red-ta-900-instagram-03.jpg', 'Handmade vintage telephone lamp'],
   ['productQuartz5', 'Ретро камера „Кварц 5“', 'Quartz 5 Vintage Movie Camera Lamp', 'products/quartz-5-camera-lamp-01.jpg', 'Handmade vintage camera lamp'],
   ['productPorst', 'Фотоапарат Porst Compact Reflex OC', 'Porst Compact Reflex OC Camera Lamp', 'products/porst-compact-reflex-oc-lamp-01.jpg', 'Handmade vintage camera lamp'],
@@ -643,7 +643,7 @@ const seoPages = [
 ]
 
 seoPages.push(
-  ...instagramProductSeo.flatMap(([key, titleBg, titleEn, image, category]) => {
+  ...instagramProductSeo.flatMap(([key, titleBg, titleEn, image, category, isSold = false]) => {
     const schema = getProductSchema({
       name: titleEn,
       alternateName: titleBg,
@@ -651,6 +651,7 @@ seoPages.push(
       description: `${titleEn}, individually handmade from an authentic vintage object.`,
       category,
       url: localizedRoutes[key].bg,
+      availability: isSold ? 'SoldOut' : 'InStock',
     })
 
     return [
@@ -658,8 +659,8 @@ seoPages.push(
         key,
         lang: 'bg',
         path: localizedRoutes[key].bg,
-        title: `${titleBg} | Ръчно изработена винтидж лампа`,
-        description: `${titleBg} — уникална ръчно изработена лампа от автентичен ретро предмет.`,
+        title: `${titleBg} | ${isSold ? 'Продадена винтидж лампа' : 'Ръчно изработена винтидж лампа'}`,
+        description: `${titleBg} — ${isSold ? 'продадена ' : ''}уникална ръчно изработена лампа от автентичен ретро предмет.`,
         schemas: [schema],
         image,
         isProduct: true,
@@ -668,8 +669,8 @@ seoPages.push(
         key,
         lang: 'en',
         path: localizedRoutes[key].en,
-        title: `${titleEn} | Handmade vintage lamp`,
-        description: `${titleEn} — a unique lamp individually handmade from an authentic vintage object.`,
+        title: `${titleEn} | ${isSold ? 'Sold handmade vintage lamp' : 'Handmade vintage lamp'}`,
+        description: `${titleEn} — a ${isSold ? 'sold ' : ''}unique lamp individually handmade from an authentic vintage object.`,
         schemas: [schema],
         image,
         isProduct: true,
