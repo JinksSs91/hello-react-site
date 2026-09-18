@@ -1018,15 +1018,18 @@
   margin: 0;
   font-size: 1.18rem;
   line-height: 1.18;
+  text-align: center;
   overflow-wrap: anywhere;
 }
 
 .product-body p {
   margin: 0;
+  text-align: center;
   overflow-wrap: anywhere;
 }
 
 .status-badge {
+  justify-self: center;
   width: fit-content;
   padding: 7px 10px;
   border-radius: 999px;
@@ -1070,7 +1073,7 @@
 
 .sold-card .product-body .button {
   align-self: end;
-  justify-self: start;
+  justify-self: center;
 }
 
 .product-contact-links a {
