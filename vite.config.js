@@ -216,6 +216,7 @@ const viliaProductSchema = getProductSchema({
     'Handmade vintage Vilia camera lamp with a warm Edison bulb, created from a Soviet camera classic from the 1970s and 1980s.',
   category: 'Handmade vintage camera lamp',
   url: localizedRoutes.productVilia.bg,
+  availability: 'SoldOut',
 })
 
 const redTa900ProductSchema = getProductSchema({
@@ -436,9 +437,9 @@ const seoPages = [
     key: 'productVilia',
     lang: 'bg',
     path: localizedRoutes.productVilia.bg,
-    title: 'Фотоапарат Вилия от 1980г. | Ръчно изработена винтидж лампа',
+    title: 'Фотоапарат Вилия от 1980г. | Продадена винтидж лампа',
     description:
-      'Продава се ръчно изработена Vilia фотоапарат лампа с топла Edison крушка. Уникална upcycling лампа от vintage фотоапарат от СССР.',
+      'Продадена ръчно изработена Vilia фотоапарат лампа с топла Edison крушка. Уникална upcycling лампа от vintage фотоапарат от СССР.',
     schemas: [viliaProductSchema],
     image: 'vilia-camera-lamp-05.jpg',
     isProduct: true,
@@ -588,9 +589,9 @@ const seoPages = [
     key: 'productVilia',
     lang: 'en',
     path: localizedRoutes.productVilia.en,
-    title: 'Vilia Camera from 1980 | Handmade vintage camera lamp',
+    title: 'Vilia Camera from 1980 | Sold handmade vintage camera lamp',
     description:
-      'Available handmade Vilia camera lamp with a warm Edison bulb, created from a Soviet vintage camera classic.',
+      'Sold handmade Vilia camera lamp with a warm Edison bulb, created from a Soviet vintage camera classic.',
     schemas: [viliaProductSchema],
     image: 'vilia-camera-lamp-05.jpg',
     isProduct: true,

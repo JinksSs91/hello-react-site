@@ -1151,7 +1151,6 @@ const availableProducts = [
   blackWhiteTelephoneLamp,
   redTa900Lamp,
   redTa900SecondEditionLamp,
-  viliaLamp,
   whiteRadioPointLamp,
   blueRadioPointLamp,
 ].map((product) => ({
@@ -1167,7 +1166,6 @@ const availableProducts = [
     'black-white-telephone-lamp': 110,
     'red-ta-900-telephone-lamp': 120,
     'red-ta-900-telephone-lamp-second-edition': 120,
-    'vilia-camera-lamp': 90,
     'white-radio-point-lamp-1986': 60,
     'blue-radio-point-lamp': 60,
   }[product.slug],
@@ -1464,6 +1462,7 @@ const soldInstagramProducts = [
 )
 
 const soldProducts = [
+  { ...viliaLamp, status: 'sold' },
   { ...redTa900OriginalBoxLamp, status: 'sold' },
   { ...creamRotaryTelephoneLamp, status: 'sold' },
   { ...unionSewingMachineLamp, status: 'sold' },
