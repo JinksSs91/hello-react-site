@@ -310,7 +310,7 @@ const instagramProductSeo = [
   ['productQuartz5', 'Ретро камера „Кварц 5“', 'Quartz 5 Vintage Movie Camera Lamp', 'products/quartz-5-camera-lamp-01.jpg', 'Handmade vintage camera lamp'],
   ['productPorst', 'Фотоапарат Porst Compact Reflex OC', 'Porst Compact Reflex OC Camera Lamp', 'products/porst-compact-reflex-oc-lamp-01.jpg', 'Handmade vintage camera lamp'],
   ['productZenit', 'Фотоапарат Zenit с ретро светкавица', 'Zenit Camera Lamp with Vintage Flash Base', 'products/zenit-camera-lamp-01.jpg', 'Handmade vintage camera lamp'],
-  ['productTulaModel1', 'Шевна машина „Тула“ Model 1', 'Tula Model 1 Sewing Machine Lamp', 'products/tula-model-1-sewing-machine-lamp-01.jpg', 'Handmade vintage sewing machine lamp'],
+  ['productTulaModel1', 'Шевна машина „Тула“', 'Tula Sewing Machine Lamp', 'products/tula-model-1-sewing-machine-lamp-01.jpg', 'Handmade vintage sewing machine lamp'],
   ['productUnion', 'Шевна машина UNION', 'UNION Sewing Machine Lamp', 'products/union-sewing-machine-lamp-01.jpg', 'Handmade vintage lighting'],
   ['productOrangeTelephone', 'Оранжев ретро телефон', 'Orange Retro Telephone Lamp', 'products/orange-telephone-lamp-01.jpg', 'Handmade vintage telephone lamp'],
   ['productYellowTelephone', 'Жълт телефон от 1988 г.', 'Yellow 1988 Telephone Lamp', 'products/yellow-telephone-lamp-1988-01.jpg', 'Handmade vintage telephone lamp'],

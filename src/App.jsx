@@ -49,6 +49,7 @@ const productCategories = [
   'radios',
   'cameras',
   'desk-clocks',
+  'sewing-machines',
   'other',
 ]
 
@@ -309,6 +310,7 @@ const content = {
         radios: 'Радиа',
         cameras: 'Фотоапарати',
         'desk-clocks': 'Настолни часовници',
+        'sewing-machines': 'Шевни машини',
         other: 'Други',
       },
     },
@@ -527,6 +529,7 @@ const content = {
         radios: 'Radios',
         cameras: 'Cameras',
         'desk-clocks': 'Desk Clocks',
+        'sewing-machines': 'Sewing Machines',
         other: 'Other',
       },
     },
@@ -971,9 +974,9 @@ const zenitCameraLamp = createInstagramProduct({
 
 const tulaModel1SewingMachineLamp = createInstagramProduct({
   slug: 'tula-model-1-sewing-machine-lamp',
-  category: 'other',
-  titleBg: 'Шевна машина „Тула“ Model 1',
-  titleEn: 'Tula Model 1 Sewing Machine Lamp',
+  category: 'sewing-machines',
+  titleBg: 'Шевна машина „Тула“',
+  titleEn: 'Tula Sewing Machine Lamp',
   summaryBg: 'Оригинална ментово-зелена шевна машина „Тула“ Model 1, ръчно превърната в декоративна настолна лампа.',
   summaryEn: 'An original mint-green Tula Model 1 sewing machine, handmade into a decorative table lamp.',
   images: [
