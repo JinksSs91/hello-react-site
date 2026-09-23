@@ -23,15 +23,35 @@ import mayakClockLamp03 from './assets/products/mayak-desk-clock-lamp-03.jpg'
 import mayakClockLamp04 from './assets/products/mayak-desk-clock-lamp-04.jpg'
 import bgDnesLogo from './assets/media/bgdnes.png'
 import regNewsLogo from './assets/media/regnews.png'
-import homeHeroBlackPhone from './assets/home/home-hero-black-phone-clean.jpg'
 import homeWhitePhone from './assets/home/home-white-phone.jpg'
-import homeClockLamp from './assets/home/home-clock-lamp.jpg'
-import homeBluePhone from './assets/home/home-blue-phone.jpg'
 import './App.css'
 
 const instagramUrl = 'https://www.instagram.com/our.vintage.lights/'
 const emailAddress = 'vintarastudio@yahoo.com'
 const viberPhone = '+359899161880'
+const homeShowcaseImages = [
+  {
+    src: '/images/products/yantar-desk-clock-lamp-01.jpg',
+    alt: {
+      bg: 'Настолен часовник „Янтар“ като ръчно изработена лампа',
+      en: 'Yantar desk clock transformed into a handmade lamp',
+    },
+  },
+  {
+    src: '/images/products/tula-model-1-sewing-machine-lamp-01.jpg',
+    alt: {
+      bg: 'Шевна машина „Тула“ като ръчно изработена лампа',
+      en: 'Tula sewing machine transformed into a handmade lamp',
+    },
+  },
+  {
+    src: '/images/products/quartz-5-camera-lamp-01.jpg',
+    alt: {
+      bg: 'Ретро камера „Кварц 5“ като ръчно изработена лампа',
+      en: 'Quartz 5 vintage camera transformed into a handmade lamp',
+    },
+  },
+]
 const navigationPages = [
   'home',
   'available',
@@ -1853,19 +1873,17 @@ function HomePage({ copy, language, navigateTo }) {
           </div>
         </div>
         <figure className="hero-image-card">
-          <img src={homeHeroBlackPhone} alt={copy.home.imageStripTitle} />
+          <img src={homeWhitePhone} alt={copy.home.imageStripTitle} />
         </figure>
       </div>
 
       <HomeCounters counters={copy.home.counters} />
 
       <div className="image-strip" aria-label={copy.home.imageStripTitle}>
-        {[homeWhitePhone, homeClockLamp, homeBluePhone].map((image, index) => (
-          <img
-            key={image}
-            src={image}
-            alt={`${copy.home.imageStripTitle} ${index + 1}`}
-          />
+        {homeShowcaseImages.map((image) => (
+          <figure className="image-strip-card" key={image.src}>
+            <img src={image.src} alt={image.alt[language]} />
+          </figure>
         ))}
       </div>
 
