@@ -163,6 +163,10 @@ const productRoutes = {
     bg: '/lamps/zenit-camera-lamp',
     en: '/en/lamps/zenit-camera-lamp',
   },
+  'tula-model-1-sewing-machine-lamp': {
+    bg: '/lamps/tula-model-1-sewing-machine-lamp',
+    en: '/en/lamps/tula-model-1-sewing-machine-lamp',
+  },
   'union-sewing-machine-lamp': {
     bg: '/lamps/union-sewing-machine-lamp',
     en: '/en/lamps/union-sewing-machine-lamp',
@@ -965,6 +969,36 @@ const zenitCameraLamp = createInstagramProduct({
   featuresEn: ['Handmade', 'Original Zenit camera', 'Vintage flash base', 'LED Edison bulb'],
 })
 
+const tulaModel1SewingMachineLamp = createInstagramProduct({
+  slug: 'tula-model-1-sewing-machine-lamp',
+  category: 'other',
+  titleBg: 'Шевна машина „Тула“ Model 1',
+  titleEn: 'Tula Model 1 Sewing Machine Lamp',
+  summaryBg: 'Оригинална ментово-зелена шевна машина „Тула“ Model 1, ръчно превърната в декоративна настолна лампа.',
+  summaryEn: 'An original mint-green Tula Model 1 sewing machine, handmade into a decorative table lamp.',
+  images: [
+    '/images/products/tula-model-1-sewing-machine-lamp-01.jpg',
+    '/images/products/tula-model-1-sewing-machine-lamp-02.jpg',
+    '/images/products/tula-model-1-sewing-machine-lamp-03.jpg',
+  ],
+  descriptionBg: [
+    'Тази оригинална винтидж шевна машина от съветската епоха е превърната ръчно в уникална декоративна настолна лампа.',
+    'Запазихме характерния ѝ ретро силует, ментово-зеления цвят и металните детайли, а върху нея е добавен стилен текстилен абажур, който превръща машината в топъл и уютен акцент за дома.',
+    'Моделът е „Тула“ Model 1 — винтидж битова шевна машина от средата на XX век. „Тула“ е известна като базов модел, върху който са разработвани и други съветски машини. Конструкцията е предимно метална, характерна за машините от този период.',
+    'Днес тя все още може да шие платове, но може и да осветява дома ви, като носи със себе си история, характер и носталгия.',
+    'Не просто лампа. История, превърната в светлина.',
+  ],
+  descriptionEn: [
+    'This original vintage sewing machine from the Soviet era has been handmade into a unique decorative table lamp.',
+    'Its characteristic retro silhouette, mint-green color, and metal details have been preserved, while a stylish textile lampshade turns the machine into a warm and cozy accent for the home.',
+    'The model is Tula Model 1 — a vintage domestic sewing machine from the middle of the twentieth century. Tula is known as a base model on which other Soviet machines were developed. Its construction is mostly metal, typical of machines from that period.',
+    'Today it can still sew fabric, but it can also light your home while carrying history, character, and nostalgia with it.',
+    'Not just a lamp. A story turned into light.',
+  ],
+  featuresBg: ['Ръчно преобразувана в лампа', 'Оригинална винтидж шевна машина', 'Ретро ментово-зелен цвят', 'Текстилен абажур'],
+  featuresEn: ['Handmade into a lamp', 'Original vintage sewing machine', 'Retro mint-green color', 'Textile lampshade'],
+})
+
 const unionSewingMachineLamp = createInstagramProduct({
   slug: 'union-sewing-machine-lamp',
   category: 'other',
@@ -1141,6 +1175,7 @@ const pink1980sTelephoneLamp = createInstagramProduct({
 })
 
 const availableProducts = [
+  tulaModel1SewingMachineLamp,
   pink1980sTelephoneLamp,
   quartz5CameraLamp,
   porstCameraLamp,
@@ -1156,6 +1191,7 @@ const availableProducts = [
 ].map((product) => ({
   ...product,
   priceEur: {
+    'tula-model-1-sewing-machine-lamp': 195,
     'pink-1980s-telephone-lamp': 95,
     'quartz-5-camera-lamp': 170,
     'porst-compact-reflex-oc-lamp': 120,
