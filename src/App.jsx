@@ -291,6 +291,8 @@ const content = {
       title: 'Готови лампи, които търсят своя нов дом.',
       text:
         'Всеки продукт е единствен по рода си. За цена, доставка и допълнителни кадри ни пиши или ни се обади',
+      empty:
+        'Към този момент нямаме налични лампи от тази категория. Очаквайте скоро!',
     },
     sold: {
       kicker: 'Продадени лампи',
@@ -510,6 +512,8 @@ const content = {
       title: 'Ready lamps looking for their new home.',
       text:
         'Each product is one of a kind. For price, delivery, and extra photos, message us or call us.',
+      empty:
+        'At the moment, we do not have available lamps in this category. More coming soon!',
     },
     sold: {
       kicker: 'Sold Lamps',
@@ -2033,7 +2037,7 @@ function AvailablePage({ category, copy, language, navigateTo }) {
           ))}
         </div>
       ) : (
-        <EmptyCategory text={copy.categories.empty} />
+        <EmptyCategory text={copy.available.empty} />
       )}
     </section>
   )
