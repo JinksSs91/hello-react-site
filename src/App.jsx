@@ -38,17 +38,17 @@ const homeShowcaseImages = [
     },
   },
   {
-    src: '/images/products/tula-model-1-sewing-machine-lamp-01.jpg',
-    alt: {
-      bg: 'Шевна машина „Тула“ като ръчно изработена лампа',
-      en: 'Tula sewing machine transformed into a handmade lamp',
-    },
-  },
-  {
     src: '/images/products/quartz-5-camera-lamp-01.jpg',
     alt: {
       bg: 'Ретро камера „Кварц 5“ като ръчно изработена лампа',
       en: 'Quartz 5 vintage camera transformed into a handmade lamp',
+    },
+  },
+  {
+    src: '/images/products/tula-model-1-sewing-machine-lamp-01.jpg',
+    alt: {
+      bg: 'Шевна машина „Тула“ като ръчно изработена лампа',
+      en: 'Tula sewing machine transformed into a handmade lamp',
     },
   },
 ]
