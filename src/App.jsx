@@ -2731,6 +2731,15 @@ function ProductContactLinks({ copy }) {
         <InstagramIcon />
       </a>
       <a
+        href={facebookUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={copy.contacts.facebook}
+        title={copy.contacts.facebook}
+      >
+        <FacebookIcon />
+      </a>
+      <a
         href={`mailto:${emailAddress}`}
         aria-label={copy.contacts.email}
         title={copy.contacts.email}

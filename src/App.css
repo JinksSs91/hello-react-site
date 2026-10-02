@@ -1218,8 +1218,11 @@
 
 .contact-card .email-value {
   letter-spacing: 0;
-  overflow-wrap: normal;
-  white-space: nowrap;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+  font-size: clamp(0.92rem, 1.45vw, 1.3rem);
 }
 
 .contact-card .button {
@@ -1488,8 +1491,11 @@
 
 .footer-socials a {
   display: inline-grid;
+  flex: 0 0 44px;
   width: 44px;
   height: 44px;
+  aspect-ratio: 1;
+  align-self: center;
   place-items: center;
   border: 1px solid var(--line);
   border-radius: 50%;
