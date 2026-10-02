@@ -172,6 +172,10 @@ const productRoutes = {
     bg: '/lamps/red-ta-900-telephone-lamp-second-edition',
     en: '/en/lamps/red-ta-900-telephone-lamp-second-edition',
   },
+  'red-desk-telephone-lamp': {
+    bg: '/lamps/red-desk-telephone-lamp',
+    en: '/en/lamps/red-desk-telephone-lamp',
+  },
   'quartz-5-camera-lamp': {
     bg: '/lamps/quartz-5-camera-lamp',
     en: '/en/lamps/quartz-5-camera-lamp',
@@ -928,6 +932,30 @@ const redTa900SecondEditionLamp = createInstagramProduct({
   featuresEn: ['Separate handmade piece', 'Original TA-900', 'Warm light', 'Unique piece'],
 })
 
+const redDeskTelephoneLamp = createInstagramProduct({
+  slug: 'red-desk-telephone-lamp',
+  category: 'retro-telephones',
+  titleBg: 'Червен ретро телефон с лампа',
+  titleEn: 'Red Vintage Telephone Lamp',
+  summaryBg: 'Ръчно изработена лампа от оригинален ретро настолен телефон с топла декоративна светлина.',
+  summaryEn: 'A handmade lamp made from an original vintage desk telephone with a warm decorative light.',
+  imagePrefix: 'red-desk-telephone-lamp',
+  descriptionBg: [
+    'Един истински ретро настолен телефон, превърнат ръчно в уникална дизайнерска лампа.',
+    'Запазена е оригиналната визия на телефона, а слушалката е превърната в основен елемент на осветлението. В нея е интегрирана декоративна LED крушка с топла светлина, която създава уютна и характерна атмосфера.',
+    'Телефонът е запазен в отлично състояние и се предлага с оригиналната си кутия и документи. Автентичният механичен ротационен диск, класическият спирален кабел и оригиналните детайли допълват неговия характер.',
+    'Това не е просто осветление — това е ретро предмет, преработен в уникален интериорен акцент за нощно шкафче, бюро, хол, офис, студио или като оригинален подарък.',
+  ],
+  descriptionEn: [
+    'A true vintage desk telephone, handmade into a unique designer lamp.',
+    'The telephone’s original appearance has been preserved, while the handset has become the main lighting element. It houses a decorative LED bulb with a warm glow that creates a cozy and distinctive atmosphere.',
+    'The telephone is in excellent condition and comes with its original box and documents. Its authentic mechanical rotary dial, classic coiled cord, and original details complete its character.',
+    'This is more than lighting — it is a vintage object transformed into a unique interior accent for a bedside table, desk, living room, office, studio, or as an original gift.',
+  ],
+  featuresBg: ['Ръчна изработка', 'Автентичен ретро телефон', 'Топла LED светлина', 'Оригинална кутия и документи'],
+  featuresEn: ['Handmade', 'Authentic vintage telephone', 'Warm LED light', 'Original box and documents'],
+})
+
 const quartz5CameraLamp = createInstagramProduct({
   slug: 'quartz-5-camera-lamp',
   category: 'cameras',
@@ -1202,6 +1230,7 @@ const pink1980sTelephoneLamp = createInstagramProduct({
 })
 
 const availableProducts = [
+  redDeskTelephoneLamp,
   tulaModel1SewingMachineLamp,
   pink1980sTelephoneLamp,
   quartz5CameraLamp,
