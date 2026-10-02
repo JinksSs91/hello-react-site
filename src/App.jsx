@@ -1265,6 +1265,7 @@ const availableProducts = [
     'black-white-telephone-lamp': 110,
     'red-ta-900-telephone-lamp': 120,
     'red-ta-900-telephone-lamp-second-edition': 120,
+    'red-desk-telephone-lamp': 120,
     'white-radio-point-lamp-1986': 60,
     'blue-radio-point-lamp': 60,
   }[product.slug],

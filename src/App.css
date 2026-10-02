@@ -1003,17 +1003,22 @@
   display: block;
   aspect-ratio: 3 / 4;
   overflow: hidden;
+  padding: 10px;
+  border: 1px solid rgba(154, 80, 54, 0.16);
+  border-radius: 28px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.34), transparent 45%),
-    linear-gradient(135deg, #7a3f2d, #c76d45 52%, #e8c5a2);
+    radial-gradient(circle at 18% 14%, rgba(255, 255, 255, 0.78), transparent 28%),
+    radial-gradient(circle at 86% 88%, rgba(199, 109, 69, 0.16), transparent 34%),
+    rgba(255, 253, 247, 0.92);
 }
 
 .product-image-link img {
   width: 100%;
   height: 100%;
   display: block;
-  background: rgba(255, 253, 247, 0.78);
-  object-fit: contain;
+  border: 1px solid rgba(154, 80, 54, 0.12);
+  border-radius: 21px;
+  object-fit: cover;
 }
 
 .product-body {
