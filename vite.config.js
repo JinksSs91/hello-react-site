@@ -837,4 +837,8 @@ Sitemap: ${siteUrl}/sitemap.xml
 
 export default defineConfig({
   plugins: [react(), seoStaticPagesPlugin()],
+  build: {
+    target: 'safari13',
+    cssTarget: 'safari13',
+  },
 })
