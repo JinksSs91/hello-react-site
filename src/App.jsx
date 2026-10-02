@@ -939,7 +939,14 @@ const redDeskTelephoneLamp = createInstagramProduct({
   titleEn: 'Red Vintage Telephone Lamp',
   summaryBg: 'Ръчно изработена лампа от оригинален ретро настолен телефон с топла декоративна светлина.',
   summaryEn: 'A handmade lamp made from an original vintage desk telephone with a warm decorative light.',
-  imagePrefix: 'red-desk-telephone-lamp',
+  images: [
+    '/images/products/red-desk-telephone-lamp-01.png',
+    '/images/products/red-desk-telephone-lamp-02.jpg',
+    '/images/products/red-desk-telephone-lamp-03.jpg',
+    '/images/products/red-desk-telephone-lamp-04.jpg',
+    '/images/products/red-desk-telephone-lamp-05.jpg',
+    '/images/products/red-desk-telephone-lamp-06.jpg',
+  ],
   descriptionBg: [
     'Един истински ретро настолен телефон, превърнат ръчно в уникална дизайнерска лампа.',
     'Запазена е оригиналната визия на телефона, а слушалката е превърната в основен елемент на осветлението. В нея е интегрирана декоративна LED крушка с топла светлина, която създава уютна и характерна атмосфера.',

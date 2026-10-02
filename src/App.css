@@ -1267,7 +1267,11 @@
 
 .market-gallery-page .main-product-image {
   aspect-ratio: auto;
-  max-height: none;
+  width: auto;
+  max-width: 100%;
+  max-height: min(62vh, 620px);
+  margin: 0 auto;
+  object-fit: contain;
 }
 
 .market-gallery-page .gallery-grid img {
