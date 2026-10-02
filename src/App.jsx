@@ -27,6 +27,7 @@ import homeWhitePhone from './assets/home/home-white-phone.jpg'
 import './App.css'
 
 const instagramUrl = 'https://www.instagram.com/our.vintage.lights/'
+const facebookUrl = 'https://www.facebook.com/people/EK-Vintara-Studio/61588805186363/'
 const emailAddress = 'vintarastudio@yahoo.com'
 const viberPhone = '+359899161880'
 const homeShowcaseImages = [
@@ -440,9 +441,11 @@ const content = {
       text:
         'Най-бързият начин е чрез съобщение в Instagram. Можеш също да ни изпратиш имейл или да се свържеш с нас по телефон, Viber, Telegram или WhatsApp.',
       instagram: 'Instagram',
+      facebook: 'Facebook',
       email: 'Имейл',
       viber: 'Телефон (Viber/Telegram/WhatsApp)',
       instagramCta: 'Отвори Instagram',
+      facebookCta: 'Отвори Facebook',
       emailCta: 'Изпрати имейл',
       viberCta: 'Обади се',
     },
@@ -662,9 +665,11 @@ const content = {
       text:
         'The fastest way is by message on Instagram. You can also email us or contact us by phone, Viber, Telegram, or WhatsApp.',
       instagram: 'Instagram',
+      facebook: 'Facebook',
       email: 'Email',
       viber: 'Phone (Viber/Telegram/WhatsApp)',
       instagramCta: 'Open Instagram',
+      facebookCta: 'Open Facebook',
       emailCta: 'Send email',
       viberCta: 'Call',
     },
@@ -2445,6 +2450,12 @@ function ContactsPage({ copy }) {
           href={`tel:${viberPhone}`}
           cta={copy.contacts.viberCta}
         />
+        <ContactCard
+          label={copy.contacts.facebook}
+          value="E&K Vintara Studio"
+          href={facebookUrl}
+          cta={copy.contacts.facebookCta}
+        />
       </div>
     </section>
   )
@@ -2846,6 +2857,14 @@ function SiteFooter({
         >
           <InstagramIcon />
         </a>
+        <a
+          href={facebookUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Facebook"
+        >
+          <FacebookIcon />
+        </a>
         <a href={`mailto:${emailAddress}`} aria-label={copy.contacts.email}>
           <EmailIcon />
         </a>
@@ -2863,6 +2882,14 @@ function InstagramIcon() {
       <rect x="4" y="4" width="16" height="16" rx="5" />
       <circle cx="12" cy="12" r="3.5" />
       <circle cx="17" cy="7" r="1" />
+    </svg>
+  )
+}
+
+function FacebookIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M14 8h2V4.5c-.35-.05-1.55-.15-2.95-.15-2.92 0-4.92 1.78-4.92 5.05V12H5v3.9h3.13V22H12v-6.1h3.1l.49-3.9H12V9.78c0-1.13.31-1.78 2-1.78Z" />
     </svg>
   )
 }
