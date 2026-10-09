@@ -1254,8 +1254,6 @@ const availableProducts = [
   blackWhiteTelephoneLamp,
   redTa900Lamp,
   redTa900SecondEditionLamp,
-  whiteRadioPointLamp,
-  blueRadioPointLamp,
 ].map((product) => ({
   ...product,
   priceEur: {
@@ -1271,8 +1269,6 @@ const availableProducts = [
     'red-ta-900-telephone-lamp': 120,
     'red-ta-900-telephone-lamp-second-edition': 120,
     'red-desk-telephone-lamp': 120,
-    'white-radio-point-lamp-1986': 60,
-    'blue-radio-point-lamp': 60,
   }[product.slug],
 }))
 
@@ -1571,6 +1567,8 @@ const soldProducts = [
   { ...redTa900OriginalBoxLamp, status: 'sold' },
   { ...creamRotaryTelephoneLamp, status: 'sold' },
   { ...unionSewingMachineLamp, status: 'sold' },
+  { ...blueRadioPointLamp, status: 'sold' },
+  { ...whiteRadioPointLamp, status: 'sold' },
   ...soldInstagramProducts,
   mayakClockLamp,
   russianTelephoneLamp,
