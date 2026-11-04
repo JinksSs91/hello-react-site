@@ -1242,8 +1242,6 @@ const pink1980sTelephoneLamp = createInstagramProduct({
 })
 
 const availableProducts = [
-  redDeskTelephoneLamp,
-  tulaModel1SewingMachineLamp,
   pink1980sTelephoneLamp,
   quartz5CameraLamp,
   porstCameraLamp,
@@ -1252,12 +1250,10 @@ const availableProducts = [
   orangeTelephoneLamp,
   yellowTelephoneLamp,
   blackWhiteTelephoneLamp,
-  redTa900Lamp,
   redTa900SecondEditionLamp,
 ].map((product) => ({
   ...product,
   priceEur: {
-    'tula-model-1-sewing-machine-lamp': 195,
     'pink-1980s-telephone-lamp': 95,
     'quartz-5-camera-lamp': 170,
     'porst-compact-reflex-oc-lamp': 120,
@@ -1266,9 +1262,7 @@ const availableProducts = [
     'orange-telephone-lamp': 80,
     'yellow-telephone-lamp-1988': 80,
     'black-white-telephone-lamp': 110,
-    'red-ta-900-telephone-lamp': 120,
     'red-ta-900-telephone-lamp-second-edition': 120,
-    'red-desk-telephone-lamp': 120,
   }[product.slug],
 }))
 
@@ -1563,6 +1557,9 @@ const soldInstagramProducts = [
 )
 
 const soldProducts = [
+  { ...redTa900Lamp, status: 'sold' },
+  { ...tulaModel1SewingMachineLamp, status: 'sold' },
+  { ...redDeskTelephoneLamp, status: 'sold' },
   { ...viliaLamp, status: 'sold' },
   { ...redTa900OriginalBoxLamp, status: 'sold' },
   { ...creamRotaryTelephoneLamp, status: 'sold' },
