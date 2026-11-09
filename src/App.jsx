@@ -1288,25 +1288,21 @@ const weimarQuartzClockLamp = createInstagramProduct({
 
 const availableProducts = [
   weimarQuartzClockLamp,
-  pink1980sTelephoneLamp,
   quartz5CameraLamp,
   porstCameraLamp,
   zenitCameraLamp,
   phoneLamp,
-  orangeTelephoneLamp,
   yellowTelephoneLamp,
   blackWhiteTelephoneLamp,
   redTa900SecondEditionLamp,
 ].map((product) => ({
   ...product,
   priceEur: {
-    'pink-1980s-telephone-lamp': 95,
     'weimar-quartz-clock-lamp': 160,
     'quartz-5-camera-lamp': 170,
     'porst-compact-reflex-oc-lamp': 120,
     'zenit-camera-lamp': 130,
     'retro-telephone-lamp': 140,
-    'orange-telephone-lamp': 80,
     'yellow-telephone-lamp-1988': 80,
     'black-white-telephone-lamp': 110,
     'red-ta-900-telephone-lamp-second-edition': 120,
