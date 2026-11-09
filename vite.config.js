@@ -63,6 +63,7 @@ const localizedRoutes = {
   productBlueRadio: { bg: '/lamps/blue-radio-point-lamp', en: '/en/lamps/blue-radio-point-lamp' },
   productBlackWhiteTelephone: { bg: '/lamps/black-white-telephone-lamp', en: '/en/lamps/black-white-telephone-lamp' },
   productWeimarQuartz: { bg: '/lamps/weimar-quartz-clock-lamp', en: '/en/lamps/weimar-quartz-clock-lamp' },
+  productRedTelephoneShade: { bg: '/lamps/red-telephone-shade-lamp', en: '/en/lamps/red-telephone-shade-lamp' },
   productPink1980sTelephone: { bg: '/lamps/pink-1980s-telephone-lamp', en: '/en/lamps/pink-1980s-telephone-lamp' },
   soldProductPinkTelephone: {
     bg: '/sold-lamps/pink-rotary-telephone-lamp',
@@ -313,6 +314,7 @@ const handmadeDesignMarketEventSchema = {
 }
 
 const instagramProductSeo = [
+  ['productRedTelephoneShade', 'Червен ретро телефон с абажур', 'Red Retro Telephone Lamp with Fabric Shade', 'products/red-telephone-shade-lamp-01.jpg', 'Handmade vintage telephone lamp', false, 110],
   ['productWeimarQuartz', 'Винтидж часовник Weimar Quartz – лампа', 'Vintage Weimar Quartz Clock Lamp', 'products/weimar-quartz-clock-lamp-01.jpg', 'Handmade vintage desk clock lamp', false, 160],
   ['productPink1980sTelephone', 'Розов ретро телефон от 80-те', 'Pink 1980s Rotary Telephone Lamp', 'products/pink-1980s-telephone-lamp-01.jpg', 'Handmade vintage telephone lamp', true],
   ['productCreamRotary', 'Кремав телефон с шайба от 70-те и 80-те години', 'Cream Rotary Telephone Lamp from the 1970s–1980s', 'products/retro-telephone-lamp-instagram-01.jpg', 'Handmade vintage telephone lamp', true],

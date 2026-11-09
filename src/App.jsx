@@ -177,6 +177,10 @@ const productRoutes = {
     bg: '/lamps/red-desk-telephone-lamp',
     en: '/en/lamps/red-desk-telephone-lamp',
   },
+  'red-telephone-shade-lamp': {
+    bg: '/lamps/red-telephone-shade-lamp',
+    en: '/en/lamps/red-telephone-shade-lamp',
+  },
   'quartz-5-camera-lamp': {
     bg: '/lamps/quartz-5-camera-lamp',
     en: '/en/lamps/quartz-5-camera-lamp',
@@ -1287,6 +1291,32 @@ const weimarQuartzClockLamp = createInstagramProduct({
 })
 
 const availableProducts = [
+  createInstagramProduct({
+    slug: 'red-telephone-shade-lamp',
+    category: 'retro-telephones',
+    titleBg: 'Червен ретро телефон с абажур',
+    titleEn: 'Red Retro Telephone Lamp with Fabric Shade',
+    summaryBg: 'Червен телефон с шайба, преобразен в настолна лампа с текстилен абажур и топла светлина.',
+    summaryEn: 'A red rotary telephone transformed into a table lamp with a fabric shade and warm light.',
+    images: [
+      '/images/products/red-telephone-shade-lamp-01.jpg',
+      '/images/products/red-telephone-shade-lamp-02.jpg',
+      '/images/products/red-telephone-shade-lamp-03.jpg',
+      '/images/products/red-telephone-shade-lamp-04.jpg',
+    ],
+    descriptionBg: [
+      'Ретро телефон с шайба, получил нов живот като настолна лампа с текстилен абажур.',
+      'Червеният корпус, оригиналната телефонна шайба и спиралният кабел съчетават характерния винтидж силует с практично осветление.',
+      'Абажурът разпръсква мека, топла светлина и превръща лампата в уютен акцент за бюро, нощно шкафче или хол.',
+    ],
+    descriptionEn: [
+      'A retro rotary telephone has been given a new life as a table lamp with a fabric shade.',
+      'Its red body, original rotary dial, and coiled cord preserve the distinctive vintage silhouette while adding practical lighting.',
+      'The shade diffuses a soft, warm glow, making this lamp a welcoming accent for a desk, bedside table, or living room.',
+    ],
+    featuresBg: ['Автентичен червен телефон с шайба', 'Текстилен абажур', 'Мека топла светлина', 'Ретро настолна лампа'],
+    featuresEn: ['Authentic red rotary telephone', 'Fabric lampshade', 'Soft warm light', 'Vintage table lamp'],
+  }),
   weimarQuartzClockLamp,
   quartz5CameraLamp,
   porstCameraLamp,
@@ -1298,6 +1328,7 @@ const availableProducts = [
 ].map((product) => ({
   ...product,
   priceEur: {
+    'red-telephone-shade-lamp': 110,
     'weimar-quartz-clock-lamp': 160,
     'quartz-5-camera-lamp': 170,
     'porst-compact-reflex-oc-lamp': 120,
