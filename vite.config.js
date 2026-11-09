@@ -62,6 +62,8 @@ const localizedRoutes = {
   productWhiteRadio: { bg: '/lamps/white-radio-point-lamp-1986', en: '/en/lamps/white-radio-point-lamp-1986' },
   productBlueRadio: { bg: '/lamps/blue-radio-point-lamp', en: '/en/lamps/blue-radio-point-lamp' },
   productBlackWhiteTelephone: { bg: '/lamps/black-white-telephone-lamp', en: '/en/lamps/black-white-telephone-lamp' },
+  productWeimarQuartz: { bg: '/lamps/weimar-quartz-clock-lamp', en: '/en/lamps/weimar-quartz-clock-lamp' },
+  productPink1980sTelephone: { bg: '/lamps/pink-1980s-telephone-lamp', en: '/en/lamps/pink-1980s-telephone-lamp' },
   soldProductPinkTelephone: {
     bg: '/sold-lamps/pink-rotary-telephone-lamp',
     en: '/en/sold-lamps/pink-rotary-telephone-lamp',
@@ -164,6 +166,7 @@ function getProductSchema({
   url,
   category,
   availability = 'InStock',
+  priceEur,
 }) {
   const offers = {
     '@type': 'Offer',
@@ -176,11 +179,17 @@ function getProductSchema({
   }
 
   if (availability === 'InStock') {
-    offers.priceSpecification = {
-      '@type': 'PriceSpecification',
-      priceCurrency: 'BGN',
-      description: 'Price on request',
-    }
+    offers.priceSpecification = priceEur
+      ? {
+          '@type': 'PriceSpecification',
+          priceCurrency: 'EUR',
+          price: priceEur,
+        }
+      : {
+          '@type': 'PriceSpecification',
+          priceCurrency: 'BGN',
+          description: 'Price on request',
+        }
   }
 
   return {
@@ -304,6 +313,8 @@ const handmadeDesignMarketEventSchema = {
 }
 
 const instagramProductSeo = [
+  ['productWeimarQuartz', 'Винтидж часовник Weimar Quartz – лампа', 'Vintage Weimar Quartz Clock Lamp', 'products/weimar-quartz-clock-lamp-01.jpg', 'Handmade vintage desk clock lamp', false, 160],
+  ['productPink1980sTelephone', 'Розов ретро телефон от 80-те', 'Pink 1980s Rotary Telephone Lamp', 'products/pink-1980s-telephone-lamp-01.jpg', 'Handmade vintage telephone lamp', true],
   ['productCreamRotary', 'Кремав телефон с шайба от 70-те и 80-те години', 'Cream Rotary Telephone Lamp from the 1970s–1980s', 'products/retro-telephone-lamp-instagram-01.jpg', 'Handmade vintage telephone lamp', true],
   ['productRedTa900Box', 'Червен телефон ТА-900 от 1991 г. с оригинална кутия', 'Red TA-900 Telephone Lamp from 1991 with Original Box', 'products/red-ta-900-instagram-01.jpg', 'Handmade vintage telephone lamp', true],
   ['productRedTa900Second', 'Червен телефон ТА-900 — втора уникална изработка', 'Red TA-900 Telephone Lamp — Second Unique Piece', 'products/red-ta-900-instagram-03.jpg', 'Handmade vintage telephone lamp'],
@@ -312,7 +323,7 @@ const instagramProductSeo = [
   ['productZenit', 'Фотоапарат Zenit с ретро светкавица', 'Zenit Camera Lamp with Vintage Flash Base', 'products/zenit-camera-lamp-01.jpg', 'Handmade vintage camera lamp'],
   ['productTulaModel1', 'Шевна машина „Тула“', 'Tula Sewing Machine Lamp', 'products/tula-model-1-sewing-machine-lamp-01.jpg', 'Handmade vintage sewing machine lamp'],
   ['productUnion', 'Шевна машина UNION', 'UNION Sewing Machine Lamp', 'products/union-sewing-machine-lamp-01.jpg', 'Handmade vintage lighting'],
-  ['productOrangeTelephone', 'Оранжев ретро телефон', 'Orange Retro Telephone Lamp', 'products/orange-telephone-lamp-01.jpg', 'Handmade vintage telephone lamp'],
+  ['productOrangeTelephone', 'Оранжев ретро телефон', 'Orange Retro Telephone Lamp', 'products/orange-telephone-lamp-01.jpg', 'Handmade vintage telephone lamp', true],
   ['productYellowTelephone', 'Жълт телефон от 1988 г.', 'Yellow 1988 Telephone Lamp', 'products/yellow-telephone-lamp-1988-01.jpg', 'Handmade vintage telephone lamp'],
   ['productWhiteRadio', 'Бяла радиоточка от 1986 г.', 'White 1986 Wired Radio Lamp', 'products/white-radio-point-lamp-1986-01.jpg', 'Handmade vintage radio lamp'],
   ['productBlueRadio', 'Синя винтидж радиоточка', 'Blue Vintage Wired Radio Lamp', 'products/blue-radio-point-lamp-01.jpg', 'Handmade vintage radio lamp'],
@@ -646,7 +657,7 @@ const seoPages = [
 ]
 
 seoPages.push(
-  ...instagramProductSeo.flatMap(([key, titleBg, titleEn, image, category, isSold = false]) => {
+  ...instagramProductSeo.flatMap(([key, titleBg, titleEn, image, category, isSold = false, priceEur]) => {
     const schema = getProductSchema({
       name: titleEn,
       alternateName: titleBg,
@@ -655,6 +666,7 @@ seoPages.push(
       category,
       url: localizedRoutes[key].bg,
       availability: isSold ? 'SoldOut' : 'InStock',
+      priceEur,
     })
 
     return [

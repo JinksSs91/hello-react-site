@@ -221,6 +221,10 @@ const productRoutes = {
     bg: '/lamps/pink-1980s-telephone-lamp',
     en: '/en/lamps/pink-1980s-telephone-lamp',
   },
+  'weimar-quartz-clock-lamp': {
+    bg: '/lamps/weimar-quartz-clock-lamp',
+    en: '/en/lamps/weimar-quartz-clock-lamp',
+  },
   'pink-rotary-telephone-lamp': {
     bg: '/sold-lamps/pink-rotary-telephone-lamp',
     en: '/en/sold-lamps/pink-rotary-telephone-lamp',
@@ -1241,7 +1245,49 @@ const pink1980sTelephoneLamp = createInstagramProduct({
   ],
 })
 
+const weimarQuartzClockLamp = createInstagramProduct({
+  slug: 'weimar-quartz-clock-lamp',
+  category: 'desk-clocks',
+  titleBg: 'Винтидж часовник Weimar Quartz – лампа',
+  titleEn: 'Vintage Weimar Quartz Clock Lamp',
+  summaryBg: 'Красив винтидж часовник Weimar Quartz, преобразен в уникална дизайнерска лампа.',
+  summaryEn: 'A beautiful vintage Weimar Quartz clock transformed into a unique designer lamp.',
+  images: [
+    '/images/products/weimar-quartz-clock-lamp-01.jpg',
+    '/images/products/weimar-quartz-clock-lamp-02.jpg',
+    '/images/products/weimar-quartz-clock-lamp-03.jpg',
+    '/images/products/weimar-quartz-clock-lamp-04.jpg',
+  ],
+  descriptionBg: [
+    'Един красив винтидж часовник Weimar Quartz, преобразен с внимание към детайла в уникална дизайнерска лампа.',
+    'Weimar Quartz носи духа на класическия европейски интериорен дизайн – дървена конструкция, богати декоративни орнаменти, златисти акценти и елегантен циферблат с римски цифри.',
+    'Днес този часовник има нова роля – да създава атмосфера и да превръща светлината в част от интериора. Декоративната Edison крушка излъчва топла светлина.',
+    'Перфектен избор за любителите на винтидж предмети, класическия дизайн и нестандартните интериорни решения. Времето минава. Добрият дизайн остава.',
+  ],
+  descriptionEn: [
+    'A beautiful vintage Weimar Quartz clock, carefully transformed into a unique designer lamp.',
+    'Weimar Quartz carries the spirit of classic European interior design, with a wooden case, rich decorative ornaments, gold accents, and an elegant Roman numeral dial.',
+    'The clock now has a new role: creating atmosphere and making light part of the interior. Its decorative Edison bulb casts a warm glow.',
+    'A perfect choice for lovers of vintage objects, classic design, and distinctive interiors. Time passes. Good design remains.',
+  ],
+  featuresBg: [
+    'Оригинален винтидж часовник Weimar Quartz',
+    'Ръчно преобразен в дизайнерска лампа',
+    'Елегантни златисти орнаменти',
+    'Декоративна Edison крушка',
+    'Топла светлина',
+  ],
+  featuresEn: [
+    'Original vintage Weimar Quartz clock',
+    'Handmade into a designer lamp',
+    'Elegant gold ornaments',
+    'Decorative Edison bulb',
+    'Warm light',
+  ],
+})
+
 const availableProducts = [
+  weimarQuartzClockLamp,
   pink1980sTelephoneLamp,
   quartz5CameraLamp,
   porstCameraLamp,
@@ -1255,6 +1301,7 @@ const availableProducts = [
   ...product,
   priceEur: {
     'pink-1980s-telephone-lamp': 95,
+    'weimar-quartz-clock-lamp': 160,
     'quartz-5-camera-lamp': 170,
     'porst-compact-reflex-oc-lamp': 120,
     'zenit-camera-lamp': 130,
@@ -1557,6 +1604,8 @@ const soldInstagramProducts = [
 )
 
 const soldProducts = [
+  { ...pink1980sTelephoneLamp, status: 'sold' },
+  { ...orangeTelephoneLamp, status: 'sold' },
   { ...redTa900Lamp, status: 'sold' },
   { ...tulaModel1SewingMachineLamp, status: 'sold' },
   { ...redDeskTelephoneLamp, status: 'sold' },
