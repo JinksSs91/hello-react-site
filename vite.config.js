@@ -53,6 +53,7 @@ const localizedRoutes = {
   productRedTa900Box: { bg: '/lamps/red-ta-900-telephone-lamp-original-box', en: '/en/lamps/red-ta-900-telephone-lamp-original-box' },
   productRedTa900Second: { bg: '/lamps/red-ta-900-telephone-lamp-second-edition', en: '/en/lamps/red-ta-900-telephone-lamp-second-edition' },
   productQuartz5: { bg: '/lamps/quartz-5-camera-lamp', en: '/en/lamps/quartz-5-camera-lamp' },
+  productQuartz8mm: { bg: '/lamps/quartz-8mm-camera-lamp', en: '/en/lamps/quartz-8mm-camera-lamp' },
   productPorst: { bg: '/lamps/porst-compact-reflex-oc-lamp', en: '/en/lamps/porst-compact-reflex-oc-lamp' },
   productZenit: { bg: '/lamps/zenit-camera-lamp', en: '/en/lamps/zenit-camera-lamp' },
   productTulaModel1: { bg: '/lamps/tula-model-1-sewing-machine-lamp', en: '/en/lamps/tula-model-1-sewing-machine-lamp' },
@@ -179,17 +180,11 @@ function getProductSchema({
     },
   }
 
-  if (availability === 'InStock') {
-    offers.priceSpecification = priceEur
-      ? {
+  if (availability === 'InStock' && priceEur != null) {
+    offers.priceSpecification = {
           '@type': 'PriceSpecification',
           priceCurrency: 'EUR',
           price: priceEur,
-        }
-      : {
-          '@type': 'PriceSpecification',
-          priceCurrency: 'BGN',
-          description: 'Price on request',
         }
   }
 
@@ -320,7 +315,8 @@ const instagramProductSeo = [
   ['productCreamRotary', 'Кремав телефон с шайба от 70-те и 80-те години', 'Cream Rotary Telephone Lamp from the 1970s–1980s', 'products/retro-telephone-lamp-instagram-01.jpg', 'Handmade vintage telephone lamp', true],
   ['productRedTa900Box', 'Червен телефон ТА-900 от 1991 г. с оригинална кутия', 'Red TA-900 Telephone Lamp from 1991 with Original Box', 'products/red-ta-900-instagram-01.jpg', 'Handmade vintage telephone lamp', true],
   ['productRedTa900Second', 'Червен телефон ТА-900 — втора уникална изработка', 'Red TA-900 Telephone Lamp — Second Unique Piece', 'products/red-ta-900-instagram-03.jpg', 'Handmade vintage telephone lamp'],
-  ['productQuartz5', 'Ретро камера „Кварц 5“', 'Quartz 5 Vintage Movie Camera Lamp', 'products/quartz-5-camera-lamp-01.jpg', 'Handmade vintage camera lamp'],
+  ['productQuartz5', 'Ретро камера „Кварц 5“', 'Quartz 5 Vintage Movie Camera Lamp', 'products/quartz-5-camera-lamp-01.jpg', 'Handmade vintage camera lamp', true],
+  ['productQuartz8mm', 'Ретро видеокамера „Кварц“ 8 мм — лампа', 'Quartz 8 mm Vintage Camera Lamp', 'products/quartz-8mm-camera-lamp-01.jpg', 'Handmade vintage movie camera lamp'],
   ['productPorst', 'Фотоапарат Porst Compact Reflex OC', 'Porst Compact Reflex OC Camera Lamp', 'products/porst-compact-reflex-oc-lamp-01.jpg', 'Handmade vintage camera lamp'],
   ['productZenit', 'Фотоапарат Zenit с ретро светкавица', 'Zenit Camera Lamp with Vintage Flash Base', 'products/zenit-camera-lamp-01.jpg', 'Handmade vintage camera lamp'],
   ['productTulaModel1', 'Шевна машина „Тула“', 'Tula Sewing Machine Lamp', 'products/tula-model-1-sewing-machine-lamp-01.jpg', 'Handmade vintage sewing machine lamp'],

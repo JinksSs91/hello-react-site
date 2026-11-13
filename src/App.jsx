@@ -185,6 +185,10 @@ const productRoutes = {
     bg: '/lamps/quartz-5-camera-lamp',
     en: '/en/lamps/quartz-5-camera-lamp',
   },
+  'quartz-8mm-camera-lamp': {
+    bg: '/lamps/quartz-8mm-camera-lamp',
+    en: '/en/lamps/quartz-8mm-camera-lamp',
+  },
   'porst-compact-reflex-oc-lamp': {
     bg: '/lamps/porst-compact-reflex-oc-lamp',
     en: '/en/lamps/porst-compact-reflex-oc-lamp',
@@ -998,6 +1002,29 @@ const quartz5CameraLamp = createInstagramProduct({
   featuresEn: ['Hand-restored', 'Original Quartz 5 camera', 'Vintage bulb', 'Ready to use'],
 })
 
+const quartz8mmCameraLamp = createInstagramProduct({
+  slug: 'quartz-8mm-camera-lamp',
+  category: 'cameras',
+  titleBg: 'Ретро видеокамера „Кварц“ 8 мм — лампа',
+  titleEn: 'Quartz 8 mm Vintage Camera Lamp',
+  summaryBg: 'Автентична 8-милиметрова кинокамера „Кварц“, превърната в уникална лампа с гъвкаво метално рамо.',
+  summaryEn: 'An authentic Quartz 8 mm movie camera transformed into a one-of-a-kind lamp with a flexible metal arm.',
+  imagePrefix: 'quartz-8mm-camera-lamp',
+  images: [1, 2, 3, 4, 5].map((number) => `/images/products/quartz-8mm-camera-lamp-0${number}.jpg`),
+  descriptionBg: [
+    'Ретро 8-милиметрова кинокамера „Кварц“, получила нов живот като ръчно изработена лампа.',
+    'Оригиналният корпус и обектив са запазени, а гъвкавото метално рамо завършва с декоративна крушка с топла светлина.',
+    'Камерата е поставена на статив и се превръща в отличителен акцент за дом, студио или колекция.',
+  ],
+  descriptionEn: [
+    'A retro Quartz 8 mm movie camera given a new life as a handmade lamp.',
+    'The original camera body and lens are preserved, while a flexible metal arm holds a decorative bulb with a warm glow.',
+    'Set on a tripod, the camera becomes a distinctive accent for a home, studio, or collection.',
+  ],
+  featuresBg: ['Ретро 8 мм кинокамера „Кварц“', 'Гъвкаво метално рамо', 'Декоративна крушка с топла светлина', 'Поставена на статив'],
+  featuresEn: ['Vintage Quartz 8 mm movie camera', 'Flexible metal arm', 'Decorative warm-light bulb', 'Mounted on a tripod'],
+})
+
 const porstCameraLamp = createInstagramProduct({
   slug: 'porst-compact-reflex-oc-lamp',
   category: 'cameras',
@@ -1318,7 +1345,7 @@ const availableProducts = [
     featuresEn: ['Authentic red rotary telephone', 'Fabric lampshade', 'Soft warm light', 'Vintage table lamp'],
   }),
   weimarQuartzClockLamp,
-  quartz5CameraLamp,
+  quartz8mmCameraLamp,
   porstCameraLamp,
   zenitCameraLamp,
   phoneLamp,
@@ -1330,7 +1357,6 @@ const availableProducts = [
   priceEur: {
     'red-telephone-shade-lamp': 110,
     'weimar-quartz-clock-lamp': 160,
-    'quartz-5-camera-lamp': 170,
     'porst-compact-reflex-oc-lamp': 120,
     'zenit-camera-lamp': 130,
     'retro-telephone-lamp': 140,
@@ -1631,6 +1657,7 @@ const soldInstagramProducts = [
 )
 
 const soldProducts = [
+  { ...quartz5CameraLamp, status: 'sold' },
   { ...pink1980sTelephoneLamp, status: 'sold' },
   { ...orangeTelephoneLamp, status: 'sold' },
   { ...redTa900Lamp, status: 'sold' },
@@ -2565,7 +2592,7 @@ function ProductPage({ copy, language, navigateTo, product }) {
           </span>
           <h1>{title}</h1>
           <p className="hero-lead">{summary}</p>
-          {!isSold && (
+          {!isSold && product.priceEur != null && (
             <div className="price-line">
               {formatPrice(product.priceEur, language)}
             </div>
@@ -2779,9 +2806,11 @@ function ProductCard({ product, copy, language, navigateTo }) {
             >
               {copy.product.details}
             </a>
-            <span className="product-card-price">
-              {formatPrice(product.priceEur, language)}
-            </span>
+            {product.priceEur != null && (
+              <span className="product-card-price">
+                {formatPrice(product.priceEur, language)}
+              </span>
+            )}
           </div>
         </div>
       </div>
