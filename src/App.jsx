@@ -189,6 +189,10 @@ const productRoutes = {
     bg: '/lamps/quartz-8mm-camera-lamp',
     en: '/en/lamps/quartz-8mm-camera-lamp',
   },
+  'emerald-t202-telephone-lamp': {
+    bg: '/lamps/emerald-t202-telephone-lamp',
+    en: '/en/lamps/emerald-t202-telephone-lamp',
+  },
   'porst-compact-reflex-oc-lamp': {
     bg: '/lamps/porst-compact-reflex-oc-lamp',
     en: '/en/lamps/porst-compact-reflex-oc-lamp',
@@ -1025,6 +1029,29 @@ const quartz8mmCameraLamp = createInstagramProduct({
   featuresEn: ['Vintage Quartz 8 mm movie camera', 'Flexible metal arm', 'Decorative warm-light bulb', 'Mounted on a tripod'],
 })
 
+const emeraldT202TelephoneLamp = createInstagramProduct({
+  slug: 'emerald-t202-telephone-lamp',
+  category: 'retro-telephones',
+  titleBg: 'Черен телефон „Емералд“ T202 — лампа',
+  titleEn: 'Black Emerald T202 Telephone Lamp',
+  summaryBg: 'Ретро телефон „Емералд“ T202, преобразен в настолна лампа с декоративна крушка.',
+  summaryEn: 'A vintage Emerald T202 telephone transformed into a table lamp with a decorative bulb.',
+  imagePrefix: 'emerald-t202-telephone-lamp',
+  images: [1, 2, 3, 4, 5, 6].map((number) => `/images/products/emerald-t202-telephone-lamp-0${number}.jpg`),
+  descriptionBg: [
+    'Ретро телефон „Емералд“ T202 е получил нов живот като уникална настолна лампа.',
+    'Оригиналният черен корпус, клавиатурата и слушалката са запазени. Слушалката е превърната в стойка за декоративна крушка с топла светлина.',
+    'Съчетава характерен винтидж дизайн и функционално осветление — акцент за бюро, кабинет или колекция.',
+  ],
+  descriptionEn: [
+    'A vintage Emerald T202 telephone has been given a new life as a one-of-a-kind table lamp.',
+    'Its original black body, keypad, and handset are preserved. The handset has been transformed into a holder for a decorative warm-light bulb.',
+    'It pairs distinctive vintage design with functional lighting, making an accent for a desk, study, or collection.',
+  ],
+  featuresBg: ['Оригинален телефон „Емералд“ T202', 'Слушалка, преобразена в стойка за крушка', 'Декоративна крушка с топла светлина', 'Ръчно изработена винтидж лампа'],
+  featuresEn: ['Original Emerald T202 telephone', 'Handset transformed into a bulb holder', 'Decorative warm-light bulb', 'Handmade vintage lamp'],
+})
+
 const porstCameraLamp = createInstagramProduct({
   slug: 'porst-compact-reflex-oc-lamp',
   category: 'cameras',
@@ -1346,6 +1373,7 @@ const availableProducts = [
   }),
   weimarQuartzClockLamp,
   quartz8mmCameraLamp,
+  emeraldT202TelephoneLamp,
   porstCameraLamp,
   zenitCameraLamp,
   phoneLamp,
@@ -1357,6 +1385,8 @@ const availableProducts = [
   priceEur: {
     'red-telephone-shade-lamp': 110,
     'weimar-quartz-clock-lamp': 160,
+    'quartz-8mm-camera-lamp': 130,
+    'emerald-t202-telephone-lamp': 75,
     'porst-compact-reflex-oc-lamp': 120,
     'zenit-camera-lamp': 130,
     'retro-telephone-lamp': 140,
